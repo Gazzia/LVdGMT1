@@ -1,0 +1,108 @@
+body{
+	background-image:linear-gradient(to bottom, hsla(48,42%,71%,0.4) 0%,hsla(0,0%,0%,0) 100%) , url(../leather.jpg);
+	/* text-align:center; */
+	background-size:auto auto;
+}
+h1{
+	color:#fff8cc;
+	padding-top:50px;
+}
+#container1{
+	display:inline-block;
+	width:540px; height:580px;
+	padding:0;
+	text-align:center;
+}
+#container2{
+	position:absolute;
+	display:inline-block;
+	top:0px;right:20px;
+	width:540px; height:580px;
+	padding:0;
+	text-align:center;
+}
+#container_armure{
+	margin-left:27px;
+	width:500px;
+	border:3px double #dbba7a;
+}
+h2{
+	display:inline-block;
+	color:#150e0a;
+	font-size:30px;
+	font-family: 'Homemade Apple', cursive;
+	padding-top:10px;
+	margin-top:5px;
+	/* padding-left:220px; */
+	margin-bottom:10px;
+	line-height:50px;
+}
+
+#inv_contenu{
+	display:block;
+	position:relative;
+	top:-50px; bottom:50px;
+	width:95%;
+	margin:0 auto;
+	background-color:hsla(0, 0%, 0%, 0.29);
+	box-shadow: 0px -1px 10px #564a33;
+	border-radius:8px;
+
+}
+#inv_arme{
+	display:inline-block;
+	position:relative;
+	left:10px;
+	border:3px double #dbba7a;
+	background-color:hsla(0, 0%, 0%, 0.15);
+	margin:10px; margin-bottom:5px;
+	margin-top:0;
+	height:70px;
+	width:500px;
+	border-radius:2px;
+	font-family: 'Roboto Condensed', sans-serif;
+	text-align:left;
+}
+#inv_armure{
+	display:inline-block;
+	position:relative;
+	background-color:hsla(0, 0%, 0%, 0.15);
+	margin:0px 0px 0px 0px;
+	height:70px;
+	width:500px;
+	border-radius:2px;
+	font-family: 'Roboto Condensed', sans-serif;
+	text-align:left;
+}
+
+.inv_item_img{
+	display:inline-block;
+	position:relative;
+	background-color:#dbba7a;
+	border:1px solid #3b281c;
+	border-radius:8px;
+	margin-top:4px;
+	margin-left:5px;
+}
+h3{
+	margin-left:5px;
+	font-size:15px;
+	color:#f2dab0;
+	width:400px;
+	display:inline-block;
+	position:absolute;
+	overflow:hidden;
+	margin-top:2px;
+}
+.inv_item_desc{
+	font-size:14px;
+	font-style:italic;
+	color:#c1ae8d;
+	width:420px; height:40px;
+	display:inline-block;
+	margin-left:5px;
+	margin-top:18px;
+	position:absolute;
+	/* overflow:auto; */
+	line-height:16px;
+}

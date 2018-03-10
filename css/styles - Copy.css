@@ -1,0 +1,150 @@
+body{
+	/* height:100%; */
+	background-image:linear-gradient(to bottom, hsla(53,80%,80%,0.50) 10%,hsla(0,0%,0%,0) 100%) , url(../back.jpg);
+	background-repeat: repeat-x, repeat;
+	background-position: bottom left, top;
+}
+
+header{
+	background-color:#fff8cc;
+	border-bottom:3px double #dbba7a;
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	font-family: 'Noto Sans', sans-serif;
+	/* padding:20px; */
+	min-height:60px !important;
+	box-shadow: 0px -1px 10px #93763e;
+	z-index:2;
+}
+#iconHealth{
+	display:inline-block;
+	position:fixed;
+	width:20px;
+	height:20px;
+margin-top:22px;
+margin-left:17px;
+}
+#iconGold{
+	display:inline-block;
+	position:fixed;
+	width:20px;
+	height:20px;
+	top: 15px;
+	right:75px;
+}
+#plHealth{
+	margin-top:20px; margin-left:20px;
+	display:inline-block;
+	padding-left:23px;
+}
+#pseudo{
+	position:fixed;
+margin-top:20px;
+	left:150px;
+}
+#iconPage{
+	display:inline-block;
+	width:57px;
+	height:57px;
+	/* background-color:#000000; */
+	position:fixed;
+	top:3px;left:48%;
+	margin:0 auto;	
+}
+#goldAmount{
+	display:inline-block;
+	position:fixed;
+	top:15px;
+	right:77px;
+}
+h1{
+	font-size:50px;
+	text-align:center;
+	font-family: 'Kavivanar', cursive;
+	color:#4c3d20;
+	padding-top:70px;
+	padding-bottom:20px;
+}
+#histoire{
+	padding-left:10%;padding-right:10%;padding-bottom:10px;
+	font-size:20px;
+	text-align:center;
+	color:#302613;
+	font-family: 'Noto Sans', sans-serif;
+	line-height:35px;
+}
+#choix{
+	margin:0 auto;
+	width: 800px;
+	/* height: 100px; */
+	/* background-color:white; */
+	display:block;
+	text-align: center;
+	margin-bottom:35px;
+	/* position:; */
+}
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+a.btnD:hover{
+	box-shadow: 0px 3px 4px #c4a66d;
+}
+a.btnD, .optNope{
+	/* border-color:; */
+	/* border:3px double #dbba7a; */
+		box-shadow: 0px 1px 3px #cea861;
+	padding:10px;
+	margin-top:15px;
+	margin-left:5px;
+	margin-right:5px;
+	display:inline-block;
+    font-family: 'Open Sans Condensed', sans-serif;
+	color:#917d55;
+	font-size:20px;
+	background-color:#fff8cc;
+	border-radius:10px;
+}
+.optNope{
+	color:#919191;
+	background-color:#4c4c4c;
+	box-shadow: none;
+}
+a.iconInv{
+	display:inline-block;
+	position:fixed;
+	right:15px;top:9px;
+	padding:3px;
+	height:35px;
+	width:35px;
+	border:3px double #dbba7a;
+	border-radius:6px;
+		}
+.get_item{
+	display:inline-block;
+	position:relative;
+	background-color:#dbba7a;
+	border:1px solid #3b281c;
+	border-radius:8px;
+	margin-top:10px;
+	box-shadow: 0px 0px 7px #fff4ba;
+}
+.ui-dialog.dialogarme .get_item{
+		margin-left:102px;
+}
+.ui-dialog.dialoggold #getitem_desc {
+	margin-top:10px;
+}
+#illus_cont{
+		padding-top:30px;
+	display:inline-block;
+	position:relative;
+	text-align:center;
+	    height: 150px;
+    width: 100%;
+}
+#illustr{
+	margin: 0 auto;
+}

@@ -1,0 +1,134 @@
+#main{
+	background: linear-gradient(to top, #711114 0%, #0000 80%), linear-gradient(0.9turn, #3c1011 0%, #0000 80%), linear-gradient(0.2turn, #171312 0%, #0000 50%), #bd8a76;
+}
+#sleft, #sright{
+	background: linear-gradient(to bottom, #000 -20%, #5a0000 70%);
+}
+h1{
+	color:#000000;
+	padding-top:50px;padding-bottom:10px;
+	margin-bottom:0px;
+}
+span{
+	margin-top:120px;
+	padding-bottom:5px;
+	margin-bottom:5px;
+	color:#000c;
+	font-size: 23px;
+	}
+#hud_enemy{
+	display:inline-block;
+	border:1px solid #00000080;
+	background:linear-gradient(0.22turn, #29221899 -5%,#0000 45%), linear-gradient(0.79turn, #29221899 -5%,#0000 45%), linear-gradient(to top, #000c -2px, #0000 5%), url(../images/UI/leather3.jpg);
+	height:200px;
+	width:300px;
+	border-radius:2px;
+	font-family: 'Roboto Condensed', sans-serif;
+	text-align:left;
+	box-shadow: 0 2px 2px #0000004d;
+	margin: 0 auto;
+	margin: 0 5px 0 5px;
+}
+a.btnD{
+	background-color:#ddb5a0;
+	box-shadow: inherit;
+	border-radius: 3px;
+}
+a.btnD:hover{box-shadow: inherit;}
+.combat_enemyimg{
+	display:inline-block;
+	position:relative;
+	background-color:#dbba7a;
+	border:1px solid #3b281c;
+	border-radius:8px;
+	margin-top:4px;
+	margin-left:5px;
+}
+h3{
+	margin-left:5px;
+	font-size:20px;
+	color:#f98e8e;
+	/*! width:90px; */
+	position:absolute;
+	margin:10px 0 0 5px;
+	overflow: hidden;
+	display: inline-block;
+}
+#lol{
+	color:#f2dab0;
+	font-size:25px;
+}
+.enemy_desc{
+	font-size:16px;
+	/*! font-style:italic; */
+	color:#332723;
+	 height:100px;
+	/*! line-height:16px; */
+	display: inline-block;
+	position: relative;
+	width: 275px;
+	margin: 5px;
+}
+#hud_dmg{
+	/* display:inline-block; */
+	/* position:relative; */
+	/* left:10px; */
+	border:3px double #42322a;
+	background-image:linear-gradient(0.22turn, #29221899 -5%,#0000 20%), linear-gradient(0.79turn, #29221899 -5%,#0000 20%), linear-gradient(to top, #0000004d -10px, #0000 25%), url(../images/UI/bgPaper.jpg);
+	margin:0 auto;
+	height:70px;
+	width:500px;
+	border-radius:2px;
+	font-family: 'Roboto Condensed', sans-serif;
+	text-align:center;
+	color: #512323;
+}
+#iconPagePage_enemyvie{
+	position:absolute;
+	float:right;
+	margin-left:414px;margin-top:2px;
+	/* right:0px; */
+	/* display:block; */
+	/* position:fixed; */
+	/* overflow:hidden; */
+/* margin-top:2px; */
+}
+#enemy_health{
+	position:absolute;
+	margin:40px 0 0 5px;
+	text-align:right;
+	font-size:15px;
+	color:#000;
+	display: inline-block;
+	background-color: #bda4a499;
+	padding: 2px 4px;
+	border-radius: 5px;
+}
+ #hudBottom{background:linear-gradient(0.22turn, #29221899 -5%,#0000 20%), linear-gradient(0.79turn, #29221899 -5%,#0000 20%), linear-gradient(to top, #0003 0%, #0000 10%), url(../images/UI/bgPaper.jpg);border-radius: 5px;margin: 0 5px 0px 5px;border: 1px solid #000000b3;}
+.enemyIcon{
+	background-color:#3e312699;
+	border-radius:40px;
+	margin: 5px;
+	padding: 5px;
+}
+#ennemisCont{
+	display: block;
+	/*! position: absolute; */
+	width: 100%;
+	text-align: center;
+	margin: 10px 0 10px 0;
+}
+#attackBtns{
+	/*! height:50px; */
+	width:285px;
+	margin: 15px 0 0 5px;
+		background: linear-gradient(0.22turn, #29221899 -5%,#0000 45%), linear-gradient(0.79turn, #29221899 -5%,#0000 45%), linear-gradient(to top, #000 -2px, #0000 25%),url(../images/UI/bgWoodh.jpg);
+	background-size: cover;
+	border-radius: 5px;
+	/*! z-index: -2; */
+	border: 1px solid #0000004d;
+	box-shadow: 0 2px 2px #0000004d;
+	text-align: center;
+}
+.btnHit{
+}
