@@ -7,23 +7,23 @@ if (page==1){
   $("#decoLeftbg").attr("src","");
   $("#decoRight").attr("src","images/Deco/mid/1.0_Right.png");
   $("#decoRightbg").attr("src","");
-  $("#illustr").attr("src","images/Illus/illus 1.0.png")
+  $("#illustr").attr("src","images/Illus/illus_1.0.png")
 }
 if (page==1.1){
   $(".iconPageImg").attr("src","images/icons/page/magic-hat.png");
-  $("#illustr").attr("src","images/Illus/illus 1.1.png")
+  $("#illustr").attr("src","images/Illus/illus_1.1.png")
 }
 if (page==1.2){
   $(".iconPageImg").attr("src","images/icons/page/farmer.png");
-  $("#illustr").attr("src","images/Illus/illus 1.2.png")
+  $("#illustr").attr("src","images/Illus/illus_1.2.png")
 }
 if (page==1.3){
   $(".iconPageImg").attr("src","images/icons/page/comb.png");
-  $("#illustr").attr("src","images/Illus/illus 1.3.png")
+  $("#illustr").attr("src","images/Illus/illus_1.3.png")
 }
 if (page==1.4){
   $(".iconPageImg").attr("src","images/icons/page/stealth.png");
-  $("#illustr").attr("src","images/Illus/illus 1.4.png")
+  $("#illustr").attr("src","images/Illus/illus_1.4.png")
 }
 if (page==2){
   $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
