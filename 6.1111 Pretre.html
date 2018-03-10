@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <link rel="shortcut icon" type="image/png" href="" />
+  <title>La Voie du Grand Malgré-Tout</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="css/styles_dialogue.css" />
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/jquery/textfill.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Alegreya+Sans" rel="stylesheet">
+</head>
+<body>
+	<header></header>
+	<section id="sleft"></section>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<img id="decoLeft"><img id="decoLeftbg">
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<article id="main">
+  <div id="container_icon"><img id="iconDialogue" src="images/icons/UI/talk_min.png"></div>
+  <h1>Chamane</h1>
+  <p id="histoire"><span>
+		"Puisque vous êtes là, alors que vous désirez ? Non. Désirez-vous ? Demandez !"
+	</span></p>
+  <div id="choix_dialogue">
+	<a class="dialNorm" onclick="selectDial_Instru1()" id="dialInstru1">Quel est cet instrument ?</a>
+	<a class="dialNorm" onclick="selectDial_GMT1()" id="dialGMT1">Qui est le Grand Malgré Tout ?</a>
+	<a class="dialNorm" onclick="selectDial_GMT2()" style="display:none" id="dialGMT2">Ces gens sont-ils toujours vivant ?</a>
+	<a class="dialNorm" onclick="selectDial_GMT3()" style="display:none" id="dialGMT3">Vous parlez d'un voile.. ?</a>
+	<a class="dialNorm" onclick="selectDial_retour()" style="display:none" id="dialRetour">[Retour]</a>
+  </div>
+  <div id="choix">
+	<a href="6.111 Temple_gmt_main.html" class="btnD">Partir</a>
+  </div>
+</article>
+<section id="sright"></section>
+<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+<div id="ang2a"></div><div id="ang2b"></div>
+<img id="decoRight"><img id="decoRightbg">
+<footer></footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+localStorage.numpage=6.1111
+
+function selectDial_retour() {
+	$("#histoire").html("<span>\"Puisque vous êtes là, alors que vous désirez ? Non. Désirez-vous ? Demandez !\"</span>");
+	$(".dialNorm").show();
+	$("#dialRetour").hide();
+	$("#dialGMT2").hide();
+	$("#dialGMT3").hide();
+	}
+function selectDial_Instru1() {
+	$("#histoire").html("<span>\"Le ricercari de cet organe insolite, de nos esprits repoussent les limites ! Il brise le vide, remplit de plein, offre un support et plie l'autour ! Voilà ce qu'ils écoutent tout le jour. Sur ces sons l'esprit travaille et ne s'écaille, lisse comme le lys et prompt à raison !<br>Ses sonnances et discordances aident au plongeon dans l'intense réflexion : pour franchir le voile, rien de mieux que ce son !\"</span>");
+	$(".dialNorm").hide();
+	$("#dialRetour").show();
+	}
+function selectDial_GMT1() {
+	$("#histoire").html("<span>\"De cette théosophie dont je suis simple mystagogue, le Grand Magré Tout est un concept, une idée - une expérience!<br>Vous ne sentez pas les énergies  qui coulent, refluent, tourbillonnent, vite lentement, selon support, forces et courants ? Toutes connectées, en le Vivant non seulement -partout, vraiment. Voilà, pas un dieu ni entité donc, puisqu'un ensemble. Ensemble qui mène derrière le voile !\"</span>");
+	$(".dialNorm").hide();
+	$("#dialRetour").show();
+	$("#dialGMT2").show();
+	}
+function selectDial_GMT2() {
+	$("#histoire").html("<span>\"Leurs corps sont là, bien vivants, mais l'esprit est autre part.. Où ? Seuls quiconque vit l'expérience le sait. Derrière le voile. Le voile de quoi ? Sait pas, mais ils sont derrière. Les quelques voyageurs qui sont revenus puisque, car, faute de, étant donné que point assez puissante n'était la potion, ont décrit une expérience formidable et formidure, à l'entrée du voile, un oeil dedans un oeil dehors, et généralement sont repartis aussi sec nonobstant - trois petites gorgées et puis s'en vont.\"</span>");
+	$(".dialNorm").hide();
+	$("#dialGMT3").show();
+	$("#dialRetour").show();
+}
+function selectDial_GMT3() {
+	$("#histoire").html("<span>\"La frontière ! Entre ici et partout, entre maintenant et toujours, toujours et jamais ! Pour aller plus loin il faut passer par le chemin entrevoilé, et arriver dans le non-retour, le tout, le grand tout -malgré l'impossibilité, malgré le réel- : le Grand Malgré-Tout pour les intimes!\"</span>");
+	$(".dialNorm").hide();
+	$("#dialRetour").show();
+	}
+</script>
+<script src="js/header_normal.js"></script>
+<script src="js/footer_normal.js"></script>
+<script src="js/images2.js"></script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

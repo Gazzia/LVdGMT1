@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>La Voie du Grand Malgré-Tout</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<header></header>
+	<div id="clouds"></div><div id="cloudsbg"></div>
+	<section id="sleft"></section>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<article id="main">
+	<h1>Vous entrez à Merryvale</h1>
+	<p id="histoire">
+		<span>Peut-être un futur checkpoint ?</span>
+	</p>
+	<div id="choix">
+		<a href="5.1 Porte Sud.html" class="btnD">Continuer</a><br>
+		<a href="1 Classe.html" class="btnD">Recommencer le jeu</a>
+		</div>
+	</article>
+	<section id="sright"></section>
+	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+	<div id="ang2a"></div><div id="ang2b"></div>
+	<footer></footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+/* HEADER */
+localStorage.numpage= 4;
+/* RESET */
+localStorage.arme=1;
+
+localStorage.talked_guy1=0;
+localStorage.objectBougie=0;
+localStorage.objectBriquet=0;
+localStorage.GMTDrankPotion=0;
+localStorage.dirFrom="Sud";
+
+if (localStorage.checkpoint1 == 1) {
+  var save_gold = localStorage.save_gold1;
+  var save_vie = localStorage.save_vie1;
+  var save_viemax = localStorage.save_viemax1;
+  localStorage.goldAmount=save_gold;
+  localStorage.plHealth=save_vie;
+  localStorage.plHealthMax=save_viemax;
+}
+if (localStorage.checkpoint1 == 0) {
+  var actualgold = localStorage.goldAmount;
+  var actualhealth = localStorage.plHealth;
+  var actualhealthmax = localStorage.plHealthMax;
+  localStorage.save_gold1=actualgold;
+  localStorage.save_vie1=actualhealth;
+  localStorage.save_viemax1=actualhealthmax;
+  localStorage.checkpoint1=1;
+}
+</script>
+<script src="js/header_normal.js"></script>
+<script src="js/images2.js"></script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

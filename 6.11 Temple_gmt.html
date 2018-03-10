@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>La Voie du Grand Malgré-Tout</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/jquery/textfill.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<header></header>
+	<section id="sleft"></section>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<img id="decoLeft"><img id="decoLeftbg">
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<article id="main">
+	<h1>Hall</h1>
+	<p id="histoire">
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</p>
+	<div id="choix">
+		<a href="6.111 Temple_gmt_main.html" class="btnD" id="optForward">Avancer vers la grande porte</a><br>
+		<a onclick="tempDoors();" class="btnD" id="optLeft">Essayer d'entrer à gauche</a>
+		<a href="Inspect_2.html" class="btnD" id="optInspect">Inspecter la zone</a>
+		<a onclick="tempDoors();" class="btnD" id="optRight">Essayer d'entrer à droite</a> <br>
+		<a onclick="drinkPotion();"  id="optBoire" class="btnD cursorTake">Boire la petite fiole</a>
+		<a onclick="readyFn();" class="btnD" style="display:none" id="optOk">Ok</a>
+		<a onclick="leaveTry();" class="btnD" id="optSortir">Sortir</a>
+	</div>
+</article>
+<section id="sright"></section>
+<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+<div id="ang2a"></div><div id="ang2b"></div>
+<img id="decoRight"><img id="decoRightbg">
+<footer></footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+/* HEADER */
+$(document).ready(readyFn);
+localStorage.numpage=6.11;
+localStorage.select_dial=0;
+var histoireBase = "<span><i>Vous entrez dans un petit hall de pierre.<br>Sur les murs et la voûte du plafond, d'épaisses runes semblent raconter une histoire que vous ne pouvez pas saisir.</i><br><br><b>Dans la pièce</b><br>Au centre, une petite fiole rose étiquettée \"Rejoignez-nous\" est posée sans surveillance sur un guéridon fleuri.<br><b>A gauche</b><br>une petite porte en bois rouge.<br><b>A droite</b><br>Une petite porte sombre indique \"Loge prêtre\" et semble mener au 8 de la rue.<br><b>En face</b><br>Un grande porte entrouverte. Elle est, comme la porte qui mène à la rue, travaillée et dans un bois sombre.<br>Il vous semble que c'est d'ici que proviennent les chants.<br><b>Derrière vous</b><br>Une large porte donne sur la rue.</span>";
+var histoireWOPotion = "<span>Vous entrez dans un petit hall de pierre. Sur les murs et la voûte du plafond, d'épaisses runes semblent raconter une histoire que vous ne pouvez pas saisir.<br>Au centre de la pièce se trouve un petit guéridon fleuri.<br><br>Ce hall comporte quatre portes, toutes fermées sauf une grande, en face, qui est entrouverte. C'est de là que viennent les chants, et une force irrésistible vous pousse à aller voir, qu'importe les autres portes !<br>Derrière vous, une large porte donne sur la rue.</span>";
+
+function readyFn() {
+  if (localStorage.GMTDrankPotion == 1) {
+    $("#histoire").html(histoireWOPotion);
+    $("#optOk").hide();
+    $("#optForward").show();
+    $("#optLeft").hide();
+    $("#optInspect").show();
+    $("#optRight").hide();
+    $("#optBoire").hide();
+    $("#optSortir").show();
+  }
+  if (localStorage.GMTDrankPotion == 0) {
+    $("#histoire").html(histoireBase);
+    $(".btnD").show();
+    $("#optOk").hide();
+  }
+}
+
+function drinkPotion() {
+  localStorage.GMTDrankPotion=1;
+  $("#histoire").html("<span>Sans réfléchir, vous buvez d'un trait la potion tant que personne ne peut vous surprendre.<br>Sur le moment vous ne sentez rien de spécial. Peut-être une faible chaleur ?</span>");
+  $("#optOk").show();
+  $("#optForward").hide();
+  $("#optLeft").hide();
+  $("#optInspect").hide();
+  $("#optRight").hide();
+  $("#optBoire").hide();
+  $("#optSortir").hide();
+}
+
+function tempDoors() {
+  $("#histoire").html("<span>La porte est verrouillée.</span>");
+  $(".btnD").hide();
+	window.scrollTo(0, 0);
+  setTimeout(readyFn, 1000);
+}
+
+function leaveTry() {
+  if (localStorage.GMTDrankPotion == 0) {
+    window.location = "6.1 Rue de la clef.html";
+  } else {
+    $("#histoire").html("<span>Au final, avez-vous vraiment envie de sortir? Pas vraiment.. Par contre, la grande porte en face vous attire comme un aimant !</span>");
+		window.scrollTo(0, 0);
+    $(".btnD").hide();
+    setTimeout(readyFn, 6000);
+  }
+}
+</script>
+<script src="js/header_normal.js"></script>
+<script src="js/footer_normal.js"></script>
+<script src="js/images2.js"></script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

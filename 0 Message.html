@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>La Voie du Grand Malgré-Tout</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles_message.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|" rel="stylesheet">
+</head>
+<body>
+		<div id="ang1a" class="uiHide"></div><div id="ang1b" class="uiHide"></div>
+		<p id="histoire">
+		</p>
+			<a onclick="passer();" class="optPasser">Passer ></a><br>
+		<div id="ang2a" class="uiHide"></div><div id="ang2b" class="uiHide"></div>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+$(".uiHide").hide();
+setTimeout(function () { $("#histoire").hide().html("<span><u>Courte note avant le début</u></span>").fadeIn('slow');}, 1000);
+setTimeout(function () { $("#histoire").hide().html("<span></span>").fadeIn('slow');}, 6000);
+setTimeout(function () { $("#histoire").hide().html("<span>Ne prenez pas ce jeu pour un jeu</span>").fadeIn('slow');}, 8000);
+setTimeout(function () { $("#histoire").hide().html("<span>J'entends que votre but ici n'est pas d'affronter le temps</span>").fadeIn('slow');}, 12000);
+setTimeout(function () { $("#histoire").hide().html("<span>Ni d'arriver à la fin de la manière la plus courte en avalant les pages d'une logique froide</span>").fadeIn('slow');}, 17000);
+setTimeout(function () { $("#histoire").hide().html("<span>Ce but est plus simple -et plus humain dans l'essence-.</span>").fadeIn('slow');}, 25000);
+setTimeout(function () { $("#histoire").hide().html("<span>Je vous demande d'utiliser les lignes de texte comme fondations de l'imagination</span>").fadeIn('slow');}, 30000);
+setTimeout(function () { $("#histoire").hide().html("<span>De lire \"arbre\" et de sentir l'odeur de l'écorce, de voir le mot et ses racines s'enfoncer profondément dans la terre fertile du monde que vous allez découvrir.</span>").fadeIn('slow');}, 36000);
+setTimeout(function () { $("#histoire").hide().html("<span>L'emphase sur le texte est un choix délibéré :</span>").fadeIn('slow');}, 46000);
+setTimeout(function () { $("#histoire").hide().html("<span>Il fédère l'idée mais pas l'image que l'on s'en fait -qui, elle, est personnelle-.</span>").fadeIn('slow');}, 50000);
+setTimeout(function () { $("#histoire").hide().html("<span>Aussi ma recommendation serait de parcourir les pages dans leur intégralité, afin que ce monde vous apparaisse plus clairement.</span>").fadeIn('slow');}, 57000);
+setTimeout(function () { $("#histoire").hide().html("<span></span>").fadeIn(1800);}, 64000);
+setTimeout(function () { $("#histoire").hide().html("<span>Il est temps de laisser le rideau se lever</span>").fadeIn(1800);}, 66000);
+setTimeout(function () { $("#histoire").hide().html("<span>Qui êtes-vous ?</span>").fadeIn(1800);}, 70000);
+setTimeout(function () {
+		localStorage.audiotypeUI="Page";
+		window.open("audioUI.html","audioUI");
+		setTimeout(function () {window.location="0.1 Pseudo.html";},200);
+	}, 74000);
+
+	function passer(){
+		localStorage.audiotypeUI="Page";
+		window.open("audioUI.html","audioUI");
+		setTimeout(function () {window.location="0.1 Pseudo.html";},200);
+	}
+</script>
+<script src="js/globalscripts.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <link rel="shortcut icon" type="image/png" href="" />
+  <title>La Voie du Grand Malgré-Tout</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+  <link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/jquery/textfill.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+
+<body>
+  <header></header>
+  <div id="clouds"></div><div id="cloudsbg"></div>
+	<section id="sleft"></section>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<img id="decoLeft"><img id="decoLeftbg">
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<article id="main">
+  <h1>Inspection</h1>
+  <p id="histoire">
+    Le contenu n'a pas encore été ajouté ici. Si vous tombez sur ce message, veuillez retourner au jeu <b>en appuyant sur la flèche Précédent du navigateur</b> (pas sur le bouton juste en-dessous)
+  </p>
+  <div id="choix">
+	<a id="buttonBack" class="btnD">Retour</a>
+	<a id="buttonAction" onclick="" class="btnD cursorTake" style="display:none">JAVASCRIPT SET Action</a>
+  </div>
+</article>
+  <div id="dialog" title="JAVASCRIPT SET" style="display:none">
+	   <img id="getitem_img" class="get_item" src="JAVASCRIPT SET">
+     <p id="getitem_desc">JAVASCRIPT SET</p>
+  </div>
+  <section id="sright"></section>
+	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+	<div id="ang2a"></div><div id="ang2b"></div>
+	<img id="decoRight"><img id="decoRightbg">
+	<footer></footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script src="js/header_normal.js"></script>
+<script src="js/footer_normal.js"></script>
+<script>
+/* EVENTS */
+var numpage = localStorage.numpage;
+$(".iconPageImg").attr("src","images/icons/page/eye.png");
+if (numpage == 2) {
+  $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
+  $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
+  $(".iconPageImg").attr("src","images/icons/hills2.png");
+  $("#decoLeft").attr("src","images/Deco/mid/2.0_Left.png");
+  $("#decoLeftbg").attr("src","images/Deco/midbg/2.0_Left.png");
+  $("#decoRight").attr("src","images/Deco/mid/2.0_Right.png");
+  $("#decoRightbg").attr("src","images/Deco/midbg/2.0_Right.png");
+  $("#histoire").html("<span>Quand vous étiez tout jeunot avec vos amis, l'immense plaine du Soufflant était un terrain de jeu formidable. Vous rêviez de la traverser un jour par delà les collines jusqu'à Merryvale, la cité au coeur du vallon ; y découvrir son marché où l'on peut tout trouver, ainsi que son animation débordante...<br><br>Autour de vous, le chemin, bordé d'herbes et de bruyères jaunies par le soleil, descend en pente douce jusqu'au coteau suivant. Le panorama est doux -plutôt redondant en fait-, mais quelques rares émergences sylvatiques accordent à l'oeil un peu de distraction.</span>");
+  $("#buttonBack").attr("href", "2 Plaine_Debut.html");
+}
+if (numpage == 2.1) {
+  $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
+  $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
+  $("#decoLeft").attr("src","images/Deco/mid/boisleft.png");
+  $("#decoRight").attr("src","images/Deco/mid/2.11_Right.png");
+  $("#decoRightbg").attr("src","images/Deco/midbg/boisRight.png");
+  if (localStorage.armeBaton !== 1) {
+    $("#histoire").html("<span>Le petit bois n'est pas bien dense, mais la fraîcheur de la cime rameuse des arbres vous est tout de même agréable. Vous souriez à l'odeur des fleurs de tilleul, qui cet automne tomberont en tourbillons dans l'herbe claire.<br><br>La forêt a également une importante population d'aulnes, malgré qu'ils préfèrent normalement les zones humides.<br>On dit des Aulnes qu'ils sont les Arbres des Morts, ou Arbres à Sorcière, du fait de leur habitat dans les marais et de la couleur rouge sang de leur bois fendu..<br> Vous n'êtes pas supersitieux, mais ces légendes vous ont tout de même bercé toute l'enfance.<br><br>Dans une clairière, vous apercevez à terre une belle branche qui pourrait vous servir d'arme rudimentaire.<br>Voulez-vous la prendre ?</span>");
+    $("#buttonBack").attr("href", "2.1 Bois.html");
+    $("#buttonAction").html("Prendre le baton");
+    $("#buttonAction").attr("onClick", "takeBaton()");
+    $("#buttonAction").show();
+    $("#decoLeftbg").attr("src","images/Deco/midbg/boisLeftAB.png");
+  }
+  if (localStorage.armeBaton == 1) {
+    $("#decoLeftbg").attr("src","images/Deco/midbg/boisLeftSB.png");
+    $("#histoire").html("<span>Vous inspectez des yeux le sol, en quête d'une quelconque trouvaille fantastique pour aller avec la branche trouvée ici précédemment, mais non. De l'herbe, des feuilles, des brindilles.</span>");
+    $("#buttonBack").attr("href", "2.1 Bois.html");
+    $("#buttonAction").hide();
+  }
+}
+if (numpage == 2.11) {
+    $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
+    $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
+    $("#decoLeft").attr("src","images/Deco/mid/2.11_Left.png");
+    $("#decoLeftbg").attr("src","images/Deco/midbg/2.11_Left.png");
+    $("#decoRight").attr("src","images/Deco/mid/2.11_Right.png");
+    $("#decoRightbg").attr("src","images/Deco/midbg/2.11_Right.png");
+  if (localStorage.tookRiverGold == 0) {
+    $("#histoire").html("<span>Sur la rive en face, vous apercevez un petit tas de vêtements sur laquelle est attachée une bourse.<BR>Le courant est faible, et l'eau peu profonde (divinement fraîche!).<BR>Personne en vue.</span>");
+    $("#buttonBack").attr("href", "2.11 Torrent.html");
+    $("#buttonAction").html("Traverser et prendre la bourse");
+    $("#buttonAction").attr("onClick", "takeGold()");
+    $("#buttonAction").show();
+  } else {
+    $("#histoire").html("<span>Vous avez déjà pris l'or de la bourse, en face. Cela ne vous empêche pas de retraverser tout de même la rivière dans l'idée de vous rafraîchir un peu.</span>");
+    $("#buttonBack").attr("href", "2.11 Torrent.html");
+    $("#buttonAction").hide();
+  }
+}
+if (numpage == 2.2) {
+  $("#decoLeft").attr("src","images/Deco/mid/2.2_Left.png");
+  $("#decoLeftbg").attr("src","images/Deco/midbg/2.2_Left.png");
+  $("#decoRightbg").attr("src","images/Deco/midbg/2.2_Right.png");
+  $("#histoire").html("<span>A vos pieds, des morceaux de bois déchiquetés et.. mordillés?<br>Devant vous, l'ombre imposante du bâtiment.<br>Derrière vous, la pente de la colline qui mêne au chemin.</span>");
+  $("#buttonBack").attr("href", "2.2 Cabane.html");
+}
+
+/* FONCTIONS */
+
+function takeBaton() {
+  localStorage.audiotypeUI = "takeStuff";
+  window.open("audioUI.html", "audioUI");
+  setTimeout(function() {
+    localStorage.armeBaton=1;
+    $("#dialog").attr("title", "Nouvelle arme !");
+    $("#getitem_desc").html("Vous avez récupéré la branche de tilleul, elle peut servir d'arme en combat, <b>mais vous devrez d'abord l'équipper dans votre inventaire.</b>");
+    $("#getitem_img").attr("src", "images/icons/weapons/stick.png");
+    $("#dialog").dialog({
+      modal: true,
+      resizable: false,
+      height: "auto",
+      dialogClass: 'dialogarme',
+      buttons: {
+        "Super, une branche quoi": function() {
+          window.location = "2.1 Bois.html";
+        }
+      }
+    });
+  }, 200);
+}
+
+function takeGold() {
+  localStorage.audiotypeUI = "gold";
+  window.open("audioUI.html", "audioUI");
+  setTimeout(function() {
+    localStorage.tookRiverGold=1;
+    var goldAmount_old = localStorage.getItem('goldAmount');
+    var goldAmount_new = +goldAmount_old + 25;
+    $("#dialog").attr("title", "Jackpot !");
+    $("#getitem_desc").html("+25 Or !");
+    $("#getitem_img").attr("src", "images/icons/UI/shiny-purse.png");
+    localStorage.goldAmount=goldAmount_new;
+    $("#dialog").dialog({
+      modal: true,
+      resizable: false,
+      height: "auto",
+      dialogClass: 'dialoggold',
+      buttons: {
+        "Ok": function() {
+          window.location = "2.11 torrent.html";
+        }
+      }
+    });
+  }, 200);
+}
+</script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>GMT - Race</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles_crea.css"/>
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+	 <link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="js/jquery/textfill.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Homemade+Apple|Open+Sans+Condensed:700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kalam|Tillana" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Supermercado+One" rel="stylesheet">
+				<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<div id="showpseudo">Aucun pseudo</div>
+	<form id="racesCont">
+		<h2> Vous êtes un..</h2>
+		<div id="contContlol">
+		<label class="container" onchange="changeClass">Homme
+			<input type="radio" name="raceType" id="raceHomme">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container" onchange="changeClass">Oculain
+			<input type="radio" name="raceType" id="raceOculain">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container" onchange="changeClass">Feûlain
+			<input type="radio" name="raceType" id="raceFeulain">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container" onchange="changeClass">Ferré
+			<input type="radio" name="raceType" id="raceFerre">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container" onchange="changeClass">Anguleux
+			<input type="radio" name="raceType" id="raceAnguleux">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container" onchange="changeClass">Homme d'argile
+			<input type="radio" name="raceType" id="raceHommeargile">
+			<span class="checkmark"></span>
+		</label>
+	</div>
+	</form>
+	<div id="selClass">
+	<div id="classImg"><img id="iconClass" class="iconClass" src="images/Classes/none.png"></div>
+	<div id="classDesc">Choisissez une classe..</div>
+	</div>
+	<a href="0.21 Racetree.html" class="opt_classe opt_classe2">Ouvrir l'arbre des relations</a>
+	<a onclick="confirmRace();" class="opt_classe">Confirmer mon choix</a>
+ <div id="dialog" title="Vous avez choisi votre classe !" style="display:none">
+    <p id="getitem_desc">bla</p>
+  </div>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<div id="ang2a"></div><div id="ang2b"></div>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+/* PSEUDO */
+var elpseudo =localStorage.pseudo;
+	document.getElementById("showpseudo").innerHTML = "<h1>Choix d'une race pour "+elpseudo;
+var darace = "none";
+var iconClass = document.getElementById('iconClass');
+var classDesc = document.getElementById('classDesc');
+var getitem_desc = document.getElementById("getitem_desc");
+$('.container').click(function() {
+   if($('#raceHomme').is(':checked')) {
+	iconClass.src = "images/Classes/homme.png";
+	classDesc.innerHTML="<h2>Hommes</h2><hr> <b>Origine</b><br>Descendants directs du singe, les hommes représentent la partie la plus importante de la population mondiale. Leurs avant membres très développés ont très vite fait d'eux des artisans et constructeurs hors-pair. C'est ainsi grâce à leur savoir-faire que les premières villes ont été érigées.<br><b>Relations particulières</b><br>Les humains s'entendent mal avec les <font color=\"darkred\">Anguleux</font> qu'ils jugent peu sociables. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Feûlains</font>, leurs partenaires économiques de toujours, et celle des <font color=\"darkblue\">Ferrés</font>.<br><b>Paricularités</b><br>+10% de Dextérité et +10% de Force<br>-10♥max au départ et -10% de Puissance Magique";
+	darace="Homme";
+	}
+   if($('#raceOculain').is(':checked')) {
+	iconClass.src = "images/Classes/oculain.png";
+	classDesc.innerHTML="<h2>Oculains</h2><hr><b>Origine</b><br>Les Oculains sont une évolution des anciens oiseaux de nuit telle que la chouette. Ce sont des individus simples et calmes, à l'instinct grégaire, qui ont un rapport à la nature très fusionnel. Habitant souvent loin de l'agitation des villes, ils préfèrent le calme des régions isolées, où ils vivent d'agriculture dans de petits hameaux.<br><b>Relations particulières</b><br>Les oculains s'entendent mal avec les <font color=\"darkred\">Anguleux</font>, qui ont un rapport de domination avec eux. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Hommes</font>, des <font color=\"darkblue\">Ferrés</font>, et des <font color=\"darkblue\">Feûlains</font>, qui ne portent pas sur eux un regard de jugement.<br><b>Paricularités</b><br>+10% de Dextérité et +10% de Puissance Magique<br>-10% de Charisme et -10% d'Intelligence";
+	darace="Oculain";
+	}
+   if($('#raceFeulain').is(':checked')) {
+	iconClass.src = "images/Classes/feulain.png";
+	classDesc.innerHTML="<h2>Feûlains</h2><hr><b>Origine</b><br>Descendants des anciens petits félinidés, les feûlains se sont très vite rendus compte que faute de savoirs-faire particuliers, ils avaient une capacité à enjôler de leurs mots les autres individus. C'est aujourd'hui une population avant tout marchande.<br><b>Relations particulières</b><br>Les feûlains s'entendent mal avec les <font color=\"darkred\">Ferrés</font> qu'ils jugent hautains, et parce qu'ils maîtrisent la magie, dont les feûlains sont presque dépourvus. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Hommes</font>, leurs partenaires économiques de toujours, et celle des <font color=\"darkblue\">Anguleux</font>.<br><b>Paricularités</b><br>+10% de Charisme et +10% de Discrétion<br>-10% de Force et -10% de Puissance Magique";
+	darace="Feûlain";
+	}
+   if($('#raceFerre').is(':checked')) {
+	iconClass.src = "images/Classes/ferre.png";
+	classDesc.innerHTML="<h2>Ferrés</h2><hr><b>Origine</b><br>Les Ferrés sont une évolution des anciens boucs. Ce sont des créatures très intelligentes, et qui ont un contact supérieur avec l'occulte. Ils vivent souvent seuls, individus à l'ego surdimensionné, pour se consacrer à leur art.<br><b>Relations particulières</b><br>Les ferrés s'entendent mal avec les <font color=\"darkred\">Hommes d'argile</font> depuis la rebéllion de ces derniers, ainsi qu'avec les <font color=\"darkred\">Anguleux</font> et les <font color=\"darkred\">Feûlains</font>, qu'ils jugent idiots. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Humains</font>, dont ils apprécient l'intérêt  qu'ils portent pour eux.<br><b>Paricularités</b><br>+10% d'Intelligence et +10% de Puissance Magique<br>-10% de Force et -10♥max au départ";
+	darace="Ferré";
+	}
+   if($('#raceAnguleux').is(':checked')) {
+	iconClass.src = "images/Classes/anguleux.png";
+	classDesc.innerHTML="<h2>Anguleux</h2><hr><b>Origine</b><br>Les anguleux descendent tout droit des anciens grands charognards. C'est une population généralement très fière et peu loquace, qui ne se laisse pas marcher dessus. Ils ont su dans l'histoire s'approprier le bien commun pour aujourd'hui être une population assez aisée.<br><b>Relations particulières</b><br>Les anguleux s'entendent plutôt mal avec les <font color=\"darkred\">Hommes</font>, les <font color=\"darkred\">Oculains</font>, et  les <font color=\"darkred\">Ferrés</font> à cause de leur caractère renfermé. Étrangement, ils acceptent la compagnie des <font color=\"darkblue\">Feûlains</font>.<br><b>Paricularités</b><br>+10♥max au début et +10% de Discrétion<br>-10% de Charisme -10% de Déxtérité";
+	darace="Anguleux";
+	}
+   if($('#raceHommeargile').is(':checked')) {
+	iconClass.src = "images/Classes/hommeargile.png";
+	classDesc.innerHTML="<h2>Hommes d'Argile</h2><hr><b>Origine</b><br>Les Hommes d'argile sont une création magique des Ferrés, qui voulaient soulever les éléments terrestres à la vie pour en faire des esclaves. Le résultat a été plus que brillant : les serviteurs d'argiles avaient juste assez de conscience pour comprendre que leur condition d'esclave ne leur convenait pas.. Ces colosses simples d'esprits sont en général calmes et pacifiques, malgré leur stature.<br><b>Relations particulières</b><br>Les hommes d'argile s'entendent mal avec les <font color=\"darkred\">Ferrés</font> depuis l'insurréction. En relation pacifique avec les autres races, ils aiment particulièrement la compagnie des <font color=\"darkblue\">Oculains</font>, créatures appréciant également la paix et la simplicité.<br><b>Paricularités</b><br>+10% de Force et +10♥max au départ<br>-10% d'Intelligence et -10% de Discrétion";
+	darace="Homme d'argile";
+	}
+});
+function confirmRace(){
+	if (darace != "none"){
+		localStorage.race=darace;
+		localStorage.plHealth=100;
+		localStorage.plHealthMax=100;
+		localStorage.raceXDex=1;
+		localStorage.raceXChar=1;
+		localStorage.raceXInt=1;
+		localStorage.raceXDisc=1;
+		localStorage.raceXMag=1;
+		localStorage.raceXForce=1;
+		localStorage.bForce=2;
+		localStorage.bMag=2;
+		localStorage.bChar=2;
+		localStorage.bDex=2;
+		localStorage.bDisc=2;
+		localStorage.bInt=2;
+		if (darace=="Homme"){
+			localStorage.raceXDex=1.1;
+			localStorage.raceXForce=1.1;
+			localStorage.plHealth=90
+			localStorage.plHealthMax=90
+			localStorage.raceXMag=0.9;
+			getitem_desc.innerHTML = "Vous êtes un Homme. Ce choix influera sur vos relations avec les autres races.";
+		}
+		if (darace=="Oculain"){
+			localStorage.raceXDex=1.1;
+			localStorage.raceXMag=1.1;
+			localStorage.raceXChar=0.9;
+			localStorage.raceXInt=0.9;
+			getitem_desc.innerHTML = "Vous êtes un Oculain. Ce choix influera sur vos relations avec les autres races.";
+		}
+		if (darace=="Feûlain"){
+			localStorage.raceXChar=1.1;
+			localStorage.raceXDisc=1.1;
+			localStorage.raceXForce=0.9;
+			localStorage.raceXMag=0.9;
+			getitem_desc.innerHTML = "Vous êtes un Feûlain. Ce choix influera sur vos relations avec les autres races.";
+		}
+		if (darace=="Ferré"){
+			localStorage.raceXInt=1.1;
+			localStorage.raceXMag=1.1;
+			localStorage.raceXForce=0.9;
+			localStorage.plHealth=90
+			localStorage.plHealthMax=90
+			getitem_desc.innerHTML = "Vous êtes un Ferré. Ce choix influera sur vos relations avec les autres races.";
+		}
+		if (darace=="Anguleux"){
+			localStorage.plHealth=110
+			localStorage.plHealthMax=110
+			localStorage.raceXDisc=1.1;
+			localStorage.raceXChar=0.9;
+			localStorage.raceXDex=0.9;
+			getitem_desc.innerHTML = "Vous êtes un Anguleux. Ce choix influera sur vos relations avec les autres races.";
+		}
+		if (darace=="Homme d'argile"){
+			localStorage.raceXForce=1.1;
+			localStorage.plHealth=110
+			localStorage.plHealthMax=110
+			localStorage.raceXInt=0.9;
+			localStorage.raceXDisc=0.9;
+			getitem_desc.innerHTML = "Vous êtes un Homme d'Argile. Ce choix influera sur vos relations avec les autres races.";
+		}
+		localStorage.race=darace;
+		$("#dialog").dialog({
+			resizable: false,
+			modal: true,
+			height: "auto",
+			width: 500,
+			dialogClass: 'dialogRace',
+			buttons: {
+				"Ok": function() {
+				window.location = "1 Classe.html";
+				}
+			}
+		});
+	}
+}
+</script>
+</body>
+</html>
+<!-- https://www.w3schools.com/html/html5_webstorage.asp -->

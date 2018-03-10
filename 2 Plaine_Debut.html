@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>GMT - Errance</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/jquery/textfill.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<header></header>
+	<a id="btnMap" href="Map.html"><img src="images/icons/UI/map.png"></a>
+	<div id="clouds"></div><div id="cloudsbg"></div>
+	<section id="sleft"></section>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<img id="decoLeft"><img id="decoLeftbg">
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<article id="main">
+		<h1>Errance</h1>
+		<p id="histoire">
+			<span>Vous voilà planté au coeur de la plaine du Soufflant. Les sauterelles chantent sous le ciel d'azur. Malgré son nom, la plaine est chaude l'été mais pas la moindre brise ne se fait ressentir.<br>En vérité vous êtes trempé de sueur.<br>En regardant vers <u>l'Ouest</u>, vous apercevez un <b>petit bois</b> où vous pourrez vous rafraîchir.<br>Vers <u>l'Est</u>, une petite <b>cabane en bois</b> se dresse sur une colline.<br>Au <u>Nord</u>, le <b>chemin</b> de terre continue et serpente vers un vallon.<br></span>
+		</p>
+		<div id="choix">
+			<a href="Inspect_1.html" class="btnD">Inspecter la zone</a><br>
+			<a href="2.1 Bois.html" class="btnD">Aller vers l'Ouest</a>
+			<a href="3 Mur.html" class="btnD">Continuer sur le chemin</a>
+			<a href="2.2 Cabane.html" class="btnD">Aller vers l'Est</a>
+		</div>
+	</article>
+	<section id="sright"></section>
+	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+	<div id="ang2a"></div><div id="ang2b"></div>
+	<img id="decoRight"><img id="decoRightbg">
+	<footer></footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+//////////////////////////////
+localStorage.numpage=2;
+/////////
+localStorage.audiotypeEnvF="Aucun";
+window.open("audioEnvF.html","audioEnvF")
+//////////////////////////////
+</script>
+<script src="js/header_normal.js"></script>
+<script src="js/footer_normal.js"></script>
+<script src="js/images.js"></script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <link rel="shortcut icon" type="image/png" href="" />
+  <title>La Voie du Grand Malgré-Tout</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/jquery/textfill.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<header></header>
+  <a id="btnMap" href="Map.html"><img src="images/icons/UI/map.png"></a>
+	<div id="clouds"></div><div id="cloudsbg"></div>
+	<section id="sleft"></section>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<img id="decoLeft"><img id="decoLeftbg">
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<article id="main">
+  <h1>Une bâtisse dominant la colline</h1>
+  <p id="histoire">
+    <span>Alors que vous marchez vers le haut de la colline, vos yeux se plissent pour deviner les détails de la facade de la masure, qui se dresse sinistrement à contre-jour sous le ciel riant.<br>Le toit en rondins est rapiécé par endroits avec de la chaume ; Les fenêtres sont condamnées, et par les fentes du bois vous ne distinguez que l'obscurité.<br>Que faites-vous ?	</span>
+  </p>
+  <div id="choix">
+	<a href="Inspect_1.html" class="btnD">Inspecter la zone</a>
+	<a href="#" onClick="knocknock()" class="btnD" id="knockid">Frapper à la porte</a>
+	<a href="2.22 CabaneBack.html" class="btnD">Faire le tour de la cabane</a>
+	<br>
+	<a href="2 Plaine_Debut.html" class="btnD">Revenir sur le chemin</a>
+  </div>
+</article>
+<div id="dialog" title="Aucune réponse" style="display:none">
+  <img id="getitem_img" class="get_item" src="images/icons/UI/jdialDoor.png">
+  <p id="getitem_desc">Vous frappez à la porte qui s'entrouvre vaguement. Vous ne distinguez rien, et personne n'a répondu à l'appel. Pourtant, on dirait un bruit d'affollement à l'intérieur.</p>
+</div>
+<section id="sright"></section>
+<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+<div id="ang2a"></div><div id="ang2b"></div>
+<img id="decoRight"><img id="decoRightbg">
+<footer></footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+/* HEADER */
+localStorage.numpage=2.2;
+/* RESET */
+localStorage.combatText="";
+/* VARIABLES PAGE */
+var nbknock = localStorage.nbknock;
+/* DIVERS */
+if (localStorage.enemy_rat1_dead == 0) {
+  if (nbknock == 0) {
+    $("#knockid").html("Frapper à la porte");
+    $("#knockid").attr("onClick", "javascript: knocknock();");
+    localStorage.audiotypeEnvF = "Aucun";
+    window.open("audioEnvF.html", "audioEnvF")
+  }
+  if (nbknock == 1) {
+    $("#knockid").html("Entrer par la porte entrebaillée");
+    $("#knockid").attr("onClick", "entrer();");
+    localStorage.audiotypeEnvF = "ratRun";
+    window.open("audioEnvF.html", "audioEnvF")
+  }
+} else {
+  $("#knockid").html("Entrer  à l'intérieur");
+  $("#knockid").attr("onClick", "");
+  $("#knockid").attr("href", "2.211 Interieur.html");
+}
+/* FONCTIONS */
+function knocknock() {
+  localStorage.audiotypeUI = "doorKnockOpen";
+  localStorage.audiotypeEnvF = "ratRun";
+  window.open("audioUI.html", "audioUI");
+  window.open("audioEnvF.html", "audioEnvF");
+  setTimeout(function() {
+    localStorage.nbknock=1;
+    $("#dialog").dialog({
+      resizable: false,
+      height: "auto",
+      dialogClass: 'dialogarme',
+      buttons: {
+        "Ok": function() {
+          window.location = "";
+        }
+      }
+    });
+  }, 1000);
+}
+function entrer(){
+  localStorage.audiotypeEnvB="Aucun";
+  localStorage.audiotypeEnvF="Aucun";
+  localStorage.audiotypeMusic="Battle1";
+  window.open("audioEnvB.html","audioEnvB")
+  window.open("audioEnvF.html","audioEnvF")
+  window.open("audioMusic.html","audioMusic")
+  window.location="2.21 CombatRat.html";
+}
+</script>
+<script src="js/header_normal.js"></script>
+<script src="js/footer_normal.js"></script>
+<script src="js/images.js"></script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

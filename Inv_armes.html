@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>La Voie du Grand Malgré-Tout</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/styles_inv.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery/customScrollbar.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery/customScrollbar.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="js/jquery/customScrollbar.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Open+Sans+Condensed:700|Roboto+Condensed" rel="stylesheet"> 
+</head>
+
+<body>
+	<header>
+		<div id="iconPage"><img class="iconPageImg" src="images/icons/page/backpack-1.png"></div>
+	</header>
+	<h1>Armes</h1>
+	<div id="invContenuSpe">
+		<div id="bgSpe">
+			<div id="stufftextSpe">
+				<div id="contImgSpe">
+					<img id="selectedImg" class="inv_item_img" src="">
+				</div>
+				<div id="contTextSpe">
+					<a id="selectedText" class="selectedText"></a>
+				</div>
+			</div>
+			<a class="itemClass" href="" onclick="selectPoings();"><img class="itemClassimg" src="images/icons/weapons/fist.png" title="Poings
+0dmg"></a>
+			<a id="itemArmeBaton" class="itemClass" href="JavaScript:Void(0);"><img id="imgBaton" class="itemClassimg" src=""></a>
+			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
+			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
+			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
+			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
+			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
+			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
+			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
+			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
+		</div>
+		<a href="Inv.html" class="btn_objets">Retour</a>
+	</div>
+<!-- DECO+FOOTER -->
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+	<div id="ang2a"></div><div id="ang2b"></div>
+<footer>
+	<div id="footerLeft">
+		<p id="pseudo"></p>
+		<div id="hpCont">
+			<img id="iconHealth" src="images/icons/UI/plHP.png">
+			<p id="plHealth"></p>
+		</div>
+		<p id="plclasse"></p>
+	</div>
+	<div id="footerMid">
+		<a id="retour" class="iconInv"><img src="images/icons/UI/btnInv.png"></a>
+	</div>
+	<div id="footerRight">
+		<div id="gdCont"><p id="goldAmount"></p><img id="iconGold" src="images/icons/UI/coin.png"></div>
+	</div>
+</footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+/* ARME */	
+	if(localStorage.armeBaton==1){ 
+		document.getElementById("imgBaton").src = "images/icons/weapons/stick.png";
+		document.getElementById("imgBaton").title = "Branche de tilleul\n1dmg";
+		document.getElementById("itemArmeBaton").onclick = selectBaton;
+		document.getElementById("itemArmeBaton").href = "";	}
+	function selectPoings(){localStorage.setItem("armeSelected", "Poing");}
+	function selectBaton(){localStorage.setItem("armeSelected", "Baton");}
+	var armeSelected = localStorage.armeSelected;
+
+/*affichage select*/
+	var imgArmeSelected = document.getElementById("selectedImg");
+	var textArmeSelected = document.getElementById("selectedText");
+	if (armeSelected == "Poing"){
+		imgArmeSelected.src="images/icons/weapons/fist.png";
+		textArmeSelected.innerHTML="<b>Poings</b><br>Vous ne possédez pas d'arme, et vos maigres poings peu habitués au corps à corps ne vous serviront à presque rien.";}
+	if (armeSelected == "Baton"){
+		imgArmeSelected.src="images/icons/weapons/stick.png";
+		textArmeSelected.innerHTML="<b>Branche de tilleul</b><br>Une arme rudimentaire. Cette branche pourra peut-être asséner quelques bleus à un adversaire, qui sait ?<br><b>10dmgMax</b>";}	
+</script>
+<script src="js/globalscripts.js"></script>
+<script src="js/retour.js"></script>
+</body>
+</html>

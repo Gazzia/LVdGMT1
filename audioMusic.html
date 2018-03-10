@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>GMT//AUDIO//MUSIC</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+	<h1>Audio du jeu</h1>
+	<h2><u>Musique</u></h2>
+	<h3>Ambience :<div id="audiotypeMusic"></div></h3>
+		<audio autoplay="true" controls id="playerMusic">
+	   	<source type="audio/mpeg"id="sourceMusic">
+	 	</audio>
+		<h4 id="musicName"></h4>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+var audiotypeMusic = localStorage.audiotypeMusic;
+var playerMusic = document.getElementById("playerMusic");
+$("#audiotypeMusic").html(audiotypeMusic);
+if (audiotypeMusic == "Sunny"){
+	var envNb = Math.floor(Math.random() * 6) + 1;
+	if (envNb == 1) {$("#sourceMusic").attr("src","sound/music/sunny/Derek Fiechter - Waltz of the Forest Nymphs.mp3");playerMusic.volume=0.3;}
+	if (envNb == 2) {$("#sourceMusic").attr("src","sound/music/sunny/Vivaldi - Violin Concerto in F Minor Op 8-4 Winter Largo.mp3");playerMusic.volume=0.3;}
+	if (envNb == 3) {$("#sourceMusic").attr("src","sound/music/sunny/The Flashbulb - Hello, Im Benn.mp3");playerMusic.volume=0.15;}
+	if (envNb == 4) {$("#sourceMusic").attr("src","sound/music/sunny/Evelyn Stein - Quiet Resource.mp3");playerMusic.volume=0.3;}
+	if (envNb == 5) {$("#sourceMusic").attr("src","sound/music/sunny/Ensemble Galilei - Carol Of The Birds.mp3");playerMusic.volume=0.3;}
+	if (envNb == 6) {$("#sourceMusic").attr("src","sound/music/sunny/Brandon Fiechter - Whispering Oaks.mp3");playerMusic.volume=0.3;}
+}
+if (audiotypeMusic == "Intro"){
+	var envNb = Math.floor(Math.random() * 4) + 1;
+	if (envNb == 1) {$("#sourceMusic").attr("src","sound/music/Carlos Viola - Memories.mp3");playerMusic.volume=0.3;}
+	if (envNb == 2) {$("#sourceMusic").attr("src","sound/music/Carlos Viola - Rest In Peace.mp3");playerMusic.volume=0.3;}
+	if (envNb == 3) {$("#sourceMusic").attr("src","sound/music/Carlos Viola - My Last Regrets.mp3");playerMusic.volume=0.3;}
+	if (envNb == 4) {$("#sourceMusic").attr("src","sound/music/Carlos Viola - Letter from a friend.mp3");playerMusic.volume=0.3;}
+}
+if (audiotypeMusic == "MystDark_House"){
+	$("#sourceMusic").attr("src","sound/music/mysterious dark/Carlos Viola - A house in silence.mp3");playerMusic.volume=0.3;
+}
+if (audiotypeMusic == "Battle1"){
+	$("#sourceMusic").attr("src","sound/music/battle/Paul Haslinger - A Chance To Escape.mp3");playerMusic.volume=0.3;
+}
+
+if (audiotypeMusic == "Veil1"){
+	$("#sourceMusic").attr("src","sound/music/veil1/Carlos Viola - The Veil.mp3");playerMusic.volume=0.3;
+}
+if (audiotypeMusic == "Veil11"){
+	$("#sourceMusic").attr("src","sound/music/veil1/Carlos Viola - The Red Curtains.mp3");playerMusic.volume=0.3;
+}
+var musicname = $("#sourceMusic").attr("src"); $("#musicName").html(musicname);
+playerMusic.onended = function() {
+	window.location="";
+};
+</script>
+</body>
+</html>

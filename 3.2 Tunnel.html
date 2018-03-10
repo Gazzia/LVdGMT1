@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <link rel="shortcut icon" type="image/png" href="" />
+  <title>La Voie du Grand Malgré-Tout</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/jquery/textfill.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<header></header>
+  <a id="btnMap" href="Map.html"><img src="images/icons/UI/map.png"></a>
+	<div id="clouds"></div><div id="cloudsbg"></div>
+	<section id="sleft"></section>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<img id="decoLeft"><img id="decoLeftbg">
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<article id="main">
+  <h1>Plan B</h1>
+  <p id="histoire">
+    <span>En suivant le mur, vous rencontrez un trou à dimension humaine menant à un tunnel souterrain. En regardant la courbe de ce dernier et en entendant un bruit d'eau qui court sous la terre venant du trou, vous évaluez que la sortie du tunnel devrait être les égouts de Merryvale !<br>Le hic : le tunnel est en partie éboulé. Si seulement vous aviez une pelle, même une vieille pelle ferait l'affaire..</span>
+  </p>
+  <div id="choix">
+  	<a href="3 Mur.html" class="btnD" id="retour">Retourner devant le mur</a>
+  	<a onclick="creuser1()" class="btnD cursorSkill" id="creuser1" style="display:none">Creuser (chance: 10%)</a>
+  	<a onclick="creuser2()" class="btnD cursorSkill" id="creuser2" style="display:none"><u>[Furtif]</u> Creuser (chance: 40%)</a>
+  	<a href="4 Checkpoint.html" class="btnD" style="display:none" id="enter_town">[Entrer à Merryvale]</a>
+  </div>
+</article>
+<section id="sright"></section>
+<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+<div id="ang2a"></div><div id="ang2b"></div>
+<img id="decoRight"><img id="decoRightbg">
+<footer></footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+localStorage.numpage=3.2;
+
+localStorage.sawhole=1;
+var oddgetcaught = Math.floor(Math.random() * (10 - 1 + 1) + 1);
+/* EVENTS */
+if (localStorage.objectShovel==1) {
+  $("#creuser1").show();
+  $("#creuser2").show();
+}
+if (localStorage.classe !== "Furtif") {
+  $("#creuser2").attr("onClick", "");
+  $("#creuser2").attr("class","optNope");
+}
+/* FONCTIONS*/
+function creuser1() {
+  if (oddgetcaught >= 9) {
+    $("#histoire").html("<span>Vous ne vous êtes pas fait prendre, et la zone éboulée est désormais parfaitement déblayée !<br>Vous êtes désormais dans les égouts souterrains. Au dessus de vous, la lumière arrive par une grille. Au travers, vous entrevoyez l'autre côté du portail. Oui !! Vous délogez la grille et vous hissez à la surface.</span>");
+    $("#creuser1").hide();
+    $("#creuser2").hide();
+    $("#retour").hide();
+    $("#enter_town").show();
+  }
+  if (oddgetcaught < 9) {
+    localStorage.gotcaught = 1;
+    $("#creuser1").hide();
+    $("#creuser2").hide();
+    $("#histoire").html("<span>Vous vous êtes fait prendre par le garde, qui vous as désormais à l'oeil !</span>");
+  }
+}
+
+function creuser2() {
+  if (oddgetcaught >= 6) {
+    $("#histoire").html("<span>Vous ne vous êtes pas fait prendre, et la zone éboulée est désormais parfaitement déblayée !<br>Vous êtes désormais dans les égouts souterrains. Au dessus de vous, la lumière arrive par une grille. Au travers, vous entrevoyez l'autre côté du portail. Oui !! Vous délogez la grille et vous hissez à la surface.</span>");
+    $("#creuser1").hide();
+    $("#creuser2").hide();
+    $("#retour").hide();
+    $("#enter_town").show();
+  }
+  if (oddgetcaught < 6) {
+    localStorage.gotcaught = 1;
+    $("#creuser1").hide();
+    $("#creuser2").hide();
+    $("#histoire").html("<span>Vous vous êtes fait prendre par le garde, qui vous as désormais à l'oeil !</span>");
+  }
+}
+</script>
+<script src="js/header_normal.js"></script>
+<script src="js/footer_normal.js"></script>
+<script src="js/images.js"></script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

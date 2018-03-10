@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>La Voie du Grand Malgré-Tout</title>
+	<title>La Voie du Grand Malgré-Tout</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="js/jquery/textfill.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<header></header>
+	<a id="btnMap" href="Map.html"><img src="images/icons/UI/map.png"></a>
+	<div id="clouds"></div><div id="cloudsbg"></div>
+	<section id="sleft"></section>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<img id="decoLeft"><img id="decoLeftbg">
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<article id="main">
+	<h1>Rue du Marché</h1>
+	<p id="histoire"><span>
+		En allant <u>tout droit</u>,  vous entrez sur la place du <b>marché</b>.<br>
+		A votre <u>gauche</u>, la <b>porte</b> close d'une demeure, au numéro 3.<br>
+		A <u>droite</u> se dresse un <b>dispensaire</b>, au numéro 2.<br>
+		En retournant <u>en arrière</u>, vous allez vers la <b>Porte Sud</b>.<br>
+		Que faites-vous ?
+	</span></p>
+	<div id="choix">
+		<a onclick="to8_1();" class="btnD btnDash">Aller sur la place du marché</a><br>
+		<a onclick="knockN3();" class="btnD">Frapper au numéro 3</a>
+		<a href="Inspect_2.html" class="btnD">Inspecter la zone</a>
+		<a href="5.31 Dispensaire.html" class="btnD">Entrer dans le dispensaire</a><br>
+		<a onclick="to5_2();" class="btnD btnDash" id="to5_2">Aller en direction de la Porte Sud</a>
+	</div>
+	<div id="dialog" title="Aucune réponse" style="display:none">
+		<img id="getitem_img" class="get_item" src="images/icons/UI/doorClosed.png">
+		<p id="getitem_desc">Vous frappez, mais personne ne répond.</p>
+	</div>
+</article>
+<section id="sright"></section>
+<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+<div id="ang2a"></div><div id="ang2b"></div>
+<img id="decoRight"><img id="decoRightbg">
+<footer></footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+	localStorage.numpage=5.3;
+
+	if (localStorage.dirFrom=="Sud"){
+		$("#histoire").html("<span><i>Vous êtes toujours sur la rue du Marché.<br>Vous pouvez aller :</i><br><br><b>En face</b><br>et entrer sur le <u>Marché</u>.<br><b>A gauche</b><br>la <u>porte</u> close d'une demeure, au numéro 3.<br><b>A droite</b><br>se trouve un <u>dispensaire</u>, au numéro 2.<br><b>Ou faire demi-tour</b><br> et retourner vers la Porte sud.</span>");
+		$("#to5_2").html("Revenir vers la Porte Sud").css("background-color","#e6e2c4");
+	}
+
+	function to5_2() {
+		localStorage.dirFrom="Nord";
+		window.location="5.2 Rue du Marché.html";
+	}
+
+	function to8_1(){
+		alert("Vous ne pouvez pas encore faire cela.");
+	}
+
+	function knockN3() {
+		localStorage.audiotypeUI = "doorKnock";
+		window.open("audioUI.html", "audioUI");
+		setTimeout(function() {
+			$("#dialog").dialog({
+				resizable: false,
+				height: "auto",
+				dialogClass: 'dialogarme',
+				buttons: {
+					"Ok": function() {
+						$(this).closest('.ui-dialog-content').dialog('close');
+					}
+				}
+			});
+		}, 1000);
+	}
+</script>
+<script src="js/header_normal.js"></script>
+<script src="js/images2.js"></script>
+<script src="js/footer_normal.js"></script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

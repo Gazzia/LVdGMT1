@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>GMT//AUDIO//BACK</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+	<h1>Audio du jeu</h1>
+	<h2><u>BG Env</u><h2>
+	<h3>Ambience :<div id="audiotypeEnvB"></div></h3>
+		<audio autoplay="true" loop controls id="playerEnvB">
+   		<source type="audio/mpeg" id="sourceEnvB">
+ 		</audio>
+		<h4 id="envBname"></h4>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+var audiotypeEnvB = localStorage.audiotypeEnvB;
+var playerEnvB = document.getElementById("playerEnvB");
+$("#audiotypeEnvB").html(audiotypeEnvB);
+if (audiotypeEnvB == "Nature"){
+	var envNb = Math.floor(Math.random() * 4) + 1;
+	if (envNb == 1) {$("#sourceEnvB").attr("src","sound/env/nature/windCricketA1.mp3");playerEnvB.volume=0.2;}
+	if (envNb == 2) {$("#sourceEnvB").attr("src","sound/env/nature/windCricketA2.mp3");playerEnvB.volume=0.2;}
+	if (envNb == 3) {$("#sourceEnvB").attr("src","sound/env/nature/windCricketB1.mp3");playerEnvB.volume=0.4;}
+	if (envNb == 4) {$("#sourceEnvB").attr("src","sound/env/nature/windCricketB2.mp3");playerEnvB.volume=0.4;}
+}
+if (audiotypeEnvB == "CreakingHouse"){
+	$("#sourceEnvB").attr("src","sound/env/creakinghouse.mp3");playerEnvB.volume=0.2;
+}
+if (audiotypeEnvB == "Veil1"){
+	$("#sourceEnvB").attr("src","sound/env/veilMoving.mp3");playerEnvB.volume=0.35;
+}
+var envBname = $("#sourceEnvB").attr("src"); $("#envBname").html(envBname);
+</script>
+</body>
+</html>

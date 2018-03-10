@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>La Voie du Grand Malgré-Tout</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/styles_inv.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery/customScrollbar.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="js/jquery/customScrollbar.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Open+Sans+Condensed:700|Roboto+Condensed" rel="stylesheet"> 
+<script src="js/statsvar.js"></script>
+</head>
+
+<body>
+	<header>
+		<div id="iconPage"><img class="iconPageImg" src="images/icons/page/backpack-1.png"></div>
+	</header>
+	<h1>Inventaire</h1>
+	<div id="invContenu">
+		<div id="container1" class="mCustomScrollbar" data-mcs-theme="minimal-dark">
+			<div id="stuff">
+			<div id="stufftext"></div>
+			<div id="inv_arme" class="tooltipd">
+				<a id="armeText" class="tooltiptext"></a>
+				<a href="Inv_armes.html"><img id="armeImg" class="inv_item_img" src=""></a>
+			</div>
+			<div id="container_armure">
+			<div class="inv_armure tooltipd">
+				<a id="headText" class="tooltiptext"></a>
+				<a href="Inv_head.html"><img id="headImg" class="inv_item_img" src=""></a>
+			</div>
+			<div class="inv_armure tooltipd">
+				<a id="bodyText" class="tooltiptext"></a>
+				<a href="Inv_body.html"><img id="bodyImg" class="inv_item_img" src=""></a>
+			</div>
+			<div class="inv_armure tooltipd">
+				<a id="legText" class="tooltiptext"></a>
+				<a href="Inv_leg.html"><img id="legImg" class="inv_item_img" src=""></a>
+			</div>
+			<div class="inv_armure tooltipd">
+				<a id="footText" class="tooltiptext"></a>
+				<a href="Inv_foot.html"><img id="footImg" class="inv_item_img" src=""></a>
+			</div>
+			</div>
+			</div>
+			<div class="tooltipd"><a class="tooltiptext"><u>Arme et Armure</u></a></div>
+			<div id="statsCont">
+				<div id="statsContPaper">
+				<p id="statsText">
+					<img src="images/UI/abilities/force.png" class="staticon"> <b>Force</b>: <span id="statForce">0</span><br>
+					<img src="images/UI/abilities/mag.png" class="staticon"> <b>Puissance Magique</b>: <span id="statMag">0</span><br>
+					<img src="images/UI/abilities/cha.png" class="staticon"> <b>Charisme</b>: <span id="statChar">0</span><br>
+					<img src="images/UI/abilities/disc.png" class="staticon"> <b>Discrétion</b>: <span id="statDisc">0</span><br>
+					<img src="images/UI/abilities/dex.png" class="staticon"> <b>Dextérité</b>: <span id="statDex">0</span><br>
+					<img src="images/UI/abilities/int.png" class="staticon"> <b>Intelligence</b>: <span id="statInt">0</span>
+				</p>
+				</div>
+			</div>
+		</div>
+		<div id="container2" class="mCustomScrollbar" data-mcs-theme="minimal-dark">
+			<div id="smallercont2">
+				<div id="textTool"> </div>
+				<div id="toolCont">
+					<div id="toolShovel" class="toolCase tooltipd">
+						<a id="toolShovel_title" class="tooltiptext2">Cet emplacement peut contenir un outil.</a>
+						<img id="toolShovel_img" class="inv_tool_img" src="">
+					</div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<!-- -->
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<!-- -->
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<!-- -->
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+					<div class="toolCase"></div>
+				</div>
+			</div>
+		<a class="btn_objets" href="Inv_objets.html">Objets divers</a>
+		</div>
+	</div>
+<!-- DECO+FOOTER -->
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+	<div id="ang2a"></div><div id="ang2b"></div>
+<footer>
+	<div id="footerLeft">
+		<p id="pseudo"></p>
+		<div id="hpCont">
+			<img id="iconHealth" src="images/icons/UI/plHP.png">
+			<p id="plHealth"></p>
+		</div>
+		<p id="plclasse"></p>
+	</div>
+	<div id="footerMid">
+		<a id="retour" class="iconInv"><img src="images/icons/UI/btnInv.png"></a>
+	</div>
+	<div id="footerRight">
+		<div id="gdCont"><p id="goldAmount"></p><img id="iconGold" src="images/icons/UI/coin.png"></div>
+	</div>
+</footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+/* ARME */
+	if(armeSelected=="Poing"){ 
+		$("#armeText").html("<b>Poings</b><br>Vous ne possédez pas d'arme, et vos maigres poings peu habitués au corps à corps ne vous serviront à presque rien.");
+		$("#armeImg").attr("src","images/icons/weapons/fist.png");}
+	if(armeSelected=="Baton"){ 
+		$("#armeText").html("<b>Branche de tilleul</b><br>Une arme rudimentaire. Cette branche pourra peut-être asséner quelques bleus à un adversaire, qui sait ?<br><b>10dmgMax</b>");
+		$("#armeImg").attr("src","images/icons/weapons/stick.png");}
+	
+	var headSelected = localStorage.headSelected;
+	if(headSelected=="Cheveux"){ 
+		$("#headText").html("<b>Cheveux</b><br>Votre seule protection contre des coups au crâne sont vos cheveux gras.");
+		$("#headImg").attr("src","images/icons/armor/head.png");}
+		
+	var bodySelected = localStorage.bodySelected;
+	if(bodySelected=="Torse"){ 
+		$("#bodyText").html("<b>Torse</b><br>En plus de ne pas porter de plastron, vous êtes torse nu. Très responsable.");
+		$("#bodyImg").attr("src","images/icons/armor/torso.png");}		
+		
+	var legSelected = localStorage.legSelected;
+	if(legSelected=="Jambes"){ 
+		$("#legText").html("<b>Jambes</b><br>Vous portez un pantalon de toile fine.");
+		$("#legImg").attr("src","images/icons/armor/legs.png");}		
+		
+	var footSelected = localStorage.footSelected;
+	if(footSelected=="Pieds"){ 
+		$("#footText").html("<b>Pieds</b><br>Vous marchez pieds nus. Cela ne vous protège pas, mais quelles SENSATIONS!");
+		$("#footImg").attr("src","images/icons/armor/barefoot.png");}
+/*STATS*/
+	$("#statForce").html(bForce+" *("+raceXForce+"*"+classeXForce+") = <b>"+totalForce);
+	$("#statMag").html(bMag+" *("+raceXMag+"*"+classeXMag+") = <b>"+totalMag);
+	$("#statChar").html(bChar+" *("+raceXChar+"*"+classeXChar+") = <b>"+totalChar);
+	$("#statDex").html(bDex+" *("+raceXDex+") = <b>"+totalDex);
+	$("#statDisc").html(bDisc+" *("+raceXDisc+"*"+classeXDisc+") = <b>"+totalDisc);
+	$("#statInt").html(bInt+" *("+raceXInt+") = <b>"+totalInt);
+
+/*TOOLS*/
+	if (localStorage.objectShovel == 1){
+		$("#toolShovel_title").html("Pelle");
+		$("#toolShovel_img").attr("src","images/icons/items/shovel.png");}
+</script>
+<script src="js/globalscripts.js"></script>
+<script src="js/retour.js"></script>
+</body>
+</html>

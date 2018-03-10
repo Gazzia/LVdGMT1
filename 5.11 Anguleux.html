@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <link rel="shortcut icon" type="image/png" href="" />
+  <title>La Voie du Grand Malgré-Tout</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="css/styles_dialogue.css" />
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/jquery/textfill.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Alegreya+Sans" rel="stylesheet">
+</head>
+<body>
+	<header></header>
+	<div id="clouds"></div><div id="cloudsbg"></div>
+	<section id="sleft"></section>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<img id="decoLeft"><img id="decoLeftbg">
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+<article id="main">
+  <div id="container_icon"><img id="iconDialogue" src="images/icons/UI/talk_min.png"></div>
+  <h1>Anguleux </h1>
+  <p id="histoire"><span>
+		<i>L'Anguleux vous fixe, appuyé contre le mur</i><br>
+		"Je vous ai jamais vu par ici.."
+	</span></p>
+
+  <div id="choix_dialogue">
+  	<a class="dialNorm" onclick="sDial1()" id="dial1">Je viens d'arriver. Je ne connais pas la ville.</a>
+  	<a class="dialNorm" onclick="sDial2()" id="dial2">L'accueil est agréable par ici.</a>
+  	<a class="dialNorm" onclick="sDial3()" id="dial3" style="display:none">Les bandits et la horde invisible, c'est ça ?</a>
+  </div>
+  <div id="choix">
+	<a href="5.1 Porte Sud.html" class="btnD" id="leave">Partir</a>
+  </div>
+</article>
+<section id="sright"></section>
+<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+<div id="ang2a"></div><div id="ang2b"></div>
+<img id="decoRight"><img id="decoRightbg">
+<footer></footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+localStorage.numpage=5.11;
+
+if (localStorage.talked_guy1 == 1) {
+	$("#histoire").html("<span>\"Fais gaffe à toi, ici.\"</span>");
+	$(".dialNorm").hide();
+	$("#leave").show();
+}
+function sDial1() {
+	$("#histoire").html("<span>\"Nouveau hein ? T'arrives pas au bon moment.\"</span>");
+	$("#dial1").hide();
+	$("#dial2").hide();
+	$("#dial3").show();
+	$("#leave").hide();
+}
+function sDial2() {
+	$("#histoire").html("<span>\"Toute la ville est un peu sur les nerfs. Tu arrives pas au bon moment.\"</span>");
+	$("#dial1").hide();
+	$("#dial2").hide();
+	$("#dial3").show();
+	$("#leave").hide();
+}
+
+function sDial3() {
+	$("#histoire").html("<span>\"Ouais exact, on t'as fait le topo. La conséquence de tout ça est que le marché est presque désert : les marchands se chient beaucoup trop dessus pour venir jusqu'ici ; les boutiques sont presques vides faute d'approvisionnement, et tout le monde se méfie de tout le monde, alors fais gaffe à toi.\"</span>");
+	$(".dialNorm").hide();
+	$("#leave").show();
+	localStorage.talked_guy1=1;
+}
+</script>
+<script src="js/header_normal.js"></script>
+<script src="js/footer_normal.js"></script>
+<script src="js/images2.js"></script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>La Voie du Grand Malgré-Tout</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/jquery/textfill.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<header></header>
+	<a id="btnMap" href="Map.html"><img src="images/icons/UI/map.png"></a>
+	<div id="clouds"></div><div id="cloudsbg"></div>
+	<section id="sleft"></section>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<img id="decoLeft"><img id="decoLeftbg">
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<article id="main">
+		<h1>Une fraîcheur bien méritée</h1>
+		<p id="histoire">
+			<span>De l'ombre ! Enfin ! Vous voilà à l'entrée d'un petit bois d'aulnes et de tilleuls.<br>Vous vous apprêtez à vous asseoir au pied d'un tronc massif,<br>quand vous entendez le bruit d'une eau qui rigole un peu plus loin. Que faites-vous ?</span>
+		</p>
+		<div id="choix">
+			<a href="Inspect_1.html" class="btnD">Inspecter la zone</a>
+			<a onclick="toStream();" class="btnD">Suivre le bruit</a>
+			<a href="2 Plaine_Debut.html" class="btnD">Revenir sur le chemin</a>
+		</div>
+	</article>
+	<section id="sright"></section>
+	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+	<div id="ang2a"></div><div id="ang2b"></div>
+	<img id="decoRight"><img id="decoRightbg">
+	<footer></footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+/* HEADER */
+	localStorage.numpage=2.1;
+
+	localStorage.audiotypeEnvF="StreamAfar";
+	window.open("audioEnvF.html","audioEnvF")
+
+function toStream(){
+	localStorage.audiotypeEnvF="Stream";
+	window.open("audioEnvF.html","audioEnvF")
+	window.location="2.11 Torrent.html"
+}
+</script>
+<script src="js/header_normal.js"></script>
+<script src="js/footer_normal.js"></script>
+<script src="js/images.js"></script>
+<script src="js/globalscripts.js"></script>
+
+</body>
+</html>

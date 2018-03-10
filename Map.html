@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>GMT - Carte</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles_crea.css"/>
+	 <link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="js/jquery/textfill.js"></script>
+</head>
+<body>
+<div id="bgMap">
+	<a id="retour"><div id="centeredMap"><div id="plPos"></div></div></a>
+
+</div>
+
+<script>
+setTimeout(function () {
+	$("#centeredTree").css({"-webkit-transform":"scale(1)","-ms-transform":"scale(1)","transform":"scale(1)","opacity":"1"});
+}, 500);
+function closeTree(){
+	$("#centeredTree").css({"-webkit-transform":"scale(5)","-ms-transform":"scale(5)","transform":"scale(5)","opacity":"0"});
+	setTimeout(function () {window.location="0.2 Race.html";}, 1000);
+
+}
+var nmp = localStorage.numpage;
+var arr = ['1','2','2.1','2.2','2.11','2.22','3','3.2'];
+var arr2 = ['5.1','5.2','5.3','6.1','6.2','6.3','6.4','6.5'];
+if ( jQuery.inArray(nmp, arr) != -1){
+	$("#centeredMap").css({"background":"url(images/map/soufflant.png)","width":"801px","height":"589px","top":"calc(50% - 290px)","left":"calc(50% - 400px)"});
+}
+if ( jQuery.inArray(nmp, arr2) != -1){
+	$("#centeredMap").css({"background":"url(images/map/Merry1.png)","width":"850px","height":"499px","top":"calc(50% - 250px)","left":"calc(50% - 425px)"});
+}
+if(nmp == 1){	$("#plPos").css({"left":"434px","top":"155px"})}
+if(nmp == 2){	$("#plPos").css({"left":"379px","top":"131px"})}
+if(nmp == 2.1){	$("#plPos").css({"left":"357px","top":"112px"})}
+if(nmp == 2.11){	$("#plPos").css({"left":"257px","top":"117px"})}
+if(nmp == 2.2){	$("#plPos").css({"left":"435px","top":"119px"})}
+if(nmp == 2.22){	$("#plPos").css({"left":"457px","top":"124px"})}
+if(nmp == 3){	$("#plPos").css({"left":"427px","top":"88px"})}
+if(nmp == 3.2){	$("#plPos").css({"left":"439px","top":"88px"})}
+if(nmp == 5.1){	$("#plPos").css({"left":"380px","top":"409px"})}
+if(nmp == 5.2){	$("#plPos").css({"left":"380px","top":"293px"})}
+if(nmp == 5.3){	$("#plPos").css({"left":"385px","top":"152px"})}
+if(nmp == 6.1){	$("#plPos").css({"left":"227px","top":"290px"})}
+if(nmp == 6.2){	$("#plPos").css({"left":"181px","top":"208px"})}
+if(nmp == 6.3){	$("#plPos").css({"left":"183px","top":"149px"})}
+if(nmp == 6.4){	$("#plPos").css({"left":"190px","top":"30px"})}
+if(nmp == 6.5){	$("#plPos").css({"left":"230px","top":"23px"})}
+</script>
+<script src="js/retour.js"></script>
+</body>
+</html>

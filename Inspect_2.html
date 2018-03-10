@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <link rel="shortcut icon" type="image/png" href="" />
+  <title>La Voie du Grand Malgré-Tout</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+  <link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/jquery/textfill.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<div id="contTImgs"></div>
+		<div id="iconPage"><img class="iconPageImg" src="images/icons/page/eye.png"></div>
+	</header>
+  <div id="clouds"></div><div id="cloudsbg"></div>
+  <section id="sleft"> </section>
+    <div id="ang1a"></div><div id="ang1b"></div><div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+  <article id="main">
+	<h1>Inspection</h1>
+	<div id="contMImgs"></div>
+	<p id="histoire">
+		Le contenu n'a pas encore été ajouté ici. Si vous tombez sur ce message, veuillez retourner au jeu en appuyant <b>sur la flèche Précédent du navigateur</b> (pas sur le bouton juste en-dessous)
+	</p>
+	<div id="choix">
+		<a id="buttonBack" class="btnD">Retour</a>
+		<a id="buttonAction" onclick="" class="btnD cursorTake" style="display:none">JAVASCRIPT SET Action</a>
+	</div>
+	<div id="dialog" title="JAVASCRIPT SET" style="display:none">
+		<img id="getitem_img" class="get_item" src="JAVASCRIPT SET">
+		<p id="getitem_desc">JAVASCRIPT SET</p>
+	</div>
+</article>
+  <section id="sright"></section>
+	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div><div id="ang2a"></div><div id="ang2b"></div>
+<footer>
+	<div id="footerLeft"><p id="pseudo"></p><div id="hpCont"><img id="iconHealth" src="images/icons/UI/plHP.png"><p id="plHealth"></p></div><p id="plclasse"></p></div>
+	<div id="footerMid"><a class="iconInv" href="Inv.html"><img src="images/icons/UI/btnInv.png"></a></div>
+	<div id="footerRight"><div id="gdCont"><p id="goldAmount"></p><img id="iconGold" src="images/icons/UI/coin.png"></div></div>
+</footer>
+
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+var numpage = localStorage.numpage;
+if (numpage == 5.1) {
+  $("#histoire").html("<span>La ville apparaît encore plus belle que vous ne l'imaginiez !<br>Autour de vous, trois rues s'encastrent, claires et calmes, entre les bâtiments.. Cette dernière est enfoncée entre les deux falaises, immenses brise-vents de pierre blanche striée d'ardoise. Contre la falaise Est repose, sur une corniche à mi-hauteur, un très grand bâtiment, qui doit être l'hôtel de ville.</span>");
+  $("#buttonBack").attr("href", "5.1 Porte Sud.html");
+}
+if (numpage == 5.2) {
+	$("#histoire").html("<span>La rue claire est large par rapport aux autres rues. Des tonnelets s'empilent à côté de l'embouchure de la ruelle.</span>");
+  $("#buttonBack").attr("href", "5.2 Rue du Marché.html");
+}
+if (numpage == 6.1) {
+	$("#histoire").html("<span>La rue de la clef est un long couloir de mur, d'angles, de tonneaux oubliés ça et là. Une ambiance mystérieuse règne, de par la semi-obscurité dûe à la hauteur des bâtiments, et par ces chants continus qui flottent dans la rue, émanant de la grande porte. Au delà de tout ça, la rue est propre et des plantes en pot bordent les fenêtres.</span>");
+  $("#buttonBack").attr("href", "6.1 Rue de la Clef.html");
+}
+if (numpage == 6.11) {
+  if (localStorage.GMTDrankPotion == 0){
+	   $("#histoire").html("<span>Le petit hall n'est pas très grand, mais plongé dans une ambiance mystérieuse. La petite fiole vous intrigue : devriez-vous boire son contenu ? Celui-ci est impossible à deviner d'après son apparence.. \"Rejoignez-nous\". Rejoindre qui ? Et comment, avec une simple fiole ?</span>");
+   } else {
+     $("#histoire").html("<span>Le petit hall n'est pas très grand, mais plongé dans une ambiance mystérieuse. Une sensation chaude vous traverse l'estomac, et vous vous sentez heureux ici ! Pourquoi ne pas avancer, tout est si bien, et le voile bouge, pourquoi les faire attendre ? - Un voile ? Quel voile ? Vous avez parlé tout haut, et vous ne vous souvenez même pas de ce que vous venez de dire. </span>");
+   }
+  $("#buttonBack").attr("href", "6.11 Temple_gmt.html");
+}
+</script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

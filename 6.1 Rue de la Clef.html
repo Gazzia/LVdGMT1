@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>La Voie du Grand Malgré-Tout</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/jquery/textfill.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<header></header>
+	<a id="btnMap" href="Map.html"><img src="images/icons/UI/map.png"></a>
+	<div id="clouds"></div><div id="cloudsbg"></div>
+	<section id="sleft"></section>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<img id="decoLeft"><img id="decoLeftbg">
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<article id="main">
+	<h1>Rue de la Clef</h1>
+	<p id="histoire">	</p>
+	<div id="choix">
+		<a onclick="to6_2();" class="btnD btnDash" id="to6_2">Monter vers le Nord Ouest</a><br>
+		<a href="6.11 Temple_gmt.html" class="btnD">Entrer au 8</a>
+		<a href="6.12" class="btnD">Frapper au 8bis</a>
+		<a href="Inspect_2.html" class="btnD">Inspecter la zone</a>
+		<a href="6.13.html" class="btnD">Frapper au 7</a> <br>
+		<a onclick="to5_1();" class="btnD btnDash" id="to5_1">Aller à la Porte Sud</a>
+	</div>
+</article>
+<section id="sright"></section>
+<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+<div id="ang2a"></div><div id="ang2b"></div>
+<img id="decoRight"><img id="decoRightbg">
+<footer></footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+/* HEADER */
+	localStorage.numpage=6.1;
+
+	if (localStorage.dirFrom=="Est"){
+		$("#histoire").html("<span><i>Le soleil peine à passer entre les bâtiments élevés de l'étroite rue de la Clef.</i><br><br><b>En face</b><br>La mince rue continue après un crochet vers le Nord<br><b>A gauche</b><br>Deux bâtiment:<br><u>Au 8</u>, bâtiment à la forme singulière, une double porte -entrouverte- complexe et d'un bois foncé. Des chants s'en échappent.<br><u>Au 8bis</u>, une porte simple en bois. Ce doit être une habitation.<br><b>A droite</b><br>Une porte mène au numéro 7.<br><b>Derrière vous</b><br>la rue mène à la Porte Sud.<br>Que faites-vous ?</span>");
+		$("#to5_1").html("Revenir Porte Sud").css("background-color","#e6e2c4");
+	}
+	if (localStorage.dirFrom=="Nord"){
+		$("#histoire").html("<span><i>Vous avez descendu la rue de la Clef et êtes dans la portion qui débouche vers la Porte Sud.</i><br><br><b>En face</b><br>La rue mène à la <u>Porte Sud</u><br><b>A gauche</b><br>Une porte mène au numéro 7.<br><b>A droite</b><br>Deux bâtiment:<br><u>Au 8bis</u>, une porte simple en bois. Ce doit être une habitation.<br><u>Au 8</u>, bâtiment à la forme singulière, une double porte -entrouverte- complexe et d'un bois foncé. Des chants s'en échappent.<br><b>Derrière vous</b><br>La rue monte vers la place du marché.<br>Que faites-vous ?</span>");
+		$("#to6_2").html("Remonter la rue dans l'autre sens").css("background-color","#e6e2c4");
+	}
+
+	function to5_1(){
+		localStorage.dirFrom="Ouest";
+		window.location="5.1 Porte Sud.html";
+	}
+	function to6_2(){
+		localStorage.dirFrom="Sud";
+		window.location="6.2 Rue de la Clef-2.html";
+	}
+</script>
+<script src="js/header_normal.js"></script>
+<script src="js/footer_normal.js"></script>
+<script src="js/images2.js"></script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

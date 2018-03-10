@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>La Voie du Grand Malgré-Tout</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<header class="uiHide"></header>
+	<section id="sleft" class="uiHide"></section>
+	<div id="ang1a"class="uiHide"></div><div id="ang1b"class="uiHide"></div>
+	<img id="decoLeft"class="uiHide"><img id="decoLeftbg"class="uiHide">
+	<div id="vertLeft"class="uiHide"><div id="rust1a"class="uiHide"></div><div id="rust1b"class="uiHide"></div></div>
+	<article id="main">
+	<h1>Immobiles</h1>
+	<p id="histoire"><span>
+		Vous poussez la porte et sursautez, une main sur votre arme: une dizaine de personnes  -hommes, oculains et feûlains- vous encerclent.<br>Vous vous rassérenez quelque peu en notant leur totale immobilité.<br>Leurs bras sont joints, et leurs paupières fermées, leurs visages tournés vers vous.<br>Enfin non - au-dessus de vous.<br>Vous avancez prudemment en vous retournant, pour voir la cause de cet engouement silencieux :<br> Une branche. <br>Une branche dans un immense cadre en acajou surplombe l'encadrement de la porte.<br><br>Vous vous rendez compte que ce que vous pensiez être des voix sont des notes de musique jouées sortant d'un instrument à résonnance oculain, située à l'autre bout de l'immense pièce .<br> <br>Un petit oculain à col blanc qui ne fait pas partie de l'étrange cercle s'approche de vous calmement.
+	</span></p>
+	<div id="choix">
+		<a onclick="clickSuite();" class="btnD" id="optSuite">Suite ></a></a><br>
+		<a onclick="clickGMT();" class="btnD" style="display:none" id="optJoin">Fermer les yeux et rejoindre le cercle</a>
+		<a href="6.1111 Pretre.html" class="btnD" style="display:none" id="optTalk">S'entretenir avec le chamane</a>
+		<a href="6.11 Temple_gmt.html" class="btnD" style="display:none" id="optLeave">Sortir</a>
+		<a href="0 Ecran Titre.html" class="btnD" style="display:none" id="optDie">Recommencer l'aventure</a>
+	</div>
+</article>
+<section id="sright" class="uiHide"></section>
+<div id="vertRight" class="uiHide"><div id="rust2a" class="uiHide"></div><div id="rust2b" class="uiHide"></div></div>
+<div id="ang2a" class="uiHide"></div><div id="ang2b" class="uiHide"></div>
+<img id="decoRight" class="uiHide"><img id="decoRightbg" class="uiHide">
+<footer class="uiHide"></footer>
+
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+/* HEADER */
+
+	localStorage.numpage=6.111;
+	function clickSuite(){
+		$("#histoire").html("<span>\"Leur méditation ne troublez pas -impossible- ! Ces gens ici debouts, ouvrez vos esgourdes, entament leur douzième année (oui) de trance lourde, sous l'oeil, le grand, du Grand Malgré Tout. Par choix ! C'est un choix - qu'ils ont fait de laisser leur être et leur personnalité derrière eux ! C'est la potion ! Ils l'ont bu. La potion est à disposition. Elle plonge en état réflectif d'abord, puis mène on ne sait où. Du bois ? Là haut. Lui-même, puisque -quoi ? Oui ! Du bois, c'est un bâton. Une branche, exact. Un morceau de bois qui nous rappelle l'essence -enfin-, que l'Essence dépasse le devenu, lui même le devenu Essence, vous suivez le sens, nouveau-venu? Enfin il faut l'abandonner. Une surcharge. C'est lourd. Envolé. Si -la potion! Vous rejoignez ?\"</span>");
+		$("#optSuite").hide();
+		if (localStorage.GMTDrankPotion == 1){
+			$("#optJoin").show();
+		}
+		if (localStorage.GMTDrankPotion == 0){
+			$("#optLeave").show();
+			$("#optTalk").show();
+		}
+	}
+	function clickGMT(){
+		// $("#histoire").html("<span>Vous ne répondez pas. Vous êtes tellement bien ici! Ce serait à cause de la potion ? Vous vous en fichez. Tout est immensément doux, et vous n'avez aucune envie de partir de ce temple. Vous comprenez ce que ressentent les gens ici, et vous sentez que vous DEVEZ être un chaînon de cette union formidable, aller les rejoindre. Lentement, vous avancez vers le cercle.<br><br>Dans l'obscurité complète et soudaine, vous marchez sur le vide<br>Un voile flotte au loin<br>une sorte de rideau de théatre<br>un mince filet de lumière passe au travers de l'ouverture, au centre<br>Il bouge<br>cela bouge derrière, c'est immense<br>c'est trop grand et impossible<br>Vous vous avancez, prêt à découvrir l'au-delà du voile<br><br>Votre aventure dans le réel s'achève ici, votre corps et votre esprit n'ont plus aucun lien.</span>");
+		$("#optDie").hide();
+		$("#optJoin").hide();
+		window.scrollTo(0, 0);
+		localStorage.audiotypeEnvB="Aucun";
+		localStorage.audiotypeEnvF="Aucun";
+		localStorage.audiotypeMusic="Veil1";
+		window.open("audioEnvB.html","audioEnvB")
+		window.open("audioEnvF.html","audioEnvF")
+		window.open("audioMusic.html","audioMusic")
+		setTimeout(function () {
+			$("#histoire").html("<span class='tVeil'>Vous ne répondez pas.</span>");
+			$(".uiHide").fadeOut(5000);
+			$("#main").css("background","transparent")
+			$("h1").hide();
+			$("#histoire").css("margin-top","40%");
+			$("html").css("padding", "0px 0px 0px 0px");
+			$("body, html").css("overflow","hidden")
+		}, 0);
+		setTimeout(function () { $("#histoire").hide().html("<span class='tVeil'>Vous êtes tellement bien ici!</span>").fadeIn('quick');}, 2000);
+		setTimeout(function () { $("#histoire").hide().html("<span class='tVeil'>Ce serait à cause de la potion ?</span>").fadeIn('quick');}, 4000);
+		setTimeout(function () { $("#histoire").hide().html("<span class='tVeil'>Vous vous en fichez.</span>").fadeIn('quick');}, 6000);
+		setTimeout(function () { $("#histoire").hide().html("<span class='tVeil'>Tout est immensément doux, et vous n'avez aucune envie de partir de ce temple.</span>").fadeIn('quick');}, 8000);
+		setTimeout(function () { $("#histoire").hide().html("<span class='tVeil'>Vous comprenez ce que ressentent les gens ici, et vous sentez que vous DEVEZ être un chaînon de cette union formidable, aller les rejoindre.</span>").fadeIn('quick');}, 12000);
+		setTimeout(function () { $("#histoire").hide().html("<span></span>").fadeIn('quick');}, 18000);
+		setTimeout(function () { $("#histoire").hide().html("<span class='tVeil'>Lentement, vous avancez vers le cercle.</span>").fadeIn('slow');}, 20000);
+		setTimeout(function () {
+				$("#histoire").html("<span></span>");
+				$("body").toggleClass('bgVoile');
+				$("#histoire").css("color", "#905d5d");
+ 			 		localStorage.audiotypeEnvB="Veil1";
+ 					window.open("audioEnvB.html","audioEnvB")
+ 					}, 23000);
+		setTimeout(function () {$("#histoire").hide().html("<span class='tVeil'>Dans l'obscurité complète et soudaine, vous marchez sur le vide.</span>").fadeIn('1000');}, 27000);
+		setTimeout(function () {$("#histoire").hide().html("<span class='tVeil'>un voile flotte au loin</span>").fadeIn('1000');}, 33000);
+		setTimeout(function () { $("#histoire").hide().html("<span class='tVeil'>une sorte de rideau de théatre</span>").fadeIn('1000');}, 36000);
+		setTimeout(function () { $("#histoire").hide().html("<span class='tVeil'>un mince filet de lumière passe au travers de l'ouverture, au centre</span>").fadeIn('1000');}, 42000);
+		setTimeout(function () { $("#histoire").hide().html("<span class='tVeil'>il bouge</span>").fadeIn('1000');}, 48000);
+		setTimeout(function () { $("#histoire").hide().html("<span class='tVeil'>cela bouge derrière, c'est immense</span>").fadeIn('1000');}, 52000);
+		setTimeout(function () { $("#histoire").hide().html("<span class='tVeil'>c'est trop grand et impossible</span>").fadeIn('1000');}, 57000);
+		setTimeout(function () {$("#histoire").hide().html("<spa class='tVeil'n>vous vous avancez, prêt à découvrir l'au-delà du voile</span>").fadeIn('1000');	}, 61000);
+		setTimeout(function () { $("#histoire").hide().html("<span class='tVeil'>Dans un autre monde, dans un autre temps, la vie s'échappe de votre enveloppe corporelle.. <br> L'aventure s'achève ici pour vous, alors que votre conscience n'appartient plus au monde du réel.</span>").fadeIn('1000');
+		localStorage.audiotypeEnvB="Aucun";
+		localStorage.audiotypeEnvF="Aucun";
+		localStorage.audiotypeMusic="Veil11";
+		window.open("audioEnvB.html","audioEnvB")
+		window.open("audioEnvF.html","audioEnvF")
+		window.open("audioMusic.html","audioMusic")
+		$("#optDie").show();}, 67000);
+	}
+</script>
+<script src="js/header_normal.js"></script>
+<script src="js/footer_normal.js"></script>
+<script src="js/images2.js"></script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>La Voie du Grand Malgré-Tout</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	  <link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<header></header>
+	<a id="btnMap" href="Map.html"><img src="images/icons/UI/map.png"></a>
+	<div id="clouds"></div><div id="cloudsbg"></div>
+	<section id="sleft"></section>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<img id="decoLeft"><img id="decoLeftbg">
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<article id="main">
+	<h1>Rue du Marché</h1>
+	<p id="histoire"></p>
+	<div id="choix">
+		<a onclick="to5_3();" class="btnD btnDash" id="to5_3">Aller en direction du marché</a><br>
+		<a onclick="knockN1();" class="btnD">Frapper au numéro 1</a>
+		<a href="Inspect_2.html" class="btnD">Inspecter la zone</a>
+		<a onclick="to5_21();" class="btnD btnDash">Prendre la ruelle</a> <br>
+		<a onclick="to5_1();" class="btnD btnDash" id="to5_1">Aller à la Porte Sud</a>
+	</div>
+	<div id="dialog" title="Aucune réponse" style="display:none">
+	  <img id="getitem_img" class="get_item" src="images/icons/UI/doorClosed.png">
+	  <p id="getitem_desc">Vous frappez, mais personne ne répond.</p>
+	</div>
+</article>
+<section id="sright"></section>
+<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+<div id="ang2a"></div><div id="ang2b"></div>
+<img id="decoRight"><img id="decoRightbg">
+<footer></footer>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+	localStorage.numpage=5.2;
+
+	if (localStorage.dirFrom=="Sud"){
+		$("#histoire").html("<span><i>Vous êtes dans une rue large et claire, qui relie la porte Sud et la place du Marché.<br>Le soleil baigne sur votre visage. Vous pouvez aller :</i><br><br><b>En face</b><br>Vous continuez en direction du <u>marché</u>.<br><b>A gauche</b><br>la <u>porte</u> close d'une demeure, au numéro 1.<br><b>A droite</b><br>une <u>ruelle</u> relie l'artère vers la rue Blanche.<br><b>Ou faire demi-tour</b><br> et retourner Porte sud.</span>");
+		$("#to5_1").html("Revenir Porte Sud").css("background-color","#e6e2c4");
+	}
+	if (localStorage.dirFrom=="Nord"){
+		$("#histoire").html("<span><i>Vous êtes toujours sur la rue du Marché, en direction de la Porte Sud<br> Vous pouvez aller :</i><br><br><b>En face</b><br>Vous continuez en direction de la <u>Porte sud</u>.<br><b>A gauche</b><br>une <u>ruelle</u> relie l'artère vers la rue Blanche.<br><b>A droite</b><br>la <u>porte</u> close d'une demeure, au numéro 1.<br><b>Ou faire demi-tour</b><br> et retourner en direction du marché.</span>");
+		$("#to5_3").html("Revenir vers le marché").css("background-color","#e6e2c4");
+	}
+	function to5_1() {
+		localStorage.dirFrom="Nord";
+		window.location="5.1 Porte Sud.html";
+	}
+	function to5_3() {
+		localStorage.dirFrom="Sud";
+		window.location="5.3 Rue du Marché_2.html";
+	}
+	function to5_21(){
+		alert("Vous ne pouvez pas encore faire cela.");
+	}
+	function knockN1() {
+		localStorage.audiotypeUI = "doorKnock";
+		window.open("audioUI.html", "audioUI");
+		setTimeout(function() {
+	    $("#dialog").dialog({
+	      resizable: false,
+	      height: "auto",
+	      dialogClass: 'dialogarme',
+	      buttons: {
+	        "Ok": function() {
+	          $(this).closest('.ui-dialog-content').dialog('close');
+	        }
+	      }
+	    });
+	  }, 1000);
+	}
+</script>
+<script src="js/header_normal.js"></script>
+<script src="js/footer_normal.js"></script>
+<script src="js/images2.js"></script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>
