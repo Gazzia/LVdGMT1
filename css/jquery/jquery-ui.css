@@ -1378,7 +1378,7 @@ a.ui-button:active,
 .ui-dialog.dialoggold .ui-dialog-buttonpane,
 .ui-dialog.dialogarme .ui-dialog-content{
 	background-color: #0006;
-	background-image:linear-gradient(to top, #0000004d 0%, #0000 70%),url(../../images/UI/Leather.jpg);
+	background-image:linear-gradient(to top, #0000004d 0%, #0000 70%),url(../../images/UI/leather.jpg);
 	border-top: 1px solid #ded1adb3;
 }
 .ui-dialog .ui-widget-header {
