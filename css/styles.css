@@ -101,6 +101,10 @@ input{cursor:url(../images/cursors/take.png), auto !important;}
   left: 25%;
   z-index: 6000;
   opacity: 0.8;
+  width:3.5vw;
+}
+#btnmap img {
+  width:inherit;
 }
 /* HEADER-------------------------------------------------------- */
 header {
