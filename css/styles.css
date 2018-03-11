@@ -103,7 +103,7 @@ input{cursor:url(../images/cursors/take.png), auto !important;}
   opacity: 0.8;
   width:3.5vw;
 }
-#btnmap img {
+.maplogo {
   width:inherit;
 }
 /* HEADER-------------------------------------------------------- */
