@@ -58,6 +58,7 @@ input{cursor:url(../images/cursors/take.png), auto !important;}
   width: 2.5vw; height: 100%;
   box-shadow: 2px 0px 5px hsla(0, 0%, 0%, 0.2);
   z-index:  4 !important;
+  background-size: 100% 100%;
 }
 
 #vertLeft {  position:  fixed;display: inline-block;left: calc(25% - 2.5vw);}
@@ -68,9 +69,9 @@ input{cursor:url(../images/cursors/take.png), auto !important;}
   background-size: 100%;
   background-repeat: no-repeat;
   position: fixed;
-  width: 3.7vw; height: 27px;
+  width: 3.15vw; height: 1.6vw;
   z-index: 2;
-  margin-left: -5px;
+  margin-left: -0.35vw;
 }
 #rust1a, #rust2a {  top: 15%;}
 #rust1b, #rust2b {  bottom: 15%;}
@@ -104,7 +105,7 @@ input{cursor:url(../images/cursors/take.png), auto !important;}
 /* HEADER-------------------------------------------------------- */
 header {
   background-image: url(../images/UI/elemNavHorBg.png);
-  position: fixed;
+  position:    absolute;
   top: 1vw;
   left: 25%;
   z-index: 11;
@@ -148,7 +149,7 @@ header {
 }
 
 h1 {
-  font-size: 2.5vw;
+  font-size: 5vh;
   text-align: center;
   font-family: 'Playfair Display', serif;
   color: #4c3d20;
@@ -170,7 +171,8 @@ h1:before, h1:after {
   font-family: 'Vollkorn', serif;
   line-height: 1.5em;
   position: relative;
-  padding: 10px 20px;
+  padding: 2vh 20px;
+  margin-top: 2vh;
 }
 
 
@@ -178,7 +180,7 @@ span {
   display: inline-block;
   vertical-align: middle;
   line-height: normal;
-  font-size: 1.3vw;
+  font-size: 3vh;
 }
 
 #choix {
@@ -207,7 +209,7 @@ a.btnD:hover {
   display: inline-block;
   font-family: 'Vollkorn', serif;
   color: #322110cc;
-  font-size: 1.2vw;
+  font-size: 2.6vh;
   background-color: #fffad7;
   border-radius: 4px;
   line-height: 1em;
@@ -279,6 +281,7 @@ a.iconInv {
   background-size: 100%;
   text-align: right;
   background-size: 100% 100%;
+  text-align: center;
 }
 
 #iconHealth {
@@ -293,8 +296,8 @@ a.iconInv {
   position: absolute;
   bottom: 0.65vw;
   margin: 0;
-  width: 4.5vw;
-  left: 2.5vw;
+  width: 4.4vw;
+  left: 2.3vw;
   font-size: 1vw;
 }
 
@@ -314,8 +317,8 @@ a.iconInv {
 #footerMid {
   width: 3vw;
   position: fixed;
-  left: calc(50% - 24px);
-  bottom: 25px;
+  left: calc(50% - 1.5vw);
+  bottom: 1.5vw;
   text-align: center;
 }
 
@@ -349,7 +352,7 @@ a.iconInv {
 
 #goldAmount {
   position: absolute;
-  bottom: 0.55vw;
+  bottom: 0.65vw;
   margin: 0;
   width: 75px;
   left: 15px;
