@@ -1,3 +1,7 @@
+@viewport {
+  width: device-width;
+	height: device-height;
+}
 body{
 	/* height:100%; */
 	background-image:linear-gradient(to bottom, hsla(53,80%,80%,0.50) 10%,hsla(0,0%,0%,0) 100%) , url(../back.jpg);
@@ -51,7 +55,7 @@ margin-top:20px;
 	/* background-color:#000000; */
 	position:fixed;
 	top:3px;left:48%;
-	margin:0 auto;	
+	margin:0 auto;
 }
 #goldAmount{
 	display:inline-block;
