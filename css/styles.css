@@ -58,6 +58,7 @@ input{cursor:url(../images/cursors/take.png), auto !important;}
   width: 2.5vw; height: 100%;
   box-shadow: 2px 0px 5px hsla(0, 0%, 0%, 0.2);
   z-index:  4 !important;
+  background-size: 100% 100%;
 }
 
 #vertLeft {  position:  fixed;display: inline-block;left: calc(25% - 2.5vw);}
@@ -148,7 +149,7 @@ header {
 }
 
 h1 {
-  font-size: 2.5vw;
+  font-size: 5vh;
   text-align: center;
   font-family: 'Playfair Display', serif;
   color: #4c3d20;
@@ -170,7 +171,8 @@ h1:before, h1:after {
   font-family: 'Vollkorn', serif;
   line-height: 1.5em;
   position: relative;
-  padding: 10px 20px;
+  padding: 2vh 20px;
+  margin-top: 2vh;
 }
 
 
@@ -178,7 +180,7 @@ span {
   display: inline-block;
   vertical-align: middle;
   line-height: normal;
-  font-size: 1.3vw;
+  font-size: 3vh;
 }
 
 #choix {
@@ -207,7 +209,7 @@ a.btnD:hover {
   display: inline-block;
   font-family: 'Vollkorn', serif;
   color: #322110cc;
-  font-size: 1.2vw;
+  font-size: 2.6vh;
   background-color: #fffad7;
   border-radius: 4px;
   line-height: 1em;
