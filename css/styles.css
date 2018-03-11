@@ -184,7 +184,7 @@ span {
   display: inline-block;
   vertical-align: middle;
   line-height: normal;
-  font-size: 3vh;
+  font-size: 2.8vh;
 }
 
 #choix {
@@ -213,7 +213,7 @@ a.btnD:hover {
   display: inline-block;
   font-family: 'Vollkorn', serif;
   color: #322110cc;
-  font-size: 2.6vh;
+  font-size: 2.4vh;
   background-color: #fffad7;
   border-radius: 4px;
   line-height: 1em;
