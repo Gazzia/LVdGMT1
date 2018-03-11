@@ -1,20 +1,21 @@
 #decoTopLeft, #decoTopRight{
-  position: fixed;
-  top:10px;
+  position:  inherit;
+  top:0;
 
-  width: calc(25% - 2vw);
+  width: calc(50% - 2vw);
   background-repeat: no-repeat;
   z-index: 0;
   background-size: 100% 100%;
-  left: 10px;
 }
 
 #decoTopLeft{
-  left: calc(25% - 2vw);
+  left: -1vw;
 }
 
 #decoTopRight{
-	left:calc(50% + 50px);}
+	left:calc(50% + 3vw);
+	top: 0;
+}
 
 #decoLeft, #decoRight{
   position: fixed;
