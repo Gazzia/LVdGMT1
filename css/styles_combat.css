@@ -10,20 +10,19 @@ h1{
 	margin-bottom:0px;
 }
 span{
-	margin-top:120px;
-	padding-bottom:5px;
-	margin-bottom:5px;
+	margin-top:11vh;
 	color:#000c;
-	font-size: 23px;
+	font-size: 2.7vh;
+	width: 80%;
 	}
 #hud_enemy{
 	display:inline-block;
 	border:1px solid #00000080;
 	background:linear-gradient(0.22turn, #29221899 -5%,#0000 45%), linear-gradient(0.79turn, #29221899 -5%,#0000 45%), linear-gradient(to top, #000c -2px, #0000 5%), url(../images/UI/leather3.jpg);
-	height:200px;
-	width:300px;
+	height:23vh;
+	width:18vw;
 	border-radius:2px;
-	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Vollkorn', serif;
 	text-align:left;
 	box-shadow: 0 2px 2px #0000004d;
 	margin: 0 auto;
@@ -46,7 +45,7 @@ a.btnD:hover{box-shadow: inherit;}
 }
 h3{
 	margin-left:5px;
-	font-size:20px;
+	font-size:2.5vh;
 	color:#f98e8e;
 	/*! width:90px; */
 	position:absolute;
@@ -59,15 +58,17 @@ h3{
 	font-size:25px;
 }
 .enemy_desc{
-	font-size:16px;
+	font-size:2.3vh;
 	/*! font-style:italic; */
 	color:#332723;
-	 height:100px;
-	/*! line-height:16px; */
+	 height:12vh;
+	line-height:2vh;
 	display: inline-block;
 	position: relative;
-	width: 275px;
+	width: 27vh;
 	margin: 5px;
+	font-family: Times New Roman;
+	font-weight: lighter;
 }
 #hud_dmg{
 	/* display:inline-block; */
@@ -76,12 +77,13 @@ h3{
 	border:3px double #42322a;
 	background-image:linear-gradient(0.22turn, #29221899 -5%,#0000 20%), linear-gradient(0.79turn, #29221899 -5%,#0000 20%), linear-gradient(to top, #0000004d -10px, #0000 25%), url(../images/UI/bgPaper.jpg);
 	margin:0 auto;
-	height:70px;
-	width:500px;
+	height:auto;
+	width:27vw;
 	border-radius:2px;
-	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Vollkorn', serif;
 	text-align:center;
 	color: #512323;
+	font-size: 2.2vh;
 }
 #iconPagePage_enemyvie{
 	position:absolute;
@@ -95,14 +97,24 @@ h3{
 }
 #enemy_health{
 	position:absolute;
-	margin:40px 0 0 5px;
+	margin:5vh 0 0 1vh;
 	text-align:right;
-	font-size:15px;
+	font-size:1.9vh;
 	color:#000;
 	display: inline-block;
 	background-color: #bda4a499;
 	padding: 2px 4px;
 	border-radius: 5px;
+}
+#combatText{
+	margin: 0;
+padding: 1vh;
+}
+.iconCombat{
+	height:inherit;
+}
+#hudTop{
+	height: 9vh;
 }
  #hudBottom{background:linear-gradient(0.22turn, #29221899 -5%,#0000 20%), linear-gradient(0.79turn, #29221899 -5%,#0000 20%), linear-gradient(to top, #0003 0%, #0000 10%), url(../images/UI/bgPaper.jpg);border-radius: 5px;margin: 0 5px 0px 5px;border: 1px solid #000000b3;}
 .enemyIcon{
@@ -110,6 +122,7 @@ h3{
 	border-radius:40px;
 	margin: 5px;
 	padding: 5px;
+	height: 6vh;
 }
 #ennemisCont{
 	display: block;
@@ -119,16 +132,16 @@ h3{
 	margin: 10px 0 10px 0;
 }
 #attackBtns{
-	/*! height:50px; */
-	width:285px;
-	margin: 15px 0 0 5px;
+	width:16vw;
+	margin: 1vw 0 0 1vw;
 		background: linear-gradient(0.22turn, #29221899 -5%,#0000 45%), linear-gradient(0.79turn, #29221899 -5%,#0000 45%), linear-gradient(to top, #000 -2px, #0000 25%),url(../images/UI/bgWoodh.jpg);
-	background-size: cover;
+	background-size: 100% 100%;
 	border-radius: 5px;
-	/*! z-index: -2; */
-	border: 1px solid #0000004d;
-	box-shadow: 0 2px 2px #0000004d;
+	/*! border: 1px solid #0000004d; */
+	/*! box-shadow: 0 2px 2px #0000004d; */
 	text-align: center;
+	height: 4.6vh;
 }
 .btnHit{
+	height: 4.3vh;
 }
