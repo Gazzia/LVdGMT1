@@ -119,8 +119,8 @@ header {
   width: 6.5vw;
   height: 6.5vw;
   background-image: url(../images/UI/bgPageIcon.png);
-  top: -6px !important;
-  position: fixed;
+  top: -1.3vw !important;
+  position: inherit;
   left: calc(50% - 3.2vw);
   background-size: 100% 100%;
   background-repeat: no-repeat;
