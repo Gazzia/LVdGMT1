@@ -57,12 +57,14 @@ if (localStorage.enemy_rat1_dead == 0) {
     $("#knockid").attr("onClick", "javascript: knocknock();");
     localStorage.audiotypeEnvF = "Aucun";
     window.open("audioEnvF.html", "audioEnvF")
+    window.focus();
   }
   if (nbknock == 1) {
     $("#knockid").html("Entrer par la porte entrebaillée");
     $("#knockid").attr("onClick", "entrer();");
     localStorage.audiotypeEnvF = "ratRun";
     window.open("audioEnvF.html", "audioEnvF")
+    window.focus();
   }
 } else {
   $("#knockid").html("Entrer  à l'intérieur");
@@ -75,6 +77,7 @@ function knocknock() {
   localStorage.audiotypeEnvF = "ratRun";
   window.open("audioUI.html", "audioUI");
   window.open("audioEnvF.html", "audioEnvF");
+  window.focus();
   setTimeout(function() {
     localStorage.nbknock=1;
     $("#dialog").dialog({
@@ -96,6 +99,7 @@ function entrer(){
   window.open("audioEnvB.html","audioEnvB")
   window.open("audioEnvF.html","audioEnvF")
   window.open("audioMusic.html","audioMusic")
+  window.focus();
   window.location="2.21 CombatRat.html";
 }
 </script>

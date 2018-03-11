@@ -110,6 +110,7 @@ if (numpage == 2.2) {
 function takeBaton() {
   localStorage.audiotypeUI = "takeStuff";
   window.open("audioUI.html", "audioUI");
+  window.focus();
   setTimeout(function() {
     localStorage.armeBaton=1;
     $("#dialog").attr("title", "Nouvelle arme !");
@@ -132,6 +133,7 @@ function takeBaton() {
 function takeGold() {
   localStorage.audiotypeUI = "gold";
   window.open("audioUI.html", "audioUI");
+  window.focus();
   setTimeout(function() {
     localStorage.tookRiverGold=1;
     var goldAmount_old = localStorage.getItem('goldAmount');

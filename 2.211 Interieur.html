@@ -49,6 +49,7 @@ localStorage.audiotypeMusic="MystDark_House";
 window.open("audioEnvB.html","audioEnvB")
 window.open("audioEnvF.html","audioEnvF")
 window.open("audioMusic.html","audioMusic")
+window.focus();
 
 $("#sleft, #sright").css("background","linear-gradient(to bottom, #98947c -20%, #1d1b1a 70%)")
 
@@ -62,6 +63,7 @@ function nearbody() {
         "Prendre": function() {
           localStorage.audiotypeUI = "gold";
           window.open("audioUI.html", "audioUI");
+          window.focus();
           $("#dialog").attr("title", "Courage mérite récompense !");
           $("#getitem_desc").html("+50 Or !");
           $("#getitem_img").attr("src", "images/icons/UI/shiny-purse.png");
@@ -88,6 +90,7 @@ function nearbody() {
   if (localStorage.tookCorpseGold == 1) {
     localStorage.audiotypeUI = "fleshSigh";
     window.open("audioUI.html", "audioUI")
+    window.focus();
     $("#dialog").attr("title", "Glauque..");
     $("#getitem_desc").html("Vous entrefouillez les tripes et boyaux à pleine mains en quête d'autres trésors dorés, mais non. Vous êtes immonde. Sortez donc dehors.");
     setTimeout(function() {
@@ -111,6 +114,7 @@ function sortir(){
 	window.open("audioEnvB.html","audioEnvB")
 	window.open("audioEnvF.html","audioEnvF")
 	window.open("audioMusic.html","audioMusic")
+  window.focus();
   window.location="2.2 Cabane.html";
 }
 </script>

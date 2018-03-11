@@ -61,6 +61,7 @@
 		window.open("audioEnvB.html","audioEnvB")
 		window.open("audioEnvF.html","audioEnvF")
 		window.open("audioMusic.html","audioMusic")
+		window.focus();
 		setTimeout(function () {
 			$("#histoire").html("<span class='tVeil'>Vous ne répondez pas.</span>");
 			$(".uiHide").fadeOut(5000);
@@ -83,6 +84,7 @@
 				$("#histoire").css("color", "#905d5d");
  			 		localStorage.audiotypeEnvB="Veil1";
  					window.open("audioEnvB.html","audioEnvB")
+					window.focus();
  					}, 23000);
 		setTimeout(function () {$("#histoire").hide().html("<span class='tVeil'>Dans l'obscurité complète et soudaine, vous marchez sur le vide.</span>").fadeIn('1000');}, 27000);
 		setTimeout(function () {$("#histoire").hide().html("<span class='tVeil'>un voile flotte au loin</span>").fadeIn('1000');}, 33000);
@@ -99,6 +101,7 @@
 		window.open("audioEnvB.html","audioEnvB")
 		window.open("audioEnvF.html","audioEnvF")
 		window.open("audioMusic.html","audioMusic")
+		window.focus();
 		$("#optDie").show();}, 67000);
 	}
 </script>

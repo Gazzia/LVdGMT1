@@ -60,6 +60,7 @@ $(function(){
 $("#btnMap").click(function() {
   localStorage.audiotypeUI="Page";
   window.open("audioUI.html","audioUI");
+  window.focus();
   setTimeout(function () {
     window.location="Map.html";
   },500);
