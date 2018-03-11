@@ -68,6 +68,7 @@
 	function knockN3() {
 		localStorage.audiotypeUI = "doorKnock";
 		window.open("audioUI.html", "audioUI");
+		window.focus();
 		setTimeout(function() {
 			$("#dialog").dialog({
 				resizable: false,

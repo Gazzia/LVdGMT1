@@ -55,20 +55,20 @@ input{cursor:url(../images/cursors/take.png), auto !important;}
 #vertLeft, #vertRight {
   background-image: url(../images/UI/elemNavVertBg.png);
   /*! position: fixed; */ top: 0px;
-  width: 39px; height: 100%;
+  width: 2.5vw; height: 100%;
   box-shadow: 2px 0px 5px hsla(0, 0%, 0%, 0.2);
   z-index:  4 !important;
 }
 
-#vertLeft {  position:  fixed;display: inline-block;left: calc(25% - 39px);}
-#vertRight {  right: calc(25% - 39px);position: fixed;}
+#vertLeft {  position:  fixed;display: inline-block;left: calc(25% - 2.5vw);}
+#vertRight {  right: calc(25% - 2.5vw);position: fixed;}
 
 #rust1a, #rust1b, #rust2a, #rust2b {
   background-image: url(../images/UI/elemRustbar.png);
   background-size: 100%;
   background-repeat: no-repeat;
   position: fixed;
-  width: 50px; height: 27px;
+  width: 3.7vw; height: 27px;
   z-index: 2;
   margin-left: -5px;
 }
@@ -78,7 +78,7 @@ input{cursor:url(../images/cursors/take.png), auto !important;}
   background-image: url(../images/UI/elemAng.png);
   position: fixed;
   z-index: 6;
-  width: 35px;
+  width: 2vw;
   height: 330px;
 }
 #ang1a, #ang1b {  left: -30px;}
@@ -94,7 +94,7 @@ input{cursor:url(../images/cursors/take.png), auto !important;}
   box-shadow: 0px 0px 5px hsla(0, 0%, 0%, 0.43);}
 #btnMap{
   position: fixed;
-  bottom:67px;
+  bottom:4vw;
   font-family: 'Vollkorn', serif;
   /*! font-weight: bold; */
   left: 25%;
@@ -105,32 +105,32 @@ input{cursor:url(../images/cursors/take.png), auto !important;}
 header {
   background-image: url(../images/UI/elemNavHorBg.png);
   position: fixed;
-  top: 10px;
+  top: 1vw;
   left: 25%;
-  padding-bottom: 10px;
   z-index: 11;
-  height: 66px;
+  height: 3.5vw;
   background-repeat: repeat-x;
   background-size: 100% 100%;
   width: 50%;
 }
 
 #iconPage {
-  width: 103px;
-  height: 103px;
+  width: 6.5vw;
+  height: 6.5vw;
   background-image: url(../images/UI/bgPageIcon.png);
   top: -6px !important;
   position: fixed;
-  left: calc(50% - 51.5px);
-  background-size: contain;
+  left: calc(50% - 3.2vw);
+  background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 
 .iconPageImg {
-  left: 22.5px;
-  top: 22px;
+  left: 1.5vw;
+  top: 1.5vw;
   border-radius: 15px;
   position: absolute;
+  width: 3.6vw;
 }
 /* ARTICLE-------------------------------------------------------- */
 #main {
@@ -148,14 +148,15 @@ header {
 }
 
 h1 {
-  font-size: 2.75em;
+  font-size: 2.5vw;
   text-align: center;
   font-family: 'Playfair Display', serif;
   color: #4c3d20;
-  padding-top: 60px;
+  padding-top: 6vw;
   padding-bottom: 0px;
   margin-bottom: 0px;
   text-shadow: 0px 1px 1px #0006;
+  margin-top: 0;
 }
 
 h1:before, h1:after {
@@ -177,7 +178,7 @@ span {
   display: inline-block;
   vertical-align: middle;
   line-height: normal;
-  font-size: 23px;
+  font-size: 1.3vw;
 }
 
 #choix {
@@ -199,14 +200,14 @@ a.btnD:hover {
 
 .btnD, .optNope {
   box-shadow: 0px 1px 1px #a5866780;
-  padding: 10px 10px 7px 10px;
+  padding: 0.6vw 0.6vw 0.5vw 0.6vw;
   margin-top: 15px;
   margin-left: 5px;
   margin-right: 5px;
   display: inline-block;
   font-family: 'Vollkorn', serif;
   color: #322110cc;
-  font-size: 19px;
+  font-size: 1.2vw;
   background-color: #fffad7;
   border-radius: 4px;
   line-height: 1em;
@@ -216,11 +217,6 @@ a.btnD:hover {
   border: 2px dashed #9243434d;
   color: #7e684e;
 }
-@media (max-device-width: 1285px) {
-  a.btnD, .optNope {
-    font-size: 18px;
-  }
-}
 
 .optNope {
   color: #919191;
@@ -229,50 +225,37 @@ a.btnD:hover {
 }
 #illus_cont {
   text-align: center;
-  height: 150px;
+  height: 10vw;
   margin: 0 auto;
   background-image: url(../images/UI/parchment.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin-bottom: 100px;
 }
 
 #illustr {
   margin: 0 auto;
-  margin-top: 6px;
+  margin-top: 1vw;
+  height: 7vw;
 }
 
-@media (max-device-width: 1285px) {
-  #illustr {
-    width: 500px;
-    margin-top: 20px;
-    display: inline-block;
-  }
-}
-
-@media (max-device-height: 1000px) {
-  #illustr {
-    background-size: cover;
-    width: 400px;
-  }
-}
 /* FOOTER-------------------------------------------------------- */
 footer {
   background-image: url(../images/UI/elemNavHorBg.png);
   position: fixed;
-  bottom: 10px; left: 25%;
-  width: 50%; height: 70px;
-  min-height: 60px !important;
+  bottom: 1vw; left: 25%;
+  width: 50%; height: 3.5vw;
+  /*! min-height: 60px !important; */
   font-family: 'Roboto Slab', sans-serif;
   z-index: 11;
+  background-size: 100% 100%;
 }
 
 a.iconInv {
   display: inline-block;
-  padding: 3px;
-  height: 35px;
-  width: 35px;
+  padding: 0.15vw;
+  height: 2.1vw;
+  width: 2.1vw;
   border: 3px double #dbba7a;
   border-radius: 6px;
   background-color: hsla(0, 0%, 0%, 0.3);
@@ -280,101 +263,107 @@ a.iconInv {
 
 #footerLeft {
   position: fixed;
-  left: 0;
-  bottom: 25px;
-  width: calc(50% - 24px);
-  height: 50px;
+  left: 25%;
+  bottom: 1.4vw;
+  width: calc(25% - 24px);
+  height: 3vw;
 }
 
 #hpCont {
-  position: absolute;
-  margin-left: calc(100% - 200px);
+  position:  absolute;
+  right: 1vw;
   background-image: url(../images/UI/smallparch.png);
-  width: 130px;
-  height: 47px;
-  margin-top: 5px;
+  width: 7.5vw;
+  height: 2.5vw;
+  bottom: 0.2vw;
   background-size: 100%;
   text-align: right;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 #iconHealth {
   position: absolute;
-  width: 37px;
-  height: 35px;
-  bottom: 9px;
-  left: 7px;
+  width: 2vw;
+  height: 2vw;
+  bottom: 0.3vw;
+  left: 0.2vw;
 }
 
 #plHealth {
   position: absolute;
-  bottom: 15px;
+  bottom: 0.65vw;
   margin: 0;
-  width: 75px;
-  left: 35px;
+  width: 4.5vw;
+  left: 2.5vw;
+  font-size: 1vw;
 }
 
 #pseudo {
   position: fixed;
   left: calc(25% + 10px);
-  width:180px;
-  bottom: 10px;
+  width:10vw;
+  bottom: 2.2vw;
   color: #f2d8a7;
   text-shadow: 0px 1px 6px hsla(0, 0%, 0%, 1);
   /*! height: 45px; */
   overflow: hidden;
+  font-size: 1vw;
+  margin: 0;
 }
 
 #footerMid {
-  width: 47px;
+  width: 3vw;
   position: fixed;
   left: calc(50% - 24px);
   bottom: 25px;
+  text-align: center;
 }
 
 #footerRight {
   position: fixed;
-  right: 0;
+  right: 25%;
   text-align: right;
-  bottom: 25px;
-  width: calc(50% - 24px);
-  height: 50px;
+  bottom: 1.4vw;
+  width: calc(25% - 24px);
+  height: 3vw;
 }
 
 #gdCont {
   position: absolute;
-  right: 0px;
-  margin-right: calc(100% - 200px);
+  left: 1vw;
   background-image: url(../images/UI/smallparch2.png);
-  width: 130px;
-  height: 47px;
-  margin-top: 5px;
+  width: 7vw;
+  height: 2.5vw;
+  bottom: 0.2vw;
   background-size: cover;
   text-align: left;
+  background-size: 100% 100%;
 }
 
 #iconGold {
   position: absolute;
   bottom: 11px;
   right: 8px;
-  width: 20px;
-  height: 20px;
+  height: 1.2vw;
 }
 
 #goldAmount {
   position: absolute;
-  bottom: 15px;
+  bottom: 0.55vw;
   margin: 0;
   width: 75px;
   left: 15px;
+  font-size: 1vw;
 }
 
 #plclasse {
   position: fixed;
   right: calc(25% + 10px);
-  bottom: 20px;
+  bottom: 2.2vw;
   color: #f2d8a7;
   text-shadow: 0px 1px 6px hsla(0, 0%, 0%, 1);
+  font-size: 1vw;
+  margin: 0;
 }
 /* JQUERY DIALOG-------------------------------------------------------- */
 .get_item {
