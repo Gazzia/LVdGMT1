@@ -20,10 +20,8 @@
 	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
 <article id="main">
   <div id="container_icon"><img id="iconDialogue" src="images/icons/UI/talk_min.png"></div>
-  <h1>Guarde</h1>
-  <p id="histoire"><span>
-		"Halte, Homme ! Il y a taxe! Tu payer ou partir."
-	</span></p>
+  <h1>Garde</h1>
+  <p id="histoire"><span></span></p>
   <div id="choix_dialogue">
     <a class="dialNorm" onclick="sHistoire1()" id="dialHistoire1">On ne m'avait parlé ni de mur ni de péage pour rentrer dans la ville. [Histoire]</a>
     <a class="dialNorm" onclick="sHistoire2()" id="dialHistoire2" style="display:none">Qu'est-ce qu'il se passe en ce moment ? [Histoire]</a>
@@ -36,7 +34,7 @@
     <a class="dialNorm" onclick="sPaid()" id="dialPaid" style="display:none">[Entrer à Merryvale]</a>
   </div>
   <div id="choix">
-    <a href="3 Mur.html" class="btnD">Partir</a>
+    <a href="3 Mur.html" class="btnD">Au revoir</a>
   </div>
 </article>
 <section id="sright"></section>
@@ -49,8 +47,17 @@
 localStorage.numpage=3.1;
 
 var actualgold = localStorage.goldAmount;
+
+$("#histoire").html("<span>\"Halte, "+localStorage.race+" ! Il y a taxe! Tu payer ou partir.\"</span>");
+localStorage.audiotypeUI="dial_3.1_garde_halte";
+window.open("audioUI.html","audioUI");
+window.focus();
+
 function sretour() {
-	$("#histoire").html("<span>\"Halte, Homme ! Il y a taxe! Tu payer ou partir.\"</span>");
+  localStorage.audiotypeUI="aucun";
+  window.open("audioUI.html","audioUI");
+  window.focus();
+	$("#histoire").html("<span>\"Halte, "+localStorage.race+" ! Il y a taxe! Tu payer ou partir.\"</span>");
 	$("#dialRetour").hide();
 	$("#dialHistoire1").show();
 	$("#dialHistoire2").hide();
@@ -61,6 +68,12 @@ function sretour() {
 	$("#dialWinChar").hide();
 	$("#dialPaid").hide();}
 function sHistoire1() {
+  if (localStorage.dialgardHistoire1 == 0){
+    localStorage.audiotypeUI="dial_3.1_garde_hist1";
+    window.open("audioUI.html","audioUI");
+    window.focus();
+    localStorage.dialgardHistoire1 = 1;
+  }
 	$("#histoire").html("<span>\"Tu pas du coin toi vraiment, visible ! Oui, maintenant sorties de la ville -les deux- sont sécurisées.\"</span>");
 	$("#dialHistoire1").hide();
 	$("#dialHistoire2").show();
@@ -69,6 +82,12 @@ function sHistoire1() {
 	$("#dialTryChar").hide();
 	$("#dialRetour").show();}
 function sHistoire2() {
+  if (localStorage.dialgardHistoire2 == 0){
+    localStorage.audiotypeUI="dial_3.1_garde_hist2";
+    window.open("audioUI.html","audioUI");
+    window.focus();
+    localStorage.dialgardHistoire2 = 1;
+  }
 	$("#histoire").html("<span><i>*il crache de l'argile au sol*</i>&nbsp;&nbsp; \"Ouais. Rapide: en ce moment, marauds. Ça grouille. Surtout sortie Nord ! Ici, ça va. De la ville les montagnes Est et Ouest doivent décourager eux. <br>Et dans Soufflant, bandits occupés à voler leurs propres affaires !<i>*il ricane puis se reprend*</i><br>Et ville en train remettre du passage de horde invisible, donc ici nous attention, tu vois ?\"</span>");
   $("#dialHistoire1").hide();
   $("#dialHistoire2").hide();
@@ -78,6 +97,12 @@ function sHistoire2() {
   $("#dialTryChar").hide();
   $("#dialRetour").show();}
 function sHistoire3() {
+  if (localStorage.dialgardHistoire3 == 0){
+    localStorage.audiotypeUI="dial_3.1_garde_hist3";
+    window.open("audioUI.html","audioUI");
+    window.focus();
+    localStorage.dialgardHistoire3 = 1;
+  }
   $("#histoire").html("<span>\"Imagine horde petite soldats mauvais, pillent, pillent maisons -pillent commerces, violent femmes et violent gamines et saccagent ville... Nous on voit pas pour arrêter!<br>Tant que pas résolu problème, salauds continueront...<br>Passés un bon mois avant, donc la ville tranquille reprend vie comme peut, mais méfiant, méfiant..<br>Comprends pourquoi peux pas comme ça laisser entrer, besoin ville de fonds pour revenir normal.\"</span>");
   $("#dialHistoire1").hide();
   $("#dialHistoire2").hide();
@@ -87,6 +112,12 @@ function sHistoire3() {
   $("#dialTryChar").hide();
   $("#dialRetour").show();}
 function sAskTaxe() {
+  if (localStorage.dialgardAskTaxe == 0){
+    localStorage.audiotypeUI="dial_3.1_garde_asktaxe";
+    window.open("audioUI.html","audioUI");
+    window.focus();
+    localStorage.dialgardAskTaxe = 1;
+  }
   $("#histoire").html("<span>\"Environ pièces d'or 80.<br>Attention, une fois rentré ville, jamais tu peux ressortir par d'ici.\"</span>");
   $("#dialHistoire1").hide();
   $("#dialHistoire2").hide();
@@ -130,12 +161,12 @@ function sDial_Charisme() {
 		$("#dialTryChar").hide();
 		var oddseduceguard = Math.floor(Math.random() * (10 - 1 + 1) + 1);
 		if (oddseduceguard >= 2) {
-			$("#histoire").html("<span>\"Passes pour 50 pièces d'or, pour avoir paix ! Si tu pas 50, donne moi ce tu as. Ca va ?\"<br><i>(Vous avez réussi à séduire le guarde)</i></span>");
+			$("#histoire").html("<span>\"Passes pour 50 pièces d'or, pour avoir paix ! Si tu pas 50, donne moi ce tu as. Ca va ?\"<br><i>(Vous avez réussi à séduire le garde)</i></span>");
 			$("#dialRetour").hide();
 			$("#dialWinChar").show();
 		}
 		  if (oddseduceguard < 2) {
-			$("#histoire").html("<span>\"80 pièces d'or. Pas moins.\"<br><i>(Vous n'avez pas réussi à séduire le guarde)</i></span>");
+			$("#histoire").html("<span>\"80 pièces d'or. Pas moins.\"<br><i>(Vous n'avez pas réussi à séduire le garde)</i></span>");
 			$("#dialRetour").show();
 			localStorage.failseduceguard=1
 		}

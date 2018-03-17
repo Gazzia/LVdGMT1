@@ -21,11 +21,11 @@
 	<article id="main">
 	<h1>La cité au coeur du vallon</h1>
 	<p id="histoire"><span>
-		Devant-vous, plantée dans le vallon entre les falaises, s'étend la magnifique petite cité marchande de Merryvale. Ou plutôt AURAIT dû s'étendre.<br>Au lieu de ça, une muraille à l'air récente vous bloque la vue, et l'entrée de la ville. La porte principale est surveillée par un guarde gigantesque en cotte de mailles blanche et casque d'acier.<br>Que faites-vous ?
+		Devant-vous, plantée dans le vallon entre les falaises, s'étend la magnifique petite cité marchande de Merryvale. Ou plutôt AURAIT dû s'étendre.<br>Au lieu de ça, une muraille à l'air récente vous bloque la vue, et l'entrée de la ville. La porte principale est surveillée par un garde gigantesque en cotte de mailles blanche et casque d'acier.<br>Que faites-vous ?
 	</span></p>
 	<div id="choix">
 		<!-- <a href="Inspect_1.html" class="btnD">Inspecter la zone</a> -->
-		<a onclick="avancer();" class="btnD">Avancer vers la porte</a>
+		<a onclick="avancer();" class="btnD">Avancer vers le garde</a>
 		<a href="3.2 Tunnel.html" class="btnD" id="tunnel" style="display:none">Trouver un autre moyen de passer</a>
 		<a href="2 Plaine_Debut.html" class="btnD">Retourner dans la plaine</a>
 		</div>
@@ -42,12 +42,16 @@ localStorage.numpage=3;
 /////////
 if (localStorage.talkguard == 1 && localStorage.gotcaught == 0) { $("#tunnel").show();}
 /////////
+localStorage.audiotypeUI="aucun";
+window.open("audioUI.html","audioUI");
+window.focus();
 function avancer() {
-  localStorage.audiotypeUI = "voiceHAGrunt";
-  window.open("audioUI.html", "audioUI");
-	window.focus();
-  window.location = "3.1 Guarde.html";
+  window.location = "3.1 Garde.html";
 }
+localStorage.dialgardHistoire1 = 0;
+localStorage.dialgardHistoire2 = 0;
+localStorage.dialgardHistoire3 = 0;
+localStorage.dialgardAskTaxe = 0;
 //////////////////////////////
 </script>
 <script src="js/header_normal.js"></script>

@@ -9,7 +9,7 @@
 	if (numpage==2.211){retour.href = "2.211 Interieur.html";}
 	if (numpage==2.22){retour.href = "2.22 CabaneBack.html";}
 	if (numpage==3){retour.href = "3 Mur.html";}
-	if (numpage==3.1){retour.href = "3.1 Guarde.html";}
+	if (numpage==3.1){retour.href = "3.1 Garde.html";}
 	if (numpage==3.2){retour.href = "3.2 Tunnel.html";}
 	if (numpage==4){retour.href = "4 Checkpoint.html";}
 	if (numpage==5.1){retour.href = "5.1 Porte Sud.html";}
