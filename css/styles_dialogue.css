@@ -27,22 +27,21 @@ p#histoire{
 	height:auto;
 	}
 a.dialNorm, .dialNope{
-	box-shadow: 0px 1px 3px #cea861;
-	padding:5px;
 	/*! padding-left:30px; */
 	margin:1vw 10% 1vw 10%;
 	display:block;
 	font-family: 'Alegreya Sans', sans-serif;
 	font-weight:400;
-	color:#5b4b36;
+	color:#6d6d6d;
 	font-size:1.5vw;
-	background-color:#fff8cc;
 	border-radius:6px;
 	position:   relative;
-	width: 80%;
+	max-width: 80%;
+	text-shadow: 0px 1px white;
+	/*! width: initial; */
 }
 a.dialNorm:hover{
-	box-shadow: 0px 3px 4px #c4a66d;
+	color: #1d1d1d;
 }
 .dialNope{
 	color:#919191;
