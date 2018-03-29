@@ -48,8 +48,10 @@
 localStorage.numpage=3.1;
 
 var actualgold = localStorage.goldAmount;
-if (localStorage.dialgardAskTaxe == 1){ $('#dialAskTaxe').html("A combien s'élève la taxe déjà ?");}
-if (localStorage.dialgardHistoire1 == 1){ $('#dialHistoire1').html("Reracontez-moi les problèmes de la ville");}
+function refDial(){
+  if (localStorage.dialgardAskTaxe == 1){ $('#dialAskTaxe').html("A combien s'élève la taxe déjà ?");}
+  if (localStorage.dialgardHistoire1 == 1){ $('#dialHistoire1').html("Re-racontez-moi les problèmes de la ville.");}
+}
 $("#histoire").html("<span>\"Halte, "+localStorage.race+" ! Il y a taxe! Tu payer ou tu partir.\"</span>");
 localStorage.audiotypeUI="dial_3.1_garde_halte";
 window.open("audioUI.html","audioUI");
@@ -75,6 +77,7 @@ function sHistoire1() {
     window.open("audioUI.html","audioUI");
     window.focus();
     localStorage.dialgardHistoire1 = 1;
+    refDial();
   }
 	$("#histoire").html("<span>\"Tu être pas du coin toi vraiment ! Oui, maintenant, portes de la ville sont fermées.\"</span>");
 	$("#dialHistoire1").hide();
@@ -119,6 +122,7 @@ function sAskTaxe() {
     window.open("audioUI.html","audioUI");
     window.focus();
     localStorage.dialgardAskTaxe = 1;
+    refDial();
   }
   $("#histoire").html("<span>\"80 pièces d'or.<br>Attention, une fois toi rentré en ville, jamais ressortir par cette porte.\"</span>");
   $("#dialHistoire1").hide();
