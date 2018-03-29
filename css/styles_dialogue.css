@@ -26,7 +26,7 @@ p#histoire{
 	font-weight:500;
 	height:auto;
 	}
-a.dialNorm, .dialNope{
+.dialAll{
 	/*! padding-left:30px; */
 	margin:1vw 10% 1vw 10%;
 	display:block;
@@ -41,7 +41,7 @@ a.dialNorm, .dialNope{
 	/*! width: initial; */
 }
 a.dialNorm:hover{
-	color: #1d1d1d;
+	color: #1d1d1dcc;
 }
 .dialNope{
 	text-decoration: line-through double #0000004d;
@@ -49,11 +49,13 @@ a.dialNorm:hover{
 	text-shadow: unset;
 }
 #choix_dialogue{
-	margin-top:30px!important;
+	margin-top: 30px !important;
 	margin:0 auto;
 	width: 100%;
-	height: 100px;
 	text-align: left;
+	padding: 0.5vh 0 0.5vh 0;
+	background-color: #ebe4cd80;
+	border: 2px dotted #b4a790;
 }
 #choix{
 	width: 50%;
@@ -61,4 +63,10 @@ a.dialNorm:hover{
 	position:fixed;
 	bottom:50px;
 	text-align: center;
+}
+.dialNorm:before, .dialNope:before{
+	content:"-"
+}
+.dialAct{
+	color:#8d8661cc;
 }

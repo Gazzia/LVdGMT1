@@ -23,16 +23,15 @@
   <h1>Garde</h1>
   <p id="histoire"><span></span></p>
   <div id="choix_dialogue">
-    Vous:
-    <a class="dialNorm" onclick="sHistoire1()" id="dialHistoire1">On ne m'avait parlé ni de mur ni de péage pour rentrer dans la ville. [Histoire]</a>
-    <a class="dialNorm" onclick="sHistoire2()" id="dialHistoire2" style="display:none">Qu'est-ce qu'il se passe en ce moment ? [Histoire]</a>
-    <a class="dialNorm" onclick="sHistoire3()" id="dialHistoire3" style="display:none">La quoi invisible ? [Histoire]</a>
-    <a class="dialNorm" onclick="sAskTaxe()" id="dialAskTaxe">Une taxe ? On parle de combien ?</a>
-    <a class="dialNorm" onclick="sPayTaxe()" id="dialPayTaxe" style="display:none">Très bien.. <i>(donner 80 pièces d'or)</i></a>
-    <a class="dialNorm" onclick="sDial_Charisme()" id="dialTryChar" style="display:none"><b color="red">[Charisme]</b> *Supplier*</a>
-    <a class="dialNorm" onclick="sretour()" id="dialRetour" style="display:none">[Retour]</a>
-    <a class="dialNorm" onclick="sWinChar()" id="dialWinChar" style="display:none">[Entrer à Merryvale]</a>
-    <a class="dialNorm" onclick="sPaid()" id="dialPaid" style="display:none">[Entrer à Merryvale]</a>
+    <a class="dialAll dialNorm" onclick="sHistoire1()" id="dialHistoire1">On ne m'avait parlé ni de mur ni de péage pour rentrer dans la ville. [Histoire]</a>
+    <a class="dialAll dialNorm" onclick="sHistoire2()" id="dialHistoire2" style="display:none">Qu'est-ce qu'il se passe en ce moment ? [Histoire]</a>
+    <a class="dialAll dialNorm" onclick="sHistoire3()" id="dialHistoire3" style="display:none">La quoi invisible ? [Histoire]</a>
+    <a class="dialAll dialNorm" onclick="sAskTaxe()" id="dialAskTaxe">Une taxe ? On parle de combien ?</a>
+    <a class="dialAll dialNorm" onclick="sPayTaxe()" id="dialPayTaxe" style="display:none">Très bien.. <i>(donner 80 pièces d'or)</i></a>
+    <a class="dialAll dialNorm" onclick="sDial_Charisme()" id="dialTryChar" style="display:none"><b color="red">[Charisme]</b> *Supplier*</a>
+    <a class="dialAll dialAct" onclick="sretour()" id="dialRetour" style="display:none">[Retour]</a>
+    <a class="dialAll dialNorm" onclick="sWinChar()" id="dialWinChar" style="display:none">[Entrer à Merryvale]</a>
+    <a class="dialAll dialNorm" onclick="sPaid()" id="dialPaid" style="display:none">[Entrer à Merryvale]</a>
   </div>
   <div id="choix">
     <a href="3 Mur.html" class="btnD">Au revoir</a>
@@ -188,7 +187,7 @@ function sWinChar() {
 function sPaid() {window.location = "4 Checkpoint.html"}
 /*DIVERS*/
 if (localStorage.classe != "Eloquent" || localStorage.failseduceguard == 1) {
-  $("#dialTryChar").attr('class','dialNope');
+  $("#dialTryChar").attr('class','dialAll dialNope');
 }
 </script>
 <script src="js/header_normal.js"></script>
