@@ -395,7 +395,7 @@ a.iconInv {
   position: absolute;
   display: block;
   width: 3.8vw;
-  height: 2.2vw;
+  height: 2.35vw;
   z-index: -1;
   background-image: url(../images/UI/chance.png);
   text-align: right;

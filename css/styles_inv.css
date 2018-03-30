@@ -16,7 +16,7 @@ box-shadow: 0px -1px 10px #0009;
 border-radius: 8px;
 }
 #invContenu{width: 80%;left: 10%;height: calc(100% - 36vh);}
-#invContenuSpe{width:40%;left: 30%;height: calc(100% - 300px);text-align:center;}
+#invContenuSpe{width:40%;left: 30%;height: calc(100% - 31vh);text-align:center;}
 #invContenuObj{width: 80%;left: 10%;height: calc(100% - 350px); padding-bottom: 70px}
 #container1, #container2{
 display: inline-block;
@@ -79,12 +79,12 @@ box-shadow: 0px 2px 5px hsla(0, 0%, 0%, 0.3);
 }
 #stuff, #statsCont{height: 27vh;}
 #statsCont{margin-bottom:1vh;}
-#bgSpe,#bgObj{height: calc(100% - 90px);}
+#bgSpe,#bgObj{height: calc(100% - 11vh);}
 #bgObj{padding:30px;}
 #stufftext, #statsContPaper, #textTool, #stufftextSpe{
 background-image: url("../images/UI/bgPaper.jpg");
-width: calc( 100% - 10px);
-margin: 5px;
+width: calc( 100% - 1vh);
+margin: 0.5vh;
 border:1px solid #664f4f;
 border-radius: 20px;
 display: inline-block;
@@ -92,7 +92,7 @@ height:calc(100% - 15px);
 box-shadow: 0px 1px 1px #0003;
 }
 #stufftext{	height: 15vh;}
-#stufftextSpe{height: 100px;}
+#stufftextSpe{height: 12vh;}
 #inv_arme{
 display: inline-block;
 border: 3px double #dbba7a;

@@ -11,7 +11,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="js/jquery/customScrollbar.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Open+Sans+Condensed:700|Roboto+Condensed" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Open+Sans+Condensed:700|Roboto+Condensed" rel="stylesheet">
 <script src="js/statsvar.js"></script></head>
 
 <body>
@@ -31,57 +31,34 @@
 			</div>
 			<a class="itemClass" href="" onclick="selectJambes();"><img class="itemClassimg" src="images/icons/armor/legs.png" title="Jambes
 0dmg"></a>
-			<a id="itemArmeBaton" class="itemClass" href="JavaScript:Void(0);"><img id="imgBaton" class="itemClassimg" src=""></a>
-			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
-			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
-			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
-			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
-			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
-			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
-			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
-			<a id="itemClassX" class="itemClass" href="JavaScript:Void(0);"><img class="itemClassimg" src=""></a>
 		</div>
 		<a href="Inv.html" class="btn_objets">Retour</a>
 	</div>
-<!-- DECO+FOOTER -->
-	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
-	<div id="ang1a"></div><div id="ang1b"></div>
 	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
 	<div id="ang2a"></div><div id="ang2b"></div>
-<footer>
-	<div id="footerLeft">
-		<p id="pseudo"></p>
-		<div id="hpCont">
-			<img id="iconHealth" src="images/icons/UI/plHP.png">
-			<p id="plHealth"></p>
-		</div>
-		<p id="plclasse"></p>
-	</div>
-	<div id="footerMid">
-		<a id="retour" class="iconInv"><img src="images/icons/UI/btnInv.png"></a>
-	</div>
-	<div id="footerRight">
-		<div id="gdCont"><p id="goldAmount"></p><img id="iconGold" src="images/icons/UI/coin.png"></div>
-	</div>
-</footer>
+	<img id="decoRight"><img id="decoRightbg">
+	<footer></footer>
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script>
-/* ARME */
-	/* if(localStorage.armeBaton==1){
-		document.getElementById("imgBaton").src = "images/icons/weapons/stick.png";
-		document.getElementById("imgBaton").title = "Branche de tilleul\n1dmg";
-		document.getElementById("itemArmeBaton").onclick = selectBaton;
-		document.getElementById("itemArmeBaton").href = "";	} */
-	function selectJambes(){localStorage.setItem("legSelected", "Jambes");}
+	function selectJambes() {
+	  localStorage.setItem("legSelected", "Jambes");
+	}
 	var legSelected = localStorage.legSelected;
 
-/*affichage select*/
+	/*affichage select*/
 	var imglegSelected = document.getElementById("selectedImg");
 	var textlegSelected = document.getElementById("selectedText");
-	if (legSelected == "Jambes"){
-		imglegSelected.src="images/icons/armor/legs.png";
-		textlegSelected.innerHTML="<b>Jambes</b><br>Vous portez un pantalon de toile fine.";}
+	if (legSelected == "Jambes") {
+	  imglegSelected.src = "images/icons/armor/legs.png";
+	  textlegSelected.innerHTML = "<b>Jambes</b><br>Vous portez un pantalon de toile fine.";
+	}
+	window.addEventListener('click', function(e) {
+	      if (document.getElementById('invContenuSpe').contains(e.target) == false) {
+	        window.location = "Inv.html"
+	      }
+	});
 </script>
+<script src="js/footer_normal.js"></script>
 <script src="js/globalscripts.js"></script>
 <script src="js/retour.js"></script>
 </body>
