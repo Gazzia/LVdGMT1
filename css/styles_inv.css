@@ -103,7 +103,7 @@ border-radius: 2px;
 margin: 20px;
 position: absolute;
 left: 15px;
-top: 150px;
+top: 16vh;
 border-radius: 9px;
 }
 #container_armure{
@@ -114,7 +114,7 @@ width: 300px;
 text-align: center;
 position: absolute;
 right: 15px;
-top: 17vh;
+top: 16vh;
 height: 8vh;
 border-radius: 9px;
 }
@@ -139,17 +139,17 @@ border-radius: 9px;
 }
 @media (max-device-width: 1100px){
 	.inv_item_img, .inv_armure{
-		height: 50px;
-		width:50px;
+		height: 7vh;
+		width:7vh;
 	}
 #container_armure{
-	width: 220px;
-	height:60px;
+	width: 30vh;
+	height:8.5vh;
 	padding-right:10px;
 	}
 #inv_arme{
-	height:60px;
-	width:60px;
+	height:8.5vh;
+	width:8.5vh;
 	}
 }
 h3{
