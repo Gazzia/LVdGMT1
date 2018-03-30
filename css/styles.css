@@ -213,7 +213,7 @@ a.btnD:hover {
   display: inline-block;
   font-family: 'Vollkorn', serif;
   color: #322110cc;
-  font-size: 2.4vh;
+  font-size: 2.2vh;
   background-color: #fffad7;
   border-radius: 4px;
   line-height: 1em;
@@ -390,16 +390,16 @@ a.iconInv {
   font-size:25px;
 }
 .chance:before{
-  margin-top:1.87vw;
+  margin-top:1.75vw;
   content: "";
   position: absolute;
   display: block;
-  width: 4.3vw;
-  height: 2.6vw;
+  width: 3.8vw;
+  height: 2.2vw;
   z-index: -1;
   background-image: url(../images/UI/chance.png);
   text-align: right;
-  font-size: 1.1vw;
+  font-size: 1vw;
   color: #fff9;
   font-family: Calibri;
   padding-right: 5px;
