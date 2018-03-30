@@ -18,11 +18,17 @@ var bAgi = localStorage.bAgi;
 var bInt = localStorage.bInt;
 /**/
 var totalForce = Math.round((+raceXForce * +classeXForce) * +bForce);
+localStorage.totalForce = totalForce;
 var totalMag = Math.round((+raceXMag * +classeXMag) * +bMag);
+localStorage.totalMag = totalMag;
 var totalChar = Math.round((+raceXChar * +classeXChar) * +bChar);
+localStorage.totalChar = totalChar;
 var totalDex = Math.round(+raceXDex * +bDex);
+localStorage.totalDex = totalDex;
 var totalAgi = Math.round((+raceXAgi * +classeXAgi) * +bAgi);
+localStorage.totalAgi = totalAgi;
 var totalInt = Math.round(+raceXInt * +bInt);
+localStorage.totalInt = totalInt;
 
 var armeSelected = localStorage.armeSelected;
 if(armeSelected=="Poing"){

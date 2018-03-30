@@ -32,7 +32,7 @@ p#histoire{
 	display:block;
 	font-family: 'Alegreya Sans', sans-serif;
 	font-weight:400;
-	color:#6d6d6d;
+	color:#524f4f;
 	font-size:1.5vw;
 	border-radius:6px;
 	position:   relative;
@@ -41,7 +41,7 @@ p#histoire{
 	/*! width: initial; */
 }
 a.dialNorm:hover{
-	color: #1d1d1dcc;
+	color: #424242cc;
 }
 .dialNope{
 	text-decoration: line-through double #0000004d;
