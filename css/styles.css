@@ -390,7 +390,7 @@ a.iconInv {
   font-size:25px;
 }
 .chance:before{
-  margin-top:31px;
+  margin-top:1.87vw;
   content: "";
   position: absolute;
   display: block;
@@ -399,7 +399,7 @@ a.iconInv {
   z-index: -1;
   background-image: url(../images/UI/chance.png);
   text-align: right;
-  font-size: 18px;
+  font-size: 1.1vw;
   color: #fff9;
   font-family: Calibri;
   padding-right: 5px;
