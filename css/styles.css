@@ -394,8 +394,8 @@ a.iconInv {
   content: "";
   position: absolute;
   display: block;
-  width: 69px;
-  height: 46px;
+  width: 4.3vw;
+  height: 2.6vw;
   z-index: -1;
   background-image: url(../images/UI/chance.png);
   text-align: right;
@@ -403,6 +403,7 @@ a.iconInv {
   color: #fff9;
   font-family: Calibri;
   padding-right: 5px;
+  background-size: 100% 100%;
 }
 .ch10:before{content:"10%";}
 .ch40:before{content:"40%";}
