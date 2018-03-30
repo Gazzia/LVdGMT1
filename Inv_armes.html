@@ -6,10 +6,11 @@
 	<title>La Voie du Grand Malgré-Tout</title>
 	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery/contextMenu.css">
 	<link rel="stylesheet" type="text/css" href="css/styles_inv.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script src="js/jquery/customScrollbar.js"></script>
+	<script src="js/jquery/contextMenu.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Open+Sans+Condensed:700|Roboto+Condensed" rel="stylesheet">
 <script src="js/statsvar.js"></script></head>
 
@@ -29,7 +30,7 @@
 				</div>
 			</div>
 			<div id="items">
-				<a class="itemClass" href="" onclick="selectPoings();"><img class="itemClassimg" src="images/icons/weapons/fist.png" title="Poings
+				<a id="armePoings" class="itemClass context-menu-one btn btn-neutral" href="" onclick="selectPoings();"><img class="itemClassimg" src="images/icons/weapons/fist.png" title="Poings
 	0dmg"></a>
 			</div>
 		</div>
@@ -60,6 +61,26 @@
 	        window.location = "Inv.html"
 	      }
 	});
+$(function() {
+	$.contextMenu({
+            selector: '#armePoings',
+            callback: function(key, options) {
+                var m = "clicked: " + key;
+                window.console && console.log(m) || alert(m);
+            },
+            items: {
+                "edit": {name: "Main Droite", icon: "edit"},
+                "cut": {name: "Main Gauche", icon: "cut"},
+                "sep1": "---------",
+                "quit": {name: "Quitter", icon: function(){
+                    return 'context-menu-icon context-menu-icon-quit';
+                }}
+            }
+        });
+				$('.context-menu-one').on('click', function(e){
+            console.log('clicked', this);
+        })
+    });
 </script>
 <script src="js/footer_normal.js"></script>
 <script src="js/globalscripts.js"></script>
