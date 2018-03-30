@@ -49,12 +49,12 @@
 			<div id="statsCont">
 				<div id="statsContPaper">
 				<p id="statsText">
-					<img src="images/UI/abilities/force.png" class="staticon"> <b>Force</b>: <span id="statForce">0</span><br>
-					<img src="images/UI/abilities/mag.png" class="staticon"> <b>Puissance Magique</b>: <span id="statMag">0</span><br>
-					<img src="images/UI/abilities/cha.png" class="staticon"> <b>Charisme</b>: <span id="statChar">0</span><br>
-					<img src="images/UI/abilities/disc.png" class="staticon"> <b>Agilité</b>: <span id="statAgi">0</span><br>
-					<img src="images/UI/abilities/dex.png" class="staticon"> <b>Dextérité</b>: <span id="statDex">0</span><br>
-					<img src="images/UI/abilities/int.png" class="staticon"> <b>Intelligence</b>: <span id="statInt">0</span>
+					<img src="images/UI/abilities/force.png" class="staticon"> <b>Force</b>: <span id="statForce" class="statclass">0</span><br>
+					<img src="images/UI/abilities/mag.png" class="staticon"> <b>Puissance Magique</b>: <span id="statMag" class="statclass">0</span><br>
+					<img src="images/UI/abilities/cha.png" class="staticon"> <b>Charisme</b>: <span id="statChar" class="statclass">0</span><br>
+					<img src="images/UI/abilities/disc.png" class="staticon"> <b>Agilité</b>: <span id="statAgi" class="statclass">0</span><br>
+					<img src="images/UI/abilities/dex.png" class="staticon"> <b>Dextérité</b>: <span id="statDex" class="statclass">0</span><br>
+					<img src="images/UI/abilities/int.png" class="staticon"> <b>Intelligence</b>: <span id="statInt" class="statclass">0</span>
 				</p>
 				</div>
 			</div>
@@ -63,33 +63,6 @@
 			<div id="smallercont2">
 				<div id="textTool"> </div>
 				<div id="toolCont">
-					<div id="toolShovel" class="toolCase tooltipd">
-						<a id="toolShovel_title" class="tooltiptext2">Cet emplacement peut contenir un outil.</a>
-						<img id="toolShovel_img" class="inv_tool_img" src="">
-					</div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<!-- -->
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<!-- -->
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<!-- -->
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
-					<div class="toolCase"></div>
 				</div>
 			</div>
 		<a class="btn_objets" href="Inv_objets.html">Objets divers</a>
@@ -155,8 +128,8 @@
 
 /*TOOLS*/
 	if (localStorage.objectShovel == 1){
-		$("#toolShovel_title").html("Pelle");
-		$("#toolShovel_img").attr("src","images/icons/items/shovel.png");}
+		$("#toolCont").append('<div id="toolShovel" class="toolCase tooltipd"><a id="toolShovel_title" class="tooltiptext2">Pelle</a><img id="toolShovel_img" class="inv_tool_img" src="images/icons/items/shovel.png"></div>');
+	}
 </script>
 <script src="js/globalscripts.js"></script>
 <script src="js/retour.js"></script>
