@@ -10,7 +10,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="js/jquery/customScrollbar.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Open+Sans+Condensed:700|Roboto+Condensed" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Open+Sans+Condensed:700|Roboto+Condensed" rel="stylesheet">
 <script src="js/statsvar.js"></script>
 </head>
 
@@ -53,7 +53,7 @@
 					<img src="images/UI/abilities/force.png" class="staticon"> <b>Force</b>: <span id="statForce">0</span><br>
 					<img src="images/UI/abilities/mag.png" class="staticon"> <b>Puissance Magique</b>: <span id="statMag">0</span><br>
 					<img src="images/UI/abilities/cha.png" class="staticon"> <b>Charisme</b>: <span id="statChar">0</span><br>
-					<img src="images/UI/abilities/disc.png" class="staticon"> <b>Discrétion</b>: <span id="statDisc">0</span><br>
+					<img src="images/UI/abilities/disc.png" class="staticon"> <b>Agilité</b>: <span id="statAgi">0</span><br>
 					<img src="images/UI/abilities/dex.png" class="staticon"> <b>Dextérité</b>: <span id="statDex">0</span><br>
 					<img src="images/UI/abilities/int.png" class="staticon"> <b>Intelligence</b>: <span id="statInt">0</span>
 				</p>
@@ -120,30 +120,30 @@
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script>
 /* ARME */
-	if(armeSelected=="Poing"){ 
+	if(armeSelected=="Poing"){
 		$("#armeText").html("<b>Poings</b><br>Vous ne possédez pas d'arme, et vos maigres poings peu habitués au corps à corps ne vous serviront à presque rien.");
 		$("#armeImg").attr("src","images/icons/weapons/fist.png");}
-	if(armeSelected=="Baton"){ 
+	if(armeSelected=="Baton"){
 		$("#armeText").html("<b>Branche de tilleul</b><br>Une arme rudimentaire. Cette branche pourra peut-être asséner quelques bleus à un adversaire, qui sait ?<br><b>10dmgMax</b>");
 		$("#armeImg").attr("src","images/icons/weapons/stick.png");}
-	
+
 	var headSelected = localStorage.headSelected;
-	if(headSelected=="Cheveux"){ 
+	if(headSelected=="Cheveux"){
 		$("#headText").html("<b>Cheveux</b><br>Votre seule protection contre des coups au crâne sont vos cheveux gras.");
 		$("#headImg").attr("src","images/icons/armor/head.png");}
-		
+
 	var bodySelected = localStorage.bodySelected;
-	if(bodySelected=="Torse"){ 
+	if(bodySelected=="Torse"){
 		$("#bodyText").html("<b>Torse</b><br>En plus de ne pas porter de plastron, vous êtes torse nu. Très responsable.");
-		$("#bodyImg").attr("src","images/icons/armor/torso.png");}		
-		
+		$("#bodyImg").attr("src","images/icons/armor/torso.png");}
+
 	var legSelected = localStorage.legSelected;
-	if(legSelected=="Jambes"){ 
+	if(legSelected=="Jambes"){
 		$("#legText").html("<b>Jambes</b><br>Vous portez un pantalon de toile fine.");
-		$("#legImg").attr("src","images/icons/armor/legs.png");}		
-		
+		$("#legImg").attr("src","images/icons/armor/legs.png");}
+
 	var footSelected = localStorage.footSelected;
-	if(footSelected=="Pieds"){ 
+	if(footSelected=="Pieds"){
 		$("#footText").html("<b>Pieds</b><br>Vous marchez pieds nus. Cela ne vous protège pas, mais quelles SENSATIONS!");
 		$("#footImg").attr("src","images/icons/armor/barefoot.png");}
 /*STATS*/
@@ -151,7 +151,7 @@
 	$("#statMag").html(bMag+" *("+raceXMag+"*"+classeXMag+") = <b>"+totalMag);
 	$("#statChar").html(bChar+" *("+raceXChar+"*"+classeXChar+") = <b>"+totalChar);
 	$("#statDex").html(bDex+" *("+raceXDex+") = <b>"+totalDex);
-	$("#statDisc").html(bDisc+" *("+raceXDisc+"*"+classeXDisc+") = <b>"+totalDisc);
+	$("#statAgi").html(bAgi+" *("+raceXAgi+"*"+classeXAgi+") = <b>"+totalAgi);
 	$("#statInt").html(bInt+" *("+raceXInt+") = <b>"+totalInt);
 
 /*TOOLS*/
