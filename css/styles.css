@@ -34,7 +34,7 @@ body {
 }
 .bgVoile{ background: linear-gradient(to bottom, #b7311d -50%, #0000 40%),black;}
 
-a.dialNorm {cursor: url(../images/cursors/talk.png), auto !important;}
+#choix_dialogue, a.dialAll {cursor: url(../images/cursors/talk.png), auto !important;}
 a.btnD, a.btn_objets, a, button {cursor: url(../images/cursors/hand.png), auto !important;}
 a.cursorTake {cursor: url(../images/cursors/take.png), auto !important;}
 a.cursorHit {cursor: url(../images/cursors/hit.png), auto !important;}
@@ -389,3 +389,20 @@ a.iconInv {
 .tVeil{
   font-size:25px;
 }
+.chance:before{
+  margin-top:31px;
+  content: "";
+  position: absolute;
+  display: block;
+  width: 69px;
+  height: 46px;
+  z-index: -1;
+  background-image: url(../images/UI/chance.png);
+  text-align: right;
+  font-size: 18px;
+  color: #fff9;
+  font-family: Calibri;
+  padding-right: 5px;
+}
+.ch10:before{content:"10%";}
+.ch40:before{content:"40%";}
