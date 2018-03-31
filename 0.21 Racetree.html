@@ -17,13 +17,20 @@
 </div>
 
 <script>
-setTimeout(function () {
-	$("#centeredTree").css({"-webkit-transform":"scale(1)","-ms-transform":"scale(1)","transform":"scale(1)","opacity":"1"});
+setTimeout(function() {
+  $("#centeredTree").css({
+    "transform": "scale(1)",
+    "opacity": "1"
+  });
 }, 500);
-function closeTree(){
-	$("#centeredTree").css({"-webkit-transform":"scale(5)","-ms-transform":"scale(5)","transform":"scale(5)","opacity":"0"});
-	setTimeout(function () {window.location="0.2 Race.html";}, 1000);
-
+function closeTree() {
+  $("#centeredTree").css({
+    "transform": "scale(5)",
+    "opacity": "0"
+  });
+  setTimeout(function() {
+    window.location = "0.2 Race.html";
+  }, 1000);
 }
 </script>
 </body>

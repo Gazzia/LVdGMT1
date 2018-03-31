@@ -5,7 +5,6 @@ body, html {
   min-height: 100%;
   margin: 0;
   overflow: initial;
-  background-color: ##E8D4A2;
   background-size: cover;
   -moz-user-select: none;
   user-select: none;
@@ -22,8 +21,6 @@ body, html {
   background-repeat: repeat-x;
   background-attachment: fixed;
 }
-
-
 body {
   background: linear-gradient(to top, #683a0080 -20%, #0000 40%), linear-gradient(0.67turn, #5d3c004d, #0000 20%), linear-gradient(0.33turn, #fff5d4, #0000 20%), linear-gradient(to bottom, #f5eba380, #0000 100%), url(../images/UI/bgPaper.jpg) no-repeat center fixed;
   background-attachment: fixed;
