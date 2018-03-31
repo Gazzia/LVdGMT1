@@ -18,7 +18,7 @@
 		<div id="contTImgs"></div>
 		<div id="iconPage"><img class="iconPageImg" src="images/icons/page/eye.png"></div>
 	</header>
-  <div id="clouds"></div><div id="cloudsbg"></div>
+  <div id="clouds" class="clouds"></div><div id="cloudsbg" class="clouds"></div>
   <section id="sleft"> </section>
     <div id="ang1a"></div><div id="ang1b"></div><div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
   <article id="main">
@@ -60,11 +60,9 @@ if (numpage == 6.1) {
   $("#buttonBack").attr("href", "6.1 Rue de la Clef.html");
 }
 if (numpage == 6.11) {
-  if (localStorage.GMTDrankPotion == 0){
-	   $("#histoire").html("<span>Le petit hall n'est pas très grand, mais plongé dans une ambiance mystérieuse. La petite fiole vous intrigue : devriez-vous boire son contenu ? Celui-ci est impossible à deviner d'après son apparence.. \"Rejoignez-nous\". Rejoindre qui ? Et comment, avec une simple fiole ?</span>");
-   } else {
-     $("#histoire").html("<span>Le petit hall n'est pas très grand, mais plongé dans une ambiance mystérieuse. Une sensation chaude vous traverse l'estomac, et vous vous sentez heureux ici ! Pourquoi ne pas avancer, tout est si bien, et le voile bouge, pourquoi les faire attendre ? - Un voile ? Quel voile ? Vous avez parlé tout haut, et vous ne vous souvenez même pas de ce que vous venez de dire. </span>");
-   }
+  $(".clouds").hide();
+  $("#sleft, #sright").css("background-image","linear-gradient(to bottom, #707b79, #9bacac, #586469, #1f1f1f 110%)");
+  $("#histoire").html("<span>Le petit hall n'est pas très grand, et serait complêtement terne si il n'y avait ces quelques fleurs sur le guéridon, au centre. C'est un temple, après tout !</span>");
   $("#buttonBack").attr("href", "6.11 Temple_gmt.html");
 }
 </script>
