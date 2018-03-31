@@ -22,11 +22,11 @@
 		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</p>
 	<div id="choix">
-		<a href="6.111 Temple_gmt_main.html" class="btnD" id="optForward">Avancer vers la grande porte</a><br>
-		<a onclick="tempDoors();" class="btnD" id="optLeft">Essayer d'entrer à gauche</a>
+		<a href="6.111 Temple_gmt_main.html" class="btnD" id="optForward">Entrer par la grande porte</a><br>
+		<a onclick="tempDoors();" class="btnD" id="optLeft">Entrer à gauche</a>
 		<a href="Inspect_2.html" class="btnD" id="optInspect">Inspecter la zone</a>
-		<a onclick="tempDoors();" class="btnD" id="optRight">Essayer d'entrer à droite</a> <br>
-		<a onclick="drinkPotion();"  id="optBoire" class="btnD cursorTake">Boire la petite fiole</a>
+		<a onclick="tempDoors();" class="btnD" id="optRight">Entrer à droite</a> <br>
+		<a onclick="wakeup();"  id="optBoire" class="btnD cursorTake">Réveiller le dormeur</a>
 		<a onclick="readyFn();" class="btnD" style="display:none" id="optOk">Ok</a>
 		<a onclick="leaveTry();" class="btnD" id="optSortir">Sortir</a>
 	</div>
@@ -42,9 +42,11 @@
 $(document).ready(readyFn);
 localStorage.numpage=6.11;
 localStorage.select_dial=0;
-var histoireBase = "<span><i>Vous entrez dans un petit hall de pierre.<br>Sur les murs et la voûte du plafond, d'épaisses runes semblent raconter une histoire que vous ne pouvez pas saisir.</i><br><br><b>Dans la pièce</b><br>Au centre, une petite fiole rose étiquettée \"Rejoignez-nous\" est posée sans surveillance sur un guéridon fleuri.<br><b>A gauche</b><br>une petite porte en bois rouge.<br><b>A droite</b><br>Une petite porte sombre indique \"Loge prêtre\" et semble mener au 8 de la rue.<br><b>En face</b><br>Un grande porte entrouverte. Elle est, comme la porte qui mène à la rue, travaillée et dans un bois sombre.<br>Il vous semble que c'est d'ici que proviennent les chants.<br><b>Derrière vous</b><br>Une large porte donne sur la rue.</span>";
-var histoireWOPotion = "<span>Vous entrez dans un petit hall de pierre. Sur les murs et la voûte du plafond, d'épaisses runes semblent raconter une histoire que vous ne pouvez pas saisir.<br>Au centre de la pièce se trouve un petit guéridon fleuri.<br><br>Ce hall comporte quatre portes, toutes fermées sauf une grande, en face, qui est entrouverte. C'est de là que viennent les chants, et une force irrésistible vous pousse à aller voir, qu'importe les autres portes !<br>Derrière vous, une large porte donne sur la rue.</span>";
-
+var histoireBase = "<span><i>Vous entrez dans un petit hall de pierre.<br>Sur les murs et la voûte du plafond, d'épaisses runes semblent raconter une histoire que vous ne pouvez pas saisir.<br>Dans un coin, un Oculain vêtu d'une toge violette dort profondément sur une chaise.</i><br><br>"+
+"<b>Dans la pièce</b><br>Au centre, un guéridon fleuri porte une petite pancarte \"Temple du Grand Malgré-Tout\".<br>"+
+"<b>A gauche</b><br>Une petite porte en bois rouge.<br>"+
+"<b>A droite</b><br>Une petite porte sombre indique \"Loge du Maître\" et semble mener au 8 de la rue.<br>"+
+"<b>En face</b><br>Un grande porte fermée. Elle est très travaillée et en bois blanc.<br>C'est de là que provient la musique que vous entendiez depuis la rue.<br><b>Derrière vous</b><br>La large porte retourne sur la rue.</span>";
 function readyFn() {
   if (localStorage.GMTDrankPotion == 1) {
     $("#histoire").html(histoireWOPotion);
@@ -61,18 +63,6 @@ function readyFn() {
     $(".btnD").show();
     $("#optOk").hide();
   }
-}
-
-function drinkPotion() {
-  localStorage.GMTDrankPotion=1;
-  $("#histoire").html("<span>Sans réfléchir, vous buvez d'un trait la potion tant que personne ne peut vous surprendre.<br>Sur le moment vous ne sentez rien de spécial. Peut-être une faible chaleur ?</span>");
-  $("#optOk").show();
-  $("#optForward").hide();
-  $("#optLeft").hide();
-  $("#optInspect").hide();
-  $("#optRight").hide();
-  $("#optBoire").hide();
-  $("#optSortir").hide();
 }
 
 function tempDoors() {
