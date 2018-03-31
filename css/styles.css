@@ -303,14 +303,14 @@ a.iconInv {
 }
 
 #pseudo {
-  position: fixed;
-  left: calc(25% + 10px);
-  width:10vw;
-  bottom: 2.2vw;
+  position: absolute;
+  left: 1vw;
+  width:13vw;
+  bottom: 0.6vw;
   color: #f2d8a7;
   text-shadow: 0px 1px 6px hsla(0, 0%, 0%, 1);
-  /*! height: 45px; */
-  overflow: hidden;
+  height: 1.5vw;
+  overflow:   auto;
   font-size: 1vw;
   margin: 0;
 }
@@ -422,7 +422,7 @@ a.iconInv {
   font-family: 'Vollkorn', serif;
   color: #fff !important;
   font-size: 2.2vh;
-  background-color: #d6d6d6cc;
+  background-color: #d6d6d64d;
   border-radius: 4px;
   line-height: 1em;
   border:none;

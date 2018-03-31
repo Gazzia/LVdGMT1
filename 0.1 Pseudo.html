@@ -21,7 +21,7 @@
 		<form>
 			Votre nom pour l'aventure :<br>(masculin)<br>
 			<div id="formBg">
-				<input type="text" id="copseudo" name="firstname" value="" data-lpignore="true">
+				<input type="text" id="copseudo" value="" data-lpignore="true">
 			</div>
 		</form>
 		<a onclick="continuer();" class="btnD">Continuer</a>
@@ -34,6 +34,12 @@
 </footer>
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script>
+$(function() {
+    $("form").submit(function() { return false; });
+});
+$(document).keyup(function(event) {
+	if ($("#copseudo").is(":focus") && event.key == "Enter") {continuer();}
+});
 $("#copseudo").focus();
 function continuer(){
 	var dapseudo = $('#copseudo').val();
