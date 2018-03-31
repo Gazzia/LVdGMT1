@@ -26,7 +26,7 @@
 		<a onclick="to6_1();" class="btnD btnDash" id="to6_1">Prendre la rue de la Clef</a>
 		<a href="Inspect_2.html" class="btnD">Inspecter la zone</a>
 		<a onclick="to7_1();" class="btnD btnDash"id="to7_1">Prendre la rue Blanche</a> <br>
-		<a href="5.11 Anguleux.html" class="btnD">S'approcher de l'anguleux</a>
+		<a href="5.11 Angulain.html" class="btnD">S'approcher de l'angulain</a>
 	</div>
 </article>
 <section id="sright"></section>
@@ -39,18 +39,18 @@
 	localStorage.numpage=5.1;
 
 	if (localStorage.dirFrom=="Sud"){
-		$("#histoire").html("<span><i>Vous vous trouvez à l'entrée Sud de la ville.<br>Vous pouvez décider d'emprunter trois rues différentes :</i><br><br><b>En face</b><br>La <u>rue du Marché</u> monte doucement vers le Nord. Cela semble être l'artère principale de la ville, au vu de sa largeur.<br><b>A gauche,</b><br>l'étroite <u>rue de la Clef</u> serpente entre les bâtiments.<br>Du coin de l'oeil, vous remarquez qu'un anguleux vous observe, adossé à un mur à l'entrée de la rue de la Clef.<br><b>A droite</b><br>La <u>rue Blanche</u> file avec goût entre un bâtiment et un parterre de fleurs au pied du mur.</span>");
+		$("#histoire").html("<span><i>Vous vous trouvez à l'entrée Sud de la ville.<br>Vous pouvez décider d'emprunter trois rues différentes :</i><br><br><b>En face</b><br>La <u>rue du Marché</u> monte doucement vers le Nord. Cela semble être l'artère principale de la ville, au vu de sa largeur.<br><b>A gauche,</b><br>l'étroite <u>rue de la Clef</u> serpente entre les bâtiments.<br>Du coin de l'oeil, vous remarquez qu'un angulain vous observe, adossé à un mur à l'entrée de la rue de la Clef.<br><b>A droite</b><br>La <u>rue Blanche</u> file avec goût entre un bâtiment et un parterre de fleurs au pied du mur.</span>");
 	}
 	if (localStorage.dirFrom=="Nord"){
-		$("#histoire").html("<span><i>Vous quittez la rue du Marché et êtes de retour à l'entrée Sud de la ville et son carrefour.<br>Vous pouvez décider d'aller :</i><br><br><b>A gauche</b><br>La <u>rue Blanche</u> file avec goût entre un bâtiment et un parterre de fleurs au pied du mur.<br><b>A droite,</b><br>l'étroite <u>rue de la Clef</u> serpente entre les bâtiments.<br>L'anguleux vous observe toujours, adossé à un mur à l'entrée de la rue de la Clef.<br><b>Ou faire demi-tour</b><br> et retourner rue du Marché.</span>");
+		$("#histoire").html("<span><i>Vous quittez la rue du Marché et êtes de retour à l'entrée Sud de la ville et son carrefour.<br>Vous pouvez décider d'aller :</i><br><br><b>A gauche</b><br>La <u>rue Blanche</u> file avec goût entre un bâtiment et un parterre de fleurs au pied du mur.<br><b>A droite,</b><br>l'étroite <u>rue de la Clef</u> serpente entre les bâtiments.<br>L'angulain vous observe toujours, adossé à un mur à l'entrée de la rue de la Clef.<br><b>Ou faire demi-tour</b><br> et retourner rue du Marché.</span>");
 		$("#to5_2").html("Revenir rue du Marché").css("background-color","#e6e2c4");
 	}
 	if (localStorage.dirFrom=="Ouest"){
-		$("#histoire").html("<span><i>Vous quittez la rue de la Clef et êtes de retour à l'entrée Sud de la ville et son carrefour.<br>Vous pouvez décider d'aller :</i><br><br><b>En face</b><br>La <u>rue Blanche</u> file avec goût entre un bâtiment et un parterre de fleurs au pied du mur.<br><b>A gauche,</b><br>La <u>rue du Marché</u> monte doucement vers le Nord.<br>L'anguleux vous observe toujours, adossé à un mur à l'entrée de la rue de la Clef.<br><b>Ou faire demi-tour</b><br> et retourner rue de la Clef.</span>");
+		$("#histoire").html("<span><i>Vous quittez la rue de la Clef et êtes de retour à l'entrée Sud de la ville et son carrefour.<br>Vous pouvez décider d'aller :</i><br><br><b>En face</b><br>La <u>rue Blanche</u> file avec goût entre un bâtiment et un parterre de fleurs au pied du mur.<br><b>A gauche,</b><br>La <u>rue du Marché</u> monte doucement vers le Nord.<br>L'angulain vous observe toujours, adossé à un mur à l'entrée de la rue de la Clef.<br><b>Ou faire demi-tour</b><br> et retourner rue de la Clef.</span>");
 		$("#to6_1").html("Revenir rue de la Clef").css("background-color","#e6e2c4");
 	}
 	if (localStorage.dirFrom=="Est"){
-		$("#histoire").html("<span><i>Vous quittez la rue Blanche et êtes de retour à l'entrée Sud de la ville et son carrefour.<br>Vous pouvez décider d'aller :</i><br><br><b>En face</b><br>l'étroite <u>rue de la Clef</u> serpente entre les bâtiments.<br>L'anguleux vous observe toujours, adossé à un mur à l'entrée de la rue de la Clef.<br><b>A droite,</b><br>La <u>rue du Marché</u> monte doucement vers le Nord.<br><b>Ou faire demi-tour</b><br> et retourner rue Blanche.</span>");
+		$("#histoire").html("<span><i>Vous quittez la rue Blanche et êtes de retour à l'entrée Sud de la ville et son carrefour.<br>Vous pouvez décider d'aller :</i><br><br><b>En face</b><br>l'étroite <u>rue de la Clef</u> serpente entre les bâtiments.<br>L'angulain vous observe toujours, adossé à un mur à l'entrée de la rue de la Clef.<br><b>A droite,</b><br>La <u>rue du Marché</u> monte doucement vers le Nord.<br><b>Ou faire demi-tour</b><br> et retourner rue Blanche.</span>");
 		$("#to7_1").html("Revenir rue Blanche").css("background-color","#e6e2c4");
 	}
 	function to5_2(){

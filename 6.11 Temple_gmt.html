@@ -84,6 +84,12 @@ function tempDoors() {
 
 function leaveTry() {
   if (localStorage.GMTDrankPotion == 0) {
+		localStorage.audiotypeEnvB="CityCalm";
+		localStorage.audiotypeEnvF="Aucun";
+		localStorage.audiotypeMusic="CityHappy";
+		window.open("audioEnvB.html","audioEnvB")
+		window.open("audioEnvF.html","audioEnvF")
+		window.open("audioMusic.html","audioMusic")
     window.location = "6.1 Rue de la clef.html";
   } else {
     $("#histoire").html("<span>Au final, avez-vous vraiment envie de sortir? Pas vraiment.. Par contre, la grande porte en face vous attire comme un aimant !</span>");

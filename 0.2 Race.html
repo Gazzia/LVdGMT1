@@ -36,8 +36,8 @@
 			<input type="radio" name="raceType" id="raceFerre">
 			<span class="checkmark"></span>
 		</label>
-		<label class="container" onchange="changeClass">Anguleux
-			<input type="radio" name="raceType" id="raceAnguleux">
+		<label class="container" onchange="changeClass">Angulain
+			<input type="radio" name="raceType" id="raceAngulains">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container" onchange="changeClass">Golem de Sang
@@ -69,32 +69,65 @@ var getitem_desc = document.getElementById("getitem_desc");
 $('.container').click(function() {
    if($('#raceHomme').is(':checked')) {
 	$("#iconClass").attr("src","images/Classes/homme.png");
-	$("#classDesc").html("<h2>Hommes</h2><hr><i>Les hommes représentent la partie la plus importante de la population mondiale. Leurs avant membres très développés ont très vite fait d'eux des artisans et constructeurs hors-pair. C'est ainsi grâce à leur savoir-faire que les premières villes ont été érigées.</i><br><br><b>Paricularités</b><br>+10% de Dextérité et +10% de Force<br>-10♥max au départ et -10% de Puissance Magique<br><br><b>Relations particulières</b><br>Les humains s'entendent mal avec les <font color=\"darkred\">Anguleux</font> qu'ils jugent peu sociables. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Feûlains</font>, leurs partenaires économiques de toujours, et celle des <font color=\"darkblue\">Ferrés</font>.");
+	$("#classDesc").html(
+	"<h2>Hommes</h2><hr>"+
+	"<i>Les hommes représentent la partie la plus importante de la population mondiale. Leurs avant membres très développés ont très vite fait d'eux des artisans et constructeurs hors-pair. C'est ainsi grâce à leur savoir-faire que les premières villes ont été érigées.</i><br><br>"+
+	"<b>Paricularités</b><br>"+
+	"+10% de Dextérité et +10% de Force<br>-10♥max au départ et -10% de Puissance Magique<br><br>"+
+	"<b>Relations particulières</b><br>"+
+	"Les humains s'entendent mal avec les <font color=\"darkred\">Angulains</font> qu'ils jugent peu sociables. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Feûlains</font>, leurs partenaires économiques de toujours, et celle des <font color=\"darkblue\">Ferrés</font>.");
 	darace="Homme";
 	}
    if($('#raceOculain').is(':checked')) {
 	$("#iconClass").attr("src","images/Classes/oculain.png");
-	$("#classDesc").html("<h2>Oculains</h2><hr><i>Les Oculains sont  des individus simples mais très actifs, à l'instinct grégaire, qui ont un rapport à la nature très fusionnel. Habitant souvent loin de l'agitation des villes, ils préfèrent le calme des régions isolées, où ils vivent d'agriculture dans de petits hameaux, où ils devisent ensemble au crépuscule, avec le rythme de conversation agité et alambiqué qui leur est propre.</i><br><br><b>Paricularités</b><br>+10% de Dextérité et +10% d'Intelligence<br>-10% de Charisme et -10% d'Agilité<br><br><b>Relations particulières</b><br>Les oculains s'entendent mal avec les <font color=\"darkred\">Anguleux</font>, qui ont un rapport de domination avec eux. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Hommes</font>, des <font color=\"darkblue\">Ferrés</font>, et des <font color=\"darkblue\">Feûlains</font>, qui ne portent pas sur eux un regard de jugement.");
+	$("#classDesc").html(
+	"<h2>Oculains</h2><hr>"+
+	"<i>Les Oculains sont  des individus simples mais très actifs, à l'instinct grégaire, qui ont un rapport à la nature très fusionnel. Habitant souvent loin de l'agitation des villes, ils préfèrent le calme des régions isolées, où ils vivent d'agriculture dans de petits hameaux, où ils devisent ensemble au crépuscule, avec le rythme de conversation agité et alambiqué qui leur est propre.</i><br><br>"+
+	"<b>Paricularités</b><br>"+
+	"+10% de Dextérité et +10% d'Intelligence<br>-10% de Charisme et -10% d'Agilité<br><br>"+
+	"<b>Relations particulières</b><br>"+
+	"Les oculains s'entendent mal avec les <font color=\"darkred\">Angulains</font>, qui ont un rapport de domination avec eux. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Hommes</font>, des <font color=\"darkblue\">Ferrés</font>, et des <font color=\"darkblue\">Feûlains</font>, qui ne portent pas sur eux un regard de jugement.");
 	darace="Oculain";
 	}
    if($('#raceFeulain').is(':checked')) {
 	$("#iconClass").attr("src","images/Classes/feulain.png");
-	$("#classDesc").html("<h2>Feûlains</h2><hr><i>Êtres peu habiles, les feûlains se sont très vite rendus compte que faute de savoirs-faire particuliers, ils avaient une capacité à enjôler de leurs mots les autres individus. C'est aujourd'hui une population avant tout marchande.</i><br><br><b>Paricularités</b><br>+10% de Charisme et +10% d'Agilité<br>-10% de Force et -10% de Puissance Magique<br><br><b>Relations particulières</b><br>Les feûlains s'entendent mal avec les <font color=\"darkred\">Ferrés</font> qu'ils jugent hautains, et parce qu'ils maîtrisent la magie, dont les feûlains sont presque dépourvus. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Hommes</font>, leurs partenaires économiques de toujours, et celle des <font color=\"darkblue\">Anguleux</font>.");
+	$("#classDesc").html(
+		"<h2>Feûlains</h2><hr>"+
+		"<i>Êtres peu habiles, les feûlains se sont très vite rendus compte que faute de savoirs-faire particuliers, ils avaient une capacité à enjôler de leurs mots les autres individus. C'est aujourd'hui une population avant tout marchande.</i><br><br>"+
+		"<b>Paricularités</b><br>"+
+		"+10% de Charisme et +10% d'Agilité<br>-10% de Force et -10% de Puissance Magique<br><br>"+
+		"<b>Relations particulières</b><br>"+
+		"Les feûlains s'entendent mal avec les <font color=\"darkred\">Ferrés</font> qu'ils jugent hautains, et parce qu'ils maîtrisent la magie, dont les feûlains sont presque dépourvus. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Hommes</font>, leurs partenaires économiques de toujours, et celle des <font color=\"darkblue\">Angulains</font>.");
 	darace="Feûlain";
 	}
    if($('#raceFerre').is(':checked')) {
 	$("#iconClass").attr("src","images/Classes/ferre.png");
-	$("#classDesc").html("<h2>Ferrés</h2><hr><i>Les Ferrés sont réputés pour êtres les transcripteurs du savoir. Ce sont des créatures très intelligentes, et qui ont un contact supérieur avec l'occulte. Ils vivent souvent seuls, individus à l'ego surdimensionné, pour se consacrer aux arts magiques et à la connaissance.</i><br><br><b>Paricularités</b><br>+10% d'Intelligence et +10% de Puissance Magique<br>-10% de Force et -10♥max au départ<br><br><b>Relations particulières</b><br>Les ferrés s'entendent mal avec les <font color=\"darkred\">Hommes d'argile</font> depuis la rebéllion de ces derniers, ainsi qu'avec les <font color=\"darkred\">Anguleux</font> et les <font color=\"darkred\">Feûlains</font>, qu'ils jugent idiots. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Humains</font>, dont ils apprécient l'intérêt  qu'ils portent pour eux.");
+	$("#classDesc").html("<h2>Ferrés</h2><hr>"+
+	"<i>Les Ferrés sont réputés pour êtres les transcripteurs du savoir. Ce sont des créatures très intelligentes, et qui ont un contact supérieur avec l'occulte. Ils vivent souvent seuls, individus à l'ego surdimensionné, pour se consacrer aux arts magiques et à la connaissance.</i><br><br>"+
+	"<b>Paricularités</b><br>"+
+	"+10% d'Intelligence et +10% de Puissance Magique<br>-10% de Force et -10♥max au départ<br><br>"+
+	"<b>Relations particulières</b><br>Les ferrés s'entendent mal avec les <font color=\"darkred\">Hommes d'argile</font> depuis la rebéllion de ces derniers, ainsi qu'avec les <font color=\"darkred\">Angulains</font> et les <font color=\"darkred\">Feûlains</font>, qu'ils jugent idiots. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Humains</font>, dont ils apprécient l'intérêt  qu'ils portent pour eux.");
 	darace="Ferré";
 	}
-   if($('#raceAnguleux').is(':checked')) {
-	$("#iconClass").attr("src","images/Classes/anguleux.png");
-	$("#classDesc").html("<h2>Anguleux</h2><hr><i>Les anguleux descendent tout droit des anciens grands charognards. C'est une population généralement très fière et peu loquace, qui ne se laisse pas marcher dessus. Ils ont su dans l'histoire s'approprier le bien commun pour aujourd'hui être une population assez aisée.</i><br><br><b>Paricularités</b><br>+10♥max au début et +10% d'Agilité<br>-10% de Charisme -10% de Dextérité<br><br><b>Relations particulières</b><br>Les anguleux s'entendent plutôt mal avec les <font color=\"darkred\">Hommes</font>, les <font color=\"darkred\">Oculains</font>, et  les <font color=\"darkred\">Ferrés</font> à cause de leur caractère renfermé. Étrangement, ils acceptent la compagnie des <font color=\"darkblue\">Feûlains</font>.");
-	darace="Anguleux";
+   if($('#raceAngulains').is(':checked')) {
+	$("#iconClass").attr("src","images/Classes/angulain.png");
+	$("#classDesc").html("<h2>Angulains</h2><hr>"+
+	"<i>Les angulains descendent tout droit des anciens grands charognards. C'est une population généralement très fière et peu loquace, qui ne se laisse pas marcher dessus. Ils ont su dans l'histoire s'approprier le bien commun pour aujourd'hui être une population assez aisée. Ils sont souvent surnommés \"Anguleux\" par moquerie vis-à-vis de leur approche très froide et distante.</i><br><br>"+
+	"<b>Paricularités</b><br>"+
+	"+10♥max au début et +10% d'Agilité<br>-10% de Charisme -10% de Dextérité<br><br>"+
+	"<b>Relations particulières</b><br>"+
+	"Les angulains s'entendent plutôt mal avec les <font color=\"darkred\">Hommes</font>, les <font color=\"darkred\">Oculains</font>, et  les <font color=\"darkred\">Ferrés</font> à cause de leur caractère renfermé. Étrangement, ils acceptent la compagnie des <font color=\"darkblue\">Feûlains</font>.");
+	darace="Angulain";
 	}
    if($('#raceGolemsang').is(':checked')) {
 	$("#iconClass").attr("src","images/Classes/hommeargile.png");
-	$("#classDesc").html("<h2>Hommes d'Argile</h2><hr><i>Les Golems d'Argile sont une création magique des Ferrés, qui voulaient soulever les éléments terrestres à la vie pour en faire des esclaves. Le résultat a été plus que brillant : les serviteurs d'argiles étaient juste assez conscients pour comprendre que leur condition d'esclave ne leur convenait pas.. Certains d'entre eux ont demandé à des mages non-angulains de les rendre plus humanoïdes, c'est ainsi que les Golems de Sang sont nés, colosses de chair en général calmes et pacifiques, malgré leur stature.</i><br><br><b>Paricularités</b><br>+10% de Force et +10♥max au départ<br>-10% d'Intelligence et -10% d'Agilité<br><br><b>Relations particulières</b><br>Les golems de sang s'entendent mal avec les <font color=\"darkred\">Ferrés</font> depuis l'insurréction. En relation pacifique avec les autres races, ils aiment particulièrement la compagnie des <font color=\"darkblue\">Oculains</font>, créatures appréciant également la paix et la simplicité.");
+	$("#classDesc").html(
+		"<h2>Golems de Sang</h2><hr>"+
+		"<i>Les Golems d'Argile sont une création magique des Ferrés, qui voulaient soulever les éléments terrestres à la vie pour en faire des esclaves. Le résultat a été plus que brillant : les serviteurs d'argiles étaient juste assez conscients pour comprendre que leur condition d'esclave ne leur convenait pas.. Certains d'entre eux ont demandé à des mages non-angulains de les rendre plus humanoïdes, c'est ainsi que les Golems de Sang sont nés, colosses de chair en général calmes et pacifiques, malgré leur stature.</i><br><br>"+
+		"<b>Paricularités</b><br>"+
+		"+10% de Force et +10♥max au départ<br>-10% d'Intelligence et -10% d'Agilité<br><br>"+
+		"<b>Relations particulières</b><br>"+
+		"Les golems de sang s'entendent mal avec les <font color=\"darkred\">Ferrés</font> depuis l'insurréction. En relation pacifique avec les autres races, ils aiment particulièrement la compagnie des <font color=\"darkblue\">Oculains</font>, créatures appréciant également la paix et la simplicité.");
 	darace="Golem de Sang";
 	}
 });
@@ -122,7 +155,7 @@ function confirmRace(){
 			localStorage.raceXForce=0.9;
 			localStorage.plHealth=localStorage.plHealthMax=90;
 		}
-		if (darace=="Anguleux"){
+		if (darace=="Angulain"){
 			localStorage.plHealth=localStorage.plHealthMax=110;
 			localStorage.raceXAgi=1.1;
 			localStorage.raceXChar=localStorage.raceXDex=0.9;

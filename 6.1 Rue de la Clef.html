@@ -5,8 +5,10 @@
 	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
 	<title>La Voie du Grand Malgré-Tout</title>
 	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
-	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="js/jquery/textfill.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
 <script src="js/statsvar.js"></script></head>
@@ -22,14 +24,18 @@
 	<h1>Rue de la Clef</h1>
 	<p id="histoire">	</p>
 	<div id="choix">
-		<a onclick="to6_2();" class="btnD btnDash" id="to6_2">Monter vers le Nord Ouest</a><br>
-		<a href="6.11 Temple_gmt.html" class="btnD">Entrer au 8</a>
-		<a href="6.12" class="btnD">Frapper au 8bis</a>
+		<a onclick="to6_2()" class="btnD btnDash" id="to6_2">Monter vers le Nord Ouest</a><br>
+		<a onclick="to6_11()" class="btnD">Entrer au 8</a>
+		<a onclick="knock()" class="btnD">Frapper au 8bis</a>
 		<a href="Inspect_2.html" class="btnD">Inspecter la zone</a>
-		<a href="6.13.html" class="btnD">Frapper au 7</a> <br>
-		<a onclick="to5_1();" class="btnD btnDash" id="to5_1">Aller à la Porte Sud</a>
+		<a onclick="knock()" class="btnD">Frapper au 7</a> <br>
+		<a onclick="to5_1()" class="btnD btnDash" id="to5_1">Aller à la Porte Sud</a>
 	</div>
 </article>
+<div id="dialog" title="Aucune réponse" style="display:none">
+	<img id="getitem_img" class="get_item" src="images/icons/UI/doorClosed.png">
+	<p id="getitem_desc">Vous frappez, mais personne ne répond.</p>
+</div>
 <section id="sright"></section>
 <div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
 <div id="ang2a"></div><div id="ang2b"></div>
@@ -56,6 +62,36 @@
 	function to6_2(){
 		localStorage.dirFrom="Sud";
 		window.location="6.2 Rue de la Clef-2.html";
+	}
+	function to6_11 (){
+		localStorage.audiotypeUI="largeDoorOpen";
+		window.open("audioUI.html","audioUI");
+		setTimeout(function () {
+			localStorage.audiotypeEnvB="Aucun";
+			localStorage.audiotypeEnvF="Snoring";
+			localStorage.audiotypeMusic="Aucun";
+			window.open("audioEnvB.html","audioEnvB");
+			window.open("audioEnvF.html","audioEnvF");
+			window.open("audioMusic.html","audioMusic");
+			window.location="6.11 Temple_gmt.html";
+		},1000);
+	}
+	function knock() {
+		localStorage.audiotypeUI = "doorKnock";
+		window.open("audioUI.html", "audioUI");
+		window.focus();
+		setTimeout(function() {
+			$("#dialog").dialog({
+				resizable: false,
+				height: "auto",
+				dialogClass: 'dialogarme',
+				buttons: {
+					"Ok": function() {
+						$(this).closest('.ui-dialog-content').dialog('close');
+					}
+				}
+			});
+		}, 1000);
 	}
 </script>
 <script src="js/header_normal.js"></script>

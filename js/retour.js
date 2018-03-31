@@ -14,7 +14,7 @@
 		if (numpage==3.2){window.location = "3.2 Tunnel.html";}
 		if (numpage==4){window.location = "4 Checkpoint.html";}
 		if (numpage==5.1){window.location = "5.1 Porte Sud.html";}
-		if (numpage==5.11){window.location = "5.11 Anguleux.html";}
+		if (numpage==5.11){window.location = "5.11 Angulain.html";}
 		if (numpage==5.2){window.location = "5.2 Rue du Marché.html";}
 		if (numpage==5.3){window.location = "5.3 Rue du Marché_2.html";}
 		if (numpage==5.31){window.location = "5.31 Dispensaire.html";}
