@@ -18,18 +18,14 @@
 	<header>
 	</header>
 	<div id="formPseudo">
-	<form>
-	Votre nom pour l'aventure :<br>(masculin)<br>
-	<div id="formBg">
-	<input type="text" id="copseudo" name="firstname" value="" data-lpignore="true">
+		<form>
+			Votre nom pour l'aventure :<br>(masculin)<br>
+			<div id="formBg">
+				<input type="text" id="copseudo" name="firstname" value="" data-lpignore="true">
+			</div>
+		</form>
+		<a onclick="continuer();" class="btnD">Continuer</a>
 	</div>
-	<!-- <br><br> -->
-	<!-- <input type="submit" class ="btnD"  value="Voilà">  -->
-
-	</form>
-	<a onclick="continuer();" class="btnD">Continuer</a>
-	</div>
-
 	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
 	<div id="ang1a"></div><div id="ang1b"></div>
 	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
@@ -39,11 +35,10 @@
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script>
 $("#copseudo").focus();
-function continuer()
-{
-	var dapseudo = document.getElementById('copseudo').value;
+function continuer(){
+	var dapseudo = $('#copseudo').val();
 	dapseudo = dapseudo.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-    return letter.toUpperCase();});
+  	return letter.toUpperCase();});
 	localStorage.pseudo=dapseudo;
 	window.location.href = '0.2 Race.html';
 }
