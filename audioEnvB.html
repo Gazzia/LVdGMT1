@@ -19,6 +19,7 @@
 var audiotypeEnvB = localStorage.audiotypeEnvB;
 var playerEnvB = document.getElementById("playerEnvB");
 $("#audiotypeEnvB").html(audiotypeEnvB);
+/*Ambiances générales*/
 if (audiotypeEnvB == "Nature"){
 	var envNb = Math.floor(Math.random() * 4) + 1;
 	if (envNb == 1) {$("#sourceEnvB").attr("src","sound/env/nature/windCricketA1.mp3");playerEnvB.volume=0.2;}
@@ -26,6 +27,10 @@ if (audiotypeEnvB == "Nature"){
 	if (envNb == 3) {$("#sourceEnvB").attr("src","sound/env/nature/windCricketB1.mp3");playerEnvB.volume=0.4;}
 	if (envNb == 4) {$("#sourceEnvB").attr("src","sound/env/nature/windCricketB2.mp3");playerEnvB.volume=0.4;}
 }
+if (audiotypeEnvB == "CityCalm"){
+	$("#sourceEnvB").attr("src","sound/env/city/normal01.mp3");playerEnvB.volume=1;
+}
+/*Ambiances précises*/
 if (audiotypeEnvB == "CreakingHouse"){
 	$("#sourceEnvB").attr("src","sound/env/creakinghouse.mp3");playerEnvB.volume=0.2;
 }

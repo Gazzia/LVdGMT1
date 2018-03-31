@@ -96,7 +96,7 @@ input{cursor:url(../images/cursors/take.png), auto !important;}
   font-family: 'Vollkorn', serif;
   /*! font-weight: bold; */
   left: 25%;
-  z-index: 6000;
+  z-index: 10;
   opacity: 0.8;
   width:3.5vw;
 }
@@ -412,3 +412,20 @@ a.iconInv {
 .ch80:before{content:"80%";}
 .ch90:before{content:"90%";}
 .ch100:before{content:"100%";}
+.menuBtnText{
+  box-shadow: 0px 1px 2px #45525480;
+  padding: 0.5vw 0 0.3vw 0;
+  margin-top: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: inline-block;
+  font-family: 'Vollkorn', serif;
+  color: #fff !important;
+  font-size: 2.2vh;
+  background-color: #d6d6d6cc;
+  border-radius: 4px;
+  line-height: 1em;
+  border:none;
+  text-shadow: 0px 1px 7px #0000004d,0px 1px 1px #0006;
+  width: 83%;
+}

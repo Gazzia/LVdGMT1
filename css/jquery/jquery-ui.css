@@ -888,7 +888,7 @@ body .ui-tooltip {
 	font-size: 1.1em;
 }
 .ui-widget .ui-widget {
-	font-size: 15px;
+	font-size: 1.7vh;
 }
 .ui-widget input,
 .ui-widget select,
@@ -911,7 +911,6 @@ body .ui-tooltip {
 }
 .ui-widget-header {
 	border: 1px solid #aaaaaa;
-	background: #cccccc url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") 50% 50% repeat-x;
 	color: #222222;
 	font-weight: bold;
 }
@@ -1353,33 +1352,33 @@ a.ui-button:active,
 	color:black;
 	text-shadow:0px 0px 10px #000c;
 	font-size: 2em;
-	/* margin:2px; */
-	text-align:center;
 	margin-left:0!important;
+	}
+.ui-dialog.menuui .ui-dialog-content{
+	background-image:linear-gradient(to top, #683a0080 -20%, #0000 40%), linear-gradient(0.67turn, #5d3c004d, #0000 20%), linear-gradient(0.33turn, #fff5d466, #0000 20%), linear-gradient(to bottom, #f5eba380, #0000 100%),url(../../images/UI/vintage.jpg);
+	margin-left:0!important;
+	min-height: 12vw !important;
 	}
 .ui-dialog.dialogRace .ui-dialog-content{
 	background-image:url(../../images/UI/bgPaper.jpg);
 	color:#2d2216;
-	/* text-shadow:0px 0px 7px #fff4ba; */
 	font-size: 1.2em;
-	text-align:center;
 	margin-left:0 !important;
 	border-bottom: 1px solid black;
 	}
-.ui-dialog .ui-dialog-buttonpane {
+.ui-dialog .ui-dialog-buttonpane,
+.ui-dialog.dialogarme .ui-dialog-content {
+	background-image:linear-gradient(to top, #0000004d 0%, #0000 70%),url(../../images/UI/leather.jpg);
     margin-top: 0;
 	text-align:center;
-	background-color:hsla(177, 100%, 0%, 0.27);
+	/* background-color:hsla(177, 100%, 0%, 0.27); */
 	padding-bottom:0px!important;
 	padding-left:6.4px!important;
-}
-.ui-dialog.dialogRace .ui-dialog-buttonpane,
-.ui-dialog.dialogarme .ui-dialog-buttonpane,
-.ui-dialog.dialoggold .ui-dialog-buttonpane,
-.ui-dialog.dialogarme .ui-dialog-content{
 	background-color: #0006;
-	background-image:linear-gradient(to top, #0000004d 0%, #0000 70%),url(../../images/UI/leather.jpg);
 	border-top: 1px solid #ded1adb3;
+}
+.ui-dialog.menuui .ui-dialog-buttonpane{
+	background-image:linear-gradient(to top, #0000004d 0%, #0000 70%),url(../../images/UI/leather2.jpg);
 }
 .ui-dialog .ui-widget-header {
 	border-radius:0 0 0 0;
@@ -1389,6 +1388,9 @@ a.ui-button:active,
     font-weight: normal;
 	font-family: 'Playfair Display', serif;
 	border-bottom: 1px solid black;
+}
+.ui-dialog.menuui .ui-widget-header {
+	background:linear-gradient(to top, #0003, #0000 70%),#5b4535;
 }
 .ui-dialog .ui-dialog-buttonset{
 	float:none!important;

@@ -5,7 +5,7 @@
 	<title>La Voie du Grand Malgré-Tout</title>
 	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="css/styles_inv.css"/>
+	<link rel="stylesheet" type="text/css" href="css/inv.css"/>
 	<link rel="stylesheet" type="text/css" href="css/jquery/customScrollbar.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -83,7 +83,7 @@
 		<p id="plclasse"></p>
 	</div>
 	<div id="footerMid">
-		<a id="retour" class="iconInv"><img src="images/icons/UI/btnInv.png"></a>
+		<a id="retour" onclick="retourToPage()" class="iconInv"><img src="images/icons/UI/btnInv.png"></a>
 	</div>
 	<div id="footerRight">
 		<div id="gdCont"><p id="goldAmount"></p><img id="iconGold" src="images/icons/UI/coin.png"></div>
@@ -92,6 +92,7 @@
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script>
 /* ARME */
+	localStorage.inventoryOpen=1;
 	if(armeSelected=="Poing"){
 		$("#armeText").html("<b>Poings</b><br>Vous ne possédez pas d'arme, et vos maigres poings peu habitués au corps à corps ne vous serviront à presque rien.");
 		$("#armeImg").attr("src","images/icons/weapons/fist.png");}
@@ -131,6 +132,7 @@
 		$("#toolCont").append('<div id="toolShovel" class="toolCase tooltipd"><a id="toolShovel_title" class="tooltiptext2">Pelle</a><img id="toolShovel_img" class="inv_tool_img" src="images/icons/items/shovel.png"></div>');
 	}
 </script>
+<script src="js/menu.js"></script>
 <script src="js/globalscripts.js"></script>
 <script src="js/retour.js"></script>
 </body>
