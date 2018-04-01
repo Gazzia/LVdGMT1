@@ -6,14 +6,20 @@ $(document).keydown(function(e) {
     .html(
       "<a class='menuBtnText' onclick='help()'>Aide et raccourcis</a>"+
       "<a class='menuBtnText' onclick='soundoptions()'>Options sonores</a>"+
-      "<a class='menuBtnText' onclick='rusure()'>Recommencer le jeu</a>"
+      "<a class='menuBtnText' onclick='rusure()'>Recommencer le jeu</a>"+
+      "<div id='menuIcons'>"+
+      "<a class='menuBtnIco MBIinv' href='Inv.html'></a>"+
+      "<a class='menuBtnIco MBIstats'></a>"+
+      "<a class='menuBtnIco MBImap'></a>"+
+      "</div>"+
+      "<div id='menuHoverText'></div>"
     )
     .attr("title","Menu");
     $("#menuui").dialog({
       modal: true,
       resizable: false,
       draggable:false,
-      height: "auto",
+      height: "100%",
       dialogClass: 'menuui',
       buttons: {
         "Fermer": function() {
@@ -22,6 +28,9 @@ $(document).keydown(function(e) {
       }
     });
   }
+    $(".MBIinv").hover(function(){$("#menuHoverText").html("Inventaire (F1)").toggle();});
+    $(".MBIstats").hover(function(){$("#menuHoverText").html("Stats (F2)").toggle();});
+    $(".MBImap").hover(function(){$("#menuHoverText").html("Carte (F3)").toggle();});
   if(e.which == 27 && localStorage.menuOpen==1) {
     localStorage.menuOpen=0;
     $(this).closest('.ui-dialog-content').dialog('close');
@@ -50,5 +59,5 @@ function rusure(){
         $(this).closest('.ui-dialog-content').dialog('close');
       }
     }
-  }).html("<br><br><h3>Êtes vous-sûr ?</h2>");
+  }).html("<div class=\"inMenuBig\">Êtes vous-sûr ?</div>");
 }

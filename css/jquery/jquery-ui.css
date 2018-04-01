@@ -1333,6 +1333,10 @@ a.ui-button:active,
     top: 0;
 	box-shadow: 0px 0px 7px hsla(0, 100%, 0%, 0.41);
 }
+.ui-dialog.menuui {
+	width:20vw !important;
+	/*! height:100% !important; */
+}
 
 .ui-dialog .ui-dialog-content {
     border: 0 none;
@@ -1357,7 +1361,7 @@ a.ui-button:active,
 .ui-dialog.menuui .ui-dialog-content{
 	background-image:linear-gradient(to top, #683a0080 -20%, #0000 40%), linear-gradient(0.67turn, #5d3c004d, #0000 20%), linear-gradient(0.33turn, #fff5d466, #0000 20%), linear-gradient(to bottom, #f5eba380, #0000 100%),url(../../images/UI/vintage.jpg);
 	margin-left:0!important;
-	min-height: 12vw !important;
+	min-height: 20vw !important;
 	}
 .ui-dialog.dialogRace .ui-dialog-content{
 	background-image:url(../../images/UI/bgPaper.jpg);
