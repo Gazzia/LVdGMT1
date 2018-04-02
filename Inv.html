@@ -11,39 +11,66 @@
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Open+Sans+Condensed:700|Roboto+Condensed|Vollkorn" rel="stylesheet">
 <script src="js/statsvar.js"></script></head>
 <body>
-<div id="container">
-	<div id="leftmenu" class="menus">
-		<div class="invtitle">Inventaire</div>
-		<div class="pocket" onclick="test();">
-			<div class="itemImgB armeImgB"></div>
-			<div class="itemText armeText">bla
+	<div id="container">
+		<div id="leftmenu" class="menus">
+			<div class="invtitle">Inventaire</div>
+			<div class="pocket" onclick="openArmes();">
+				<div class="itemImgB armeImgB"></div>
+				<div class="itemText armeText">
+					<div class="scroll">
+						<span id="armeName" class="itemTitle armeTitle"></span>
+						<span id="armeStat" class="itemStat armeStat"></span>
+						<span id="armeDesc" class="itemDesc armeDesc"></span>
+					</div>
+				</div>
+			</div>
+			<div class="pocket" onclick="openHead();">
+				<div class="itemImgB armorImgB"></div>
+				<div class="itemText armorText">
+					<div class="scroll">
+						<span id="headName" class="itemTitle armorTitle"></span>
+						<span id="headStat" class="itemStat armorStat"></span>
+						<span id="headDesc" class="itemDesc armorDesc"></span>
+					</div>
+				</div>
+			</div>
+			<div class="pocket" onclick="openChest();">
+				<div class="itemImgB armorImgB"></div>
+				<div class="itemText armorText">
+					<div class="scroll">
+						<span id="chestName" class="itemTitle armorTitle"></span>
+						<span id="chestStat" class="itemStat armorStat"></span>
+						<span id="chestDesc" class="itemDesc armorDesc"></span>
+					</div>
+				</div>
+			</div>
+			<div class="pocket" onclick="openLeg();">
+				<div class="itemImgB armorImgB"></div>
+				<div class="itemText armorText">
+					<div class="scroll">
+						<span id="legName" class="itemTitle armorTitle"></span>
+						<span id="legStat" class="itemStat armorStat"></span>
+						<span id="legDesc" class="itemDesc armorDesc"></span>
+					</div>
+				</div>
+			</div>
+			<div class="pocket" onclick="openFoot();">
+				<div class="itemImgB armorImgB"></div>
+				<div class="itemText armorText">
+					<div class="scroll">
+						<span id="footName" class="itemTitle armorTitle"></span>
+						<span id="footStat" class="itemStat armorStat"></span>
+						<span id="footDesc" class="itemDesc armorDesc"></span>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="pocket" onclick="test();">
-			<div class="itemImgB armorImgB"></div>
-			<div class="itemText armorText">
-			</div>
-		</div>
-		<div class="pocket" onclick="test();">
-			<div class="itemImgB armorImgB"></div>
-			<div class="itemText armorText">
-			</div>
-		</div>
-		<div class="pocket" onclick="test();">
-			<div class="itemImgB armorImgB"></div>
-			<div class="itemText armorText">
-			</div>
-		</div>
-		<div class="pocket" onclick="test();">
-			<div class="itemImgB armorImgB"></div>
-			<div class="itemText armorText">
+		<div id="rightmenu" class="menus">
+			<div id="cattitle">Inventaire</div>
+			<div id="armeList" class="itemList">
 			</div>
 		</div>
 	</div>
-	<div id="rightmenu" class="menus">
-		<div class="invtitle">Inventaire</div>
-	</div>
-</div>
 <!-- DECO+FOOTER -->
 <div id="menuui" style="display:none"></div>
 <div id="ang1a"></div><div id="ang1b"></div>
@@ -52,49 +79,94 @@
 <footer></footer>
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script>
+localStorage.inventoryOpen=0;
 /* ARME */
-	localStorage.inventoryOpen=1;
 	if(armeSelected=="Poing"){
-		$("#armeText").html("<b>Poings</b><br>Vous ne possédez pas d'arme, et vos maigres poings peu habitués au corps à corps ne vous serviront à presque rien.");
+		$("#armeName").html("Poings");
+		$("#armeStat").html("0Nor").prop('title', 'Dmg Max : 0 Normal');
+		$("#armeDesc").html("Vous ne possédez pas d'arme, et vos maigres poings peu habitués au corps à corps ne vous serviront à presque rien.");
 		$("#armeImg").attr("src","images/icons/weapons/fist.png");}
 	if(armeSelected=="Baton"){
-		$("#armeText").html("<b>Branche de tilleul</b><br>Une arme rudimentaire. Cette branche pourra peut-être asséner quelques bleus à un adversaire, qui sait ?<br><b>10dmgMax</b>");
+		$("#armeName").html("Branche de tilleul");
+		$("#armeStat").html("10Nor").prop('title', 'Dmg Max : 10 Normal');
+		$("#armeDesc").html("Une arme rudimentaire. Cette branche pourra peut-être asséner quelques bleus à un adversaire, qui sait?");
 		$("#armeImg").attr("src","images/icons/weapons/stick.png");}
 
 	var headSelected = localStorage.headSelected;
 	if(headSelected=="Cheveux"){
-		$("#headText").html("<b>Cheveux</b><br>Votre seule protection contre des coups au crâne sont vos cheveux gras.");
+		$("#headName").html("Tête");
+		$("#headStat").html("0Nor").prop('title', 'Def Max : 0 Normal');
+		$("#headDesc").html("Vous n'avez aucune protection à la tête");
 		$("#headImg").attr("src","images/icons/armor/head.png");}
 
 	var bodySelected = localStorage.bodySelected;
 	if(bodySelected=="Torse"){
-		$("#bodyText").html("<b>Torse</b><br>En plus de ne pas porter de plastron, vous êtes torse nu. Très responsable.");
+		$("#chestName").html("Torse");
+		$("#chestStat").html("0Nor").prop('title', 'Def Max : 0 Normal');
+		$("#chestDesc").html("Vous n'avez aucune protection au torse");
 		$("#bodyImg").attr("src","images/icons/armor/torso.png");}
 
 	var legSelected = localStorage.legSelected;
 	if(legSelected=="Jambes"){
-		$("#legText").html("<b>Jambes</b><br>Vous portez un pantalon de toile fine.");
+		$("#legName").html("Jambes");
+		$("#legStat").html("0Nor").prop('title', 'Def Max : 0 Normal');
+		$("#legDesc").html("Vous n'avez aucune protection aux jambes");
 		$("#legImg").attr("src","images/icons/armor/legs.png");}
 
 	var footSelected = localStorage.footSelected;
 	if(footSelected=="Pieds"){
-		$("#footText").html("<b>Pieds</b><br>Vous marchez pieds nus. Cela ne vous protège pas, mais quelles SENSATIONS!");
+		$("#footName").html("Pieds");
+		$("#footStat").html("0Nor").prop('title', 'Def Max : 0 Normal');
+		$("#footDesc").html("Vous n'avez aucune protection aux pieds");
 		$("#footImg").attr("src","images/icons/armor/barefoot.png");}
-/*STATS*/
-	$("#statForce").html(bForce+" *("+raceXForce+"*"+classeXForce+") = <b>"+totalForce);
-	$("#statMag").html(bMag+" *("+raceXMag+"*"+classeXMag+") = <b>"+totalMag);
-	$("#statChar").html(bChar+" *("+raceXChar+"*"+classeXChar+") = <b>"+totalChar);
-	$("#statDex").html(bDex+" *("+raceXDex+") = <b>"+totalDex);
-	$("#statAgi").html(bAgi+" *("+raceXAgi+"*"+classeXAgi+") = <b>"+totalAgi);
-	$("#statInt").html(bInt+" *("+raceXInt+") = <b>"+totalInt);
-
 /*TOOLS*/
 	if (localStorage.objectShovel == 1){
 		$("#toolCont").append('<div id="toolShovel" class="toolCase tooltipd"><a id="toolShovel_title" class="tooltiptext2">Pelle</a><img id="toolShovel_img" class="inv_tool_img" src="images/icons/items/shovel.png"></div>');
 	}
+	function openArmes(){
+		test();
+		setTimeout(function () {
+			$("#cattitle").html("Armes");
+		}, 500);
+	}
+	function openHead(){
+		test();
+		setTimeout(function () {
+			$("#cattitle").html("Armure / Tête");
+		}, 500);
+	}
+	function openChest(){
+		test();
+		setTimeout(function () {
+			$("#cattitle").html("Armure / Torse");
+		}, 500);
+	}
+	function openLeg(){
+		test();
+		setTimeout(function () {
+			$("#cattitle").html("Armure / Jambes");
+		}, 500);
+	}
+	function openFoot(){
+		test();
+		setTimeout(function () {
+			$("#cattitle").html("Armure / Pieds");
+		}, 500);
+	}
 	function test(){
-		$("#leftmenu").css("left","0");
-		$("#rightmenu").css("right","0");
+		if (localStorage.invFolderOpen == 1){
+			$("#leftmenu").css("left","20%");
+			$("#rightmenu").css("right","24%");
+			setTimeout(function () {
+				$("#leftmenu").css("left","0");
+				$("#rightmenu").css("right","0");
+			}, 500);
+		}
+		if (localStorage.invFolderOpen == 0){
+			$("#leftmenu").css("left","0");
+			$("#rightmenu").css("right","0");
+			localStorage.invFolderOpen=1;
+		}
 	}
 </script>
 <script src="js/footer_normal.js"></script>

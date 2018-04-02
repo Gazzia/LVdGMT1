@@ -1,6 +1,6 @@
 body{
-		background-image:linear-gradient(to bottom, hsla(48,42%,71%,0.4) 0%,hsla(0,0%,0%,0) 100%) , url(../images/UI/leather.jpg);
-		background-size:auto auto;
+		background-image:linear-gradient(to bottom, hsla(48,42%,71%,0.4) 0%,hsla(0,0%,0%,0) 100%) , url(../images/UI/test.jpg);
+		background-size:100% 100%;
 }
 footer{
 	width:100%;
@@ -29,7 +29,7 @@ footer{
 	border-radius: 10px 0 0 10px;
 	border: 1px solid #000;
 	z-index: 2;
-	box-shadow: 0px 8px 15px #0000004d;
+	box-shadow: 0px 8px 21px #0006;
 	transition: left 0.3s cubic-bezier(.58,.03,.96,.84);
 }
 #leftmenu:before{
@@ -73,7 +73,7 @@ footer{
 	width: 40%;
 	text-align: center;
 	height: 6vh;
-	left: 30%;
+	left: calc(30% - 1vw);
 	padding-top: 3px;
 	background-image: url(../images/UI/parchment.png);
 	background-size: 100% 100%;
@@ -102,6 +102,64 @@ footer{
 	margin: 0.5vh;
 	position: absolute;
 	padding: 0.5vh;
+	overflow: hidden;
 }
 .armeText{right:0;}
 .armorText{left:0;}
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 2.2vh;
+  font-size: 1.8vh;
+  text-rendering: optimizelegibility;
+  margin-top: -0.2vh;
+	font-family: 'Vollkorn', serif;
+}
+.itemTitle{
+	color:#683925;
+	font-weight: bold;
+	position: absolute;
+}
+.itemStat{
+	color:black;
+	right: 0;
+	position: absolute;
+}
+.itemDesc{
+	color:#3b1e11e6;
+	font-style: italic;
+	display: block;
+	margin-top: 2vh;
+	position: absolute;
+}
+.scroll{
+	width:100%;height:100%;
+	overflow:auto;
+	padding-right: 22px;
+}
+.armorStat{	left:0;}
+.armorTitle{ right:0;}
+.armorDesc{ right:0;padding-right: 2px;}
+.itemList{
+	width:60%;
+	height:85%;
+	background-color:#0006;
+	top: 9vh;
+	position: absolute;
+	left: calc(20% - 1vw);
+}
+#cattitle{
+	font-size: 3vh;
+	position:  absolute;
+	width: 45%;
+	text-align: center;
+	height: 4.5vh;
+	left: calc(27.25% - 1vw);
+	padding-top: 3px;
+	background: linear-gradient(to top, #0003, #0000 30%),#c3c3c3;
+	top: 1vh;
+	font-family: 'Vollkorn', serif;
+	color: #000;
+	/*! text-shadow: 0px 1px 3px #fff9; */
+	border: 3px double black;
+}
