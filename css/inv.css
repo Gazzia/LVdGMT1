@@ -42,6 +42,16 @@ footer{
 	position: absolute;
 	background-size: 100% 100%;
 }
+#cog{
+	height:15vw;
+	width:15vw;
+	background-image: url(../images/UI/cog.png);
+	left:11%;
+	position: absolute;
+	background-size: 100% 100%;
+	bottom: 6vh;
+	transition: left 0.3s cubic-bezier(.58,.03,.96,.84), transform 0.3s cubic-bezier(.58,.03,.96,.84);
+}
 #rightmenu{
 	right:24%;
 	background: linear-gradient(to top,#0006,#0000 50%),linear-gradient(to left,#0000004d,#0000 2vw),url(../images/UI/iron.jpg),url(../images/UI/handle.png);
@@ -162,4 +172,11 @@ span {
 	color: #000;
 	/*! text-shadow: 0px 1px 3px #fff9; */
 	border: 3px double black;
+}
+#closeMecha{
+	width:2.5vw;
+	height:36vh;
+	position: absolute;
+	right:  0.1vw;
+	top: calc(50% - 10vw);
 }
