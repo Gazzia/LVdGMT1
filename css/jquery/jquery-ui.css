@@ -1337,19 +1337,22 @@ a.ui-button:active,
 	width:20vw !important;
 	/*! height:100% !important; */
 }
-
+.ui-dialog.statsui {
+	width:34vw !important;
+	/*! height:100% !important; */
+}
 .ui-dialog .ui-dialog-content {
     border: 0 none;
     overflow: auto;
     position: relative;
 	color:#ffe4b6;
 	text-align:center;
-	font-family: 'Vollkorn', serif;
 
     padding: 0 !important;
 	padding-left:10px!important;
 	padding-right:10px!important;
     margin: 0;
+    font-family: 'Vollkorn', serif;
 }
 .ui-dialog.dialoggold .ui-dialog-content{
 	background-image:linear-gradient(to top, #683a0080 -20%, #0000 40%), linear-gradient(0.67turn, #5d3c004d, #0000 20%), linear-gradient(0.33turn, #fff5d4, #0000 20%), linear-gradient(to bottom, #f5eba380, #0000 100%),url(../../images/UI/bgGold.jpg);
@@ -1370,6 +1373,15 @@ a.ui-button:active,
 	margin-left:0 !important;
 	border-bottom: 1px solid black;
 	}
+.ui-dialog.statsui .ui-dialog-content{
+	background-image:linear-gradient(to top, #0000004d 0%, #0000 70%),url(../../images/UI/bgPaper.jpg);
+	text-align: left;
+	font-size:2vh;
+	color: #5c432e;
+	line-height:3vh;
+	min-height: 13vw !important;
+	padding: 0 !important;
+	}
 .ui-dialog .ui-dialog-buttonpane,
 .ui-dialog.dialogarme .ui-dialog-content {
 	background-image:linear-gradient(to top, #0000004d 0%, #0000 70%),url(../../images/UI/leather.jpg);
@@ -1381,7 +1393,8 @@ a.ui-button:active,
 	background-color: #0006;
 	border-top: 1px solid #ded1adb3;
 }
-.ui-dialog.menuui .ui-dialog-buttonpane{
+.ui-dialog.menuui .ui-dialog-buttonpane,
+.ui-dialog.statsui .ui-dialog-buttonpane{
 	background-image:linear-gradient(to top, #0000004d 0%, #0000 70%),url(../../images/UI/leather2.jpg);
 }
 .ui-dialog .ui-widget-header {

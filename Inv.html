@@ -6,90 +6,50 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="css/inv.css"/>
-	<link rel="stylesheet" type="text/css" href="css/jquery/customScrollbar.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script src="js/jquery/customScrollbar.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Open+Sans+Condensed:700|Roboto+Condensed" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Open+Sans+Condensed:700|Roboto+Condensed|Vollkorn" rel="stylesheet">
 <script src="js/statsvar.js"></script></head>
-
 <body>
-	<header>
-		<div id="iconPage"><img class="iconPageImg" src="images/icons/page/backpack-1.png"></div>
-	</header>
-	<h1>Inventaire</h1>
-	<div id="invContenu">
-		<div id="container1" class="mCustomScrollbar" data-mcs-theme="minimal-dark">
-			<div id="stuff">
-			<div id="stufftext"></div>
-			<div id="inv_arme" class="tooltipd">
-				<a id="armeText" class="tooltiptext"></a>
-				<a href="Inv_armes.html"><img id="armeImg" class="inv_item_img" src=""></a>
-			</div>
-			<div id="container_armure">
-			<div class="inv_armure tooltipd">
-				<a id="headText" class="tooltiptext"></a>
-				<a href="Inv_head.html"><img id="headImg" class="inv_item_img" src=""></a>
-			</div>
-			<div class="inv_armure tooltipd">
-				<a id="bodyText" class="tooltiptext"></a>
-				<a href="Inv_body.html"><img id="bodyImg" class="inv_item_img" src=""></a>
-			</div>
-			<div class="inv_armure tooltipd">
-				<a id="legText" class="tooltiptext"></a>
-				<a href="Inv_leg.html"><img id="legImg" class="inv_item_img" src=""></a>
-			</div>
-			<div class="inv_armure tooltipd">
-				<a id="footText" class="tooltiptext"></a>
-				<a href="Inv_foot.html"><img id="footImg" class="inv_item_img" src=""></a>
-			</div>
-			</div>
-			</div>
-			<div class="tooltipd"><a class="tooltiptext"><u>Arme et Armure</u></a></div>
-			<div id="statsCont">
-				<div id="statsContPaper">
-				<p id="statsText">
-					<img src="images/UI/abilities/force.png" class="staticon"> <b>Force</b>: <span id="statForce" class="statclass">0</span><br>
-					<img src="images/UI/abilities/mag.png" class="staticon"> <b>Puissance Magique</b>: <span id="statMag" class="statclass">0</span><br>
-					<img src="images/UI/abilities/cha.png" class="staticon"> <b>Charisme</b>: <span id="statChar" class="statclass">0</span><br>
-					<img src="images/UI/abilities/disc.png" class="staticon"> <b>Agilité</b>: <span id="statAgi" class="statclass">0</span><br>
-					<img src="images/UI/abilities/dex.png" class="staticon"> <b>Dextérité</b>: <span id="statDex" class="statclass">0</span><br>
-					<img src="images/UI/abilities/int.png" class="staticon"> <b>Intelligence</b>: <span id="statInt" class="statclass">0</span>
-				</p>
-				</div>
+<div id="container">
+	<div id="leftmenu" class="menus">
+		<div class="invtitle">Inventaire</div>
+		<div class="pocket" onclick="test();">
+			<div class="itemImgB armeImgB"></div>
+			<div class="itemText armeText">bla
 			</div>
 		</div>
-		<div id="container2" class="mCustomScrollbar" data-mcs-theme="minimal-dark">
-			<div id="smallercont2">
-				<div id="textTool"> </div>
-				<div id="toolCont">
-				</div>
+		<div class="pocket" onclick="test();">
+			<div class="itemImgB armorImgB"></div>
+			<div class="itemText armorText">
 			</div>
-		<a class="btn_objets" href="Inv_objets.html">Objets divers</a>
+		</div>
+		<div class="pocket" onclick="test();">
+			<div class="itemImgB armorImgB"></div>
+			<div class="itemText armorText">
+			</div>
+		</div>
+		<div class="pocket" onclick="test();">
+			<div class="itemImgB armorImgB"></div>
+			<div class="itemText armorText">
+			</div>
+		</div>
+		<div class="pocket" onclick="test();">
+			<div class="itemImgB armorImgB"></div>
+			<div class="itemText armorText">
+			</div>
 		</div>
 	</div>
+	<div id="rightmenu" class="menus">
+		<div class="invtitle">Inventaire</div>
+	</div>
+</div>
 <!-- DECO+FOOTER -->
 <div id="menuui" style="display:none"></div>
-	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
-	<div id="ang1a"></div><div id="ang1b"></div>
-	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
-	<div id="ang2a"></div><div id="ang2b"></div>
-<footer>
-	<div id="footerLeft">
-		<p id="pseudo"></p>
-		<div id="hpCont">
-			<img id="iconHealth" src="images/icons/UI/plHP.png">
-			<p id="plHealth"></p>
-		</div>
-		<p id="plclasse"></p>
-	</div>
-	<div id="footerMid">
-		<a id="retour" onclick="retourToPage()" class="iconInv"><img src="images/icons/UI/btnInv.png"></a>
-	</div>
-	<div id="footerRight">
-		<div id="gdCont"><p id="goldAmount"></p><img id="iconGold" src="images/icons/UI/coin.png"></div>
-	</div>
-</footer>
+<div id="ang1a"></div><div id="ang1b"></div>
+<div id="ang2a"></div><div id="ang2b"></div>
+<img id="decoRight"><img id="decoRightbg">
+<footer></footer>
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script>
 /* ARME */
@@ -132,7 +92,12 @@
 	if (localStorage.objectShovel == 1){
 		$("#toolCont").append('<div id="toolShovel" class="toolCase tooltipd"><a id="toolShovel_title" class="tooltiptext2">Pelle</a><img id="toolShovel_img" class="inv_tool_img" src="images/icons/items/shovel.png"></div>');
 	}
+	function test(){
+		$("#leftmenu").css("left","0");
+		$("#rightmenu").css("right","0");
+	}
 </script>
+<script src="js/footer_normal.js"></script>
 <script src="js/globalscripts.js"></script>
 <script src="js/retour.js"></script>
 <script src="js/menu.js"></script>
