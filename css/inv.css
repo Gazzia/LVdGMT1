@@ -68,7 +68,7 @@ footer{
 .pocket{
 	width:90%;
 	height:10vh;
-	background:linear-gradient(to top , #0003, #0000 39%),linear-gradient(0.95turn, #0000004d, #0000 39%),linear-gradient(0.45turn, #86766c99, #0000 70%),url(../images./UI/bgPaper.jpg);
+	background:linear-gradient(to top , #0003, #0000 39%),linear-gradient(0.95turn, #0000004d, #0000 39%),linear-gradient(0.45turn, #86766c99, #0000 70%),url(../images/UI/bgPaper.jpg);
 	left: 5%;
 	position: relative;
 	top: 9vh;
