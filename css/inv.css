@@ -30,7 +30,7 @@ footer{
 	border-radius: 10px 0 0 10px;
 	border: 1px solid #000;
 	z-index: 2;
-	box-shadow: 0px 8px 21px #0006;
+	box-shadow: 0px 8px 21px #0009;
 	transition: left 0.3s cubic-bezier(.58,.03,.96,.84);
 }
 #leftmenu:before{
