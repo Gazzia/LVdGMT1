@@ -11,7 +11,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="js/jquery/textfill.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
-<script src="js/statsvar.js"></script></head>
+<script src="js/statsvar.js"></script>
+<script>
+$( function(){$(document).tooltip({classes: {"ui-tooltip": "highlight"}});});
+</script>
+</head>
 <body>
 	<header></header>
 	<a id="btnMap" href="Map.html"><img class="maplogo" src="images/icons/UI/map.png"></a>
@@ -32,8 +36,10 @@
 			<a href="2.2 Cabane.html" class="btnD">Aller vers l'Est</a>
 		</div>
 	</article>
-	<div id="menuui" style="display:none"></div>
-	<div id="statistiques" style="display:none"></div>
+	<div id="dialog" title="Note" style="display:none">
+		<p id="getitem_desc">Vous pouvez accéder au menu du jeu à tout moment en appuyant sur la touche "Echap".</p>
+	</div>
+	<div id="allmenus"></div>
 	<section id="sright"></section>
 	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
 	<div id="ang2a"></div><div id="ang2b"></div>
@@ -42,6 +48,20 @@
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script>
 //////////////////////////////
+if (localStorage.aboutMenu == 0){
+	$("#dialog").dialog({
+		resizable: false,
+		modal:true,
+		draggable:false,
+		height: "auto",
+		dialogClass: 'dialogarme',
+		buttons: {
+			"Ok": function() {
+				$(this).closest('.ui-dialog-content').dialog('close');
+			}
+		}
+	});	localStorage.aboutMenu=1;
+}
 localStorage.numpage=2;
 /////////
 localStorage.audiotypeEnvF="Aucun";
@@ -52,8 +72,7 @@ window.focus();
 <script src="js/header_normal.js"></script>
 <script src="js/footer_normal.js"></script>
 <script src="js/images.js"></script>
-<script src="js/menu.js"></script>
+<script src="js/menu.js"></script><script src="js/stats.js"></script>
 <script src="js/globalscripts.js"></script>
-<script src="js/stats.js"></script>
 </body>
 </html>

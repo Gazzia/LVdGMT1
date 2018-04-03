@@ -1,3 +1,4 @@
+$("#allmenus").html("<div id='menuui' style='display:none'></div><div id='statistiques' 'style=display:none'></div>")
 $(document).keydown(function(e) {
   if(e.which == 27 && localStorage.menuOpen==0) {
     e.which = 0;
@@ -76,3 +77,13 @@ function openStats(){
     }
   });
 }
+$("#statistiques").html(
+  '<table class="tg">'+
+  '<tr class="firstln"> <th></th> <th>Base<br></th> <th title="Race">* '+localStorage.race+'<br></th> <th title="Classe">* '+localStorage.classe+'<br></th> <th>Objets<br></th> <th>TOTAL<br></th> </tr>'+
+  '<tr class="secondln"> <td title="Force"><img src="images/UI/abilities/force.png" class="staticon">FOR<br></td> <td>'+bForce+'</td> <td>'+raceXForce+'</td> <td>'+classeXForce+'</td> <td></td> <td>'+totalForce+'</td> </tr>'+
+  '<tr class="thirdln"> <td title="Puissance Magique"><img src="images/UI/abilities/mag.png" class="staticon">MAG<br></td> <td>'+bMag+'</td> <td>'+raceXMag+'</td> <td>'+classeXMag+'</td> <td></td> <td>'+totalMag+'</td> </tr>'+
+  '<tr class="secondln"> <td title="Charisme"><img src="images/UI/abilities/cha.png" class="staticon">CHAR</td> <td>'+bChar+'</td> <td>'+raceXChar+'</td> <td>'+classeXChar+'</td> <td></td> <td>'+totalChar+'</td> </tr>'+
+  '<tr class="thirdln"> <td title="Agilité"><img src="images/UI/abilities/agi.png" class="staticon">AGI</td> <td>'+bAgi+'</td> <td>'+raceXAgi+'</td> <td>'+classeXAgi+'</td> <td></td> <td>'+totalAgi+'</td> </tr>'+
+  '<tr class="secondln"> <td title="Dexterité"><img src="images/UI/abilities/dex.png" class="staticon">DEX</td> <td>'+bDex+'</td> <td>'+raceXDex+'</td> <td>X</td> <td></td> <td>'+totalDex+'</td> </tr>'+
+  '<tr class="thirdln"> <td title="Intelligence"><img src="images/UI/abilities/int.png" class="staticon">INT</td> <td>'+bInt+'</td> <td>'+raceXInt+'</td> <td>X</td> <td></td> <td>'+totalInt+'</td> </tr>'+ '</table>'
+);

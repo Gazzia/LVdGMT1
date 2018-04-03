@@ -1,15 +1,13 @@
 body, html {
-  /*! width: 100%; */
   width:100%;
   height: 100%;
   min-height: 100%;
   margin: 0;
   overflow: initial;
-  background-size: cover;
   -moz-user-select: none;
   user-select: none;
   cursor: url(../images/cursors/nope.png) 15 10, auto;
-  overflow-x: hidden;
+  /*! overflow-x: hidden; */
 }
 #clouds, #cloudsbg {
   position: fixed;
@@ -138,10 +136,8 @@ header {
 #main {
   width: 50%;
   left: 25%;
-  position: absolute;
   height: 200%;
-  display: inline-block;
-  position: absolute;
+  position:  absolute;
   z-index: 3;
   background: linear-gradient(to top, #00000080 -20%, #0000 40%), linear-gradient(0.67turn, #5d3c004d, #0000 20%), linear-gradient(0.33turn, #fff5e680 0%, #f8f8f800 50%), linear-gradient(to bottom, #f5eba380, #0000 100%), url(../images/UI/bgPaper.jpg) no-repeat center fixed;
   background-attachment: fixed;
@@ -265,17 +261,18 @@ a.iconInv {
   background-color: hsla(0, 0%, 0%, 0.3);
 }
 
-#footerLeft {
+#footerLeft { left: 25%;}
+#footerRight {  right: 25%;  text-align: right;}
+.footers{
   position: fixed;
-  left: 25%;
   bottom: 1.4vw;
-  width: calc(25% - 24px);
+  width: 25%;
   height: 3vw;
+  font-size:1vw;
 }
-
 #hpCont {
   position:  absolute;
-  right: 1vw;
+  right: 0vw;
   background-image: url(../images/UI/smallparch.png);
   width: 7.5vw;
   height: 2.5vw;
@@ -300,42 +297,24 @@ a.iconInv {
   margin: 0;
   width: 4.4vw;
   left: 2.3vw;
-  font-size: 1vw;
 }
 
-#pseudo {
+#pseudo { left: 0.3vw;}
+#plclasse { right: 0.3vw;}
+.footertext{
   position: absolute;
-  left: 1vw;
-  width:13vw;
   bottom: 0.6vw;
   color: #f2d8a7;
   text-shadow: 0px 1px 6px hsla(0, 0%, 0%, 1);
-  height: 1.5vw;
-  overflow:   auto;
-  font-size: 1vw;
   margin: 0;
-}
-
-#footerMid {
-  width: 3vw;
-  position: fixed;
-  left: calc(50% - 1.5vw);
-  bottom: 1.5vw;
+  width: 17vw;
   text-align: center;
+  height: 1.5vw;
+  overflow: auto;
 }
-
-#footerRight {
-  position: fixed;
-  right: 25%;
-  text-align: right;
-  bottom: 1.4vw;
-  width: calc(25% - 24px);
-  height: 3vw;
-}
-
 #gdCont {
   position: absolute;
-  left: 1vw;
+  left: 0;
   background-image: url(../images/UI/smallparch2.png);
   width: 7vw;
   height: 2.5vw;
@@ -358,17 +337,6 @@ a.iconInv {
   margin: 0;
   width: 75px;
   left: 15px;
-  font-size: 1vw;
-}
-
-#plclasse {
-  position: fixed;
-  right: calc(25% + 10px);
-  bottom: 2.2vw;
-  color: #f2d8a7;
-  text-shadow: 0px 1px 6px hsla(0, 0%, 0%, 1);
-  font-size: 1vw;
-  margin: 0;
 }
 /* JQUERY DIALOG-------------------------------------------------------- */
 .get_item {
@@ -494,11 +462,14 @@ a.iconInv {
 	padding: 0.1vw;
 }
 .tg  {border-spacing:0;}
-.tg td{border:dotted #41131366;overflow:hidden;width: 6vw;height: 3vw;text-align: center;font-size: 2.5vh;font-family: Arial;color: #5a4f35b3;border-width: 1px 0 0 1px;}
+.tg td{border:dotted #41131366;overflow:hidden;width: 6vw;height: 6vh;text-align: center;font-size: 2.5vh;font-family: Arial;color: #5a4f35b3;border-width: 1px 0 0 1px;}
 .tg th{font-family:'Vollkorn', serif;font-size:14px;font-weight:normal;border-style:solid;border-width:1px;border-color:black;}
 .tg .tg-yw4l{vertical-align:top}
 .firstln{background-color: #1d1915b3;color: #ece6bb;height: 3vh !important;text-align: center;}
 .secondln{background: linear-gradient(to top, #0000001a, #0000 20%),#a6806ab3;}
 .thirdln{background: linear-gradient(to top, #0000001a, #0000 20%), #b99f7acc;}
 td:first-child, td:last-child { font-weight: bold; color: #40372e;}
-td:first-child {text-align: left; font-size: 2vh;font-family: 'Vollkorn', serif;/*! color: #40372e; */text-rendering: optimizelegibility;}
+td:first-child {text-align: left; font-size: 1.1vw;font-family: 'Vollkorn', serif;/*! color: #40372e; */text-rendering: optimizelegibility;}
+#allmenus{
+  display: none;
+}
