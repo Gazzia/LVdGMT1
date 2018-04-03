@@ -25,7 +25,7 @@ footer{
 	left:20%;
 	background:
 		linear-gradient(to top,#0006,#0000 40%), linear-gradient(to top,#0000001a,#0000 10%), linear-gradient(to right,#0003,#0000 10%), linear-gradient(0.743turn,#f1f1f133,#0000 20%), url(../images/UI/leather2.jpg);
-	width: 45%;
+	width: 51%;
 	border-radius: 10px 0 0 10px;
 	border: 1px solid #000;
 	z-index: 2;
@@ -55,7 +55,7 @@ footer{
 #rightmenu{
 	right:24%;
 	background: linear-gradient(to top,#0006,#0000 50%),linear-gradient(to left,#0000004d,#0000 2vw),url(../images/UI/iron.jpg),url(../images/UI/handle.png);
-	width: 55%;
+	width: 49%;
 	background-size: calc(100% - 3vw) 100%, calc(100% - 3vw), calc(100% - 3vw) 100%,3vw 100%;
 	background-repeat: no-repeat;
 	background-position-x: left, left, left, right;
