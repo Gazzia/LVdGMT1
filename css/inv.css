@@ -90,7 +90,7 @@ footer{
 	top: 1vh;
 	font-family: 'Vollkorn', serif;
 	color: #7b361f;
-	text-shadow: 0px 1px 3px #7b361f99;
+	text-shadow: 0px 1px 3px #7b361f80;
 	transform: rotate(-1deg);
 }
 .itemImgB{
@@ -168,12 +168,14 @@ span {
 	height: 4.5vh;
 	left: calc(27.25% - 1vw);
 	padding-top: 3px;
-	background: linear-gradient(to top, #0003, #0000 30%),#c3c3c3;
+	background: linear-gradient(to top, #0003, #0000 30%),url(../images/UI/tissu.jpg);
 	top: 1vh;
 	font-family: 'Vollkorn', serif;
-	color: #000;
-	/*! text-shadow: 0px 1px 3px #fff9; */
+	color: #69552b;
+	text-shadow: 0px 1px 3px #2217174d;
 	border: 3px double black;
+	background-size: 100% 100%;
+	box-shadow: 0px 2px 6px #0003;
 }
 #closeMecha{
 	width:2.5vw;
