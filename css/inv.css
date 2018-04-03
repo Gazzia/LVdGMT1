@@ -134,6 +134,7 @@ span {
 	color:black;
 	right: 0;
 	position: absolute;
+	display: inline-table;
 }
 .itemDesc{
 	color:#3b1e11e6;
@@ -153,10 +154,11 @@ span {
 .itemList{
 	width:60%;
 	height:85%;
-	background-color:#0006;
+	/*! background-color:#0006; */
 	top: 9vh;
 	position: absolute;
 	left: calc(20% - 1vw);
+	text-align: center;
 }
 #cattitle{
 	font-size: 3vh;
@@ -179,4 +181,63 @@ span {
 	position: absolute;
 	right:  0.1vw;
 	top: calc(50% - 10vw);
+}
+.itemCase{
+	height:5.34vw;
+	width:5.34vw;
+
+	background: radial-gradient(#ffffff80,#000000e6 141%),linear-gradient(to bottom,#0009,#0000 40%);
+	position: relative;
+	margin: 1vh;
+	display: inline-block;
+	border: 1px solid black;
+	border-bottom-color: bisque;
+	border-right-color: bisque;
+	box-shadow: 1px 5px 34px #87816166;
+	transition: box-shadow 0.4s ease-in;
+}
+.itemCase:hover{
+	box-shadow: 1px 5px 44px #654017cc;
+}
+.itemClassimg{
+	position: absolute;
+	width: 4.34vw;
+	height: 4.34vw;
+	left: 0.5vw;
+	top: 0.5vw;
+}
+.itemImgA{
+	height:8vh;
+	width:8vh;
+	position: absolute;
+	left: 0.5vh;
+	top: 0.5vh;
+	border-radius: 5px;
+}
+.btnPocket{
+	height:4.5vh;
+	width:50px;
+	background: #7c4d42;
+	position:  relative;
+	display: inline-block;
+	top: 9vh;
+	left: 5%;
+	width: calc(45% - 2vh);
+	margin: 1vh;
+	border-radius: 5px;
+	border: 1px solid #0000004d;
+	box-shadow: 0px 3px 4px #0000001a;
+	text-align: center;
+	font-size: 1.5vw;
+	font-family: 'Vollkorn',serif;
+	color: #b18375;
+	padding-top: 1vh;
+}
+.highlight {
+	background: linear-gradient(to top , #0003, #0000 39%),linear-gradient(0.95turn, #0000004d, #0000 39%),linear-gradient(0.45turn, #86766c99, #0000 70%),url(../images/UI/leather.jpg);
+	color:white;
+	font-size: 1.5vh;
+	border-radius: 5px;
+	padding:0.1vh 1vh;
+	opacity: 0.8;
 }

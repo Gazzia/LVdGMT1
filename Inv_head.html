@@ -39,13 +39,13 @@
 	<footer></footer>
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script>
-	function selectCheveux(){localStorage.setItem("headSelected", "Cheveux");}
+	function selectCheveux(){localStorage.setItem("headSelected", "Tête");}
 	var headSelected = localStorage.headSelected;
 
 /*affichage select*/
 	var imgheadSelected = document.getElementById("selectedImg");
 	var textheadSelected = document.getElementById("selectedText");
-	if (headSelected == "Cheveux"){
+	if (headSelected == "Tête"){
 		imgheadSelected.src="images/icons/armor/head.png";
 		textheadSelected.innerHTML="<b>Cheveux</b><br>Votre seule protection contre des coups au crâne sont vos cheveux gras.";}
 	window.addEventListener('click', function(e) {
