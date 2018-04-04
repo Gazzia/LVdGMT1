@@ -31,7 +31,7 @@ var totalInt = Math.round(+raceXInt * +bInt);
 localStorage.totalInt = totalInt;
 
 var armeSelected = localStorage.armeSelected;
-if(armeSelected=="Poing"){
+if(armeSelected=="Poings"){
 	localStorage.setItem("dmgbasemin", "0");
 	localStorage.setItem("dmgbasemax", "0");}
 if(armeSelected=="Baton"){

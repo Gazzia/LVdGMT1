@@ -13,7 +13,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
   <script src="js/statsvar.js"></script>
-<script src="js/statsvar.js"></script></head>
+</head>
 <body>
 	<header></header>
 	<section id="sleft"></section>
@@ -46,6 +46,7 @@
 		</div>
 	</a>
 	</div>
+  <div id="barre"> </div>
 		<div id="hud_dmg"><p id="combatText"></p></div>
 </article>
 <section id="sright"></section>
@@ -71,7 +72,7 @@ if (enemyHealth <= 0 && plHealth >= 0) {
 	$("#combatText").html("Vous avez vaincu le rat !").css("font-weight","bold");
 	localStorage.enemy_rat1_dead=1;
 	$(".btnsCombat").attr("onClick","").css('opacity', '0.5');
-  setTimeout(function () { window.location="2.211 Interieur.html";},2000);
+  // setTimeout(function () { window.location="2.211 Interieur.html";},2000);
 }
 if (enemyHealth > 0) {
 	$("#combatText").html(localStorage.combatText);
@@ -85,6 +86,15 @@ if (plHealth <= 0) {
 	$("#btnRecommencer").show();
 }
 /*FONCTIONS */
+$('#barre').progressbar({
+    max: 20,
+    classes: {
+      "ui-progressbar": "progression",
+      "ui-progressbar-value": "progression-value"
+    }
+});
+var raaaat = Number(enemyHealth);
+$('#barre').progressbar('option', 'value', raaaat);
 function frapper() {
 	if (enemyHealth > 0 && plHealth >= 0) {
 		/*reset randomcritsuccess*/
@@ -107,12 +117,13 @@ function frapper() {
 		enemyHealth = enemyHealth - playerHitDmgCalc;
 		localStorage.enemy_Rat1HP=enemyHealth;
 		/*refresh*/
+    var raaaat = Number(enemyHealth);
+    $('#barre').progressbar('option', 'value', raaaat);
 		window.location = "";
 	}
 	localStorage.combatText=hitphrase;
 	$("#combatText").html(localStorage.combatText);
 }
-
 </script>
 <script src="js/header_normal.js"></script>
 <script src="js/footer_normal.js"></script>

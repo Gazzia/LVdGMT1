@@ -5,4 +5,4 @@ $("footer").html(
   "<div id='footerRight' class='footers'>"+
   "<div id='gdCont'><p id='goldAmount'></p><img id='iconGold' src='images/icons/UI/coin.png'></div>"+
   "<p id='plclasse' class='footertext'></p></div>"+
-  "</div>");
+  "</div><div id='vieProgress'></div>");

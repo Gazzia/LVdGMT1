@@ -145,3 +145,14 @@ padding: 1vh;
 .btnHit{
 	height: 4.3vh;
 }
+.progression{
+	background:linear-gradient(to top, #0003, #0000 50%), #b08c5f;
+	width: 36%;
+	height: 1vh !important;
+	left: 32%;
+	position: relative;
+	bottom: 74px;
+}
+.progression-value{
+	background:linear-gradient(to top, #00053180, #0000 50%),linear-gradient(to bottom, #a5383880, #0000 50%), #972730;
+}

@@ -17,7 +17,6 @@ var Baton = {
   Img: "weapons/stick.png",
   Short: "Baton"
 };
-
 //HEAD
 var Tete = {
   Type: "head",

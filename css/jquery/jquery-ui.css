@@ -903,7 +903,6 @@ body .ui-tooltip {
 }
 .ui-widget-content {
 	border: 1px solid #aaaaaa;
-	background: #ffffff;
 	color: #222222;
 }
 .ui-widget-content a {
@@ -1314,12 +1313,11 @@ a.ui-button:active,
     visibility: hidden;
 }
 .ui-widget {
-    /* font-family: Verdana,Arial,sans-serif; */
+    /*! font-family: Verdana,Arial,sans-serif; */
     font-size: 1.2em;
 }
 
 .ui-widget-content {
-    background: transparent;
     border: 1px solid #000;
     color: #fff8cc;
     border: ;
