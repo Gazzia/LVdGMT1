@@ -87,13 +87,13 @@ $("#statistiques").html(
   '<tr class="secondln"> <td title="Dexterité"><img src="images/UI/abilities/dex.png" class="staticon">DEX</td> <td>'+bDex+'</td> <td>'+raceXDex+'</td> <td>X</td> <td></td> <td>'+totalDex+'</td> </tr>'+
   '<tr class="thirdln"> <td title="Intelligence"><img src="images/UI/abilities/int.png" class="staticon">INT</td> <td>'+bInt+'</td> <td>'+raceXInt+'</td> <td>X</td> <td></td> <td>'+totalInt+'</td> </tr>'+ '</table>'
 );
-$('#vieProgress').progressbar({
-    classes: {
-      "ui-progressbar": "progression",
-      "ui-progressbar-value": "progression-value"
-    }
-});
-var plHealth = Number(localStorage.plHealth);
-var plHealthMax = Number(localStorage.plHealthMax);
-$('#vieProgress').progressbar('option', 'max', plHealthMax);
-$('#vieProgress').progressbar('option', 'value', plHealth);
+// $('#vieProgress').progressbar({
+//     classes: {
+//       "ui-progressbar": "progression",
+//       "ui-progressbar-value": "progression-value"
+//     }
+// });
+// var plHealth = Number(localStorage.plHealth);
+// var plHealthMax = Number(localStorage.plHealthMax);
+// $('#vieProgress').progressbar('option', 'max', plHealthMax);
+// $('#vieProgress').progressbar('option', 'value', plHealth);
