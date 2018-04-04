@@ -162,12 +162,12 @@ span {
 	text-align: center;
 }
 #cattitle{
-	font-size: 3vh;
+	font-size: 2.0vw;
 	position:  absolute;
-	width: 45%;
+	width: 50%;
 	text-align: center;
-	height: 4.5vh;
-	left: calc(27.25% - 1vw);
+	height: 2.5vw;
+	left: calc(25% - 1.5vw);
 	padding-top: 3px;
 	background: linear-gradient(to top, #0003, #0000 30%),url(../images/UI/tissu.jpg);
 	top: 1vh;
