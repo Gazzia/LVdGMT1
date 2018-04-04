@@ -42,7 +42,7 @@ var Jambes = {
   Stat: "Def Max : 0 Normal",
   Desc: "Vous n'avez aucune protection aux jambes.",
   Img: "armor/legs.png"
-}
+};
 //PIEDS
 var Pieds = {
   Type: "foot",
@@ -51,10 +51,10 @@ var Pieds = {
   Stat: "Def Max : 0 Normal",
   Desc: "Vous n'avez aucune protection aux pieds.",
   Img: "armor/barefoot.png"
-}
+};
 //TOOLS
 var Pelle = {
   Name: "Pelle",
   Desc: "Une vieille pelle.",
-}
+};
 //OBJETS
