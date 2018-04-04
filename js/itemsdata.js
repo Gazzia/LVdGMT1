@@ -5,7 +5,8 @@ var Poings = {
   StatShort: "0Nor",
   Stat: "Dmg Max : 0 Normal",
   Desc: "Vous ne possédez pas d'arme, et vos maigres poings peu habitués au corps à corps ne vous serviront à presque rien.",
-  Img: "weapons/fist.png"
+  Img: "weapons/fist.png",
+  Short: "Poings"
 };
 var Baton = {
   Type: "arme",
@@ -13,9 +14,9 @@ var Baton = {
   StatShort: "10Nor",
   Stat: "Dmg Max : 10 Normal",
   Desc: "Une arme rudimentaire. Cette branche pourra peut-être asséner quelques bleus à un adversaire, qui sait?.",
-  Img: "weapons/stick.png"
+  Img: "weapons/stick.png",
+  Short: "Baton"
 };
-
 //HEAD
 var Tete = {
   Type: "head",
@@ -23,7 +24,8 @@ var Tete = {
   StatShort: "0Nor",
   Stat: "Def Max : 0 Normal",
   Desc: "Vous n'avez aucune protection à la tête.",
-  Img: "armor/head.png"
+  Img: "armor/head.png",
+  Short: "Tete"
 };
 //TORSE
 var Torse = {
@@ -32,7 +34,8 @@ var Torse = {
   StatShort: "0Nor",
   Stat: "Def Max : 0 Normal",
   Desc: "Vous n'avez aucune protection au torse.",
-  Img: "armor/torso.png"
+  Img: "armor/torso.png",
+  Short: "Torse"
 };
 //JAMBES
 var Jambes = {
@@ -41,7 +44,8 @@ var Jambes = {
   StatShort: "0Nor",
   Stat: "Def Max : 0 Normal",
   Desc: "Vous n'avez aucune protection aux jambes.",
-  Img: "armor/legs.png"
+  Img: "armor/legs.png",
+  Short: "Jambes"
 };
 //PIEDS
 var Pieds = {
@@ -50,11 +54,15 @@ var Pieds = {
   StatShort: "0Nor",
   Stat: "Def Max : 0 Normal",
   Desc: "Vous n'avez aucune protection aux pieds.",
-  Img: "armor/barefoot.png"
+  Img: "armor/barefoot.png",
+  Short: "Pieds"
 };
 //TOOLS
 var Pelle = {
+  Type: "tool",
   Name: "Pelle",
   Desc: "Une vieille pelle.",
+  Img: "items/shovel.png",
+  Short: "Pelle"
 };
 //OBJETS

@@ -26,7 +26,7 @@
 		<div id="cog"></div>
 		<div id="leftmenu" class="menus">
 			<div class="invtitle">Inventaire</div>
-			<div class="pocket" onclick="openMecha('Armes');">
+			<div class="pocket" onclick="OpenMecha('Armes');">
 				<div class="itemImgB armeImgB"><img id="armeImg" class="itemImgA"></div>
 				<div class="itemText armeText">
 					<div class="scroll">
@@ -36,7 +36,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="pocket" onclick="openMecha('Armure / Tête');">
+			<div class="pocket" onclick="OpenMecha('Armure / Tête');">
 				<div class="itemImgB armorImgB"><img id="headImg" class="itemImgA"></div>
 				<div class="itemText armorText">
 					<div class="scroll">
@@ -46,7 +46,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="pocket" onclick="openMecha('Armure / Torse');">
+			<div class="pocket" onclick="OpenMecha('Armure / Torse');">
 				<div class="itemImgB armorImgB"><img id="torseImg" class="itemImgA"></div>
 				<div class="itemText armorText">
 					<div class="scroll">
@@ -56,7 +56,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="pocket" onclick="openMecha('Armure / Jambes');">
+			<div class="pocket" onclick="OpenMecha('Armure / Jambes');">
 				<div class="itemImgB armorImgB"><img id="legImg" class="itemImgA"></div>
 				<div class="itemText armorText">
 					<div class="scroll">
@@ -66,7 +66,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="pocket" onclick="openMecha('Armure / Pieds');">
+			<div class="pocket" onclick="OpenMecha('Armure / Pieds');">
 				<div class="itemImgB armorImgB"><img id="footImg" class="itemImgA"></div>
 				<div class="itemText armorText">
 					<div class="scroll">
@@ -76,8 +76,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="btnPocket" onclick="openMecha('Outils');">Outils</div>
-			<div class="btnPocket" onclick="openMecha('Objets');">Objets</div>
+			<div class="btnPocket" onclick="OpenMecha('Outils');">Outils</div>
+			<div class="btnPocket" onclick="OpenMecha('Objets');">Objets</div>
 		</div>
 		<div id="rightmenu" class="menus">
 			<div id="cattitle">Inventaire</div>
@@ -96,12 +96,12 @@
 			<div id="footList" class="itemList">
 				<a onclick="selFoot('Pieds');" class="itemCase"><img class="itemClassimg" title="Pieds - 0Nor" src="images/icons/armor/barefoot.png"></a>
 			</div>
-			<div id="toolsList" class="itemList">
+			<div id="toolList" class="itemList">
 			</div>
-			<div id="objectsList" class="itemList">
+			<div id="objectList" class="itemList">
 			</div>
 		</div>
-		<div id="closeMecha" onclick="closeMecha()"></div>
+		<div id="manualClosing" onclick="manualClosing()"></div>
 	</div>
 </div>
 <!-- DECO+FOOTER -->
@@ -114,121 +114,76 @@
 <script>
 localStorage.inventoryOpen=1;
 localStorage.invFolderOpen=0;
-function openMecha(itemType){
-	if (localStorage.invFolderOpen == 0){
-		$("#cattitle").html(itemType);
-		$(".itemList").hide();
-		if (itemType == "Armes"){$("#armeList").show()}
-		if (itemType == "Armure / Tête"){$("#headList").show()}
-		if (itemType == "Armure / Torse"){$("#torseList").show()}
-		if (itemType == "Armure / Jambes"){$("#legList").show()}
-		if (itemType == "Armure / Pieds"){$("#footList").show()}
-		if (itemType == "Outils"){$("#toolsList").show()}
-		if (itemType == "Objets"){$("#objectsList").show()}
-	}
-	if (localStorage.invFolderOpen == 1){
-		setTimeout(function () {
-			$("#cattitle").html(itemType);
-			$(".itemList").hide();
-			if (itemType == "Armes"){$("#armeList").show()}
-			if (itemType == "Armure / Tête"){$("#headList").show()}
-			if (itemType == "Armure / Torse"){$("#torseList").show()}
-			if (itemType == "Armure / Jambes"){$("#legList").show()}
-			if (itemType == "Armure / Pieds"){$("#footList").show()}
-			if (itemType == "Outils"){$("#toolsList").show()}
-			if (itemType == "Objets"){$("#objectsList").show()}
-		}, 500);}
-		mecanisme();
+//OUVERTURE-FERMETURE
+function manualClosing(){	if (localStorage.invFolderOpen==1){	closefn();	localStorage.invFolderOpen=0;	}}
+function OpenMecha(itemType){
+	if (localStorage.invFolderOpen == 0){	OM_setOpenedFolder(itemType);}
+	if (localStorage.invFolderOpen == 1){	setTimeout(function () {OM_setOpenedFolder(itemType);}, 500);}
+	OM_mecanisme();
 }
-function mecanisme(){
-	if (localStorage.invFolderOpen == 1){
-		localStorage.audiotypeUI="cogClose";
-		window.open("audioUI.html","audioUI");
-		$("#leftmenu").css("left","20%");
-		$("#cog").css({"left":"11%","transform":"rotate(0deg)"});
-		$("#rightmenu").css("right","24%");
-
-		setTimeout(function () {
-			localStorage.audiotypeUI="cogOpen";
-			window.open("audioUI.html","audioUI");
-			$("#leftmenu").css("left","0");
-			$("#cog").css({"left":"-9%","transform":"rotate(200deg)"});
-			$("#rightmenu").css("right","0");
-		}, 500);
-	}
-	if (localStorage.invFolderOpen == 0){
-		localStorage.audiotypeUI="cogOpen";
-		window.open("audioUI.html","audioUI");
-		$("#leftmenu").css("left","0");
-		$("#cog").css({"left":"-9%","transform":"rotate(200deg)"});
-		$("#rightmenu").css("right","0");
-		localStorage.invFolderOpen=1;
-	}
+function OM_setOpenedFolder(itemType){
+	$("#cattitle").html(itemType);
+	$(".itemList").hide();
+	if (itemType == "Armes"){$("#armeList").show()}
+	if (itemType == "Armure / Tête"){$("#headList").show()}
+	if (itemType == "Armure / Torse"){$("#torseList").show()}
+	if (itemType == "Armure / Jambes"){$("#legList").show()}
+	if (itemType == "Armure / Pieds"){$("#footList").show()}
+	if (itemType == "Outils"){$("#toolList").show()}
+	if (itemType == "Objets"){$("#objectList").show()}
 }
-function closeMecha(){
-	if (localStorage.invFolderOpen==1){
-		localStorage.audiotypeUI="cogClose";
-		window.open("audioUI.html","audioUI");
-		$("#leftmenu").css("left","20%");
-		$("#cog").css({"left":"11%","transform":"rotate(0deg)"});
-		$("#rightmenu").css("right","24%");
-		localStorage.invFolderOpen=0;
-	}
+function OM_mecanisme(){
+	if (localStorage.invFolderOpen == 1){closefn();setTimeout(function () {openfn();}, 500);	}
+	if (localStorage.invFolderOpen == 0){openfn();localStorage.invFolderOpen=1;	}
 }
-
-if (localStorage.armeBaton==1) {addArme("Baton");}
-function addArme(addedArme){
-	if (addedArme == "Baton"){
-		var fnAddedArme = addedArme;
-		var titleAddedArme = Baton.Name+" - "+Baton.StatShort;
-		var srcAddedArme = "stick.png";
-	}
-	$("#armeList").append('<a onclick="selArme(\''+fnAddedArme+'\');" class="itemCase"><img class="itemClassimg" title="'+titleAddedArme+'" src="images/icons/weapons/'+srcAddedArme+'"></a>');
+function closefn(){
+	localStorage.audiotypeUI="cogClose";
+	window.open("audioUI.html","audioUI");
+	$("#leftmenu").css("left","20%");
+	$("#cog").css({"left":"11%","transform":"rotate(0deg)"});
+	$("#rightmenu").css("right","24%");
 }
-function selArme(selArme){localStorage.armeSelected=selArme;refSel();}
+function openfn(){
+	localStorage.audiotypeUI="cogOpen";
+	window.open("audioUI.html","audioUI");
+	$("#leftmenu").css("left","0");
+	$("#cog").css({"left":"-9%","transform":"rotate(200deg)"});
+	$("#rightmenu").css("right","0");
+}
+/* AJOUT DES OBJETS INDIVIDUELLEMENT DEPUIS ITEMSDATA.JS */
+//ARMES
+if (localStorage.armeBaton==1) {addItem(Baton);}
+//OUTILS
+if (localStorage.objectShovel==1) {addItem(Pelle);}
+/* AJOUT DES OBJETS */
+function addItem(addedItem){
+	$("#"+addedItem.Type+"List").append('<a onclick="selArme(\''+addedItem.Short+'\');" class="itemCase"><img class="itemClassimg" title="'+addedItem.Name+' - '+addedItem.StatShort+'" src="images/icons/'+addedItem.Img+'"></a>');
+}
+/* SELECTION DES OBJETS */
+function selArme(selectedArme){	localStorage.armeSelected=selectedArme;	refSel();}
 function selHead(selHead){localStorage.headSelected=selHead;refSel();}
 function selTorse(selTorse){localStorage.torseSelected=selTorse;refSel();}
 function selLeg(selLeg){localStorage.legSelected=selLeg;refSel();}
 function selFoot(selFoot){localStorage.footSelected=selFoot;refSel();}
 //SELECTION-------------------
-function refSel(){
-	//ARME
-	if (localStorage.armeSelected == "Poings")
-		{refSelApply(Poings.Type, Poings.Name, Poings.StatShort, Poings.Stat, Poings.Desc, Poings.Img);}
-	if (localStorage.armeSelected == "Baton")
-		{refSelApply(Baton.Type, Baton.Name, Baton.StatShort, Baton.Stat, Baton.Desc, Baton.Img);}
-	//HEAD
-	if (localStorage.headSelected=="Tete")
-		{refSelApply(Tete.Type, Tete.Name, Tete.StatShort, Tete.Stat, Tete.Desc, Tete.Img);}
-	//TORSE
-	if (localStorage.torseSelected=="Torse")
-		{refSelApply(Torse.Type, Torse.Name, Torse.StatShort, Torse.Stat, Torse.Desc, Torse.Img);}
-	//LEG
-	if (localStorage.legSelected=="Jambes")
-		{refSelApply(Jambes.Type, Jambes.Name, Jambes.StatShort, Jambes.Stat, Jambes.Desc, Jambes.Img);}
-	//FOOT
-	if (localStorage.footSelected=="Pieds")
-		{refSelApply(Pieds.Type, Pieds.Name, Pieds.StatShort, Pieds.Stat, Pieds.Desc, Pieds.Img);}
+function refSel() {
+  var armeSel = localStorage.armeSelected;
+  refSelApply(window[armeSel].Type, window[armeSel].Name, window[armeSel].StatShort, window[armeSel].Stat, window[armeSel].Desc, window[armeSel].Img);
+  var headSel = localStorage.headSelected;
+  refSelApply(window[headSel].Type, window[headSel].Name, window[headSel].StatShort, window[headSel].Stat, window[headSel].Desc, window[headSel].Img);
+  var torseSel = localStorage.torseSelected;
+  refSelApply(window[torseSel].Type, window[torseSel].Name, window[torseSel].StatShort, window[torseSel].Stat, window[torseSel].Desc, window[torseSel].Img);
+  var legSel = localStorage.legSelected;
+  refSelApply(window[legSel].Type, window[legSel].Name, window[legSel].StatShort, window[legSel].Stat, window[legSel].Desc, window[legSel].Img);
+  var footSel = localStorage.footSelected;
+  refSelApply(window[footSel].Type, window[footSel].Name, window[footSel].StatShort, window[footSel].Stat, window[footSel].Desc, window[footSel].Img);
 }
-
 function refSelApply(selItemType, itemName, itemStatShort, itemStat, itemDesc, itemImg){
 	$("#"+selItemType+"Name").html(itemName);
 	$("#"+selItemType+"Stat").html(itemStatShort).prop('title', itemStat);
 	$("#"+selItemType+"Desc").html(itemDesc);
 	$("#"+selItemType+"Img").attr("src","images/icons/"+itemImg);
 }
-
-
-/*TOOLS*/
-if (localStorage.objectShovel==1) {addTool("Pelle");}
-function addTool(addedTool){
-	if (addedTool == "Pelle"){
-		var titleAddedTool = Pelle.Name+" - "+Pelle.Desc;
-		var srcAddedTool = "shovel.png";
-	}
-	$("#toolsList").append('<a class="itemCase"><img class="itemClassimg" title="'+titleAddedTool+'" src="images/icons/items/'+srcAddedTool+'"></a>');
-}
-
 </script>
 <script src="js/footer_normal.js"></script>
 <script src="js/globalscripts.js"></script>
