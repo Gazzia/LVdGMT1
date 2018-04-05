@@ -30,7 +30,7 @@ body {
 .bgVoile{ background: linear-gradient(to bottom, #b7311d -50%, #0000 40%),black;}
 
 #choix_dialogue, a.dialAll {cursor: url(../images/cursors/talk.png), auto !important;}
-a.btnD, a.btn_objets, a, button {cursor: url(../images/cursors/hand.png), auto !important;}
+a.btnD, a.btn_objets, a, button, .eA_action {cursor: url(../images/cursors/hand.png), auto !important;}
 a.cursorTake {cursor: url(../images/cursors/take.png), auto !important;}
 a.cursorHit {cursor: url(../images/cursors/hit.png), auto !important;}
 a.cursorSkill {cursor: url(../images/cursors/skill.png), auto !important;}

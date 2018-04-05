@@ -62,7 +62,7 @@
 /* PSEUDO */
 var elpseudo =localStorage.pseudo;
 	document.getElementById("showpseudo").innerHTML = "<h1>Choix d'une race pour "+elpseudo;
-var darace = "";
+var darace = "none";
 var iconClass = document.getElementById('iconClass');
 var classDesc = document.getElementById('classDesc');
 var getitem_desc = document.getElementById("getitem_desc");
@@ -130,7 +130,7 @@ $('.container').click(function() {
 			"+10% de Force et +10♥max au départ<br>-10% d'Intelligence et -10% d'Agilité<br><br>" +
 			"<b>Relations particulières</b><br>" +
 			"Les golems de sang s'entendent mal avec les <font color=\"darkred\">Ferrés</font> depuis l'insurréction. En relation pacifique avec les autres races, ils aiment particulièrement la compagnie des <font color=\"darkblue\">Oculains</font>, créatures appréciant également la paix et la simplicité.");
-			darace = "Golem de Sang";
+			darace = "Golem";
 	}
 });
 function confirmRace(){
@@ -162,7 +162,7 @@ function confirmRace(){
 			localStorage.raceXAgi=1.1;
 			localStorage.raceXChar=localStorage.raceXDex=0.9;
 		}
-		if (darace=="Golem de Sang"){
+		if (darace=="Golem"){
 			localStorage.plHealth=localStorage.plHealthMax=110;
 			localStorage.raceXForce=1.1;
 			localStorage.raceXInt=localStorage.raceXAgi=0.9;

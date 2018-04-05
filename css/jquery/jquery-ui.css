@@ -883,27 +883,12 @@ body .ui-tooltip {
 }
 /* Component containers
 ----------------------------------*/
-.ui-widget {
-	font-family: Verdana,Arial,sans-serif;
-	font-size: 1.1em;
-}
-.ui-widget .ui-widget {
-	font-size: 1.7vh;
-}
-.ui-widget input,
-.ui-widget select,
-.ui-widget textarea,
-.ui-widget button {
-	font-family: Verdana,Arial,sans-serif;
-	font-size: 1em;
-	color: #594230;
-}
+
 .ui-widget.ui-widget-content {
 	/* border: 1px solid #d3d3d3; */
 }
 .ui-widget-content {
 	border: 1px solid #aaaaaa;
-	color: #222222;
 }
 .ui-widget-content a {
 	color: #222222;

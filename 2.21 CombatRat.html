@@ -13,23 +13,63 @@
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
   <script src="js/statsvar.js"></script>
+  <script src="js/data/enemies.js"></script>
+  <script src="js/data/items.js"></script>
+  <script>
+  $(function(){$( document ).tooltip({classes:{"ui-tooltip": "highlight"}});});
+  </script>
 </head>
-<body>
-<section id="intitule">
-  <div id="intituleText">
-    <div class="scroll">Alors que vous entamez votre premier pas au-delà de la porte, une ombre se propulse vers vous.<br>Un énorme rat vous attaque, énervé que vous ayiez trouvé son abri. Vous entrevoyez rapidement un corps à moitié mangé sur le sol, surement l'ancien propriétaire.</div>
-  </div>
-</section>
-<section id="perso" class="mid">
-  <div class="scroll">
-    <div id="vous">Vous</div>
-    <div id="viePlayer"> </div>
-    <div id="playerVieText"></div>
-  </div>
-</section>
-<section id="infos" class="mid"></section>
-<section id="enemis" class="mid"></section>
-<section id="defensif"></section>
+<body onload="refStuff()">
+  <div id="blackscreen"></div>
+  <section id="intitule">
+    <div id="intituleText">
+      <div class="scroll">Alors que vous entamez votre premier pas au-delà de la porte, une ombre se propulse vers vous.<br>Un énorme rat vous attaque, énervé que vous ayiez trouvé son abri. Vous entrevoyez rapidement un corps à moitié mangé sur le sol, surement l'ancien propriétaire.</div>
+    </div>
+  </section>
+  <section id="perso" class="mid">
+    <div id="persoTop">
+      <div id="vous">Vous</div>
+      <div id="viePlayer"> </div>
+      <div id="playerVieText"></div>
+    </div>
+    <div id="infosPerso">
+      <div class="scroll">
+        <div class="infosSubtitle">Caractéristiques</div>
+        <div id="infoChara" class="infosText"></div>
+        <div class="infosSubtitle">Arme</div>
+        <div id="infoArme" class="infosText"></div>
+        <div class="infosSubtitle">Race</div>
+        <div id="infoRace" class="infosText">Oculain<br>Pas de stats de combat spéciales</div>
+        <div class="infosSubtitle">Classe</div>
+        <div id="infoClasse" class="infosText">Guerrier<br>Dmgs multipliés par 1,5</div>
+        <div class="infosSubtitle">Armure</div>
+        <div id="infoDef" class="infosText">Def totale :<br>0</div>
+      </div>
+    </div>
+  </section>
+  <section id="infos" class="mid">
+    <div class="scroll">
+      <div id="infoPlayerSide" class="infoSides">
+        <div id="hit_PtoE1" class="hit_all hit_PtoE hit_E1">Vous infligez 10dmg</div>
+        <div id="hit_PtoE2" class="hit_all hit_PtoE hit_E2">Vous infligez 20dmg</div>
+        <div id="hit_PtoE3" class="hit_all hit_PtoE hit_E3">Vous infligez 30dmg</div>
+        <div id="hit_PtoE4" class="hit_all hit_PtoE hit_E4">Vous infligez 40dmg</div>
+        <div id="hit_PtoE5" class="hit_all hit_PtoE hit_E5">Vous infligez 50dmg</div>
+      </div>
+      <div id="infoEnemiesSide" class="infoSides">
+        <div id="hit_E1toP" class="hit_all hit_EtoP hit_E1">L'ennemi vous inflige 10dmg</div>
+        <div id="hit_E2toP" class="hit_all hit_EtoP hit_E2">L'ennemi vous inflige 20dmg</div>
+        <div id="hit_E3toP" class="hit_all hit_EtoP hit_E3">L'ennemi vous inflige 30dmg</div>
+        <div id="hit_E4toP" class="hit_all hit_EtoP hit_E4">L'ennemi vous inflige 40dmg</div>
+        <div id="hit_E5toP" class="hit_all hit_EtoP hit_E5">L'ennemi vous inflige 50dmg</div>
+      </div>
+    </div>
+  </section>
+  <section id="ennemis" class="mid">
+    <div id="ennemisList" class="scroll">
+    </div>
+  </section>
+  <section id="defensif"></section>
 <!-- DECO+FOOTER -->
 <div id="allmenus"></div>
 <div id="ang1a"></div><div id="ang1b"></div>
@@ -37,15 +77,60 @@
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script>
 localStorage.numpage=2.21;
-$('#viePlayer').progressbar({
-    classes: {
-      "ui-progressbar": "progression",
-      "ui-progressbar-value": "progression-value"
-    }
-});
+localStorage.enemiesNb=0;
+addEnemy1(Rat, 5);
+/* FONCTION D'AJOUT DES CASES DES OBJETS */
+function addEnemy1(addedEnemy, addedEnemyLvl){
+  var En1_MaxHP = localStorage.En1_HP = localStorage.En1_MaxHP = Math.round(addedEnemy.HealthBase + (addedEnemy.HealthCoef * (addedEnemyLvl - 1)));
+  var En1_MaxDmgNor = localStorage.En1_MaxDmgNor = Math.round(addedEnemy.DmgBaseNor + (addedEnemy.DmgCoefNor * (addedEnemyLvl - 1)));
+  var En1_MaxDefNor = localStorage.En1_MaxDefNor = Math.round(addedEnemy.DefBaseNor + (addedEnemy.DefCoefNor * (addedEnemyLvl - 1)));
+	$("#ennemisList").append('<div id="enemyui1" class="enemyui"> <div id="enemytitle1" class="enemytitle"> <a class="enemypicture"></a> <div class="enemyName">'+addedEnemy.Name+'</div> <div class="enemyLvl">Lvl '+addedEnemyLvl+'</div> </div> <div class="enemyStats">Att max: '+En1_MaxDmgNor+'Nor<br>Def max: '+En1_MaxDefNor+'Nor</div> <div class="enemyDesc"> <div class="scroll">'+addedEnemy.Desc+'</div> </div> <div id="vieEnemy"></div> <div id="vieEn1Text" class="vieEnemyText">'+localStorage.En1_HP+'/'+localStorage.En1_MaxHP+'</div> <div class="enemyActions"> <div class="eA_action" title="Attaque armée" onclick="En1_Hit()"><div class="eA_icons eA_attack"></div></div></div> </div>');
+  localStorage.enemiesNb=++localStorage.enemiesNb;
+}
+$('#viePlayer').progressbar({classes:{"ui-progressbar": "progression", "ui-progressbar-value": "progression-value"}});
 $('#viePlayer').progressbar('option', 'value', Number(localStorage.plHealth));
 $('#viePlayer').progressbar('option', 'max', Number(localStorage.plHealthMax));
-$('#playerVieText').html(localStorage.plHealth+"/"+localStorage.plHealthMax)
+$('#vieEnemy').progressbar({classes:{"ui-progressbar": "progression progEnemy", "ui-progressbar-value": "progression-value progEnemy-value"}});
+$('#vieEnemy').progressbar('option', 'value', Number(localStorage.En1_HP));
+$('#vieEnemy').progressbar('option', 'max', Number(localStorage.En1_MaxHP));
+$('#playerVieText').html(localStorage.plHealth+"/"+localStorage.plHealthMax);
+$(".enemyui").css("left","10%");
+$("#blackscreen").css("background-color","black");
+$("#blackscreen").css("top","100%");
+function refStuff() {
+  $("#infoChara").html("TOTAL Force: "+totalForce+"<br>TOTAL Puissance Mag.: "+totalMag);
+  var armeSel = localStorage.armeSelected;
+  $("#infoArme").html(window[armeSel].Name+"<br>Dmg max: "+window[armeSel].StatShort);
+  var textRaceForce = "Cette race n'a pas de multiplicateur de Force";
+  if (raceXForce == 1.1){textRaceForce = "Force +10%";} if (raceXForce == 0.9){textRaceForce = "Force -10%";}
+  $("#infoRace").html(localStorage.race+"<br>"+textRaceForce);
+  var textClasseForce = "Cette classe n'a pas de multiplicateur de Force";
+  if (classeXForce == 1.5){textClasseForce = "Force +50%";} if (classeXForce == 0.5){textClasseForce = "Force -50%";}
+  $("#infoClasse").html(localStorage.classe+"<br>"+textClasseForce);
+}
+function En1_Hit(){
+  var randomcritsuccess = 1;
+  if (localStorage.plHealth >= 0) {
+    var playerHitDmgRaw = Math.floor(Math.random() * (maxdmg - mindmg + 1) + mindmg);
+    var randomcrit = Math.floor(Math.random() * (3 - 1 + 1) + 1);
+    if (maxdmg != 0 && playerHitDmgRaw == maxdmg && randomcrit == 3) { randomcritsuccess = 1.5;}
+    var playerHitDmgCalc = ((playerHitDmgRaw * randomcritsuccess) + totalForce);
+    localStorage.En1_HP = +localStorage.En1_HP - playerHitDmgCalc;
+    if (localStorage.En1_HP < 0){localStorage.En1_HP = 0;}
+    $("#vieEn1Text").html(localStorage.En1_HP+'/'+localStorage.En1_MaxHP);
+    $('#vieEnemy').progressbar('option', 'value', Number(localStorage.En1_HP));
+    if (localStorage.En1_HP == 0){
+      $("#enemyui1").css("margin-left","100%");
+      $("#enemytitle1").css("background-color","#2a2929");
+      localStorage.enemiesNb=--localStorage.enemiesNb;
+      if (localStorage.enemiesNb <= 0){
+        console.log('gagné');
+      }
+    }
+  }
+}
+function calcPlayerDmg(){
+}
 </script>
 <script src="js/menu.js"></script>
 <script src="js/globalscripts.js"></script>

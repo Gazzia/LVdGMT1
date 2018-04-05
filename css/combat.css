@@ -1,6 +1,7 @@
 body{
 	background:#fff;
 	overflow: hidden;
+	font-family: 'Vollkorn', serif;
 }
 section{
 	position: relative;
@@ -23,10 +24,10 @@ float: left;}
 }
 #infos{
 	width:35%;
-	background: linear-gradient(to top,#220909,#7c3030);
+	background: linear-gradient(to top,#220909,#7c3032);
 	box-shadow: 0 60px 111px black inset;
 }
-#enemis{
+#ennemis{
 	width:40%;
 	background: url(../images/UI/woodDark.jpg);
 	background-size: 100% 100%;
@@ -34,9 +35,9 @@ float: left;}
 #defensif{
 	width:100%;
 	height:7%;
-	background: linear-gradient(to top,#30080880,#8e555533 100%),linear-gradient(to top,#0006,#0000 55%),url(../images/UI/rockBanner.jpg);
+	background: linear-gradient(to top,#30080899,#8e555533 100%),linear-gradient(to top,#0006,#0000 55%),url(../images/UI/rockBanner.jpg);
 	z-index: 4;
-	box-shadow: 0 1px 18px black;
+	box-shadow: 0 1px 11px #000000e6;
 	border-top: 1px solid #c49d96e6;
 }
 #intituleText{
@@ -47,7 +48,6 @@ float: left;}
 	position: relative;
 	height: 100%;
 	overflow: hidden;
-	font-family: 'Vollkorn',serif;
 	margin-top: 2vh;
 	text-shadow: 0 1px 6px #4a0000;
 }
@@ -58,14 +58,14 @@ float: left;}
   left: 0;
   overflow-y: scroll;
   right: -1vw;
+  overflow-x: hidden;
 }
 #vous{
-	color:#4d281e;
+	color:#8a4c3c;
 	font-size:3vw;
 	width: 100%;
-	position: relative;
 	text-align: center;
-	margin-top: 3vh;
+	/*! margin-top: 3vh; */
 	text-shadow: 0px 1px 9px #460a0a4d;
 }
 .progression{
@@ -73,20 +73,208 @@ float: left;}
 	width: 85%;
 	height: 1vh !important;
 	left: 7.5%;
-	position:    relative;
+	position:    inherit;
+}
+.progEnemy{
+	width:calc(100% - 2px);
+	left:0;
 }
 .progression-value{
-	background:linear-gradient(to top, #00053180, #0000 50%),linear-gradient(to bottom, #a5383880, #0000 50%), #972730;
+	background:linear-gradient(to top, #00053180, #0000 50%),linear-gradient(to bottom, #a5383880, #0000 50%), #972750;
+	transition: width 0.25s ease-in;
 }
 #playerVieText{
 	width:4vw;
-	height:2vw;
-	background-color: #0000001a;
-	position:absolute;
+	height:1.5vw;
+	background-color: #90352233;
+	position: absolute;
 	right:10%;
-	border: 1px solid #0009;
+	border: 1px solid #0000004d;
 	margin-top: -1px;
 	color: white;
 	text-align: center;
-	font-size: 1.5vw;
+	font-size: 1.1vw;
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
+}
+#persoTop{
+	width:100%;
+	height:14vh;
+	position: relative;
+	overflow: visible;
+	margin-top: 3vh;
+	border-bottom: 1px solid #0006;
+	box-shadow: 0px 4px 22px #0003;
+	background: #fff1d44d;
+}
+#infosPerso{
+	height: calc(100% - 19vh);
+	width:80%;
+	/*! background-color: #fff9; */
+
+	left: 10%;
+	position: relative;
+	margin-top: 2vh;
+	text-shadow: 0px 0 43px #000c;
+	overflow: hidden;
+}
+.infosSubtitle{
+	color:#fffcd7e6;
+	font-size: 1.9vw;
+}
+.infosText{
+	color:#fff;
+	padding-left: 20px;
+	font-size: 1.1vw;
+}
+.enemyui{
+	width:80%;
+	height:22vh;
+	background-color: #2a2929;
+	left:  105%;
+	position: relative;
+	top: 5vh;
+	margin-bottom: 10vh;
+	border: 1px solid #5a5a5a;
+	box-shadow: 0px 10px 11px #0003;
+	transition: all 0.8s cubic-bezier(.46,.03,.52,.96) 1s;
+	border-collapse: collapse;
+}
+.enemytitle{
+	background-color:#855c67;
+	width:100%;
+	height:6vh;
+	display: block;
+	transition: all 0.8s cubic-bezier(.46,.03,.52,.96);
+}
+.enemypicture{
+	height:6vw;
+	width:6vw;
+	background-color: #c4b7b7;
+	left: 2vh;
+	position: relative;
+	top: 1.5vh;
+	border-radius: 5px;
+	box-shadow: 0 5px 5px #0006;
+	border: 1px solid #ffffffb3;
+	display: inline-block;
+}
+.enemyName{
+	color:white;
+	position: absolute;
+	left: 8vw;
+	font-size: 1.8vw;
+	top: 1.6vh;
+	line-height: 1.8vw;
+}
+.enemyLvl{
+	color:white;
+	position: absolute;
+	top: 1.8vh;
+	right: 2vh;
+}
+.enemyStats{
+	color:#d6a0b9;
+	position: relative;
+	left: 8vw;
+	top: 1vh;
+	font-size: 1.1vw;
+}
+.enemyDesc{
+	color:#fff5f5;
+	position: relative;
+	margin: 2.5vh 1vw 0 1vw;
+	overflow: hidden;
+	height: 6vh;
+}
+.enemyActions{
+	background-color: #826060;
+	width:85%;
+	height:4vh;
+	position: relative;
+	left: 5%;
+	top: 3px;
+	box-shadow: 0px 10px 11px #0003, 0px 10px 3px #0003 inset;
+	border: solid #9a7171;
+	border-width: 0px 1px 1px 1px;
+	border-collapse: collapse;
+}
+.eA_action{
+	background-color:#d6c4c4;
+	width: 3.5vh;
+	height:3.5vh;
+	border-radius: 10px;
+	display: inline-block;
+	left: 1vw;
+	position: relative;
+	right: 10%;
+	margin: 0.1vh 2.1vh;
+	border: 1px solid #444;
+	box-shadow: 0px -6px 2px #0000004d inset;
+	transition: all 0.2s ease-in;
+}
+.eA_action:hover{
+	height:calc(3.5vh - 2px);
+	box-shadow: 0px -4px 2px #0003 inset;
+}
+#blackscreen{
+	height:100%;
+	width:100%;
+	position:fixed;
+	top:0;
+	transition: background-color 0.8s cubic-bezier(.46,.03,.52,.96), top 0.8s cubic-bezier(.46,.03,.52,.96) 0.5s;
+	background-color: #5f2425;
+	z-index: 12;
+}
+.vieEnemyText{
+	width:2.5vw;
+	height:3vh;
+	background-color:#0000004d;
+	color: #ba7194;
+	position: absolute;
+	right: 0vw;
+	top: 22.5vh;
+	border-radius: 5px;
+	font-size: 1vw;
+}
+.highlight {
+	background: linear-gradient(to top , #0003, #0000 39%),linear-gradient(0.95turn, #0000004d, #0000 39%),linear-gradient(0.45turn, #86766c99, #0000 70%),url(../images/UI/leather.jpg);
+	color:white !important;
+	font-size: 2vh !important;
+	border-radius: 5px;
+	padding:0.1vh 1vh !important;
+	opacity: 0.8 !important;
+	font-family:'Vollkorn',serif;
+}
+.eA_icons{
+	height: 100%;
+	width: 100%;
+	position: inherit;
+	background-size: 90% 90%;
+	background-position: 5% 5%;
+	background-repeat: no-repeat;
+	opacity: 0.6;
+}
+.eA_attack{	background-image:url(../images/icons/combat/hit.png);}
+.infoSides{
+	height:100%;
+	width:50%;
+	position: inherit;
+}
+#infoEnemiesSide{right:0;border-left: 1px solid black;}
+.hit_all{
+	height:11vh;
+	font-size: 1.3vw;
+	width:85%;
+	position:  relative;
+}
+.hit_PtoE{
+	color:#91afff;
+}
+.hit_EtoP{
+	color:#cd6e6e;
+	right: 0;
+	float: right;
+	text-align: right;
+	margin-right: 1vw;
 }
