@@ -222,8 +222,8 @@ float: left;}
 	width:100%;
 	position:fixed;
 	top:0;
-	transition: background-color 0.8s cubic-bezier(.46,.03,.52,.96), top 0.8s cubic-bezier(.46,.03,.52,.96) 0.5s;
-	background-color: #5f2425;
+	transition: background-color 0.4s cubic-bezier(.46,.03,.52,.96), top 0.8s cubic-bezier(.46,.03,.52,.96) 0.8s;
+	background-color: black;
 	z-index: 12;
 }
 .vieEnemyText{
@@ -261,15 +261,18 @@ float: left;}
 	width:50%;
 	position: inherit;
 }
-#infoEnemiesSide{right:0;border-left: 1px solid black;}
+#infoEnemiesSide{right:0;}
 .hit_all{
-	height:11vh;
+	height:29vh;
 	font-size: 1.3vw;
 	width:85%;
 	position:  relative;
+	top: 13vh;
+	text-shadow: 0px 2px 10px #0006;
 }
 .hit_PtoE{
-	color:#91afff;
+	color:#899bcc;
+	margin-left: 1vw;
 }
 .hit_EtoP{
 	color:#cd6e6e;
@@ -277,4 +280,12 @@ float: left;}
 	float: right;
 	text-align: right;
 	margin-right: 1vw;
+}
+#blackscreenText{
+	color:black;
+	width: 100%;
+	text-align: center;
+	font-size: 15vh;
+	top: 37%;
+	position:  relative;
 }

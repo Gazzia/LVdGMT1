@@ -20,7 +20,7 @@
   </script>
 </head>
 <body onload="refStuff()">
-  <div id="blackscreen"></div>
+  <div id="blackscreen"><div id="blackscreenText">Combat</div></div>
   <section id="intitule">
     <div id="intituleText">
       <div class="scroll">Alors que vous entamez votre premier pas au-delà de la porte, une ombre se propulse vers vous.<br>Un énorme rat vous attaque, énervé que vous ayiez trouvé son abri. Vous entrevoyez rapidement un corps à moitié mangé sur le sol, surement l'ancien propriétaire.</div>
@@ -48,20 +48,20 @@
     </div>
   </section>
   <section id="infos" class="mid">
-    <div class="scroll">
+    <div id="infosList" class="scroll">
       <div id="infoPlayerSide" class="infoSides">
-        <div id="hit_PtoE1" class="hit_all hit_PtoE hit_E1">Vous infligez 10dmg</div>
-        <div id="hit_PtoE2" class="hit_all hit_PtoE hit_E2">Vous infligez 20dmg</div>
-        <div id="hit_PtoE3" class="hit_all hit_PtoE hit_E3">Vous infligez 30dmg</div>
-        <div id="hit_PtoE4" class="hit_all hit_PtoE hit_E4">Vous infligez 40dmg</div>
-        <div id="hit_PtoE5" class="hit_all hit_PtoE hit_E5">Vous infligez 50dmg</div>
+        <div id="hit_PtoE1" class="hit_all hit_PtoE hit_E1"></div>
+        <div id="hit_PtoE2" class="hit_all hit_PtoE hit_E2"></div>
+        <div id="hit_PtoE3" class="hit_all hit_PtoE hit_E3"></div>
+        <div id="hit_PtoE4" class="hit_all hit_PtoE hit_E4"></div>
+        <div id="hit_PtoE5" class="hit_all hit_PtoE hit_E5"></div>
       </div>
       <div id="infoEnemiesSide" class="infoSides">
-        <div id="hit_E1toP" class="hit_all hit_EtoP hit_E1">L'ennemi vous inflige 10dmg</div>
-        <div id="hit_E2toP" class="hit_all hit_EtoP hit_E2">L'ennemi vous inflige 20dmg</div>
-        <div id="hit_E3toP" class="hit_all hit_EtoP hit_E3">L'ennemi vous inflige 30dmg</div>
-        <div id="hit_E4toP" class="hit_all hit_EtoP hit_E4">L'ennemi vous inflige 40dmg</div>
-        <div id="hit_E5toP" class="hit_all hit_EtoP hit_E5">L'ennemi vous inflige 50dmg</div>
+        <div id="hit_E1toP" class="hit_all hit_EtoP hit_E1"></div>
+        <div id="hit_E2toP" class="hit_all hit_EtoP hit_E2"></div>
+        <div id="hit_E3toP" class="hit_all hit_EtoP hit_E3"></div>
+        <div id="hit_E4toP" class="hit_all hit_EtoP hit_E4"></div>
+        <div id="hit_E5toP" class="hit_all hit_EtoP hit_E5"></div>
       </div>
     </div>
   </section>
@@ -70,33 +70,65 @@
     </div>
   </section>
   <section id="defensif"></section>
+  <div id="dialogCombat_Win" title="Victoire" style="display:none">
+    <p></p>
+  </div>
+  <div id="dialogCombat_Death" title="Mort" style="display:none">
+    <p></p>
+  </div>
+  <div id="dialogCombat_NoInv" title="Inaccessible" style="display:none">
+    <p>Vous n'avez pas la possibilité d'ouvrir votre inventaire en plein combat !</p>
+  </div>
 <!-- DECO+FOOTER -->
-<div id="allmenus"></div>
 <div id="ang1a"></div><div id="ang1b"></div>
 <div id="ang2a"></div><div id="ang2b"></div>
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script>
 localStorage.numpage=2.21;
 localStorage.enemiesNb=0;
-addEnemy1(Rat, 5);
+//A PARAMETRER A CHAQUE FOIS
+//Numero, nom, lvl
+addEnemy(1, Rat, 5);
+localStorage.En1_Dead = 0;
+localStorage.En2_Dead = 1;
+localStorage.En3_Dead = 1;
+localStorage.En4_Dead = 1;
+var zoneClearedLS = "combatWon_RatSoufflant";
+var onWinLocation = "2.211 Interieur.html";
+$('#dialogCombat_Win p').html("Le dernier coup asséné a achevé le combat, dont vous sortez victorieux ! Vous pouvez maintenant explorer l'exterieur de la cabane");
+$('#dialogCombat_Death p').html("La dernière morsure du rat vous a été fatale. Alors que la vie s'échappe de votre corps, vous pouvez recommencer la partie pour tenter de vous venger de ce rongeur.");
+//FIN
 /* FONCTION D'AJOUT DES CASES DES OBJETS */
-function addEnemy1(addedEnemy, addedEnemyLvl){
-  var En1_MaxHP = localStorage.En1_HP = localStorage.En1_MaxHP = Math.round(addedEnemy.HealthBase + (addedEnemy.HealthCoef * (addedEnemyLvl - 1)));
-  var En1_MaxDmgNor = localStorage.En1_MaxDmgNor = Math.round(addedEnemy.DmgBaseNor + (addedEnemy.DmgCoefNor * (addedEnemyLvl - 1)));
-  var En1_MaxDefNor = localStorage.En1_MaxDefNor = Math.round(addedEnemy.DefBaseNor + (addedEnemy.DefCoefNor * (addedEnemyLvl - 1)));
-	$("#ennemisList").append('<div id="enemyui1" class="enemyui"> <div id="enemytitle1" class="enemytitle"> <a class="enemypicture"></a> <div class="enemyName">'+addedEnemy.Name+'</div> <div class="enemyLvl">Lvl '+addedEnemyLvl+'</div> </div> <div class="enemyStats">Att max: '+En1_MaxDmgNor+'Nor<br>Def max: '+En1_MaxDefNor+'Nor</div> <div class="enemyDesc"> <div class="scroll">'+addedEnemy.Desc+'</div> </div> <div id="vieEnemy"></div> <div id="vieEn1Text" class="vieEnemyText">'+localStorage.En1_HP+'/'+localStorage.En1_MaxHP+'</div> <div class="enemyActions"> <div class="eA_action" title="Attaque armée" onclick="En1_Hit()"><div class="eA_icons eA_attack"></div></div></div> </div>');
-  localStorage.enemiesNb=++localStorage.enemiesNb;
+function addEnemy(enemyNum, addedEnemy, addedEnemyLvl){
+  localStorage['En'+enemyNum+'_HP'] = localStorage['En'+enemyNum+'_MaxHP'] = Math.round(addedEnemy.HealthBase + (addedEnemy.HealthCoef * (addedEnemyLvl - 1)));
+  localStorage['En'+enemyNum+'_MaxDmgNor'] = Math.round(addedEnemy.DmgBaseNor + (addedEnemy.DmgCoefNor * (addedEnemyLvl - 1)));
+  localStorage['En'+enemyNum+'_MaxDefNor'] = Math.round(addedEnemy.DefBaseNor + (addedEnemy.DefCoefNor * (addedEnemyLvl - 1)));
+	$("#ennemisList").append(
+    '<div id="enemyui'+enemyNum+'" class="enemyui">'+
+      '<div id="enemytitle'+enemyNum+'" class="enemytitle">'+
+        '<a class="enemypicture"></a>'+
+        '<div class="enemyName">'+addedEnemy.Name+'</div>'+
+        '<div class="enemyLvl">Lvl'+addedEnemyLvl+'</div>'+
+      '</div>'+
+      '<div class="enemyStats">'+
+        'Att max: '+localStorage["En"+enemyNum+"_MaxDmgNor"]+'Nor<br>'+
+        'Def max: '+localStorage["En"+enemyNum+"_MaxDefNor"]+'Nor'+
+      '</div>'+
+      '<div class="enemyDesc">'+
+        '<div class="scroll">'+addedEnemy.Desc+'</div>'+
+      '</div>'+
+      '<div id="vieEnemy'+enemyNum+'"></div>'+
+      '<div id="vieEn'+enemyNum+'Text" class="vieEnemyText">'+
+        localStorage["En"+enemyNum+"_HP"]+'/'+localStorage["En"+enemyNum+"_MaxHP"]+
+      '</div>'+
+      '<div class="enemyActions">'+
+        '<div class="eA_action" id="action_HitEn'+enemyNum+'" title="Attaque armée" onclick="En_Hit('+enemyNum+')">'+
+          '<div class="eA_icons eA_attack"></div>'+
+        '</div>'+
+      '</div>'+
+    '</div>');
+  localStorage.enemiesNb=localStorage.enemiesNbLiving=++localStorage.enemiesNb;
 }
-$('#viePlayer').progressbar({classes:{"ui-progressbar": "progression", "ui-progressbar-value": "progression-value"}});
-$('#viePlayer').progressbar('option', 'value', Number(localStorage.plHealth));
-$('#viePlayer').progressbar('option', 'max', Number(localStorage.plHealthMax));
-$('#vieEnemy').progressbar({classes:{"ui-progressbar": "progression progEnemy", "ui-progressbar-value": "progression-value progEnemy-value"}});
-$('#vieEnemy').progressbar('option', 'value', Number(localStorage.En1_HP));
-$('#vieEnemy').progressbar('option', 'max', Number(localStorage.En1_MaxHP));
-$('#playerVieText').html(localStorage.plHealth+"/"+localStorage.plHealthMax);
-$(".enemyui").css("left","10%");
-$("#blackscreen").css("background-color","black");
-$("#blackscreen").css("top","100%");
 function refStuff() {
   $("#infoChara").html("TOTAL Force: "+totalForce+"<br>TOTAL Puissance Mag.: "+totalMag);
   var armeSel = localStorage.armeSelected;
@@ -107,32 +139,162 @@ function refStuff() {
   var textClasseForce = "Cette classe n'a pas de multiplicateur de Force";
   if (classeXForce == 1.5){textClasseForce = "Force +50%";} if (classeXForce == 0.5){textClasseForce = "Force -50%";}
   $("#infoClasse").html(localStorage.classe+"<br>"+textClasseForce);
+  $('#viePlayer').progressbar({classes:{"ui-progressbar": "progression", "ui-progressbar-value": "progression-value"}});
+  $('#vieEnemy1, #vieEnemy2, #vieEnemy3, #vieEnemy4').progressbar({classes:{"ui-progressbar": "progression progEnemy", "ui-progressbar-value": "progression-value progEnemy-value"}});
+  $('#viePlayer').progressbar('option', 'max', Number(localStorage.plHealthMax));
+  $('#viePlayer').progressbar('option', 'value', Number(localStorage.plHealth));
+  $('#vieEnemy1').progressbar('option', 'max', Number(localStorage.En1_MaxHP));
+  $('#vieEnemy1').progressbar('option', 'value', Number(localStorage.En1_HP));
+  $('#vieEnemy2').progressbar('option', 'max', Number(localStorage.En2_MaxHP));
+  $('#vieEnemy2').progressbar('option', 'value', Number(localStorage.En2_HP));
+  $('#vieEnemy3').progressbar('option', 'max', Number(localStorage.En3_MaxHP));
+  $('#vieEnemy3').progressbar('option', 'value', Number(localStorage.En3_HP));
+  $('#vieEnemy4').progressbar('option', 'max', Number(localStorage.En4_MaxHP));
+  $('#vieEnemy4').progressbar('option', 'value', Number(localStorage.En4_HP));
+  $('#playerVieText').html(localStorage.plHealth+"/"+localStorage.plHealthMax);
+  $(".enemyui").css("left","10%");
+  $("#blackscreen").css("background-color","#b70000");
+  $("#blackscreen").css("top","100%");
+  setTimeout(function () {
+    $("#blackscreen").css("background-color","black");
+  }, 500);
+
 }
-function En1_Hit(){
+$("#ennemisList").scroll(function() {
+   var target = $("#infosList");
+   $("#ennemisList").scroll(function() {
+     target.prop("scrollTop", this.scrollTop)
+           .prop("scrollLeft", this.scrollLeft);
+   });
+ });
+function En_Hit(enemyNum){
+  $("#action_HitEn"+enemyNum).attr("onclick","");
   var randomcritsuccess = 1;
-  if (localStorage.plHealth >= 0) {
+  $('.hit_all').html("");
+  if (localStorage.plHealth > 0) {
     var playerHitDmgRaw = Math.floor(Math.random() * (maxdmg - mindmg + 1) + mindmg);
-    var randomcrit = Math.floor(Math.random() * (3 - 1 + 1) + 1);
+    var enemyDef =  Math.floor(Math.random() * (localStorage["En"+enemyNum+"_MaxDefNor"] - 0 + 1) + 0);
+    if (enemyDef > playerHitDmgRaw){enemyDef=playerHitDmgRaw}
+    var randomcrit = Math.floor(Math.random() * 3) + 1;
     if (maxdmg != 0 && playerHitDmgRaw == maxdmg && randomcrit == 3) { randomcritsuccess = 1.5;}
-    var playerHitDmgCalc = ((playerHitDmgRaw * randomcritsuccess) + totalForce);
-    localStorage.En1_HP = +localStorage.En1_HP - playerHitDmgCalc;
-    if (localStorage.En1_HP < 0){localStorage.En1_HP = 0;}
-    $("#vieEn1Text").html(localStorage.En1_HP+'/'+localStorage.En1_MaxHP);
-    $('#vieEnemy').progressbar('option', 'value', Number(localStorage.En1_HP));
-    if (localStorage.En1_HP == 0){
-      $("#enemyui1").css("margin-left","100%");
-      $("#enemytitle1").css("background-color","#2a2929");
-      localStorage.enemiesNb=--localStorage.enemiesNb;
-      if (localStorage.enemiesNb <= 0){
-        console.log('gagné');
+    var playerHitDmgCalc = (((playerHitDmgRaw * randomcritsuccess) + totalForce) - enemyDef);
+    localStorage['En'+enemyNum+'_HP'] -= playerHitDmgCalc;
+    if (localStorage['En'+enemyNum+'_HP'] < 0){localStorage['En'+enemyNum+'_HP'] = 0;}
+    $("#vieEn"+enemyNum+"Text").html(localStorage['En'+enemyNum+'_HP']+'/'+localStorage['En'+enemyNum+'_MaxHP']);
+    $('#vieEnemy'+enemyNum).progressbar('option', 'value', Number(localStorage['En'+enemyNum+'_HP']));
+    $('#hit_PtoE'+enemyNum).html("Vous infligez "+playerHitDmgCalc+"dmg");
+    if (localStorage['En'+enemyNum+'_HP'] == 0){
+      $("#enemyui"+enemyNum).css("margin-left","100%");
+      $("#enemytitle"+enemyNum).css("background-color","#2a2929");
+      localStorage.enemiesNbLiving=--localStorage.enemiesNbLiving;
+      $('#hit_E'+enemyNum+'toP').html("L'ennemi est mort!");
+      localStorage['En'+enemyNum+'_Dead'] = 1;
+      if (localStorage.enemiesNbLiving <= 0){
+        localStorage[zoneClearedLS] = 1;
+        setTimeout(function () {
+          $("#dialogCombat_Win").dialog({
+            show: {
+              effect: "fold",
+              duration: 1000
+            },
+            resizable: false,
+            modal:true,
+            draggable:false,
+            height: "auto",
+            dialogClass: 'dialogarme',
+            closeOnEscape: false,
+            buttons: {
+              "Ok": function() {
+                window.location=onWinLocation;
+              }
+            }
+          });
+        }, 1000);
       }
     }
   }
+  if (localStorage.enemiesNbLiving > 0){
+    setTimeout(function () {Pl_HitList(enemyNum);}, 500);
+  }
 }
-function calcPlayerDmg(){
+function Pl_HitList(enemyNum){
+  if (localStorage.En1_Dead == 0){Pl_Hit(1);}
+  if (localStorage.enemiesNb == 1){
+    setTimeout(function () {
+      $("#action_HitEn"+enemyNum).attr("onclick","En_Hit("+enemyNum+")");
+    }, 200);
+  }
+  if (localStorage.enemiesNb >= 2){
+    if (localStorage.En2_Dead == 0){
+      setTimeout(function () {Pl_Hit(2);}, 200)}
+  }
+  if (localStorage.enemiesNb == 2){
+    setTimeout(function () {
+      $("#action_HitEn"+enemyNum).attr("onclick","En_Hit("+enemyNum+")");
+    }, 400);
+  }
+  if (localStorage.enemiesNb >= 3){
+    if (localStorage.En3_Dead == 0){setTimeout(function () {Pl_Hit(3);}, 400)}
+  }
+  if (localStorage.enemiesNb == 3){
+    setTimeout(function () {
+      $("#action_HitEn"+enemyNum).attr("onclick","En_Hit("+enemyNum+")");
+    }, 600);
+  }
+  if (localStorage.enemiesNb >= 4){
+    if (localStorage.En4_Dead == 0){setTimeout(function () {Pl_Hit(4);}, 600)}
+  }
+  if (localStorage.enemiesNb == 4){
+    setTimeout(function () {
+      $("#action_HitEn"+enemyNum).attr("onclick","En_Hit("+enemyNum+")");
+    }, 800);
+  }
 }
+function Pl_Hit(enemyNum){
+  var enemyatk = Math.floor(Math.random() * (localStorage['En'+enemyNum+'_MaxDmgNor'] - 0 + 1) + 0);
+  localStorage.plHealth -= enemyatk;
+  $('#hit_E'+enemyNum+'toP').html("L'ennemi vous inflige "+enemyatk+"dmg");
+  if (localStorage.plHealth < 0){localStorage.plHealth = 0;}
+  $("#playerVieText").html(localStorage.plHealth+'/'+localStorage.plHealthMax);
+  $('#viePlayer').progressbar('option', 'value', Number(localStorage.plHealth));
+  if (localStorage.plHealth == 0){
+    $("#dialogCombat_Death").dialog({
+      show: {
+        effect: "fold",
+        duration: 1000
+      },
+  		resizable: false,
+  		modal:true,
+  		draggable:false,
+  		height: "auto",
+  		dialogClass: 'dialogarme',
+      closeOnEscape: false,
+  		buttons: {
+  			"Recommencer": function() {
+  				window.location="0.1 Pseudo.html";
+  			}
+  		}
+  	});
+  }
+}
+$(document).keydown(function(e) {
+  if(e.which == 49) {
+    e.which = 0;
+    $("#dialogCombat_NoInv").dialog({
+      resizable: false,
+      modal:true,
+      draggable:false,
+      height: "auto",
+      dialogClass: 'dialogarme',
+      buttons: {
+        "Ok": function() {
+          $(this).closest('.ui-dialog-content').dialog('close');
+        }
+      }
+    });
+  }
+});
 </script>
-<script src="js/menu.js"></script>
 <script src="js/globalscripts.js"></script>
 </body>
 </html>

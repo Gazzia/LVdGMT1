@@ -164,7 +164,7 @@
 	right: 0;
 }
 .ui-button {
-	padding: .4em 1em;
+	padding: .4vh 1vw;
 	display: inline-block;
 	position: relative;
 	line-height: normal;
@@ -1299,7 +1299,7 @@ a.ui-button:active,
 }
 .ui-widget {
     /*! font-family: Verdana,Arial,sans-serif; */
-    font-size: 1.2em;
+    font-size: 1.15vw;
 }
 
 .ui-widget-content {
