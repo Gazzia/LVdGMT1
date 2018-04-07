@@ -81,7 +81,7 @@ float: left;}
 }
 .progression-value{
 	background:linear-gradient(to top, #00053180, #0000 50%),linear-gradient(to bottom, #a5383880, #0000 50%), #972750;
-	transition: width 0.25s ease-in;
+	transition: width 0.25s ease-in, background 0.1s ease-in;
 }
 #playerVieText{
 	width:4vw;
@@ -288,4 +288,12 @@ float: left;}
 	font-size: 15vh;
 	top: 37%;
 	position:  relative;
+}
+audio{
+	opacity:1;
+	position:fixed;
+	height: 20vh;
+	width: 56vw;
+	left: 0;
+	top: 0;
 }
