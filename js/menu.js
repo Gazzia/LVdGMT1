@@ -11,7 +11,7 @@ $(document).keydown(function(e) {
       "<div id='menuIcons'>"+
       "<a class='menuBtnIco MBIinv' href='Inv.html'></a>"+
       "<a class='menuBtnIco MBIstats' onclick='openStats()'></a>"+
-      "<a class='menuBtnIco MBImap'></a>"+
+      "<a class='menuBtnIco MBImap' onclick='openMap()'></a>"+
       "</div>"+
       "<div id='menuHoverText'></div>"
     )
@@ -42,7 +42,32 @@ $(document).keydown(function(e) {
   }
   if(e.which == 49 && localStorage.inventoryOpen==1) {retourToPage();}
   if(e.which == 50) {openStats();}
+  if(e.which == 51) {openMap();}
 });
+function openMap(){
+  var nmp = localStorage.numpage;
+  var arr = ['1','2','2.1','2.2','2.11','2.22','3','3.2','5.1','5.2','5.3','6.1','6.2','6.3','6.4','6.5'];
+  if ( jQuery.inArray(nmp, arr) != -1){
+    localStorage.audiotypeUI="Page";
+    window.open("audioUI.html","audioUI");
+    window.location="Map.html";
+  }
+  if ( jQuery.inArray(nmp, arr) == -1){
+    $("#menuui").dialog({
+      modal: true,
+      resizable: false,
+      draggable:false,
+      height: "auto",
+      dialogClass: 'menuui',
+      title: "Carte",
+      buttons: {
+        "Ok": function() {
+          $(this).closest('.ui-dialog-content').dialog('close');
+        }
+      }
+    }).html("<div class=\"inMenuBig\">Pas de carte disponible pour cet endroit</div>");
+  }
+}
 function rusure(){
   $("#menuui").dialog({
     modal: true,

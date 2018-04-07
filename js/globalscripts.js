@@ -36,11 +36,3 @@ $(function(){
             $('#cloudsbg').css('background-position', x + 'px 0');
         }, 120);
     })
-$("#btnMap").click(function() {
-  localStorage.audiotypeUI="Page";
-  window.open("audioUI.html","audioUI");
-  window.focus();
-  setTimeout(function () {
-    window.location="Map.html";
-  },500);
-})

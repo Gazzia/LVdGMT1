@@ -3,10 +3,10 @@ if (page==1){
   $("#decoTopLeft").attr("src","images/Deco/top/1.0_Left.png");
   $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
   $(".iconPageImg").attr("src","images/icons/page/footsteps.png");
-  $("#decoLeft").attr("src","images/Deco/mid/1.0_Left.png");
-  $("#decoLeftbg").attr("src","");
-  $("#decoRight").attr("src","images/Deco/mid/1.0_Right.png");
-  $("#decoRightbg").attr("src","");
+  $("#imgLeftFG").attr("src","images/Deco/mid/1.0_Left.png");
+  $("#imgLeftBG").attr("src","");
+  $("#imgRightFG").attr("src","images/Deco/mid/1.0_Right.png");
+  $("#imgRightBG").attr("src","");
   $("#illustr").attr("src","images/Illus/illus_1.0.png");
 }
 if (page==1.1){
@@ -29,34 +29,34 @@ if (page==2){
   $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
   $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
   $(".iconPageImg").attr("src","images/icons/page/hills.png");
-  $("#decoLeft").attr("src","images/Deco/mid/2.0_Left.png");
-  $("#decoLeftbg").attr("src","images/Deco/midbg/2.0_Left.png");
-  $("#decoRight").attr("src","images/Deco/mid/2.0_Right.png");
-  $("#decoRightbg").attr("src","images/Deco/midbg/2.0_Right.png");
+  $("#imgLeftFG").attr("src","images/Deco/mid/2.0_Left.png");
+  $("#imgLeftBG").attr("src","images/Deco/midbg/2.0_Left.png");
+  $("#imgRightFG").attr("src","images/Deco/mid/2.0_Right.png");
+  $("#imgRightBG").attr("src","images/Deco/midbg/2.0_Right.png");
 }
 if (page==2.1){
   $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
   $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
   $(".iconPageImg").attr("src","images/icons/page/arbre_normal.png");
-  $("#decoLeft").attr("src","images/Deco/mid/2.1_Left.png");
-  $("#decoLeftbg").attr("src","images/Deco/midbg/2.1_Left.png");
-  $("#decoRight").attr("src","images/Deco/mid/2.1_Right.png");
-  $("#decoRightbg").attr("src","images/Deco/midbg/2.1_Left.png");
+  $("#imgLeftFG").attr("src","images/Deco/mid/2.1_Left.png");
+  $("#imgLeftBG").attr("src","images/Deco/midbg/2.1_Left.png");
+  $("#imgRightFG").attr("src","images/Deco/mid/2.1_Right.png");
+  $("#imgRightBG").attr("src","images/Deco/midbg/2.1_Left.png");
 }
 if (page==2.11){
   $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
   $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
   $(".iconPageImg").attr("src","images/icons/page/stream.png");
-  $("#decoLeft").attr("src","images/Deco/mid/2.11_Left.png");
-  $("#decoLeftbg").attr("src","images/Deco/midbg/2.11_Left.png");
-  $("#decoRight").attr("src","images/Deco/mid/2.11_Right.png");
-  $("#decoRightbg").attr("src","images/Deco/midbg/2.11_Right.png");
+  $("#imgLeftFG").attr("src","images/Deco/mid/2.11_Left.png");
+  $("#imgLeftBG").attr("src","images/Deco/midbg/2.11_Left.png");
+  $("#imgRightFG").attr("src","images/Deco/mid/2.11_Right.png");
+  $("#imgRightBG").attr("src","images/Deco/midbg/2.11_Right.png");
 }
 if (page==2.2){
   $(".iconPageImg").attr("src","images/icons/page/cabin.png");
-  $("#decoLeft").attr("src","images/Deco/mid/2.2_Left.png");
-  $("#decoLeftbg").attr("src","images/Deco/midbg/2.2_Left.png");
-  $("#decoRightbg").attr("src","images/Deco/midbg/2.2_Right.png");
+  $("#imgLeftFG").attr("src","images/Deco/mid/2.2_Left.png");
+  $("#imgLeftBG").attr("src","images/Deco/midbg/2.2_Left.png");
+  $("#imgRightBG").attr("src","images/Deco/midbg/2.2_Right.png");
 }
 if (page==2.21){
   $(".iconPageImg").attr("src","images/icons/page/rat.png");
@@ -68,8 +68,8 @@ if (page==2.22){
   $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
   $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
   $(".iconPageImg").attr("src","images/icons/page/cabin2.png");
-  $("#decoLeftbg").attr("src","images/Deco/midbg/2.22_Left.png");
-  $("#decoRightbg").attr("src","images/Deco/midbg/2.22_Right.png");
+  $("#imgLeftBG").attr("src","images/Deco/midbg/2.22_Left.png");
+  $("#imgRightBG").attr("src","images/Deco/midbg/2.22_Right.png");
 }
 if (page==3){
   $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");

@@ -18,10 +18,10 @@
   <div id="clouds"></div><div id="cloudsbg"></div>
 	<section id="sleft"></section>
 	<div id="ang1a"></div><div id="ang1b"></div>
-	<img id="decoLeft"><img id="decoLeftbg">
+	<img id="imgLeftFG"><img id="imgLeftBG">
 	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
 	<article id="main">
-  <h1>Inspection</h1>
+  <h1 class="pgttle">Inspection</h1>
   <p id="histoire">
     Le contenu n'a pas encore été ajouté ici. Si vous tombez sur ce message, veuillez retourner au jeu <b>en appuyant sur la flèche Précédent du navigateur</b> (pas sur le bouton juste en-dessous)
   </p>
@@ -38,7 +38,7 @@
   <section id="sright"></section>
 	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
 	<div id="ang2a"></div><div id="ang2b"></div>
-	<img id="decoRight"><img id="decoRightbg">
+	<img id="imgRightFG"><img id="imgRightBG">
 	<footer></footer>
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script src="js/header_normal.js"></script>
@@ -51,29 +51,29 @@ if (numpage == 2) {
   $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
   $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
   $(".iconPageImg").attr("src","images/icons/page/hills.png");
-  $("#decoLeft").attr("src","images/Deco/mid/2.0_Left.png");
-  $("#decoLeftbg").attr("src","images/Deco/midbg/2.0_Left.png");
-  $("#decoRight").attr("src","images/Deco/mid/2.0_Right.png");
-  $("#decoRightbg").attr("src","images/Deco/midbg/2.0_Right.png");
+  $("#imgLeftFG").attr("src","images/Deco/mid/2.0_Left.png");
+  $("#imgLeftBG").attr("src","images/Deco/midbg/2.0_Left.png");
+  $("#imgRightFG").attr("src","images/Deco/mid/2.0_Right.png");
+  $("#imgRightBG").attr("src","images/Deco/midbg/2.0_Right.png");
   $("#histoire").html("<span>Quand vous étiez tout jeunot avec vos amis, l'immense plaine du Soufflant était un terrain de jeu formidable. Vous rêviez de la traverser un jour par delà les collines jusqu'à Merryvale, la cité au coeur du vallon ; y découvrir son marché où l'on peut tout trouver, ainsi que son animation débordante...<br><br>Autour de vous, le chemin, bordé d'herbes et de bruyères jaunies par le soleil, descend en pente douce jusqu'au coteau suivant. Le panorama est doux -plutôt redondant en fait-, mais quelques rares émergences sylvatiques accordent à l'oeil un peu de distraction.</span>");
   $("#buttonBack").attr("href", "2 Plaine_Debut.html");
 }
 if (numpage == 2.1) {
   $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
   $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
-  $("#decoLeft").attr("src","images/Deco/mid/boisleft.png");
-  $("#decoRight").attr("src","images/Deco/mid/2.11_Right.png");
-  $("#decoRightbg").attr("src","images/Deco/midbg/boisRight.png");
+  $("#imgLeftFG").attr("src","images/Deco/mid/boisleft.png");
+  $("#imgRightFG").attr("src","images/Deco/mid/2.11_Right.png");
+  $("#imgRightBG").attr("src","images/Deco/midbg/boisRight.png");
   if (localStorage.armeBaton !== 1) {
     $("#histoire").html("<span>Le petit bois n'est pas bien dense, mais la fraîcheur de la cime rameuse des arbres vous est tout de même agréable. Vous souriez à l'odeur des fleurs de tilleul, qui cet automne tomberont en tourbillons dans l'herbe claire.<br><br>La forêt a également une importante population d'aulnes, malgré qu'ils préfèrent normalement les zones humides.<br>On dit des Aulnes qu'ils sont les Arbres des Morts, ou Arbres à Sorcière, du fait de leur habitat dans les marais et de la couleur rouge sang de leur bois fendu..<br> Vous n'êtes pas supersitieux, mais ces légendes vous ont tout de même bercé toute l'enfance.<br><br>Dans une clairière, vous apercevez à terre une belle branche qui pourrait vous servir d'arme rudimentaire.<br>Voulez-vous la prendre ?</span>");
     $("#buttonBack").attr("href", "2.1 Bois.html");
     $("#buttonAction").html("Prendre le baton");
     $("#buttonAction").attr("onClick", "takeBaton()");
     $("#buttonAction").show();
-    $("#decoLeftbg").attr("src","images/Deco/midbg/boisLeftAB.png");
+    $("#imgLeftBG").attr("src","images/Deco/midbg/boisLeftAB.png");
   }
   if (localStorage.armeBaton == 1) {
-    $("#decoLeftbg").attr("src","images/Deco/midbg/boisLeftSB.png");
+    $("#imgLeftBG").attr("src","images/Deco/midbg/boisLeftSB.png");
     $("#histoire").html("<span>Vous inspectez des yeux le sol, en quête d'une quelconque trouvaille fantastique pour aller avec la branche trouvée ici précédemment, mais non. De l'herbe, des feuilles, des brindilles.</span>");
     $("#buttonBack").attr("href", "2.1 Bois.html");
     $("#buttonAction").hide();
@@ -82,10 +82,10 @@ if (numpage == 2.1) {
 if (numpage == 2.11) {
     $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
     $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
-    $("#decoLeft").attr("src","images/Deco/mid/2.11_Left.png");
-    $("#decoLeftbg").attr("src","images/Deco/midbg/2.11_Left.png");
-    $("#decoRight").attr("src","images/Deco/mid/2.11_Right.png");
-    $("#decoRightbg").attr("src","images/Deco/midbg/2.11_Right.png");
+    $("#imgLeftFG").attr("src","images/Deco/mid/2.11_Left.png");
+    $("#imgLeftBG").attr("src","images/Deco/midbg/2.11_Left.png");
+    $("#imgRightFG").attr("src","images/Deco/mid/2.11_Right.png");
+    $("#imgRightBG").attr("src","images/Deco/midbg/2.11_Right.png");
   if (localStorage.tookRiverGold == 0) {
     $("#histoire").html("<span>Sur la rive en face, vous apercevez un petit tas de vêtements sur laquelle est attachée une bourse.<BR>Le courant est faible, et l'eau peu profonde (divinement fraîche!).<BR>Personne en vue.</span>");
     $("#buttonBack").attr("href", "2.11 Torrent.html");
@@ -99,9 +99,9 @@ if (numpage == 2.11) {
   }
 }
 if (numpage == 2.2) {
-  $("#decoLeft").attr("src","images/Deco/mid/2.2_Left.png");
-  $("#decoLeftbg").attr("src","images/Deco/midbg/2.2_Left.png");
-  $("#decoRightbg").attr("src","images/Deco/midbg/2.2_Right.png");
+  $("#imgLeftFG").attr("src","images/Deco/mid/2.2_Left.png");
+  $("#imgLeftBG").attr("src","images/Deco/midbg/2.2_Left.png");
+  $("#imgRightBG").attr("src","images/Deco/midbg/2.2_Right.png");
   $("#histoire").html("<span>A vos pieds, des morceaux de bois déchiquetés et.. mordillés?<br>Devant vous, l'ombre imposante du bâtiment.<br>Derrière vous, la pente de la colline qui mêne au chemin.</span>");
   $("#buttonBack").attr("href", "2.2 Cabane.html");
 }

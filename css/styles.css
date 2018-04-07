@@ -49,15 +49,15 @@ input{cursor:url(../images/cursors/take.png), auto !important;}
 #sright{right:0px;}
 #vertLeft, #vertRight {
   background-image: url(../images/UI/elemNavVertBg.png);
-  /*! position: fixed; */ top: 0px;
+  position: fixed; top: 0;
   width: 2.5vw; height: 100%;
   box-shadow: 2px 0px 5px hsla(0, 0%, 0%, 0.2);
-  z-index:  4 !important;
+  z-index:  3 !important;
   background-size: 100% 100%;
 }
 
-#vertLeft {  position:  fixed;display: inline-block;left: calc(25% - 2.5vw);}
-#vertRight {  right: calc(25% - 2.5vw);position: fixed;}
+#vertLeft {  left: calc(25% - 2.5vw);}
+#vertRight {  right: calc(25% - 2.5vw);}
 
 #rust1a, #rust1b, #rust2a, #rust2b {
   background-image: url(../images/UI/elemRustbar.png);
@@ -138,14 +138,14 @@ header {
   left: 25%;
   height: 200%;
   position:  absolute;
-  z-index: 3;
+  z-index: 1;
   background: linear-gradient(to top, #00000080 -20%, #0000 40%), linear-gradient(0.67turn, #5d3c004d, #0000 20%), linear-gradient(0.33turn, #fff5e680 0%, #f8f8f800 50%), linear-gradient(to bottom, #f5eba380, #0000 100%), url(../images/UI/bgPaper.jpg) no-repeat center fixed;
   background-attachment: fixed;
   background-size: 100%;
   transition: background 1s ease;
 }
 
-h1 {
+.pgttle {
   font-size: 5vh;
   text-align: center;
   font-family: 'Playfair Display', serif;
@@ -157,7 +157,7 @@ h1 {
   margin-top: 0;
 }
 
-h1:before, h1:after {
+.pgttle:before, .pgttle:after {
   content: "-";
 }
 
@@ -427,7 +427,8 @@ a.iconInv {
 
 .MBIinv{background:url(../images/icons/UI/backpackColor1.png), linear-gradient(to top, #0000004d,#0000 20%)#9c8b75;}
 .MBIstats{background:url(../images/icons/UI/statsColor1.png), linear-gradient(to top, #0000004d,#0000 20%)#9c8b75;}
-.MBIinv, .MBIstats, .MBIstats {
+.MBImap{background:url(../images/icons/UI/mapColor1.png), linear-gradient(to top, #0000004d,#0000 20%)#9c8b75;}
+.MBIinv, .MBIstats, .MBImap {
   background-size: 90%, 100%;
   background-repeat: no-repeat;
   background-position: center;}

@@ -17,17 +17,17 @@
 	top: 0;
 }
 
-#decoLeft, #decoRight{
+#imgLeftFG, #imgRightFG{
   position: fixed;
   bottom:-4px;
   z-index: 5;
   max-width:25%;
 }
-#decoRight{right: 0;}
-#decoLeftbg, #decoRightbg{
+#imgRightFG{right: 0;}
+#imgLeftBG, #imgRightBG{
   position: fixed;
   bottom:0px;
   max-width: 25%;
   z-index: 2;
 }
-#decoRightbg{right: 0;}
+#imgRightBG{right: 0;}
