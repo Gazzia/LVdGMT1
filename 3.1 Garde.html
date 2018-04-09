@@ -54,9 +54,8 @@ function refDial(){
   if (localStorage.dialgardHistoire1 == 1){ $('#dialHistoire1').html("Re-racontez-moi les problèmes de la ville.");}
 }
 $("#histoire").html("<span>\"Halte, "+localStorage.race+" ! Il y a taxe! Tu payer ou tu partir.\"</span>");
-localStorage.audiotypeUI="dial_3.1_garde_halte";
+localStorage.audiotypeUI="";
 window.open("audioUI.html","audioUI");
-window.focus();
 
 function sretour() {
   localStorage.audiotypeUI="aucun";
@@ -74,9 +73,8 @@ function sretour() {
 	$("#dialPaid").hide();}
 function sHistoire1() {
   if (localStorage.dialgardHistoire1 == 0){
-    localStorage.audiotypeUI="dial_3.1_garde_hist1";
+    localStorage.audiotypeUI="";
     window.open("audioUI.html","audioUI");
-    window.focus();
     localStorage.dialgardHistoire1 = 1;
     refDial();
   }
@@ -89,9 +87,8 @@ function sHistoire1() {
 	$("#dialRetour").show();}
 function sHistoire2() {
   if (localStorage.dialgardHistoire2 == 0){
-    localStorage.audiotypeUI="dial_3.1_garde_hist2";
+    localStorage.audiotypeUI="";
     window.open("audioUI.html","audioUI");
-    window.focus();
     localStorage.dialgardHistoire2 = 1;
   }
 	$("#histoire").html("<span><i>*il crache de l'argile au sol*</i>&nbsp;&nbsp; \"Ouais. En ce moment, beaucoup marauds. Ça grouille.. Surtout à la porte Nord, de l'autre côté ! De ce côté, ça va. Montagnes de la Bruisse empêchent marauds Nord de passer Sud. <br>Et au Soufflant, bandits volent leurs propres affaires !<i>*il ricane puis se reprend*</i><br>Et horde invisible abîmer la ville, donc ici nous guardons, tu vois?\"</span>");
@@ -104,9 +101,8 @@ function sHistoire2() {
   $("#dialRetour").show();}
 function sHistoire3() {
   if (localStorage.dialgardHistoire3 == 0){
-    localStorage.audiotypeUI="dial_3.1_garde_hist3";
+    localStorage.audiotypeUI="";
     window.open("audioUI.html","audioUI");
-    window.focus();
     localStorage.dialgardHistoire3 = 1;
   }
   $("#histoire").html("<span>\"Imagine maisons pillées, femmes violées, ville saccagée.. Et nous pas voir pour arrêter !<br>Salauds passés y'a un mois, donc ville tranquille et calme, mais nous méfiants, méfiants..<br>Ville besoin d'argent pour repartir.<i>*il se redresse d'un coup, comme si il venait de se souvenir de sa tâche*</i> Toi devoir payer pour rentrer.\"</span>");
@@ -119,9 +115,8 @@ function sHistoire3() {
   $("#dialRetour").show();}
 function sAskTaxe() {
   if (localStorage.dialgardAskTaxe == 0){
-    localStorage.audiotypeUI="dial_3.1_garde_asktaxe";
+    localStorage.audiotypeUI="";
     window.open("audioUI.html","audioUI");
-    window.focus();
     localStorage.dialgardAskTaxe = 1;
     refDial();
   }
