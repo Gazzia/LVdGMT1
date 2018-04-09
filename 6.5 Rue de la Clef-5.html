@@ -13,7 +13,7 @@
 <script src="js/statsvar.js"></script></head>
 <body>
 	<header></header>
-	
+
 	<div id="clouds"></div><div id="cloudsbg"></div>
 	<section id="sleft"></section>
 	<div id="ang1a"></div><div id="ang1b"></div>
@@ -45,15 +45,15 @@
 /* HEADER */
 	localStorage.numpage=6.5;
 
-	if (localStorage.dirFrom=="Ouest"){
+	if (dir=="Ouest"){
 		$("#to6_4").html("Revenir vers l'angle de la rue").css("background-color","#e6e2c4");
 	}
-	if (localStorage.dirFrom=="Est"){
+	if (dir=="Est"){
 		$("#to8_1").html("Revenir sur le marché").css("background-color","#e6e2c4");
 	}
 
 	function to6_4(){
-		localStorage.dirFrom="Est";
+		dir="Est";
 		window.location="6.4 Rue de la Clef-4.html";
 	}
 	function to8_1(){
@@ -65,5 +65,6 @@
 <script src="js/images2.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/globalscripts.js"></script>
+<script src="js/ville.js"></script>
 </body>
 </html>

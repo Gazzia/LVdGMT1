@@ -13,7 +13,7 @@
 <script src="js/statsvar.js"></script></head>
 <body>
 	<header></header>
-	
+
 	<div id="clouds"></div><div id="cloudsbg"></div>
 	<section id="sleft"></section>
 	<div id="ang1a"></div><div id="ang1b"></div>
@@ -44,20 +44,20 @@
 <script>
 	localStorage.numpage=5.2;
 
-	if (localStorage.dirFrom=="Sud"){
+	if (dir=="Sud"){
 		$("#histoire").html("<span><i>Vous êtes dans une rue large et claire, qui relie la porte Sud et la place du Marché.<br>Le soleil baigne sur votre visage. Vous pouvez aller :</i><br><br><b>En face</b><br>Vous continuez en direction du <u>marché</u>.<br><b>A gauche</b><br>la <u>porte</u> close d'une demeure, au numéro 1.<br><b>A droite</b><br>une <u>ruelle</u> relie l'artère vers la rue Blanche.<br><b>Ou faire demi-tour</b><br> et retourner Porte sud.</span>");
 		$("#to5_1").html("Revenir Porte Sud").css("background-color","#e6e2c4");
 	}
-	if (localStorage.dirFrom=="Nord"){
+	if (dir=="Nord"){
 		$("#histoire").html("<span><i>Vous êtes toujours sur la rue du Marché, en direction de la Porte Sud<br> Vous pouvez aller :</i><br><br><b>En face</b><br>Vous continuez en direction de la <u>Porte sud</u>.<br><b>A gauche</b><br>une <u>ruelle</u> relie l'artère vers la rue Blanche.<br><b>A droite</b><br>la <u>porte</u> close d'une demeure, au numéro 1.<br><b>Ou faire demi-tour</b><br> et retourner en direction du marché.</span>");
 		$("#to5_3").html("Revenir vers le marché").css("background-color","#e6e2c4");
 	}
 	function to5_1() {
-		localStorage.dirFrom="Nord";
+		dir="Nord";
 		window.location="5.1 Porte Sud.html";
 	}
 	function to5_3() {
-		localStorage.dirFrom="Sud";
+		dir="Sud";
 		window.location="5.3 Rue du Marché_2.html";
 	}
 	function to5_21(){
@@ -85,6 +85,7 @@
 <script src="js/footer_normal.js"></script>
 <script src="js/images2.js"></script>
 <script src="js/menu.js"></script>
+<script src="js/ville.js"></script>
 <script src="js/globalscripts.js"></script>
 </body>
 </html>
