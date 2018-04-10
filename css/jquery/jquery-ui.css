@@ -1337,10 +1337,10 @@ a.ui-button:active,
     margin: 0;
     font-family: 'Vollkorn', serif;
 }
-.ui-dialog.dialoggold .ui-dialog-content{
+.ui-dialog.dialogGold .ui-dialog-content{
 	background-image:linear-gradient(to top, #683a0080 -20%, #0000 40%), linear-gradient(0.67turn, #5d3c004d, #0000 20%), linear-gradient(0.33turn, #fff5d4, #0000 20%), linear-gradient(to bottom, #f5eba380, #0000 100%),url(../../images/UI/bgGold.jpg);
-	color:black;
-	text-shadow:0px 0px 10px #000c;
+	color:#68452c;
+	text-shadow:0px 0px 4px #fffc;
 	font-size: 2em;
 	margin-left:0!important;
 	}
@@ -1365,8 +1365,7 @@ a.ui-button:active,
 	min-height: 13vw !important;
 	padding: 0 !important;
 	}
-.ui-dialog .ui-dialog-buttonpane,
-.ui-dialog.dialogarme .ui-dialog-content {
+.ui-dialog .ui-dialog-buttonpane{
 	background-image:linear-gradient(to top, #0000004d 0%, #0000 70%),url(../../images/UI/leather.jpg);
     margin-top: 0;
 	text-align:center;
@@ -1375,6 +1374,10 @@ a.ui-button:active,
 	padding-left:6.4px!important;
 	background-color: #0006;
 	border-top: 1px solid #ded1adb3;
+}
+.ui-dialog.dialogItem .ui-dialog-content{
+	background-image:linear-gradient(to top, #0000004d 0%, #0000 70%),url(../../images/UI/burlap.jpg);
+	background-size: 100% 100%;
 }
 .ui-dialog.menuui .ui-dialog-buttonpane,
 .ui-dialog.statsui .ui-dialog-buttonpane{

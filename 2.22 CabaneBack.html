@@ -14,7 +14,7 @@
 <script src="js/statsvar.js"></script></head>
 <body>
 	<header></header>
-	
+
 	<div id="clouds"></div><div id="cloudsbg"></div>
 	<section id="sleft"></section>
 	<div id="ang1a"></div><div id="ang1b"></div>
@@ -45,7 +45,7 @@
 /* HEADER */
 	localStorage.numpage=2.22;
 /* Events */
-	if (localStorage.talkguard == 1 && localStorage.objectShovel == 0){
+	if (localStorage.sawhole == 1 && localStorage.objectShovel == 0){
 	$("#option_tools").show();
 	} else {
 	$("#option_tools").hide();
@@ -55,7 +55,7 @@
 		$( "#dialog" ).dialog({
 			resizable: false,
 			height: "auto",
-			dialogClass: 'dialogarme',
+			dialogClass: 'dialogItem',
 			buttons:{
 				"Prendre": function () {window.location = "";}
 				}

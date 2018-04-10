@@ -124,7 +124,7 @@ function En_Hit(enemyNum){
             modal:true,
             draggable:false,
             height: "auto",
-            dialogClass: 'dialogarme',
+            dialogClass: 'dialogItem',
             closeOnEscape: false,
             buttons: {
               "Ok": function() {
@@ -201,7 +201,7 @@ function Pl_Hit(enemyNum){
   		modal:true,
   		draggable:false,
   		height: "auto",
-  		dialogClass: 'dialogarme',
+  		dialogClass: 'dialogItem',
       closeOnEscape: false,
   		buttons: {
   			"Recommencer": function() {
@@ -219,7 +219,7 @@ $(document).keydown(function(e) {
       modal:true,
       draggable:false,
       height: "auto",
-      dialogClass: 'dialogarme',
+      dialogClass: 'dialogItem',
       buttons: {
         "Ok": function() {
           $(this).closest('.ui-dialog-content').dialog('close');

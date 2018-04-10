@@ -58,7 +58,7 @@ function nearbody() {
     $("#dialog").dialog({
       resizable: false,
       height: "auto",
-      dialogClass: 'dialogarme',
+      dialogClass: 'dialogItem',
       buttons: {
         "Prendre": function() {
           localStorage.audiotypeUI = "gold";
@@ -75,7 +75,7 @@ function nearbody() {
             $("#dialog").dialog({
               resizable: false,
               height: "auto",
-              dialogClass: 'dialoggold',
+              dialogClass: 'dialogGold',
               buttons: {
                 "Ok": function() {
                   $(this).closest('.ui-dialog-content').dialog('close');
@@ -97,7 +97,7 @@ function nearbody() {
       $("#dialog").dialog({
         resizable: false,
         height: "auto",
-        dialogClass: 'dialogarme',
+        dialogClass: 'dialogItem',
         buttons: {
           "Ok": function() {
             $(this).closest('.ui-dialog-content').dialog('close');

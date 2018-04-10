@@ -166,19 +166,12 @@ header {
   text-align: center;
   color: #423b26;
   font-family: 'Vollkorn', serif;
-  line-height: 1.5em;
   position: relative;
-  padding: 2vh 20px;
+  padding: 2vh 2vw;
   margin-top: 2vh;
-}
-
-
-span {
   display: inline-block;
-  vertical-align: middle;
-  line-height: normal;
   font-size: 2.8vh;
-  text-rendering: optimizelegibility;
+  width: calc(100% - 4vw);
 }
 
 #choix {
@@ -342,13 +335,13 @@ a.iconInv {
 .get_item {
   display: inline-block;
   position: relative;
-  background-color: #dbba7a;
+  background-color: #ffdabae6;
   border: 1px solid #3b281c;
   border-radius: 8px;
   margin-top: 10px;
-  box-shadow: 0px 0px 7px #fff4ba;
+  box-shadow: 0px 7px 16px #0003;
 }
-.ui-dialog.dialoggold p {
+.ui-dialog.dialogGold p {
   margin-top: 10px;
 }
 

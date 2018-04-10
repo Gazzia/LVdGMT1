@@ -25,6 +25,8 @@ p#histoire{
 	font-family: 'Alegreya Sans', sans-serif;
 	font-weight:500;
 	height:auto;
+	width: 100%;
+	padding: 2vh 0;
 	}
 .dialAll{
 	/*! padding-left:30px; */
@@ -47,6 +49,9 @@ a.dialNorm:hover{
 	text-decoration: line-through double #0000004d;
 	color: #0000004d;
 	text-shadow: unset;
+}
+.dialttle{
+	margin-top:2vh;
 }
 #choix_dialogue{
 	margin-top: 30px !important;

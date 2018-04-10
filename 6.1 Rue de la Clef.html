@@ -42,25 +42,26 @@
 <img id="imgRightFG"><img id="imgRightBG">
 <footer></footer>
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script src="js/ville.js"></script>
 <script>
 /* HEADER */
 	localStorage.numpage=6.1;
 
-	if (dir=="Est"){
-		$("#histoire").html("<span><i>Le soleil peine à passer entre les bâtiments élevés de l'étroite rue de la Clef.</i><br><br><b>En face</b><br>La mince rue continue après un crochet vers le Nord<br><b>A gauche</b><br>Deux bâtiment:<br><u>Au 8</u>, bâtiment à la forme singulière, une double porte -entrouverte- complexe et d'un bois foncé. Des chants s'en échappent.<br><u>Au 8bis</u>, une porte simple en bois. Ce doit être une habitation.<br><b>A droite</b><br>Une porte mène au numéro 7.<br><b>Derrière vous</b><br>la rue mène à la Porte Sud.<br>Que faites-vous ?</span>");
+	if (localStorage.dirFrom=="Est"){
+		$("#histoire").html("<i>Le soleil peine à passer entre les bâtiments élevés de l'étroite rue de la Clef.</i><br><br><b>En face</b><br>La mince rue continue après un crochet vers le Nord<br><b>A gauche</b><br>Deux bâtiment:<br><u>Au 8</u>, bâtiment à la forme singulière, une double porte -entrouverte- complexe et d'un bois foncé. Des chants s'en échappent.<br><u>Au 8bis</u>, une porte simple en bois. Ce doit être une habitation.<br><b>A droite</b><br>Une porte mène au numéro 7.<br><b>Derrière vous</b><br>la rue mène à la Porte Sud.<br>Que faites-vous ?");
 		$("#to5_1").html("Revenir Porte Sud").css("background-color","#e6e2c4");
 	}
-	if (dir=="Nord"){
-		$("#histoire").html("<span><i>Vous avez descendu la rue de la Clef et êtes dans la portion qui débouche vers la Porte Sud.</i><br><br><b>En face</b><br>La rue mène à la <u>Porte Sud</u><br><b>A gauche</b><br>Une porte mène au numéro 7.<br><b>A droite</b><br>Deux bâtiment:<br><u>Au 8bis</u>, une porte simple en bois. Ce doit être une habitation.<br><u>Au 8</u>, bâtiment à la forme singulière, une double porte -entrouverte- complexe et d'un bois foncé. Des chants s'en échappent.<br><b>Derrière vous</b><br>La rue monte vers la place du marché.<br>Que faites-vous ?</span>");
+	if (localStorage.dirFrom=="Nord"){
+		$("#histoire").html("<i>Vous avez descendu la rue de la Clef et êtes dans la portion qui débouche vers la Porte Sud.</i><br><br><b>En face</b><br>La rue mène à la <u>Porte Sud</u><br><b>A gauche</b><br>Une porte mène au numéro 7.<br><b>A droite</b><br>Deux bâtiment:<br><u>Au 8bis</u>, une porte simple en bois. Ce doit être une habitation.<br><u>Au 8</u>, bâtiment à la forme singulière, une double porte -entrouverte- complexe et d'un bois foncé. Des chants s'en échappent.<br><b>Derrière vous</b><br>La rue monte vers la place du marché.<br>Que faites-vous ?");
 		$("#to6_2").html("Remonter la rue dans l'autre sens").css("background-color","#e6e2c4");
 	}
 
 	function to5_1(){
-		dir="Ouest";
+		localStorage.dirFrom="Ouest";
 		window.location="5.1 Porte Sud.html";
 	}
 	function to6_2(){
-		dir="Sud";
+		localStorage.dirFrom="Sud";
 		window.location="6.2 Rue de la Clef-2.html";
 	}
 	function to6_11 (){
@@ -84,7 +85,7 @@
 			$("#dialog").dialog({
 				resizable: false,
 				height: "auto",
-				dialogClass: 'dialogarme',
+				dialogClass: 'dialogItem',
 				buttons: {
 					"Ok": function() {
 						$(this).closest('.ui-dialog-content').dialog('close');
@@ -97,9 +98,7 @@
 <script src="js/header_normal.js"></script>
 <script src="js/footer_normal.js"></script>
 <script src="js/images2.js"></script>
-<script src="js/ville.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/globalscripts.js"></script>
-<script src="js/ville.js"></script>
 </body>
 </html>

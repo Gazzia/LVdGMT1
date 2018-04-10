@@ -41,19 +41,20 @@
 <img id="imgRightFG"><img id="imgRightBG">
 <footer></footer>
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script src="js/ville.js"></script>
 <script>
 /* HEADER */
 	localStorage.numpage=6.5;
 
-	if (dir=="Ouest"){
+	if (localStorage.dirFrom=="Ouest"){
 		$("#to6_4").html("Revenir vers l'angle de la rue").css("background-color","#e6e2c4");
 	}
-	if (dir=="Est"){
+	if (localStorage.dirFrom=="Est"){
 		$("#to8_1").html("Revenir sur le marché").css("background-color","#e6e2c4");
 	}
 
 	function to6_4(){
-		dir="Est";
+		localStorage.dirFrom="Est";
 		window.location="6.4 Rue de la Clef-4.html";
 	}
 	function to8_1(){
@@ -65,6 +66,5 @@
 <script src="js/images2.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/globalscripts.js"></script>
-<script src="js/ville.js"></script>
 </body>
 </html>

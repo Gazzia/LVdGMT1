@@ -42,23 +42,24 @@
 <img id="imgRightFG"><img id="imgRightBG">
 <footer></footer>
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script src="js/ville.js"></script>
 <script>
 /* HEADER */
 	localStorage.numpage=6.2;
 
-	if (dir=="Sud"){
+	if (localStorage.dirFrom=="Sud"){
 		$("#to6_1").html("Redescendre vers la Porte Sud").css("background-color","#e6e2c4");
 	}
-	if (dir=="Nord"){
+	if (localStorage.dirFrom=="Nord"){
 		$("#to6_3").html("Remonter la rue vers le marché").css("background-color","#e6e2c4");
 	}
 
 	function to6_1(){
-		dir="Nord";
+		localStorage.dirFrom="Nord";
 		window.location="6.1 Rue de la Clef.html";
 	}
 	function to6_3(){
-		dir="Sud";
+		localStorage.dirFrom="Sud";
 		window.location="6.3 Rue de la Clef-3.html";
 	}
 </script>
@@ -67,6 +68,5 @@
 <script src="js/images2.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/globalscripts.js"></script>
-<script src="js/ville.js"></script>
 </body>
 </html>

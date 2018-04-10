@@ -121,9 +121,13 @@ function takeBaton() {
       modal: true,
       resizable: false,
       height: "auto",
-      dialogClass: 'dialogarme',
+      dialogClass: 'dialogItem',
       buttons: {
-        "Super, une branche quoi": function() {
+        "Équiper": function() {
+          localStorage.armeSelected="Baton";
+          window.location = "2.1 Bois.html";
+        },
+        "Prendre seulement": function() {
           window.location = "2.1 Bois.html";
         }
       }
@@ -147,7 +151,7 @@ function takeGold() {
       modal: true,
       resizable: false,
       height: "auto",
-      dialogClass: 'dialoggold',
+      dialogClass: 'dialogGold',
       buttons: {
         "Ok": function() {
           window.location = "2.11 torrent.html";

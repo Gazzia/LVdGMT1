@@ -21,8 +21,8 @@
 	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
 <article id="main">
   <div id="container_icon"><img id="iconDialogue" src="images/icons/UI/talk_min.png"></div>
-  <h1 class="pgttle">Garde</h1>
-  <p id="histoire"><span></span></p>
+  <h1 class="pgttle dialttle">Garde</h1>
+  <p id="histoire"></p>
   <div id="choix_dialogue">
     <a class="dialAll dialNorm" onclick="sHistoire1()" id="dialHistoire1">On ne m'avait parlé ni de mur ni de péage pour rentrer dans la ville. [Histoire]</a>
     <a class="dialAll dialNorm" onclick="sHistoire2()" id="dialHistoire2" style="display:none">Qu'est-ce qu'il se passe en ce moment ? [Histoire]</a>
@@ -53,7 +53,7 @@ function refDial(){
   if (localStorage.dialgardAskTaxe == 1){ $('#dialAskTaxe').html("A combien s'élève la taxe déjà ?");}
   if (localStorage.dialgardHistoire1 == 1){ $('#dialHistoire1').html("Re-racontez-moi les problèmes de la ville.");}
 }
-$("#histoire").html("<span>\"Halte, "+localStorage.race+" ! Il y a taxe! Tu payer ou tu partir.\"</span>");
+$("#histoire").html("\"Halte, "+localStorage.race+" ! Il y a taxe! Tu payer ou tu partir.\"");
 localStorage.audiotypeUI="";
 window.open("audioUI.html","audioUI");
 
@@ -61,7 +61,7 @@ function sretour() {
   localStorage.audiotypeUI="aucun";
   window.open("audioUI.html","audioUI");
   window.focus();
-	$("#histoire").html("<span>\"Halte, "+localStorage.race+" ! Il y a taxe! Tu payer ou tu partir.\"</span>");
+	$("#histoire").html("\"Halte, "+localStorage.race+" ! Il y a taxe! Tu payer ou tu partir.\"");
 	$("#dialRetour").hide();
 	$("#dialHistoire1").show();
 	$("#dialHistoire2").hide();
@@ -78,7 +78,7 @@ function sHistoire1() {
     localStorage.dialgardHistoire1 = 1;
     refDial();
   }
-	$("#histoire").html("<span>\"Tu être pas du coin toi vraiment ! Oui, maintenant, portes de la ville sont fermées.\"</span>");
+	$("#histoire").html("\"Tu être pas du coin toi vraiment ! Oui, maintenant, portes de la ville sont fermées.\"");
 	$("#dialHistoire1").hide();
 	$("#dialHistoire2").show();
 	$("#dialAskTaxe").hide();
@@ -91,7 +91,7 @@ function sHistoire2() {
     window.open("audioUI.html","audioUI");
     localStorage.dialgardHistoire2 = 1;
   }
-	$("#histoire").html("<span><i>*il crache de l'argile au sol*</i>&nbsp;&nbsp; \"Ouais. En ce moment, beaucoup marauds. Ça grouille.. Surtout à la porte Nord, de l'autre côté ! De ce côté, ça va. Montagnes de la Bruisse empêchent marauds Nord de passer Sud. <br>Et au Soufflant, bandits volent leurs propres affaires !<i>*il ricane puis se reprend*</i><br>Et horde invisible abîmer la ville, donc ici nous guardons, tu vois?\"</span>");
+	$("#histoire").html("<i>*il crache de l'argile au sol*</i>&nbsp;&nbsp; \"Ouais. En ce moment, beaucoup marauds. Ça grouille.. Surtout à la porte Nord, de l'autre côté ! De ce côté, ça va. Montagnes de la Bruisse empêchent marauds Nord de passer Sud. <br>Et au Soufflant, bandits volent leurs propres affaires !<i>*il ricane puis se reprend*</i><br>Et horde invisible abîmer la ville, donc ici nous guardons, tu vois?\"");
   $("#dialHistoire1").hide();
   $("#dialHistoire2").hide();
   $("#dialHistoire3").show();
@@ -105,7 +105,7 @@ function sHistoire3() {
     window.open("audioUI.html","audioUI");
     localStorage.dialgardHistoire3 = 1;
   }
-  $("#histoire").html("<span>\"Imagine maisons pillées, femmes violées, ville saccagée.. Et nous pas voir pour arrêter !<br>Salauds passés y'a un mois, donc ville tranquille et calme, mais nous méfiants, méfiants..<br>Ville besoin d'argent pour repartir.<i>*il se redresse d'un coup, comme si il venait de se souvenir de sa tâche*</i> Toi devoir payer pour rentrer.\"</span>");
+  $("#histoire").html("\"Imagine maisons pillées, femmes violées, ville saccagée.. Et nous pas voir pour arrêter !<br>Salauds passés y'a un mois, donc ville tranquille et calme, mais nous méfiants, méfiants..<br>Ville besoin d'argent pour repartir.<i>*il se redresse d'un coup, comme si il venait de se souvenir de sa tâche*</i> Toi devoir payer pour rentrer.\"");
   $("#dialHistoire1").hide();
   $("#dialHistoire2").hide();
   $("#dialHistoire3").hide();
@@ -120,7 +120,7 @@ function sAskTaxe() {
     localStorage.dialgardAskTaxe = 1;
     refDial();
   }
-  $("#histoire").html("<span>\"80 pièces d'or.<br>Attention, une fois toi rentré en ville, jamais ressortir par cette porte.\"</span>");
+  $("#histoire").html("\"80 pièces d'or.<br>Attention, une fois toi rentré en ville, jamais ressortir par cette porte.\"");
   $("#dialHistoire1").hide();
   $("#dialHistoire2").hide();
   $("#dialHistoire3").hide();
@@ -141,10 +141,10 @@ function sPayTaxe() {
 	$("#dialPaid").show();
 	localStorage.goldAmount=(+actualgold - 80);
 	localStorage.passedGate=1;
-	$("#histoire").html("<span>\"Oui, tu peux rentrer. J'ouvre.\"</span>");
+	$("#histoire").html("\"Oui, tu peux rentrer. J'ouvre.\"");
   }
   if (actualgold < 80 && localStorage.passedGate == 0) {
-	$("#histoire").html("<span>\"Tu as pas 80 pièces d'or, donc tu peux pas entrer.\"</span>");
+	$("#histoire").html("\"Tu as pas 80 pièces d'or, donc tu peux pas entrer.\"");
 	$("#dialHistoire1").hide();
 	$("#dialHistoire2").hide();
 	$("#dialHistoire3").hide();
@@ -163,12 +163,12 @@ function sDial_Charisme() {
 		$("#dialTryChar").hide();
 		var oddseduceguard = Math.floor(Math.random() * (10 - 1 + 1) + 1);
 		if (oddseduceguard >= 2) {
-			$("#histoire").html("<span>\"Passes pour 50 pièces d'or, pour avoir paix ! Si tu as pas 50, donne moi ce que tu as. Ca va ?\"<br><i>(Vous avez réussi à séduire le garde)</i></span>");
+			$("#histoire").html("\"Passes pour 50 pièces d'or, pour avoir paix ! Si tu as pas 50, donne moi ce que tu as. Ca va ?\"<br><i>(Vous avez réussi à séduire le garde)</i>");
 			$("#dialRetour").hide();
 			$("#dialWinChar").show();
 		}
 		  if (oddseduceguard < 2) {
-			$("#histoire").html("<span>\"80 pièces d'or. Pas moins.\"<br><i>(Vous n'avez pas réussi à séduire le garde)</i></span>");
+			$("#histoire").html("\"80 pièces d'or. Pas moins.\"<br><i>(Vous n'avez pas réussi à séduire le garde)</i>");
 			$("#dialRetour").show();
 			localStorage.failseduceguard=1
 		}

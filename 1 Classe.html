@@ -12,14 +12,14 @@
 <script src="js/statsvar.js"></script></head>
 <body>
 	<header></header>
-	
+
 	<div id="clouds"></div><div id="cloudsbg"></div>
 	<section id="sleft"></section>
 	<div id="ang1a"></div><div id="ang1b"></div>
 	<img id="imgLeftFG"><img id="imgLeftBG">
 	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
 	<article id="main">
-		<h1 id="firsttitle">Errance</h1>
+		<h1 class="pgttle">Errance</h1>
 		<p id="histoire"><span></span></p>
 		<div id="choix">
 		<a href="1.1 Magie.html" class="btnD">La magie</a>
@@ -42,7 +42,7 @@ if (oddTilt == 1) {$("#illus_cont").css("transform","rotate(2deg)");}
 if (oddTilt == 2) {$("#illus_cont").css("transform","rotate(0deg)");}
 if (oddTilt == 3) {$("#illus_cont").css("transform","rotate(-2deg)");}
 
-	$("#histoire").html("<span>Cela fait plusieurs jours d\'été que vous errez dans les plaines collineuses du Soufflant : une terre rurale, dont les quelques hameaux chaleureux sont peuplés de bons vivants.<br>Vous êtes "+localStorage.pseudo+", un "+localStorage.race+" d'une petit vingtaine d'années aux aspirations héroïques, mais vous n'avez encore jamais accompli de quoi vous attribuer le respect de vos concitoyens, au hameau fermier de Fumier-Sechant -où vous avez grandi et rêvé de gloire toute une enfance, à quelques kilomètres au sud.<br><br>Il est notable que vous êtes très doué dans un domaine :</span>");
+	$("#histoire").html("Cela fait plusieurs jours d\'été que vous errez dans les plaines collineuses du Soufflant : une terre rurale, dont les quelques hameaux chaleureux sont peuplés de bons vivants.<br>Vous êtes "+localStorage.pseudo+", un "+localStorage.race+" d'une petit vingtaine d'années aux aspirations héroïques, mais vous n'avez encore jamais accompli de quoi vous attribuer le respect de vos concitoyens, au hameau fermier de Fumier-Sechant -où vous avez grandi et rêvé de gloire toute une enfance, à quelques kilomètres au sud.<br><br>Il est notable que vous êtes très doué dans un domaine :");
 
 /* RESET */
 	localStorage.goldAmount=10;

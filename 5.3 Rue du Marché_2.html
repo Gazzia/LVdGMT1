@@ -48,16 +48,17 @@
 <img id="imgRightFG"><img id="imgRightBG">
 <footer></footer>
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script src="js/ville.js"></script>
 <script>
 	localStorage.numpage=5.3;
 
-	if (dir=="Sud"){
+	if (localStorage.dirFrom=="Sud"){
 		$("#histoire").html("<span><i>Vous êtes toujours sur la rue du Marché.<br>Vous pouvez aller :</i><br><br><b>En face</b><br>et entrer sur le <u>Marché</u>.<br><b>A gauche</b><br>la <u>porte</u> close d'une demeure, au numéro 3.<br><b>A droite</b><br>se trouve un <u>dispensaire</u>, au numéro 2.<br><b>Ou faire demi-tour</b><br> et retourner vers la Porte sud.</span>");
 		$("#to5_2").html("Revenir vers la Porte Sud").css("background-color","#e6e2c4");
 	}
 
 	function to5_2() {
-		dir="Nord";
+		localStorage.dirFrom="Nord";
 		window.location="5.2 Rue du Marché.html";
 	}
 
@@ -73,7 +74,7 @@
 			$("#dialog").dialog({
 				resizable: false,
 				height: "auto",
-				dialogClass: 'dialogarme',
+				dialogClass: 'dialogItem',
 				buttons: {
 					"Ok": function() {
 						$(this).closest('.ui-dialog-content').dialog('close');
@@ -88,6 +89,5 @@
 <script src="js/footer_normal.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/globalscripts.js"></script>
-<script src="js/ville.js"></script>
 </body>
 </html>
