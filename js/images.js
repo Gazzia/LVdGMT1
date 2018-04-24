@@ -1,5 +1,5 @@
 function refImg(){
-  $(".UIBG_img").fadeOut(300, function() {
+  // $(".UIBG_img").fadeOut(300, function() {
     var page = localStorage.numpage;
     $("#decoTopLeft, #decoTopRight, .iconPageImg, .UIBG_imgFull, #illustr").attr("src","");
     if (page=="Classe"){
@@ -41,10 +41,12 @@ function refImg(){
       $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
       $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
       $(".iconPageImg").attr("src","images/icons/page/arbre_normal.png");
-      $("#UIBG_imgLFG").attr("src","images/Deco/mid/2.1_Left.png");
-      $("#UIBG_imgLBG").attr("src","images/Deco/midbg/2.1_Left.png");
-      $("#UIBG_imgRFG").attr("src","images/Deco/mid/2.1_Right.png");
-      $("#UIBG_imgRBG").attr("src","images/Deco/midbg/2.1_Left.png");
+      $("#UIBG_imgFull").attr("src","images/Deco/full/Full_2.1.png");
+      $("#UIBG_imgFullBG").attr("src","images/Deco/full/FullBG_2.1.png");
+      // $("#UIBG_imgLFG").attr("src","images/Deco/mid/2.1_Left.png");
+      // $("#UIBG_imgLBG").attr("src","images/Deco/midbg/2.1_Left.png");
+      // $("#UIBG_imgRFG").attr("src","images/Deco/mid/2.1_Right.png");
+      // $("#UIBG_imgRBG").attr("src","images/Deco/midbg/2.1_Left.png");
     }
     if (page==2.11){
       $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");
@@ -112,6 +114,6 @@ function refImg(){
     if (page==6.1111){
       $(".iconPageImg").attr("src","images/icons/page/shamanGMT1.png");
     }
-  });
-  $(".UIBG_img").fadeIn(300);
+  // });
+  // $(".UIBG_img").fadeIn(300);
 }
