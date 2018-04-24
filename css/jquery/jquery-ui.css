@@ -179,6 +179,7 @@
 
 	/* Support: IE <= 11 */
 	overflow: visible;
+	/*! height: 3vh; */
 }
 
 .ui-button,
@@ -500,11 +501,14 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-dialog .ui-dialog-title {
 	float: left;
-	margin: .1em 0;
 	white-space: nowrap;
 	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	line-height: 3vh;
+	margin-top: -0.3vh;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
 }
 .ui-dialog .ui-dialog-titlebar-close {
 	position: absolute;
@@ -533,9 +537,10 @@ button.ui-button::-moz-focus-inner {
 	float: right;
 }
 .ui-dialog .ui-dialog-buttonpane button {
-	margin: .5em .4em .5em 0;
+	margin: .5vh .4em .5em 0;
 	cursor: pointer;
 	box-shadow: 0 3px 2px #0000004d;
+	/*! font-size: 1.6vh; */
 }
 .ui-dialog .ui-resizable-n {
 	height: 2px;
@@ -913,10 +918,10 @@ body .ui-tooltip {
 works properly when clicked or hovered */
 html .ui-button.ui-state-disabled:hover,
 html .ui-button.ui-state-disabled:active {
-	border: 1px solid #d3d3d3;
-	background: #e6e6e6 url("images/ui-bg_glass_75_e6e6e6_1x400.png") 50% 50% repeat-x;
+	border: 1px solid #0b0a0966;
+	background: #c6b09e;
 	font-weight: normal;
-	color: #555555;
+	color: #555;
 }
 .ui-state-default a,
 .ui-state-default a:link,
@@ -925,7 +930,7 @@ a.ui-button,
 a:link.ui-button,
 a:visited.ui-button,
 .ui-button {
-	color: #555555;
+	color: #544428;
 	text-decoration: none;
 }
 .ui-state-hover,
@@ -936,10 +941,10 @@ a:visited.ui-button,
 .ui-widget-header .ui-state-focus,
 .ui-button:hover,
 .ui-button:focus {
-	border: 1px solid #999999;
-	background: #dadada url("images/ui-bg_glass_75_dadada_1x400.png") 50% 50% repeat-x;
+	border: 1px solid #50494366;
+	background: #d7bba5;
 	font-weight: normal;
-	color: #212121;
+	color: #695447;
 }
 .ui-state-hover a,
 .ui-state-hover a:hover,
@@ -965,9 +970,9 @@ a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
 	border: 1px solid #aaaaaa;
-	background: #ffffff url("images/ui-bg_glass_65_ffffff_1x400.png") 50% 50% repeat-x;
+	background: #dec8b6;
 	font-weight: normal;
-	color: #212121;
+	color: #5c3f2f;
 }
 .ui-icon-background,
 .ui-state-active .ui-icon-background {
@@ -1297,11 +1302,7 @@ a.ui-button:active,
 .ui-dialog-titlebar-close {
     visibility: hidden;
 }
-.ui-widget {
-    /*! font-family: Verdana,Arial,sans-serif; */
-    font-size: 1.15vw;
-}
-
+.ui-widget {font-size: 1.15vw;}
 .ui-widget-content {
     border: 1px solid #000;
     color: #fff8cc;
@@ -1316,14 +1317,9 @@ a.ui-button:active,
     top: 0;
 	box-shadow: 0px 0px 7px hsla(0, 100%, 0%, 0.41);
 }
-.ui-dialog.menuui {
-	width:20vw !important;
-	/*! height:100% !important; */
-}
-.ui-dialog.statsui {
-	width:34vw !important;
-	/*! height:100% !important; */
-}
+.ui-dialog.menuui	{width:20vw !important;}
+.ui-dialog.statsui {width:34vw !important;}
+.ui-dialog.dialInspect {width:100% !important;height: 100% !important;position: fixed;top: 0 !important;left: 0 !important;}
 .ui-dialog .ui-dialog-content {
     border: 0 none;
     overflow: auto;
@@ -1336,6 +1332,8 @@ a.ui-button:active,
 	padding-right:10px!important;
     margin: 0;
     font-family: 'Vollkorn', serif;
+    box-shadow: 0px 8px 3px #0003 inset, 0px 2px 3px #0006 inset;
+    /*text-shadow: 0 1px 9px black, 0 0px 1px #0006;*/
 }
 .ui-dialog.dialogGold .ui-dialog-content{
 	background-image:linear-gradient(to top, #683a0080 -20%, #0000 40%), linear-gradient(0.67turn, #5d3c004d, #0000 20%), linear-gradient(0.33turn, #fff5d4, #0000 20%), linear-gradient(to bottom, #f5eba380, #0000 100%),url(../../images/UI/bgGold.jpg);
@@ -1349,6 +1347,15 @@ a.ui-button:active,
 	margin-left:0!important;
 	min-height: 20vw !important;
 	}
+.dialInspect .ui-dialog-content{
+	background-image:url(../../images/UI/stainedpaper.jpg);
+	margin-left:0!important;
+	min-height: calc(100% - 8.5vh - 0.7em) !important;
+	background-size: cover;
+	background-repeat: no-repeat;
+	box-shadow: 0px 10px 35px #000000b3 inset, 0px -10px 35px #0006 inset;
+	background-position-y: center;
+}
 .ui-dialog.dialogRace .ui-dialog-content{
 	background-image:url(../../images/UI/bgPaper.jpg);
 	color:#2d2216;
@@ -1375,9 +1382,13 @@ a.ui-button:active,
 	background-color: #0006;
 	border-top: 1px solid #ded1adb3;
 }
-.ui-dialog.dialogItem .ui-dialog-content{
+.ui-dialog.dialBg_burlap .ui-dialog-content{
 	background-image:linear-gradient(to top, #0000004d 0%, #0000 70%),url(../../images/UI/burlap.jpg);
 	background-size: 100% 100%;
+	padding-bottom: 3vh !important;
+}
+.ui-dialog.dialInspect .ui-dialog-buttonpane{
+	height:6vh;
 }
 .ui-dialog.menuui .ui-dialog-buttonpane,
 .ui-dialog.statsui .ui-dialog-buttonpane{
@@ -1385,12 +1396,12 @@ a.ui-button:active,
 }
 .ui-dialog .ui-widget-header {
 	border-radius:0 0 0 0;
-    background: linear-gradient(to top, #0003, #0000 70%),#5b4535;
+    background: linear-gradient(to top, #0000, #0000 70%),#423226;
     border: 0;
-    color: #fff8cc;
-    font-weight: normal;
-	font-family: 'Playfair Display', serif;
-	border-bottom: 1px solid black;
+    color: #ab937b;
+    font-weight: bold;
+	/*! font-family: 'Playfair Display', serif; */
+	/*! border-bottom: 1px solid black; */
 }
 .ui-dialog.menuui .ui-widget-header {
 	background:linear-gradient(to top, #0003, #0000 70%),#5b4535;
@@ -1401,8 +1412,9 @@ a.ui-button:active,
 	margin:0 auto;
 }
 .ui-dialog .ui-dialog-titlebar {
-    padding: 0.2em .5em;
+    /*! padding: 0.2em .5em; */
     position: relative;
     font-size: 1em;
     text-align: center;
+    height: 2.5vh;
 }

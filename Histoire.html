@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>GMT - Errance</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+  <script src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script src="js/jquery/mousewheel.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Didact+Gothic|Slabo+27px" rel="stylesheet">
+	<script src="js/data/items.js"></script>
+	<!-- <script>	$( function(){$(document).tooltip({classes: {"ui-tooltip": "highlight"}});});	</script> -->
+</head>
+<body>
+	<div id="uiBG" class="fullscreen">
+		<div id="uiBG_cloudsFG" class="uiBG_clouds"></div><div id="uiBG_cloudsBG" class="uiBG_clouds"></div>
+		<img id="UIBG_imgFull" class="UIBG_imgFull"> <img id="UIBG_imgFullBG" class="UIBG_imgFullBG">
+		<img id="UIBG_imgLBG" class="UIBG_img UIBG_imgL UIBG_imgBG"><img id="UIBG_imgLFG" class="UIBG_img UIBG_imgL UIBG_imgFG">
+		<img id="UIBG_imgRBG" class="UIBG_img UIBG_imgR UIBG_imgBG"><img id="UIBG_imgRFG" class="UIBG_img UIBG_imgR UIBG_imgFG">
+	</div>
+	<a id="toggleUI" onclick="toggleUI()">UI</a>
+	<div id="uiFG" class="midscreen">
+		<div class="minimap">
+			<img src="images/map/Merry1.png" class="carte">
+			<div class="mapPosition">▲</div>
+		</div>
+		<div class="uiFG_block uiFG_top"></div>
+		<div class="uiFG_block uiFG_mid">
+			<div class="uiFG_mid_left uiFG_mid_block">
+				<div id="histoireTitle" class="uiFG_mid_left_title uiFG_mid_titles">Errance</div>
+				<div class="scrollMidLeft scroll">
+					<p id="histoire" class="histoire"></p>
+				</div>
+			</div>
+			<div class="uiFG_mid_right uiFG_mid_block">
+				<div class="uiFG_mid_right_title uiFG_mid_titles">ACTIONS</div>
+				<div class="scrollMidRight scroll">
+				<div id="actions" class="actions">
+						<div id="actWalk" class="actionsCat">
+							<div class="actionsCatTitle">
+								<img class="actionsCatTitle_Img" src="images/UI/actions/walk.png">
+								<h2 class="actionsCatTitle_Text">Déplacement</h2>
+							</div>
+							<div id="actWalkActions" class="actionGroup">
+							</div>
+						</div>
+						<div id="actTake" class="actionsCat">
+							<div class="actionsCatTitle">
+								<img class="actionsCatTitle_Img" src="images/UI/actions/take.png">
+								<h2 class="actionsCatTitle_Text">Prendre</h2>
+							</div>
+							<div id="actTakeActions" class="actionGroup">
+							</div>
+						</div>
+						<div id="actUse" class="actionsCat">
+							<div class="actionsCatTitle">
+								<img class="actionsCatTitle_Img" src="images/UI/actions/use.png">
+								<h2 class="actionsCatTitle_Text">Utiliser</h2>
+							</div>
+							<div id="actUseActions" class="actionGroup">
+							</div>
+						</div>
+						<div id="actTalk" class="actionsCat">
+							<div class="actionsCatTitle">
+								<img class="actionsCatTitle_Img" src="images/UI/actions/talk.png">
+								<h2 class="actionsCatTitle_Text">Parler</h2>
+							</div>
+							<div id="actTalkActions" class="actionGroup">
+							</div>
+						</div>
+						<div id="actFight" class="actionsCat">
+							<div class="actionsCatTitle">
+								<img class="actionsCatTitle_Img" src="images/UI/actions/fight.png">
+								<h2 class="actionsCatTitle_Text">Attaquer</h2>
+							</div>
+							<div id="actFightActions" class="actionGroup">
+							</div>
+						</div>
+						<div id="actGive" class="actionsCat">
+							<div class="actionsCatTitle">
+								<img class="actionsCatTitle_Img" src="images/UI/actions/give.png">
+								<h2 class="actionsCatTitle_Text">Donner</h2>
+							</div>
+							<div id="actGiveActions" class="actionGroup">
+							</div>
+						</div>
+						<div id="actDivers" class="actionsCat">
+							<div class="actionsCatTitle">
+								<img class="actionsCatTitle_Img" src="images/UI/actions/divers.png">
+								<h2 class="actionsCatTitle_Text">Divers</h2>
+							</div>
+							<div id="actDiversActions" class="actionGroup">
+							</div>
+						</div>
+						<div id="actLook" class="actionsCat">
+							<div class="actionsCatTitle">
+								<img class="actionsCatTitle_Img" src="images/UI/actions/look.png">
+								<h2 class="actionsCatTitle_Text">Observer</h2>
+							</div>
+							<div id="actLookActions" class="actionGroup">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="uiFG_block uiFG_bot">
+			<div class="uiFG_bot_top uiFG_block">
+				<nav class="uiFG_bot_top_nav">
+					<a id="btnInv" class="navBtns" href="Inv.html"></a>
+					<a id="btnMap" class="navBtns" href="Map.html"></a>
+				</nav>
+				<div class="uiFG_bot_top_plCont">
+					<div id="uiFG_bot_top_plPseudo" class="uiFG_bot_top_plInfo"></div>
+					<div id="uiFG_bot_top_plRace" class="uiFG_bot_top_plInfo">Ferré du soufflant</div>
+				</div>
+			</div>
+			<div class="uiFG_bot_bot uiFG_block">
+				<div id="plHealthText"></div>
+				<div id="plHealthBar"></div>
+				<div class="goldContainer">
+					<img class="goldIcon" src="images/icons/UI/gold.png">
+					<div id="plGold">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="dialoglayer1" title="" style="display:none">
+		<img id="dialoglayer1Img" class="dialogImg">
+		<p id="dialoglayer1Text"></p>
+	</div>
+	<div id="inspect" title="Inspection" style="display:none">
+		<img id="inspectImg" class="dialogImg">
+		<div id="inspectText_div"><p id="inspectText" class="text-focus-in"></p></div>
+	</div>
+	<div id="getitem" style="display:none">
+	   <img id="getitemImg" class="dialogImg">
+			 <p id="getitemText"></p>
+  </div>
+	<div id="allmenus" style="display:none;"></div>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+$('#plHealthBar').progressbar({classes:{"ui-progressbar": "progression", "ui-progressbar-value": "progression-value"}});
+$('#plHealthBar').progressbar('option', 'value', Number(localStorage.plHealth));
+$('#plHealthBar').progressbar('option', 'max', Number(localStorage.plHealthMax));
+$('#plHealthText').html(localStorage.plHealth+"/"+localStorage.plHealthMax);
+$("#uiFG_bot_top_plPseudo").html(localStorage.pseudo);
+$("#uiFG_bot_top_plRace").html(localStorage.race);
+
+$(".scroll").bind("mousewheel",function(ev, delta) {
+    var scrollTop = $(this).scrollTop();
+    $(this).scrollTop(scrollTop-Math.round(delta));
+});
+$("*").each( function () {
+    var $this = $(this);
+    if (parseInt($this.css("fontSize")) < 11) {
+        $this.css({ "font-size": "11px" });
+    }
+		if (parseInt($this.css("fontSize")) > 20) {
+        $this.css({ "font-size": "20px" });
+    }
+		if (parseInt($this.css("lineHeight")) > 30) {
+        $this.css({ "line-height": "30px" });
+    }
+})
+
+$(".scrollMidRight").css("top", $(".uiFG_mid_right_title").height());
+$(".scrollMidLeft").css("margin-top", $(".uiFG_mid_left_title").height());
+$(".scrollMidRight").css("height", "calc(100% - 4vh + "+$(".uiFG_mid_right_title").height()+")");
+
+function toggleUI(){$(".midscreen").toggle(200);}
+</script>
+<script src="js/statsvar.js"></script>
+<script src="js/pageScripts.js"></script>
+<script src="js/pageBtn.js"></script>
+<script src="js/pageHistoire.js"></script>
+<script src="js/images.js"></script>
+<script src="js/inspect.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

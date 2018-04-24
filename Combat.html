@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <link rel="shortcut icon" type="image/png" href="" />
+  <title>La Voie du Grand Malgré-Tout</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="css/combat.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <script src="js/statsvar.js"></script>
+  <script src="js/data/enemies.js"></script> <script src="js/data/items.js"></script>
+  <script>
+  $(function(){$( document ).tooltip({classes:{"ui-tooltip": "highlight"}});});
+  </script>
+</head>
+<body onload="refStuff()">
+  <div id="blackscreen"><div id="blackscreenText">Combat</div></div>
+  <section id="intitule"> <div id="intituleText"> <div id="intituleHistoire" class="scroll"></div> </div> </section>
+  <section id="perso" class="mid">
+    <div id="persoTop"> <div id="vous">Vous</div> <div id="viePlayer"> </div> <div id="playerVieText"></div> </div>
+    <div id="infosPerso"> <div class="scroll">
+      <div class="infosSubtitle">Caractéristiques</div>
+      <div id="infoChara" class="infosText"></div>
+      <div class="infosSubtitle">Arme</div>
+      <div id="infoArme" class="infosText"></div>
+      <div class="infosSubtitle">Race</div>
+      <div id="infoRace" class="infosText"><br></div>
+      <div class="infosSubtitle">Classe</div>
+      <div id="infoClasse" class="infosText"><br></div>
+      <div class="infosSubtitle">Armure</div>
+      <div id="infoDef" class="infosText">Def totale :<br>0</div>
+    </div> </div>
+  </section>
+  <section id="infos" class="mid"> <div id="infosList" class="scroll">
+    <div id="infoPlayerSide" class="infoSides">
+      <div id="hit_PtoE1" class="hit_all hit_PtoE hit_E1"></div>
+      <div id="hit_PtoE2" class="hit_all hit_PtoE hit_E2"></div>
+      <div id="hit_PtoE3" class="hit_all hit_PtoE hit_E3"></div>
+      <div id="hit_PtoE4" class="hit_all hit_PtoE hit_E4"></div>
+      <div id="hit_PtoE5" class="hit_all hit_PtoE hit_E5"></div>
+    </div>
+    <div id="infoEnemiesSide" class="infoSides">
+      <div id="hit_E1toP" class="hit_all hit_EtoP hit_E1"></div>
+      <div id="hit_E2toP" class="hit_all hit_EtoP hit_E2"></div>
+      <div id="hit_E3toP" class="hit_all hit_EtoP hit_E3"></div>
+      <div id="hit_E4toP" class="hit_all hit_EtoP hit_E4"></div>
+      <div id="hit_E5toP" class="hit_all hit_EtoP hit_E5"></div>
+    </div>
+  </div> </section>
+  <section id="ennemis" class="mid"> <div id="ennemisList" class="scroll"> </div> </section>
+  <section id="defensif"></section>
+  <div id="dialogCombat_Win" title="Victoire" style="display:none"> <p></p> </div>
+  <div id="dialogCombat_Death" title="Mort" style="display:none"> <p></p> </div>
+  <div id="dialogCombat_NoInv" title="Inaccessible" style="display:none">
+    <p>Vous n'avez pas la possibilité d'ouvrir votre inventaire en plein combat !</p>
+  </div>
+  <audio autoplay="false" controls id="playerCombat"> </audio>
+<!-- DECO+FOOTER -->
+<div id="ang1a"></div><div id="ang1b"></div>
+<div id="ang2a"></div><div id="ang2b"></div>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script src="js/combat.js"></script>
+<script>
+localStorage.enemiesNb=0;
+//A PARAMETRER A CHAQUE FOIS
+//Numero, nom, lvl
+if (localStorage.numpage=2.2){
+  addEnemy(1, Rat, 5);
+  localStorage.En1_Dead = 0;
+  localStorage.En2_Dead = 1;
+  localStorage.En3_Dead = 1;
+  localStorage.En4_Dead = 1;
+  var zoneClearedLS = "combatWon_RatSoufflant";
+  var onWinLocation = 2.211;
+  $('#intituleHistoire').html("Alors que vous entamez votre premier pas au-delà de la porte, une ombre se propulse vers vous.<br>Un énorme rat vous attaque, énervé que vous ayiez trouvé son abri. Vous entrevoyez rapidement un corps à moitié mangé sur le sol, surement l'ancien propriétaire.");
+  $('#dialogCombat_Win p').html("Le dernier coup asséné a achevé le combat, dont vous sortez victorieux ! Vous pouvez maintenant explorer l'interieur de la masure");
+  $('#dialogCombat_Death p').html("La dernière morsure du rat vous a été fatale. Alors que la vie s'échappe de votre corps, vous pouvez recommencer la partie pour tenter de vous venger de ce rongeur.");
+}
+//FIN
+</script>
+<script src="js/globalscripts.js"></script>
+</body>
+</html>

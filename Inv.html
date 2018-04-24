@@ -143,26 +143,26 @@ function OM_setOpenedFolder(itemType){
 }
 /* IMPLEMENTATION DES OBJETS INDIVIDUELLEMENT DEPUIS ITEMSDATA.JS */
 //ARMES
-if (localStorage.armeBaton==1) {addItem(Baton);}
+if (localStorage.inv_arme_baton==1) {addItem(Baton);}
 //OUTILS
-if (localStorage.objectShovel==1) {addItem(Pelle);}
+if (localStorage.inv_tool_shovel==1) {addItem(Pelle);}
 /* FONCTION D'AJOUT DES CASES DES OBJETS */
 function addItem(addedItem){
 	$("#"+addedItem.Type+"List").append('<a onclick="selItem(\''+addedItem.Short+'\');" class="itemCase"><img class="itemClassimg" title="'+addedItem.Name+' - '+addedItem.StatShort+'" src="images/icons/'+addedItem.Img+'"></a>');
 }
 /* FONCTION LORS DE LA SELECTION DES OBJETS */
-function selItem(selectedItem){localStorage[(window[selectedItem].Type)+'Selected'] = window[selectedItem].Short;refSel();}
+function selItem(selectedItem){localStorage['inv_selected_'+(window[selectedItem].Type)] = window[selectedItem].Short;refSel();}
 
 function refSel() {
-  var armeSel = localStorage.armeSelected;
+  var armeSel = localStorage.inv_selected_arme;
   refSelApply(window[armeSel].Type, window[armeSel].Name, window[armeSel].StatShort, window[armeSel].Stat, window[armeSel].Desc, window[armeSel].Img);
-  var headSel = localStorage.headSelected;
+  var headSel = localStorage.inv_selected_head;
   refSelApply(window[headSel].Type, window[headSel].Name, window[headSel].StatShort, window[headSel].Stat, window[headSel].Desc, window[headSel].Img);
-  var torseSel = localStorage.torseSelected;
+  var torseSel = localStorage.inv_selected_torse;
   refSelApply(window[torseSel].Type, window[torseSel].Name, window[torseSel].StatShort, window[torseSel].Stat, window[torseSel].Desc, window[torseSel].Img);
-  var legSel = localStorage.legSelected;
+  var legSel = localStorage.inv_selected_leg;
   refSelApply(window[legSel].Type, window[legSel].Name, window[legSel].StatShort, window[legSel].Stat, window[legSel].Desc, window[legSel].Img);
-  var footSel = localStorage.footSelected;
+  var footSel = localStorage.inv_selected_foot;
   refSelApply(window[footSel].Type, window[footSel].Name, window[footSel].StatShort, window[footSel].Stat, window[footSel].Desc, window[footSel].Img);
 }
 function refSelApply(selItemType, itemName, itemStatShort, itemStat, itemDesc, itemImg){
@@ -171,10 +171,18 @@ function refSelApply(selItemType, itemName, itemStatShort, itemStat, itemDesc, i
 	$("#"+selItemType+"Desc").html(itemDesc);
 	$("#"+selItemType+"Img").attr("src","images/icons/"+itemImg);
 }
+$(document).keydown(function(e) {
+	if(e.which == 49 && localStorage.inventoryOpen==1) {e.which = 0;localStorage.inventoryOpen=0;window.location="Histoire.html";}
+});
 </script>
+<script src="js/statsvar.js"></script>
 <script src="js/footer_normal.js"></script>
-<script src="js/globalscripts.js"></script>
-<script src="js/retour.js"></script>
+<script src="js/pageScripts.js"></script>
+<script src="js/pageBtn.js"></script>
+<script src="js/pageHistoire.js"></script>
+<script src="js/images.js"></script>
+<script src="js/inspect.js"></script>
 <script src="js/menu.js"></script>
+<script src="js/globalscripts.js"></script>
 </body>
 </html>

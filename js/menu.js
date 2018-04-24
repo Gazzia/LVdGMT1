@@ -1,6 +1,7 @@
-$("#allmenus").html("<div id='menuui' style='display:none'></div><div id='statistiques' 'style=display:none'></div>")
+$("#allmenus").html("<div id='menuui' style='display:none'></div><div id='statistiques' 'style=display:none'></div>");
+refAll();
 $(document).keydown(function(e) {
-  if(e.which == 27 && localStorage.menuOpen==0) {
+  if(e.which == 27 && localStorage.menuOpen==0 ) {
     e.which = 0;
     localStorage.menuOpen=1;
     $("#menuui")
@@ -38,9 +39,9 @@ $(document).keydown(function(e) {
   }
   if(e.which == 49 && localStorage.inventoryOpen==0) {
     e.which = 0;
+    localStorage.inventoryOpen=1;
     window.location="Inv.html";
   }
-  if(e.which == 49 && localStorage.inventoryOpen==1) {retourToPage();}
   if(e.which == 50) {openStats();}
   if(e.which == 51) {openMap();}
 });
@@ -78,7 +79,7 @@ function rusure(){
     title: "Recommencer",
     buttons: {
       "Oui": function() {
-        window.location="index.html"
+        window.location="index.html";
       },
       "Non": function() {
         $(this).closest('.ui-dialog-content').dialog('close');

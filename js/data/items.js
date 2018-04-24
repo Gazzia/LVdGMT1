@@ -15,7 +15,9 @@ var Baton = {
   Stat: "Dmg Max : 10 Normal",
   Desc: "Une arme rudimentaire. Cette branche pourra peut-être asséner quelques bleus à un adversaire, qui sait?.",
   Img: "weapons/stick.png",
-  Short: "Baton"
+  Short: "Baton",
+  FoundText: "Vous avez récupéré la branche de tilleul, elle peut servir d'arme en combat, <b>mais vous devrez d'abord l'équipper dans votre inventaire.</b>",
+  LSName: "inv_arme_baton"
 };
 //HEAD
 var Tete = {
@@ -63,6 +65,8 @@ var Pelle = {
   Name: "Pelle",
   Desc: "Une vieille pelle.",
   Img: "items/shovel.png",
-  Short: "Pelle"
+  Short: "Pelle",
+  FoundText: "Vous avez repéré une pelle a l'air rustique. Exactement ce qu'il vous faut.",
+  LSName: "inv_tool_shovel"
 };
 //OBJETS

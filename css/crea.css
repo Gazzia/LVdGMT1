@@ -1,20 +1,3 @@
-html {
-  margin: 0;
-  padding: 0;
-  background:;
-  background-size: cover;
-}
-
-body {
-  /* height:100%; */
-  background-image:linear-gradient(to bottom, #bddcf0, #202629);
-  margin-top: 0px;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  margin-left: 0px;
-  background-size: 100%;
-}
 h1{color:#789196; padding-top:4%;font-size:40px;text-shadow: 0px 1px 1px #ffffffe6;margin-top: 0;top: 0;}
 #formPseudo {
   width: 51%;

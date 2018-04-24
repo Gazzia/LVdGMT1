@@ -1,4 +1,3 @@
-//ARMES
 var Rat = {
   Type: "animal",
   Name: "Rat",
@@ -10,7 +9,6 @@ var Rat = {
   HealthBase: 14,
   HealthCoef: 2.5
 };
-//ARMES
 var Test = {
   Type: "animal",
   Name: "Test.Name",

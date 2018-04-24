@@ -1,3 +1,4 @@
+refStats();
 var audio = $("#playerCombat");
 var whichSound = 1;
 var enemyDef = 0;
@@ -37,7 +38,7 @@ function addEnemy(enemyNum, addedEnemy, addedEnemyLvl){
 }
 function refStuff() {
   $("#infoChara").html("TOTAL Force: "+totalForce+"<br>TOTAL Puissance Mag.: "+totalMag);
-  var armeSel = localStorage.armeSelected;
+  var armeSel = localStorage.inv_selected_arme;
   $("#infoArme").html(window[armeSel].Name+"<br>Dmg max: "+window[armeSel].StatShort);
   var textRaceForce = "Cette race n'a pas de multiplicateur de Force";
   if (raceXForce == 1.1){textRaceForce = "Force +10%";} if (raceXForce == 0.9){textRaceForce = "Force -10%";}
@@ -81,7 +82,7 @@ function En_Hit(enemyNum){
     playerHitDmgRaw = Math.floor(Math.random() * (maxdmg - mindmg + 1) + mindmg);
     enemyDef =  Math.floor(Math.random() * (localStorage["En"+enemyNum+"_MaxDefNor"] - 0 + 1) + 0);
     if (enemyDef > playerHitDmgRaw){
-      enemyDef=playerHitDmgRaw
+      enemyDef=playerHitDmgRaw;
     }
     randomcrit = Math.floor(Math.random() * 3) + 1;
     if (maxdmg != 0 && playerHitDmgRaw == maxdmg && randomcrit == 3) {
@@ -128,7 +129,8 @@ function En_Hit(enemyNum){
             closeOnEscape: false,
             buttons: {
               "Ok": function() {
-                window.location=onWinLocation;
+                localStorage.numpage=onWinLocation;
+                window.location="Histoire.html";
               }
             }
           });
@@ -149,7 +151,7 @@ function Pl_HitList(enemyNum){
   }
   if (localStorage.enemiesNb >= 2){
     if (localStorage.En2_Dead == 0){
-      setTimeout(function () {Pl_Hit(2);}, 300)}
+      setTimeout(function () {Pl_Hit(2);}, 300);}
   }
   if (localStorage.enemiesNb == 2){
     setTimeout(function () {
@@ -157,7 +159,7 @@ function Pl_HitList(enemyNum){
     }, 500);
   }
   if (localStorage.enemiesNb >= 3){
-    if (localStorage.En3_Dead == 0){setTimeout(function () {Pl_Hit(3);}, 500)}
+    if (localStorage.En3_Dead == 0){setTimeout(function () {Pl_Hit(3);}, 500);}
   }
   if (localStorage.enemiesNb == 3){
     setTimeout(function () {
@@ -165,7 +167,7 @@ function Pl_HitList(enemyNum){
     }, 700);
   }
   if (localStorage.enemiesNb >= 4){
-    if (localStorage.En4_Dead == 0){setTimeout(function () {Pl_Hit(4);}, 700)}
+    if (localStorage.En4_Dead == 0){setTimeout(function () {Pl_Hit(4);}, 700);}
   }
   if (localStorage.enemiesNb == 4){
     setTimeout(function () {

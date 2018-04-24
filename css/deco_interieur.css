@@ -22,6 +22,7 @@
   bottom:-4px;
   z-index: 5;
   max-width:25%;
+  filter: saturate(117%);
 }
 #imgRightFG{right: 0;}
 #imgLeftBG, #imgRightBG{
@@ -29,5 +30,6 @@
   bottom:0px;
   max-width: 25%;
   z-index: 2;
+  filter: saturate(117%);
 }
 #imgRightBG{right: 0;}
