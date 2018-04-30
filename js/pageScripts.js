@@ -27,26 +27,30 @@ function reset1(){
 	localStorage.caughtbyguard=0;
 	localStorage.failedToSeduceGuard=0;
 	localStorage.passedGate=0;
+  //
+  localStorage.Setting_SoundOn=1;
 }
 function setSound(soundtype, sound){
-  localStorage['audiotype'+soundtype] = sound;
-  window.open("audio"+soundtype+".html", "audio"+soundtype);
+  if (localStorage.Setting_SoundOn==1){
+    localStorage['audiotype'+soundtype] = sound;
+    window.open("audio"+soundtype+".html", "audio"+soundtype);
+  }
 }
 function foundGold(amount, storageEvent) {
   setSound("UI", "gold");
-  setTimeout(function() {
+  setTimeout(function(){
     localStorage[storageEvent]=1; localStorage.plGold= +(localStorage.plGold) + amount; refAll();
     $("#getitemText").html("+"+amount+" Or !");
     $("#getitemImg").attr("src", "images/icons/UI/shiny-purse.png");
     $("#getitem").attr("title", "Jackpot !");
     $("#getitem").dialog({ modal: true, resizable: false, height: "auto", dialogClass: 'dialogGold',
-    buttons: { "Ok": function() {$(".ui-dialog-content").dialog("close");} }
+    buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close");} }
     });
   }, 200);
 }
 function foundItem(item) {
   setSound("UI", "takeStuff");
-  setTimeout(function() {
+  setTimeout(function(){
     localStorage[window[item].LSName]=1;
     $("#getitemText").html(window[item].FoundText);
     $("#getitemImg").attr("src", "images/icons/"+window[item].Img);
@@ -54,15 +58,15 @@ function foundItem(item) {
       $("#getitem").attr("title", "Nouvelle arme !");
       $("#getitem").dialog({ modal: true, resizable: false, dialogClass: 'dialBg_burlap', height: "auto",
       buttons: {
-        "Prendre": function() {$(".ui-dialog-content").dialog("close"); refAll();},
-        "Prendre et équipper": function() { localStorage.inv_selected_arme=window[item].Short; $(".ui-dialog-content").dialog("close"); refAll(); }
+        "Prendre": function(){$(".ui-dialog-content").dialog("close"); refAll();},
+        "Prendre et équipper": function(){ localStorage.inv_selected_arme=window[item].Short; $(".ui-dialog-content").dialog("close"); refAll(); }
       } });
     }
     if (window[item].Type == "tool"){
       $("#getitem").attr("title", "Nouvel outil !");
       $("#getitem").dialog({ modal: true, resizable: false, dialogClass: 'dialBg_burlap', height: "auto",
       buttons: {
-        "Ok": function() {$(".ui-dialog-content").dialog("close"); refAll();}
+        "Ok": function(){$(".ui-dialog-content").dialog("close"); refAll();}
       } });
     }
   }, 200);
@@ -71,24 +75,24 @@ function knockDoor(){
   if (localStorage.numpage==2.2){
     setSound("EnvF", "ratRun");
     setSound("UI", "doorKnockOpen");
-    setTimeout(function() {
+    setTimeout(function(){
       localStorage.nbKnock2_2=1;
       $("#dialoglayer1Text").html("Vous frappez à la porte qui s'entrouvre vaguement. Vous ne distinguez rien, et personne n'a répondu à l'appel. Pourtant, on dirait un bruit d'affollement à l'intérieur.");
       $("#dialoglayer1")
       .attr("title","Aucune réponse")
       .dialog({ resizable: false, height: "auto", modal: true, dialogClass: 'dialBg_burlap',
-      buttons: { "Ok": function() {$(".ui-dialog-content").dialog("close"); refAll();} }
+      buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAll();} }
     });
   }, 1000);
 } else {
   setSound("UI", "doorKnock");
-  setTimeout(function() {
+  setTimeout(function(){
     $("#dialoglayer1Text").html("Vous frappez, mais personne ne répond.");
     $("#dialoglayer1Img").attr("src","images/icons/UI/doorClosed.png");
     $("#dialoglayer1")
     .attr("title","Aucune réponse")
     .dialog({ resizable: false, height: "auto", modal: true, dialogClass: 'dialBg_burlap',
-    buttons: { "Ok": function() {$(".ui-dialog-content").dialog("close"); refAll();} }
+    buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAll();} }
   });
 }, 1000);
 }
@@ -112,8 +116,8 @@ function refScripts(){
     setSound("Music", "Intro");
   }
   if (page == "Pseudo"){
-    $(function() {
-        $("form").submit(function() { return false; });
+    $(function(){
+        $("form").submit(function(){ return false; });
     });
     $("#intro_backgroundTitle").fadeOut(800).children().fadeOut(2000);
     $("#intro_backgroundPseudo").delay(500).fadeIn(800).children().hide().fadeIn(2000);
@@ -127,7 +131,7 @@ function refScripts(){
     $("#intro_backgroundRace").delay(500).fadeIn(800).children().hide().fadeIn(2000);
     $("#showpseudo").html("<div class='racepagetitle'>Choix d'une race pour "+localStorage.pseudo+"</div>");
     darace = "none";
-    $('.container').click(function() {
+    $('.container').click(function(){
       if ($('#raceHomme').is(':checked')) {
         $("#iconClass").attr("src", "images/Classes/homme.png");
         $("#classDesc").html(
@@ -198,7 +202,7 @@ function refScripts(){
   if (page == "Racetree"){
     $("#intro_backgroundRace").fadeOut(800).children().fadeOut(2000);
     $("#intro_backgroundRaceTree").delay(500).fadeIn(800).children().hide().fadeIn(2000);
-    setTimeout(function() {
+    setTimeout(function(){
       $("#centeredTree").css({
         "transform": "scale(1)",
         "opacity": "1"
@@ -207,7 +211,7 @@ function refScripts(){
   }
   if (page == "Classe"){
     reset1();
-    setSound("EnvF", "Nature");
+    setSound("EnvB", "Nature");
     setSound("EnvF", "Aucun");
     setSound("Music", "Sunny");
   }
@@ -249,7 +253,7 @@ function refScripts(){
     	$("#dialoglayer1")
       .attr("title","Note")
       .dialog({resizable: false, modal:true, draggable:false, height: "auto", dialogClass: 'dialBg_burlap',
-    		buttons: { "Ok": function() {$(".ui-dialog-content").dialog("close"); refAll();} }
+    		buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAll();} }
     	});	localStorage.aboutMenu=1;
     }
     setSound("EnvF", "Aucun");
@@ -351,7 +355,7 @@ function closeTree() {
     "transform": "scale(5)",
     "opacity": "0"
   });
-  setTimeout(function() {
+  setTimeout(function(){
     localStorage.numpage = "Race"; refAll();
   }, 1000);
 }
@@ -362,15 +366,15 @@ function nearbody2_211() {
     $("#dialoglayer1")
     .attr("title", "Un éclat couleur sang")
     .dialog({ resizable: false, height: "auto", dialogClass: 'dialBg_burlap',
-      buttons: { "Prendre": function() {setSound("UI", "gold"); foundGold(50, "tookCorpseGold"); }}
+      buttons: { "Prendre": function(){setSound("UI", "gold"); foundGold(50, "tookCorpseGold"); }}
     });
   }
   if (localStorage.tookCorpseGold == 1) {
     setSound("UI", "fleshSigh");
     $("#dialoglayer1Text").html("Vous entrefouillez les tripes et boyaux à pleine mains en quête d'autres trésors dorés, mais non. Vous êtes immonde. Sortez donc dehors.");
-    setTimeout(function() {
+    setTimeout(function(){
       $("#dialoglayer1").attr("title", "Glauque..").dialog({ resizable: false, height: "auto", dialogClass: 'dialBg_burlap',
-        buttons: { "Ok": function() { $(".ui-dialog-content").dialog("close"); refAll(); } }
+        buttons: { "Ok": function(){ $(".ui-dialog-content").dialog("close"); refAll(); } }
       });
     }, 1500);
   }

@@ -1,13 +1,21 @@
-html{overflow: hidden;}
-body{
-		background-image:linear-gradient(to bottom, hsla(48,42%,71%,0.4) 0%,hsla(0,0%,0%,0) 100%) , url(../images/UI/test.jpg);
-		background-size:100% 100%;
-}
-footer{
+html{
+	overflow: hidden;
+	height:100%;
 	width:100%;
-	left:0;
-	z-index:5;
 }
+body{
+	background-image:linear-gradient(to bottom, hsla(48,42%,71%,0.4) 0%,hsla(0,0%,0%,0) 100%) , url(../images/UI/clothMotif1.jpg);
+	background-size:100% auto;
+  top:0; left:0;
+  height:100%;
+  width:100%;
+  position:fixed;
+  margin:0;
+  -moz-user-select: none;
+  user-select: none;
+  cursor: url(../images/cursors/nope.png) 15 10, auto;
+}
+.action, .uiFG_mid_right, .navBtns, a {cursor: url(../images/cursors/hand.png), auto !important;}
 #container{
 	position: fixed;
 	width: 70%;
@@ -201,6 +209,14 @@ span {
 }
 .itemCase:hover{
 	box-shadow: 1px 5px 44px #654017cc;
+}
+.close{
+	height:30px;
+	width:30px;
+	position: absolute;
+	top:10px;
+	left:10px;
+	background-image:url(../images/icons/UI/close.svg);
 }
 .itemClassimg{
 	position: absolute;

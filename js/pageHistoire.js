@@ -26,7 +26,7 @@ function refHistoire(){
   }
   if (page == 2.1){
     $("#histoireTitle").html("Une fraîcheur bien méritée");
-    $("#histoire").html("De l'ombre ! Enfin ! Vous voilà à l'entrée d'un petit bois d'aulnes et de tilleuls.<br>Vous vous apprêtez à vous asseoir au pied d'un tronc massif,<br>quand vous entendez le bruit d'une eau qui rigole un peu plus loin. Que faites-vous ?");
+    $("#histoire").html("De l'ombre ! Enfin !<br>Vous voilà à l'entrée d'un petit bois de cérembles.<br>Vous vous apprêtez à vous asseoir au pied d'un jeune tronc, quand vous entendez un bruit : une eau qui rigole un peu plus loin.");
   }
   if (page == 2.11){
     $("#histoireTitle").html("Un torrent qui s'enfuit");

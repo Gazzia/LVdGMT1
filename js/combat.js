@@ -67,9 +67,9 @@ function refStuff() {
   }, 500);
 
 }
-$("#ennemisList").scroll(function() {
+$("#ennemisList").scroll(function(){
    var target = $("#infosList");
-   $("#ennemisList").scroll(function() {
+   $("#ennemisList").scroll(function(){
      target.prop("scrollTop", this.scrollTop)
            .prop("scrollLeft", this.scrollLeft);
    });
@@ -128,7 +128,7 @@ function En_Hit(enemyNum){
             dialogClass: 'dialogItem',
             closeOnEscape: false,
             buttons: {
-              "Ok": function() {
+              "Ok": function(){
                 localStorage.numpage=onWinLocation;
                 window.location="Histoire.html";
               }
@@ -206,7 +206,7 @@ function Pl_Hit(enemyNum){
   		dialogClass: 'dialogItem',
       closeOnEscape: false,
   		buttons: {
-  			"Recommencer": function() {
+  			"Recommencer": function(){
   				window.location="0.1 Pseudo.html";
   			}
   		}
@@ -223,7 +223,7 @@ $(document).keydown(function(e) {
       height: "auto",
       dialogClass: 'dialogItem',
       buttons: {
-        "Ok": function() {
+        "Ok": function(){
           $(this).closest('.ui-dialog-content').dialog('close');
         }
       }

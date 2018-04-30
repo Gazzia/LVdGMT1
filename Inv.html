@@ -3,7 +3,7 @@
 <head>
 	<meta charset=utf-8>
 	<title>La Voie du Grand Malgré-Tout</title>
-	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="css/styles.css"/> -->
 	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="css/inv.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -16,6 +16,7 @@ $(function(){$( document ).tooltip({classes:{"ui-tooltip": "highlight"}});});
 </script>
 </head>
 <body onload="refSel();">
+	<a id="closeIcon" class="close" href="Histoire.html"></a>
 	<div id="container">
 		<div id="cog"></div>
 		<div id="leftmenu" class="menus">
@@ -115,15 +116,15 @@ function OpenMecha(itemType){
 }
 function openclose(OpOrCl){
 	if (OpOrCl == 0){
-		localStorage.audiotypeUI="cogClose";
-		window.open("audioUI.html","audioUI");
+		// localStorage.audiotypeUI="cogClose";
+		// window.open("audioUI.html","audioUI");
 		$("#leftmenu").css("left","20%");
 		$("#cog").css({"left":"11%","transform":"rotate(0deg)"});
 		$("#rightmenu").css("right","24%");
 	}
 	if (OpOrCl == 1){
-		localStorage.audiotypeUI="cogOpen";
-		window.open("audioUI.html","audioUI");
+		// localStorage.audiotypeUI="cogOpen";
+		// window.open("audioUI.html","audioUI");
 		$("#leftmenu").css("left","0");
 		$("#cog").css({"left":"-9%","transform":"rotate(200deg)"});
 		$("#rightmenu").css("right","0");
@@ -182,7 +183,6 @@ $(document).keydown(function(e) {
 <script src="js/pageHistoire.js"></script>
 <script src="js/images.js"></script>
 <script src="js/inspect.js"></script>
-<script src="js/menu.js"></script>
 <script src="js/globalscripts.js"></script>
 </body>
 </html>
