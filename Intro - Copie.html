@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
+	<title>La Voie du Grand Malgré-Tout</title>
+	<!-- <link rel="stylesheet" type="text/css" href="css/styles.css"/> -->
+	<link rel="stylesheet" type="text/css" href="css/crea.css"/>
+	<link rel="stylesheet" type="text/css" href="css/deco_interieur.css"/>
+	<link rel="stylesheet" type="text/css" href="css/intro.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kalam|Tillana" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Slab:300,400|Homemade+Apple|Open+Sans+Condensed:700" rel="stylesheet">
+<script src="js/statsvar.js"></script></head>
+
+<body>
+<div id="intro_backgroundTitle" class="intro_background" style="display:none;">
+	<div id="menu_frame">
+	<div id="menu_principal">
+		<div id="titre_principal"><h5>La</h5><h1>Voie</h1><h5>du</h5><h1>Grand<br>Malgré-tout</h1></div>
+			<a onclick="localStorage.numpage='Pseudo'; refAll();" class="introMenuBtn">Nouvelle aventure</a><br>
+	</div>
+	</div>
+	<div id="disclaimer">
+		Il est recommandé d'utiliser Firefox, et d'autoriser les fenêtres pop-up dans cette page.
+	</div>
+</div>
+<div id="intro_backgroundPseudo" class="intro_background" style="display:none;">
+	<div id="formPseudo">
+		<form>
+			Votre nom pour l'aventure :<br>(masculin)<br>
+			<div id="formBg">
+				<input type="text" id="copseudo" value="" data-lpignore="true">
+			</div>
+		</form>
+		<a onclick="choosePseudo();" class="btnD">Continuer</a>
+	</div>
+	<div id="vertLeft"><div id="rust1a"></div><div id="rust1b"></div></div>
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<div id="vertRight"><div id="rust2a"></div><div id="rust2b"></div></div>
+	<div id="ang2a"></div><div id="ang2b"></div>
+</div>
+<div id="intro_backgroundRace" class="intro_background" style="display:none;">
+	<div id="showpseudo">Aucun pseudo</div>
+	<form id="racesCont">
+		<h2> Vous êtes un..</h2>
+		<div id="contContlol">
+		<label class="container" onchange="changeClass">Homme
+			<input type="radio" name="raceType" id="raceHomme">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container" onchange="changeClass">Oculain
+			<input type="radio" name="raceType" id="raceOculain">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container" onchange="changeClass">Feûlain
+			<input type="radio" name="raceType" id="raceFeulain">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container" onchange="changeClass">Ferré
+			<input type="radio" name="raceType" id="raceFerre">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container" onchange="changeClass">Angulain
+			<input type="radio" name="raceType" id="raceAngulains">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container" onchange="changeClass">Golem de Sang
+			<input type="radio" name="raceType" id="raceGolemsang">
+			<span class="checkmark"></span>
+		</label>
+	</div>
+	</form>
+	<div id="selClass">
+		<div id="classImg"><img id="iconClass" class="iconClass" src="images/Classes/none.png"></div>
+		<div id="classDesc">Choisissez une classe..</div>
+	</div>
+	<a onclick="localStorage.numpage='Racetree'; refAll();" class="opt_classe opt_classe2">Voir le graphique</a>
+	<a onclick="confirmRace();" class="opt_classe">Confirmer mon choix</a>
+ <!-- <div id="dialog" title="Vous avez choisi votre classe !" style="display:none">
+		<p id="getitem_desc">bla</p>
+	</div> -->
+	<div id="ang1a"></div><div id="ang1b"></div>
+	<div id="ang2a"></div><div id="ang2b"></div>
+</div>
+<div id="intro_backgroundRaceTree" class="intro_background" style="display:none;">
+	<a onclick="closeTree();"><img id="centeredTree" src="images/raceTree.png"></a>
+</div>
+<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<script>
+	localStorage.numpage="MenuPrincipal";
+</script>
+</body>
+</html>
+<!-- https://www.w3schools.com/html/html5_webstorage.asp -->

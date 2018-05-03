@@ -37,7 +37,7 @@ function addEnemy(enemyNum, addedEnemy, addedEnemyLvl){
   localStorage.enemiesNb=localStorage.enemiesNbLiving=++localStorage.enemiesNb;
 }
 function refStuff() {
-  $("#infoChara").html("TOTAL Force: "+totalForce+"<br>TOTAL Puissance Mag.: "+totalMag);
+  $("#infoChara").html("TOTAL Force: "+totalForce+"<br>TOTAL Puissance Mag.: "+totalFesse);
   var armeSel = localStorage.inv_selected_arme;
   $("#infoArme").html(window[armeSel].Name+"<br>Dmg max: "+window[armeSel].StatShort);
   var textRaceForce = "Cette race n'a pas de multiplicateur de Force";

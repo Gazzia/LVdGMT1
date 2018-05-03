@@ -222,29 +222,29 @@ function refScripts(){
   if (page == "ClasseMage"){
     localStorage.classe="Mage";
   	localStorage.classeXForce="0.5";
-  	localStorage.classeXMag="1.5";
-  	localStorage.classeXAgi="1";
+  	localStorage.classeXFesse="1.5";
+  	localStorage.classeXSag="1";
   	localStorage.classeXChar="1";
   }
   if (page == "ClasseGuerrier"){
     localStorage.classe="Guerrier";
   	localStorage.classeXForce="1.5";
-  	localStorage.classeXMag="0.5";
-  	localStorage.classeXAgi="1";
+  	localStorage.classeXFesse="0.5";
+  	localStorage.classeXSag="1";
   	localStorage.classeXChar="1";
   }
   if (page == "ClasseEloquent"){
     localStorage.classe="Eloquent";
   	localStorage.classeXForce="1";
-  	localStorage.classeXMag="1";
-  	localStorage.classeXAgi="1";
+  	localStorage.classeXFesse="1";
+  	localStorage.classeXSag="1";
   	localStorage.classeXChar="1.5";
   }
   if (page == "ClasseAgile"){
     localStorage.classe="Agile";
   	localStorage.classeXForce="1";
-  	localStorage.classeXMag="1";
-  	localStorage.classeXAgi="1.5";
+  	localStorage.classeXFesse="1";
+  	localStorage.classeXSag="1.5";
   	localStorage.classeXChar="1";
   }
   if (page == 2){
@@ -289,7 +289,7 @@ function refScripts(){
   if (page == 3.2){
     localStorage.sawhole=1;
     if (localStorage.inv_tool_shovel == 1){$(".chance").show();}
-    if (localStorage.totalAgi < 3) {
+    if (localStorage.totalSag < 3) {
       $(".ch40").attr("onclick", "").addClass('optNope');
     }
   }
@@ -315,35 +315,35 @@ function confirmRace(){
 	if (darace != "none"){
 		localStorage.race=darace;
 		localStorage.plHealth=localStorage.plHealthMax=100;
-		localStorage.raceXDex=localStorage.raceXChar=localStorage.raceXInt=localStorage.raceXAgi=localStorage.raceXMag=localStorage.raceXForce=1;
-		localStorage.bForce=localStorage.bMag=localStorage.bChar=localStorage.bDex=localStorage.bAgi=localStorage.bInt=2;
+		localStorage.raceXDex=localStorage.raceXChar=localStorage.raceXInt=localStorage.raceXSag=localStorage.raceXFesse=localStorage.raceXForce=1;
+		localStorage.bForce=localStorage.bFesse=localStorage.bChar=localStorage.bDex=localStorage.bSag=localStorage.bInt=2;
 		if (darace=="Homme"){
 			localStorage.raceXDex=localStorage.raceXForce=1.1;
-			localStorage.raceXMag=0.9;
+			localStorage.raceXFesse=0.9;
 			localStorage.plHealth=localStorage.plHealthMax=90;
 		}
 		if (darace=="Oculain"){
 			localStorage.raceXDex=localStorage.raceXInt=1.1;
-			localStorage.raceXChar=localStorage.raceXAgi=0.9;
+			localStorage.raceXChar=localStorage.raceXSag=0.9;
 		}
 		if (darace=="Feûlain"){
-			localStorage.raceXChar=localStorage.raceXAgi=1.1;
-			localStorage.raceXForce=localStorage.raceXMag=0.9;
+			localStorage.raceXChar=localStorage.raceXSag=1.1;
+			localStorage.raceXForce=localStorage.raceXFesse=0.9;
 		}
 		if (darace=="Ferré"){
-			localStorage.raceXInt=localStorage.raceXMag=1.1;
+			localStorage.raceXInt=localStorage.raceXFesse=1.1;
 			localStorage.raceXForce=0.9;
 			localStorage.plHealth=localStorage.plHealthMax=90;
 		}
 		if (darace=="Angulain"){
 			localStorage.plHealth=localStorage.plHealthMax=110;
-			localStorage.raceXAgi=1.1;
+			localStorage.raceXSag=1.1;
 			localStorage.raceXChar=localStorage.raceXDex=0.9;
 		}
 		if (darace=="Golem"){
 			localStorage.plHealth=localStorage.plHealthMax=110;
 			localStorage.raceXForce=1.1;
-			localStorage.raceXInt=localStorage.raceXAgi=0.9;
+			localStorage.raceXInt=localStorage.raceXSag=0.9;
 		}
 		localStorage.race=darace;
 		localStorage.numpage = "Classe";

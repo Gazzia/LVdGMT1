@@ -1,33 +1,33 @@
 function refStats(){
 	classeXForce = localStorage.classeXForce;
-	classeXMag = localStorage.classeXMag;
+	classeXFesse = localStorage.classeXFesse;
 	classeXChar = localStorage.classeXChar;
-	classeXAgi = localStorage.classeXAgi;
+	classeXSag = localStorage.classeXSag;
 
 	raceXForce = localStorage.raceXForce;
-	raceXMag = localStorage.raceXMag;
+	raceXFesse = localStorage.raceXFesse;
 	raceXChar = localStorage.raceXChar;
 	raceXDex = localStorage.raceXDex;
-	raceXAgi = localStorage.raceXAgi;
+	raceXSag = localStorage.raceXSag;
 	raceXInt = localStorage.raceXInt;
 	/**/
 	bForce = localStorage.bForce;
-	bMag = localStorage.bMag;
+	bFesse = localStorage.bFesse;
 	bChar = localStorage.bChar;
 	bDex = localStorage.bDex;
-	bAgi = localStorage.bAgi;
+	bSag = localStorage.bSag;
 	bInt = localStorage.bInt;
 	/**/
 	totalForce = Math.round((+raceXForce * +classeXForce) * +bForce);
 	localStorage.totalForce = totalForce;
-	totalMag = Math.round((+raceXMag * +classeXMag) * +bMag);
-	localStorage.totalMag = totalMag;
+	totalFesse = Math.round((+raceXFesse * +classeXFesse) * +bFesse);
+	localStorage.totalFesse = totalFesse;
 	totalChar = Math.round((+raceXChar * +classeXChar) * +bChar);
 	localStorage.totalChar = totalChar;
 	totalDex = Math.round(+raceXDex * +bDex);
 	localStorage.totalDex = totalDex;
-	totalAgi = Math.round((+raceXAgi * +classeXAgi) * +bAgi);
-	localStorage.totalAgi = totalAgi;
+	totalSag = Math.round((+raceXSag * +classeXSag) * +bSag);
+	localStorage.totalSag = totalSag;
 	totalInt = Math.round(+raceXInt * +bInt);
 	localStorage.totalInt = totalInt;
 
@@ -45,20 +45,20 @@ function refStats(){
 	$("#raceXForce .statNumber").html(raceXForce);
 	$("#classeXForce .statNumber").html(classeXForce);
 
-	$("#totalMag .statNumber").html(totalMag);
-	$("#bMag .statNumber").html(bMag);
-	$("#raceXMag .statNumber").html(raceXMag);
-	$("#classeXMag .statNumber").html(classeXMag);
+	$("#totalFesse .statNumber").html(totalFesse);
+	$("#bFesse .statNumber").html(bFesse);
+	$("#raceXFesse .statNumber").html(raceXFesse);
+	$("#classeXFesse .statNumber").html(classeXFesse);
 
 	$("#totalChar .statNumber").html(totalChar);
 	$("#bChar .statNumber").html(bChar);
 	$("#raceXChar .statNumber").html(raceXChar);
 	$("#classeXChar .statNumber").html(classeXChar);
 
-	$("#totalAgi .statNumber").html(totalAgi);
-	$("#bAgi .statNumber").html(bAgi);
-	$("#raceXAgi .statNumber").html(raceXAgi);
-	$("#classeXAgi .statNumber").html(classeXAgi);
+	$("#totalSag .statNumber").html(totalSag);
+	$("#bSag .statNumber").html(bSag);
+	$("#raceXSag .statNumber").html(raceXSag);
+	$("#classeXSag .statNumber").html(classeXSag);
 
 	$("#totalDex .statNumber").html(totalDex);
 	$("#raceXDex .statNumber").html(raceXDex);

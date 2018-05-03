@@ -160,11 +160,11 @@ Agi<!DOCTYPE html>
 				<div id="raceXForce" class="statLine sub"><div class="statText">Race</div><div class="statNumber mult"></div></div>
 				<div id="classeXForce" class="statLine sub"><div class="statText">Classe</div><div class="statNumber mult"></div></div>
 				<div class="statLine sub"><div class="statText">Objets</div><div class="statNumber"></div></div>
-			<div id="totalMag" class="statLine full"><div class="statText">Puissance Magique</div><div class="statNumber"></div></div>
+			<div id="totalFesse" class="statLine full"><div class="statText">Puissance Magique</div><div class="statNumber"></div></div>
 				<img class="statImage" src="images/UI/abilities/mag.png">
-				<div id="bMag" class="statLine sub"><div class="statText">Base</div><div class="statNumber"></div></div>
-				<div id="raceXMag" class="statLine sub"><div class="statText">Race</div><div class="statNumber mult"></div></div>
-				<div id="classeXMag" class="statLine sub"><div class="statText">Classe</div><div class="statNumber mult"></div></div>
+				<div id="bFesse" class="statLine sub"><div class="statText">Base</div><div class="statNumber"></div></div>
+				<div id="raceXFesse" class="statLine sub"><div class="statText">Race</div><div class="statNumber mult"></div></div>
+				<div id="classeXFesse" class="statLine sub"><div class="statText">Classe</div><div class="statNumber mult"></div></div>
 				<div class="statLine sub"><div class="statText">Objets</div><div class="statNumber"></div></div>
 			<div id="totalChar" class="statLine full"><div class="statText">Charisme</div><div class="statNumber"></div></div>
 				<img class="statImage" src="images/UI/abilities/char.png">
@@ -172,11 +172,11 @@ Agi<!DOCTYPE html>
 				<div id="raceXChar" class="statLine sub"><div class="statText">Race</div><div class="statNumber mult"></div></div>
 				<div id="classeXChar" class="statLine sub"><div class="statText">Classe</div><div class="statNumber mult"></div></div>
 				<div class="statLine sub"><div class="statText">Objets</div><div class="statNumber"></div></div>
-			<div id="totalAgi" class="statLine full"><div class="statText">Agilité</div><div class="statNumber"></div></div>
+			<div id="totalSag" class="statLine full"><div class="statText">Agilité</div><div class="statNumber"></div></div>
 				<img class="statImage" src="images/UI/abilities/agi.png">
-				<div id="bAgi" class="statLine sub"><div class="statText">Base</div><div class="statNumber"></div></div>
-				<div id="raceXAgi" class="statLine sub"><div class="statText">Race</div><div class="statNumber mult"></div></div>
-				<div id="classeXAgi" class="statLine sub"><div class="statText">Classe</div><div class="statNumber mult"></div></div>
+				<div id="bSag" class="statLine sub"><div class="statText">Base</div><div class="statNumber"></div></div>
+				<div id="raceXSag" class="statLine sub"><div class="statText">Race</div><div class="statNumber mult"></div></div>
+				<div id="classeXSag" class="statLine sub"><div class="statText">Classe</div><div class="statNumber mult"></div></div>
 				<div class="statLine sub"><div class="statText">Objets</div><div class="statNumber"></div></div>
 			<div id="totalDex" class="statLine full"><div class="statText">Dexterité</div><div class="statNumber"></div></div>
 				<img class="statImage" src="images/UI/abilities/dex.png">
@@ -194,7 +194,6 @@ Agi<!DOCTYPE html>
 			<hr class="hr2">
 		</div>
 	</aside>
-	<div id="allmenus" style="display:none;"></div>
 <!-- SCRIPTS ---------------------------------------------------------------------------------->
 <script>
 $(".scroll").bind("mousewheel",function(ev, delta) {
@@ -250,7 +249,6 @@ function makeActive(active){
 <script src="js/pageHistoire.js"></script>
 <script src="js/images.js"></script>
 <script src="js/inspect.js"></script>
-<script src="js/menu.js"></script>
-<script src="js/globalscripts.js"></script>
+<script>refAll();</script>
 </body>
 </html>
