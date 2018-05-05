@@ -2,7 +2,7 @@ function refStats(){
 	classeXForce = localStorage.classeXForce;
 	classeXFesse = localStorage.classeXFesse;
 	classeXChar = localStorage.classeXChar;
-	classeXSag = localStorage.classeXSag;
+	classeXDex = localStorage.classeXDex;
 
 	raceXForce = localStorage.raceXForce;
 	raceXFesse = localStorage.raceXFesse;
@@ -18,24 +18,31 @@ function refStats(){
 	bSag = localStorage.bSag;
 	bInt = localStorage.bInt;
 	/**/
-	totalForce = Math.round((+raceXForce * +classeXForce) * +bForce);
+	origineXForce = localStorage.origineXForce;
+	origineXFesse = localStorage.origineXFesse;
+	origineXChar = localStorage.origineXChar;
+	origineXDex = localStorage.origineXDex;
+	origineXSag = localStorage.origineXSag;
+	origineXInt = localStorage.origineXInt;
+	/**/
+	totalForce = Math.round(+raceXForce * +classeXForce * +origineXForce * +bForce);
 	localStorage.totalForce = totalForce;
-	totalFesse = Math.round((+raceXFesse * +classeXFesse) * +bFesse);
+	totalFesse = Math.round(+raceXFesse * +classeXFesse * +origineXFesse * +bFesse);
 	localStorage.totalFesse = totalFesse;
-	totalChar = Math.round((+raceXChar * +classeXChar) * +bChar);
+	totalChar = Math.round(+raceXChar * +classeXChar * +origineXChar * +bChar);
 	localStorage.totalChar = totalChar;
-	totalDex = Math.round(+raceXDex * +bDex);
+	totalDex = Math.round(+raceXDex * +classeXDex * +origineXDex * +bDex);
 	localStorage.totalDex = totalDex;
-	totalSag = Math.round((+raceXSag * +classeXSag) * +bSag);
+	totalSag = Math.round(+raceXSag * +origineXSag * +bSag);
 	localStorage.totalSag = totalSag;
-	totalInt = Math.round(+raceXInt * +bInt);
+	totalInt = Math.round(+raceXInt * +origineXInt * +bInt);
 	localStorage.totalInt = totalInt;
 
 	inv_selected_arme = localStorage.inv_selected_arme;
 	if(inv_selected_arme=="Poings"){
 		localStorage.setItem("dmgbasemin", "0");
 		localStorage.setItem("dmgbasemax", "0");}
-	if(inv_selected_arme=="Baton"){
+	if(inv_selected_arme=="Branche"){
 		localStorage.setItem("dmgbasemin", "0");
 		localStorage.setItem("dmgbasemax", "10");}
 	maxdmg = localStorage.dmgbasemax;
@@ -43,30 +50,36 @@ function refStats(){
 	$("#totalForce .statNumber").html(totalForce);
 	$("#bForce .statNumber").html(bForce);
 	$("#raceXForce .statNumber").html(raceXForce);
+	$("#origineXForce .statNumber").html(origineXForce);
 	$("#classeXForce .statNumber").html(classeXForce);
 
 	$("#totalFesse .statNumber").html(totalFesse);
 	$("#bFesse .statNumber").html(bFesse);
 	$("#raceXFesse .statNumber").html(raceXFesse);
+	$("#origineXFesse .statNumber").html(origineXFesse);
 	$("#classeXFesse .statNumber").html(classeXFesse);
 
 	$("#totalChar .statNumber").html(totalChar);
 	$("#bChar .statNumber").html(bChar);
 	$("#raceXChar .statNumber").html(raceXChar);
+	$("#origineXChar .statNumber").html(origineXChar);
 	$("#classeXChar .statNumber").html(classeXChar);
+
+	$("#totalDex .statNumber").html(totalDex);
+	$("#bDex .statNumber").html(bDex);
+	$("#raceXDex .statNumber").html(raceXDex);
+	$("#origineXDex .statNumber").html(origineXDex);
+	$("#classeXDex .statNumber").html(classeXDex);
 
 	$("#totalSag .statNumber").html(totalSag);
 	$("#bSag .statNumber").html(bSag);
 	$("#raceXSag .statNumber").html(raceXSag);
-	$("#classeXSag .statNumber").html(classeXSag);
-
-	$("#totalDex .statNumber").html(totalDex);
-	$("#raceXDex .statNumber").html(raceXDex);
-	$("#bDex .statNumber").html(bDex);
+	$("#origineXSag .statNumber").html(origineXSag);
 
 	$("#totalInt .statNumber").html(totalInt);
-	$("#raceXInt .statNumber").html(raceXInt);
 	$("#bInt .statNumber").html(bInt);
+	$("#raceXInt .statNumber").html(raceXInt);
+	$("#origineXInt .statNumber").html(origineXInt);
 
 	$("#plGold").html(localStorage.plGold);
 	$('#plHealthBar').progressbar({classes:{"ui-progressbar": "progression", "ui-progressbar-value": "progression-value"}});

@@ -77,7 +77,7 @@ var Eloquent = {
   Char: 1,
   Agi: 1
 };
-var Agile = {
+var Habile = {
   Force: 1,
   Mag: 1,
   Char: 1,

@@ -8,15 +8,25 @@ var Poings = {
   Img: "weapons/fist.png",
   Short: "Poings"
 };
-var Baton = {
+var Branche = {
   Type: "arme",
   Name: "Branche de Tilleul",
   StatShort: "10Nor",
   Stat: "Dmg Max : 10 Normal",
   Desc: "Une arme rudimentaire. Cette branche pourra peut-être asséner quelques bleus à un adversaire, qui sait?.",
   Img: "weapons/stick.png",
-  Short: "Baton",
+  Short: "Branche",
   FoundText: "Vous avez récupéré la branche de tilleul, elle peut servir d'arme en combat, <b>mais vous devrez d'abord l'équipper dans votre inventaire.</b>",
+  LSName: "inv_arme_branche"
+};
+var Baton = {
+  Type: "arme",
+  Name: "Bâton taillé",
+  StatShort: "10Nor",
+  Stat: "Dmg Max : 10 Normal",
+  Desc: "Un bâton taillé à l'aérodynamique satisfaisante. Vous pourrez toujours asséner plus de dommages qu'avec une simple branche.",
+  Img: "weapons/stick.png",
+  Short: "Baton",
   LSName: "inv_arme_baton"
 };
 //HEAD

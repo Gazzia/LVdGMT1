@@ -121,11 +121,11 @@ a {cursor: url(../images/cursors/hand.png), auto !important;}
 	width:calc(100% - 4vw);
 		height:100%;
 	position:absolute;
-	font-family:'Roboto',serif;
+	font-family:'Didact Gothic',serif;
 	color:#0000004d;
 	right: 0;
 	top: 0.5vh;
-	font-size: 0.95vw;
+	font-size: 1vw;
 	box-sizing: border-box;
 	padding: 0.3vh 0.5vh 0.3vh 0;
 	overflow: hidden;
@@ -262,7 +262,7 @@ a {cursor: url(../images/cursors/hand.png), auto !important;}
 	position:absolute;
 	z-index:30;
 	background:url(../images/UI/stars.jpg);
-	bottom:0%; /* Caché ou non */
+	bottom:100%; /* Caché ou non */
 	transition: all 0.6s ease-in;
 	background-size: cover;
 }
@@ -441,6 +441,7 @@ a {cursor: url(../images/cursors/hand.png), auto !important;}
 	height:calc(100% - 5vh);
 	bottom:0;
 	position: absolute;
+	transition: all 0.2s ease;
 }
 #raceRel{
 	position: absolute;
@@ -487,12 +488,12 @@ a {cursor: url(../images/cursors/hand.png), auto !important;}
 	margin-top: 1.2vh;
 }
 .raceChar_tooltip{
-	background-color:#00000080;
-	color:red;
+	background-color:#00000080 !important;
+	color:white !important;
 	border:0 !important;
-	border-radius:5px;
+	border-radius:5px !important;
 	font-size:1.8vh !important;
-	font-family:'Didact Gothic', sans-serif;
+	font-family:'Didact Gothic', sans-serif !important;
 }
 .charMoins, .charPlus{display:inline-block;}
 .charMoins{color:#51214a;}
@@ -621,4 +622,67 @@ a {cursor: url(../images/cursors/hand.png), auto !important;}
 	display: block;
 	line-height: 5vh;
 	letter-spacing: 1px;
+}
+#originStat_textbox{
+	height:18vh;
+	position: relative;
+	background-color: #5d4f78;
+	top: -5vh;
+	border-radius: 5px;
+	transition: all 0.2s ease;
+	bottom: 0;
+}
+#originStat_icon{
+	width:14vh;
+	height:14vh;
+	position: relative;
+	background: linear-gradient(#fff3, transparent),#957bab;
+	border-radius: 100%;
+	left: calc(50% - 7vh);
+	z-index: 3;
+	top: 2vh;
+	transition: all 0.2s ease;
+}
+#originStat_icon svg{
+	position:absolute;
+	height:70%;
+	left:15%;
+	top:15%;
+	fill:#d4c9db;
+	filter: drop-shadow(0 3px 2px #0000001a);
+}
+#originStat_text{
+	color:#9f94b1;
+	height:8vh;
+	bottom:2vh;
+	position: absolute;
+	width:100%;
+	text-align: center;
+	font-size:7vh;
+	font-family: 'Didact Gothic', sans-serif;
+	line-height: 8vh;
+	font-weight: lighter;
+}
+#LoadHistoireBG{
+	top: 0;
+	left: 100%;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background: linear-gradient(to bottom, #d7eff5, #c4e8fa 60%);
+	transition: left 1s ease;
+	z-index: 3;
+}
+#goToGame{
+	position:absolute;
+	color:#fffc;
+	width: 50%;
+	left: 25%;
+	top: calc(100% + 3vh);
+	height: 4vh;
+	line-height: 4vh;
+	font-size: 2vh;
+	font-family: 'Didact Gothic', sans-serif;
+	background-color: #66567480;
+	border-radius: 15px;
 }

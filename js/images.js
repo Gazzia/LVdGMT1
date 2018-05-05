@@ -4,28 +4,24 @@ function refImg(){
     var page = localStorage.numpage;
     $("#decoTopLeft, #decoTopRight, .iconPageImg, .UIBG_img, .UIBG_imgFG, #illustr").attr("src","");
     if (page=="Classe"){
-      $("#decoTopLeft").attr("src","images/Deco/top/1.0_Left.png");
-      $("#decoTopRight").attr("src","images/Deco/top/1.0_Right.png");
       $(".iconPageImg").attr("src","images/icons/page/footsteps.png");
-      $("#UIBG_imgLFG").attr("src","images/Deco/mid/1.0_Left.png");
-      $("#UIBG_imgRFG").attr("src","images/Deco/mid/1.0_Right.png");
-      $("#illustr").attr("src","images/Illus/illus_1.0.png");
+      $("#UIBG_imgFull").attr("src","images/Deco/full/Full_Classe.png");
     }
     if (page=="ClasseMage"){
       $(".iconPageImg").attr("src","images/icons/page/magic-hat.png");
-      $("#illustr").attr("src","images/Illus/illus_1.1.png");
+      $("#UIBG_imgFull").attr("src","images/Deco/full/Full_Classe.png");
     }
     if (page=="ClasseGuerrier"){
       $(".iconPageImg").attr("src","images/icons/page/farmer.png");
-      $("#illustr").attr("src","images/Illus/illus_1.2.png");
+      $("#UIBG_imgFull").attr("src","images/Deco/full/Full_Classe.png");
     }
     if (page=="ClasseEloquent"){
       $(".iconPageImg").attr("src","images/icons/page/comb.png");
-      $("#illustr").attr("src","images/Illus/illus_1.3.png");
+      $("#UIBG_imgFull").attr("src","images/Deco/full/Full_Classe.png");;
     }
-    if (page=="ClasseAgile"){
+    if (page=="ClasseHabile"){
       $(".iconPageImg").attr("src","images/icons/page/stealth.png");
-      $("#illustr").attr("src","images/Illus/illus_1.4.png");
+      $("#UIBG_imgFull").attr("src","images/Deco/full/Full_Classe.png");
     }
     if (page==2){
       $("#decoTopLeft").attr("src","images/Deco/top/2.0_Left.png");

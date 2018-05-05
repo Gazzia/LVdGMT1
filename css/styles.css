@@ -370,18 +370,18 @@ body{
   background-repeat: no-repeat;
 }
 .progression{
-	background:linear-gradient(to top, #0003, #0000 50%), #b08c5f;
+	background:linear-gradient(to top, #0003, #0000 50%), #b08c5f !important;
 	width: 100%;
 	height: 1.7vh !important;
 	left: 0;
 	position:inherit;
   box-sizing: border-box;
-  border:solid black;
+  border:solid black !important;
   border-width: 1px 0 !important;
 	min-height: 12px;
 }
 .progression-value{
-	background:linear-gradient(to top, #00053133, #0000 50%),linear-gradient(to bottom, #a5383833, #0000 50%), #972750;
+	background:linear-gradient(to top, #00053133, #0000 50%),linear-gradient(to bottom, #a5383833, #0000 50%), #972750 !important;
 	transition: width 0.25s ease-in, background 0.1s ease-in;
 }
 .goldContainer{
@@ -435,24 +435,24 @@ hr.big{
    margin: 4vh 0 !important;
 }
 #inspectText_div{
-  width:calc(50% - 4vw);
-  float: right;
-  margin-top: 4vh;
-  height:  100%;
-  height:  80vh;
-  position: fixed;
-  right: 2vw;
-  line-height: 80vh !important;
+  /*! width:calc(50% - 4vw); */
+  /*! float: right; */
+  /*! margin-top: 4vh; */
+  /*! height:  100%; */
+  /*! height:  80vh; */
+  /*! position: fixed; */
+  /* right: 2vw; */
+  /*! line-height: 80vh !important; */
 }
 #inspectText{
-  font-size:1.5vw;
-  text-align: center;
-  display: inline-block;
-  vertical-align:  middle;
-  line-height: normal;
-  text-shadow: 0 0 29px #f2e2ac66, 0 0 46px #f2e2ac, 0 0 5px #f2e2ac80;
-  color: #2f1818;
-  transform: rotate(0.5deg);
+  /*! font-size:1.5vw; */
+  /*! text-align: center; */
+  /*! display: inline-block; */
+  /*! vertical-align:  middle; */
+  /*! line-height: normal; */
+  /*! text-shadow: 0 0 29px #f2e2ac66, 0 0 46px #f2e2ac, 0 0 5px #f2e2ac80; */
+  /*! color: #725940; */
+  /*! transform: rotate(0.5deg); */
 }
 .menuBtnText{
   box-shadow: 0px 1px 2px #45525480;
@@ -661,3 +661,137 @@ td:first-child {text-align: left; font-size: 1.1vw;font-family: 'Vollkorn', seri
 .btnSud:before{ content:"↓";}
 .btnNord:before, .btnOuest:before, .btnEst:before, .btnSud:before {
 }
+.classicDialog .ui-dialog-title{
+  width:100% !important;
+  margin: 0 !important;
+  font-family: 'Playfair Display';
+  font-weight: normal;
+  color: #ece4d8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.3vh;
+  text-align: center;
+  line-height: 4vh;
+}
+.classicDialog .ui-dialog-titlebar-close {
+    visibility: hidden;
+}
+.classicDialog {
+  left: 0;
+  outline: 0 none;
+  padding: 0 !important;
+  position: absolute;
+  top: 0;
+  box-shadow: 0 10px 20px #0000001a, 0 5px 10px #0000001a;
+  border: 1px solid black !important;
+  top: 10% !important;
+  width: calc(30% - 2vh + 1px) !important;
+  left: 25% !important;
+  height: 70% !important;
+  margin: 0 !important;
+  background: #bbac90 !important;
+}
+.classicDialog .ui-dialog-content {
+  border: none !important;
+  overflow: auto;
+  position: relative !important;
+  text-align: center;
+  padding: 0 !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  margin: 0;
+  height: calc(100% - 8vh - 2px) !important;
+  background: linear-gradient(#bbaa90 30%, #a29378) !important;
+  font-family: 'Vollkorn',serif;
+  color: #5f5046;
+  font-size: 2.4vh;
+}
+.classicDialog .ui-dialog-buttonpane {
+  background: #bbac90;
+  margin-top: 0 !important;
+  text-align: center !important;
+  /* background-color:hsla(177, 100%, 0%, 0.27); */
+  padding: 0 !important;
+  border-top: 1px solid #ded1adb3;
+  height: 4vh !important;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.classicDialog .ui-widget-header {
+  border-radius: 0 0 0 0;
+  background: #736b5d;
+  border: 0;
+  border-bottom: 1px solid #0003;
+}
+
+.classicDialog .ui-dialog-buttonset {
+  float: none !important;
+  display: inline-block;
+  margin: 0 auto;
+  top: 0;
+}
+
+.classicDialog .ui-dialog-titlebar {
+  padding: 0 !important;
+  height: 4vh;
+  overflow: hidden;
+}
+.classicDialog .ui-button,
+.classicDialog .ui-button:visited,
+.classicDialog .ui-button:link,
+.classicDialog .ui-button:active,
+.classicDialog .ui-button:focus{
+  border: 1px solid #40393266 !important;
+	background: #c6b09e !important;
+	font-weight: normal;
+	color: #3c3c3c !important;
+  height: 3vh;
+  min-width: 8vmin;
+  margin: 0.5vh 1vh !important;
+  top: 0 !important;
+  font-size: 1.8vh !important;
+  font-family: 'Didact Gothic' , sans-serif;
+  line-height: 1.5vh;
+  padding: 0 1vh calc !important;
+  transition: all 0.3s ease;
+}
+.classicDialog .ui-button:hover{
+  border: 1px solid #50494366 !important;
+  background: #d7bba5 !important;
+  font-weight: normal;
+  color: #695447 !important;
+}
+/* .ui-dialog.dialInspect {
+  width: 100% !important;
+  height: 100% !important;
+  position: fixed;
+  top: 0 !important;
+  left: 0 !important;
+} */
+/* .ui-dialog.dialInspect .ui-dialog-buttonpane {
+  height: 5vh;
+}
+
+.dialInspect .ui-dialog-content {
+  background-image: url(../images/UI/stainedpaper.jpg) !important;
+  margin-left: 0 !important;
+  min-height: calc(100% - 8.5vh - 0.7em) !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  box-shadow: 0px 10px 35px #000000b3 inset, 0px -10px 35px #0006 inset;
+  background-position-y: center !important;
+} */
+
+.ui-dialog.dialogGold .ui-dialog-content {
+  background-image: linear-gradient(to top, #683a0080 -20%, #0000 40%), linear-gradient(0.67turn, #5d3c004d, #0000 20%), linear-gradient(0.33turn, #fff5d4, #0000 20%), linear-gradient(to bottom, #f5eba380, #0000 100%), url(../images/UI/bgGold.jpg);
+  color: #68452c;
+  text-shadow: 0px 0px 4px #fffc;
+  font-size: 2em;
+  margin-left: 0 !important;
+}
+
+.ui-widget-overlay {
+    background: #c9c9c9 !important;
+    opacity: 0.403 !important;
+    transition: all 0.4s ease;
+  }

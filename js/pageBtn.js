@@ -42,9 +42,9 @@ function refBtns(){
     $("#btnDivers1").html("La magie").attr("onclick","localStorage.numpage='ClasseMage'; refAll();");
     $("#btnDivers2").html("Les armes").attr("onclick","localStorage.numpage='ClasseGuerrier'; refAll();");
     $("#btnDivers3").html("Le charisme").attr("onclick","localStorage.numpage='ClasseEloquent'; refAll();");
-    $("#btnDivers4").html("L'agilité").attr("onclick","localStorage.numpage='ClasseAgile'; refAll();");
+    $("#btnDivers4").html("L'habileté").attr("onclick","localStorage.numpage='ClasseHabile'; refAll();");
   }
-  if (page == "ClasseMage" || page == "ClasseGuerrier" || page == "ClasseEloquent" || page == "ClasseAgile"){
+  if (page == "ClasseMage" || page == "ClasseGuerrier" || page == "ClasseEloquent" || page == "ClasseHabile"){
     addBtn(0,0,0,0,0,0,1,0);
     $("#btnDivers1").html("Continuer").attr("onclick","localStorage.numpage=2; refAll();");
   }

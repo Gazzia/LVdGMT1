@@ -1,19 +1,19 @@
 function inspect(){
   var insPage = localStorage.numpage;
-  $("#inspect").dialog({ resizable: false, show:'fade', hide:'fade', modal:true, draggable:false, height: "auto", dialogClass: 'dialInspect', closeOnEscape: false });
+  $("#inspect").dialog({ resizable: false, show:'fade', hide:'fade', modal:true, draggable:false, height: "auto", dialogClass: 'classicDialog', closeOnEscape: false });
   if (insPage==2){
     $("#inspectText").html("Quand vous étiez tout jeunot avec vos amis, l'immense plaine du Soufflant était un terrain de jeu formidable. Vous rêviez de la traverser un jour par delà les collines jusqu'à Merryvale, la cité au coeur du vallon ; y découvrir son marché où l'on peut tout trouver, ainsi que son animation débordante...<br><br>Autour de vous, le chemin, bordé d'herbes et de bruyères jaunies par le soleil, descend en pente douce jusqu'au coteau suivant. Le panorama est doux -plutôt redondant en fait-, mais quelques rares émergences sylvatiques accordent à l'oeil un peu de distraction.");
     $("#inspect").dialog('option', 'buttons', { 'Ok': function(){ $(this).dialog('close');} });
   }
   if (insPage==2.1){
-    if (localStorage.inv_arme_baton !== 1) {
-      $("#inspectText").html("Le petit bois n'est pas bien dense, mais la fraîcheur de la cime rameuse des arbres vous est tout de même agréable. Vous souriez à l'odeur des fleurs de céremble, qui cet automne tomberont en tourbillons dans l'herbe claire.<br><br>On dit de ces arbres qu'ils sont les \"Arbres des Morts\", ou \"Arbres à Sorcière\", du fait de leur habitat habituel près d'eaux stagnantes et de la couleur rouge sang de leur bois fendu..<br> Vous n'êtes pas supersitieux, mais ces légendes vous ont tout de même bercé toute l'enfance.<br><br>Dans une clairière, vous apercevez à terre une belle branche qui pourrait vous servir d'arme rudimentaire.<br>Voulez-vous la prendre ?");
+    if (localStorage.inv_arme_branche !== 1) {
+      $("#inspectText").html("Le petit bois n'est pas bien dense, mais la fraîcheur de la cime rameuse des arbres vous est tout de même agréable. Vous souriez à l'odeur des fleurs de céremble, qui cet automne tomberont en tourbillons dans l'herbe claire.<br><br>Dans une clairière, vous apercevez à terre une belle branche qui pourrait vous servir d'arme rudimentaire.<br>Voulez-vous la prendre ?");
       $("#inspect").dialog('option', 'buttons', {
-        'Prendre la branche': function(){ foundItem("Baton");},
+        'Prendre': function(){ foundItem("Branche");},
         'Partir': function(){ $(".ui-dialog-content").dialog('close');}
       });
     }
-    if (localStorage.inv_arme_baton == 1) {
+    if (localStorage.inv_arme_branche == 1) {
       $("#inspectText").html("Vous inspectez des yeux le sol, en quête d'une quelconque trouvaille fantastique pour aller avec la branche trouvée ici précédemment, mais non. De l'herbe, des feuilles, des brindilles.");
       $("#inspect").dialog('option', 'buttons', { 'Partir': function(){ $(this).dialog('close');} });
     }

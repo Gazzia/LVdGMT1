@@ -4,24 +4,11 @@ function refAll(){
   refStats();
   refScripts();
   refImg();
-  console.log('test');
-}
-if (localStorage.justStartedGame == 1){
-  localStorage.numpage="Classe";
-  reset1();
-  localStorage.justStartedGame = 0;
 }
 function reset1(){
-  //or
-  localStorage.plGold= Number(localStorage.origineAddGold) + 10;
-  //objets
+  localStorage.plGold=10;
 	localStorage.inv_arme_branche=0;
-  if (localStorage.inv_arme_baton == 1){
-    localStorage.inv_selected_arme="Baton";
-  } else {
-    localStorage.inv_selected_arme="Poings";
-    localStorage.inv_arme_baton = 0;
-  }
+	localStorage.inv_selected_arme="Poings";
 	localStorage.inv_selected_head="Tete";
 	localStorage.inv_selected_torse="Torse";
 	localStorage.inv_selected_leg="Jambes";
@@ -56,7 +43,7 @@ function foundGold(amount, storageEvent) {
     $("#getitemText").html("+"+amount+" Or !");
     $("#getitemImg").attr("src", "images/icons/UI/shiny-purse.png");
     $("#getitem").attr("title", "Jackpot !");
-    $("#getitem").dialog({ modal: true, resizable: false, height: "auto", dialogClass: 'classicDialog dialogGold',
+    $("#getitem").dialog({ modal: true, resizable: false, height: "auto", dialogClass: 'dialogGold',
     buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close");} }
     });
   }, 200);
@@ -69,7 +56,7 @@ function foundItem(item) {
     $("#getitemImg").attr("src", "images/icons/"+window[item].Img);
     if (window[item].Type == "arme"){
       $("#getitem").attr("title", "Nouvelle arme !");
-      $("#getitem").dialog({ modal: true, resizable: false, dialogClass: 'classicDialog dialBg_burlap', height: "auto",
+      $("#getitem").dialog({ modal: true, resizable: false, dialogClass: 'dialBg_burlap', height: "auto",
       buttons: {
         "Prendre": function(){$(".ui-dialog-content").dialog("close"); refAll();},
         "Prendre et équipper": function(){ localStorage.inv_selected_arme=window[item].Short; $(".ui-dialog-content").dialog("close"); refAll(); }
@@ -77,7 +64,7 @@ function foundItem(item) {
     }
     if (window[item].Type == "tool"){
       $("#getitem").attr("title", "Nouvel outil !");
-      $("#getitem").dialog({ modal: true, resizable: false, dialogClass: 'classicDialog dialBg_burlap', height: "auto",
+      $("#getitem").dialog({ modal: true, resizable: false, dialogClass: 'dialBg_burlap', height: "auto",
       buttons: {
         "Ok": function(){$(".ui-dialog-content").dialog("close"); refAll();}
       } });
@@ -93,7 +80,7 @@ function knockDoor(){
       $("#dialoglayer1Text").html("Vous frappez à la porte qui s'entrouvre vaguement. Vous ne distinguez rien, et personne n'a répondu à l'appel. Pourtant, on dirait un bruit d'affollement à l'intérieur.");
       $("#dialoglayer1")
       .attr("title","Aucune réponse")
-      .dialog({ resizable: false, height: "auto", modal: true, dialogClass: 'classicDialog dialBg_burlap',
+      .dialog({ resizable: false, height: "auto", modal: true, dialogClass: 'dialBg_burlap',
       buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAll();} }
     });
   }, 1000);
@@ -104,7 +91,7 @@ function knockDoor(){
     $("#dialoglayer1Img").attr("src","images/icons/UI/doorClosed.png");
     $("#dialoglayer1")
     .attr("title","Aucune réponse")
-    .dialog({ resizable: false, height: "auto", modal: true, dialogClass: 'classicDialog dialBg_burlap',
+    .dialog({ resizable: false, height: "auto", modal: true, dialogClass: 'dialBg_burlap',
     buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAll();} }
   });
 }, 1000);
@@ -121,44 +108,156 @@ function enterDoor(){
 // *****************************************************************************************************************************
 function refScripts(){
   var page = localStorage.numpage;
-    if (page == "Classe"){
+  if (page == "MenuPrincipal"){
+    $("#intro_backgroundTitle").fadeIn(800).children().hide().fadeIn(2000);
+    setSound("EnvB", "Aucun");
+    setSound("EnvF", "Aucun");
+    setSound("UI", "Aucun");
+    setSound("Music", "Intro");
+  }
+  if (page == "Pseudo"){
+    $(function(){
+        $("form").submit(function(){ return false; });
+    });
+    $("#intro_backgroundTitle").fadeOut(800).children().fadeOut(2000);
+    $("#intro_backgroundPseudo").delay(500).fadeIn(800).children().hide().fadeIn(2000);
+    $(document).keyup(function(event) {
+    	if ($("#copseudo").is(":focus") && event.key == "Enter") {choosePseudo();}
+    });
+    $("#copseudo").focus();
+  }
+  if (page == "Race"){
+    $("#intro_backgroundPseudo, #intro_backgroundRaceTree").fadeOut(800).children().fadeOut(2000);
+    $("#intro_backgroundRace").delay(500).fadeIn(800).children().hide().fadeIn(2000);
+    $("#showpseudo").html("<div class='racepagetitle'>Choix d'une race pour "+localStorage.pseudo+"</div>");
+    darace = "none";
+    $('.container').click(function(){
+      if ($('#raceHomme').is(':checked')) {
+        $("#iconClass").attr("src", "images/Classes/homme.png");
+        $("#classDesc").html(
+          "<h2>Hommes</h2><hr>" +
+        	"<i>Les hommes représentent la partie la plus importante de la population mondiale. Leurs avant membres très développés ont très vite fait d'eux des artisans et constructeurs hors-pair. C'est ainsi grâce à leur savoir-faire que les premières villes ont été érigées.</i><br><br>" +
+          "<b>Paricularités</b><br>" +
+          "+10% de Dextérité et +10% de Force<br>-10♥max au départ et -10% de Puissance Magique<br><br>" +
+          "<b>Relations particulières</b><br>" +
+          "Les humains s'entendent mal avec les <font color=\"darkred\">Angulains</font> qu'ils jugent peu sociables. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Feûlains</font>, leurs partenaires économiques de toujours, et celle des <font color=\"darkblue\">Ferrés</font>.");
+        darace = "Homme";
+      }
+      if ($('#raceOculain').is(':checked')) {
+      	$("#iconClass").attr("src", "images/Classes/oculain.png");
+    	  $("#classDesc").html(
+        	"<h2>Oculains</h2><hr>" +
+        	"<i>Les Oculains sont  des individus simples mais très actifs, à l'instinct grégaire, qui ont un rapport à la nature très fusionnel. Habitant souvent loin de l'agitation des villes, ils préfèrent le calme des régions isolées, où ils vivent d'agriculture dans de petits hameaux, où ils devisent ensemble au crépuscule, avec le rythme de conversation agité et alambiqué qui leur est propre.</i><br><br>" +
+        	"<b>Paricularités</b><br>" +
+        	"+10% de Dextérité et +10% d'Intelligence<br>-10% de Charisme et -10% d'Agilité<br><br>" +
+        	"<b>Relations particulières</b><br>" +
+        	"Les oculains s'entendent mal avec les <font color=\"darkred\">Angulains</font>, qui ont un rapport de domination avec eux. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Hommes</font>, des <font color=\"darkblue\">Ferrés</font>, et des <font color=\"darkblue\">Feûlains</font>, qui ne portent pas sur eux un regard de jugement.");
+      	darace = "Oculain";
+    	}
+    	if ($('#raceFeulain').is(':checked')) {
+    		$("#iconClass").attr("src", "images/Classes/feulain.png");
+    		$("#classDesc").html(
+    			"<h2>Feûlains</h2><hr>" +
+    			"<i>Êtres peu habiles, les feûlains se sont très vite rendus compte que faute de savoirs-faire particuliers, ils avaient une capacité à enjôler de leurs mots les autres individus. C'est aujourd'hui une population avant tout marchande.</i><br><br>" +
+    			"<b>Paricularités</b><br>" +
+    			"+10% de Charisme et +10% d'Agilité<br>-10% de Force et -10% de Puissance Magique<br><br>" +
+    			"<b>Relations particulières</b><br>" +
+    			"Les feûlains s'entendent mal avec les <font color=\"darkred\">Ferrés</font> qu'ils jugent hautains, et parce qu'ils maîtrisent la magie, dont les feûlains sont presque dépourvus. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Hommes</font>, leurs partenaires économiques de toujours, et celle des <font color=\"darkblue\">Angulains</font>.");
+    			darace = "Feûlain";
+    	}
+    	if($('#raceFerre').is(':checked')) {
+    		$("#iconClass").attr("src","images/Classes/ferre.png");
+    		$("#classDesc").html(
+    			"<h2>Ferrés</h2><hr>"+
+    			"<i>Les Ferrés sont réputés pour êtres les transcripteurs du savoir. Ce sont des créatures très intelligentes, et qui ont un contact supérieur avec l'occulte. Ils vivent souvent seuls, individus à l'ego surdimensionné, pour se consacrer aux arts magiques et à la connaissance.</i><br><br>"+
+    			"<b>Paricularités</b><br>"+
+    			"+10% d'Intelligence et +10% de Puissance Magique<br>-10% de Force et -10♥max au départ<br><br>"+
+    			"<b>Relations particulières</b><br>Les ferrés s'entendent mal avec les <font color=\"darkred\">Hommes d'argile</font> depuis la rebéllion de ces derniers, ainsi qu'avec les <font color=\"darkred\">Angulains</font> et les <font color=\"darkred\">Feûlains</font>, qu'ils jugent idiots. Cependant, ils apprécient beaucoup la compagnie des <font color=\"darkblue\">Humains</font>, dont ils apprécient l'intérêt  qu'ils portent pour eux.");
+    		darace="Ferré";
+    	}
+    	if($('#raceAngulains').is(':checked')) {
+    		$("#iconClass").attr("src","images/Classes/angulain.png");
+    		$("#classDesc").html(
+    			"<h2>Angulains</h2><hr>"+
+    			"<i>Les angulains descendent tout droit des anciens grands charognards. C'est une population généralement très fière et peu loquace, qui ne se laisse pas marcher dessus. Ils ont su dans l'histoire s'approprier le bien commun pour aujourd'hui être une population assez aisée. Ils sont souvent surnommés \"Anguleux\" par moquerie vis-à-vis de leur approche très froide et distante.</i><br><br>"+
+    			"<b>Paricularités</b><br>"+
+    			"+10♥max au début et +10% d'Agilité<br>-10% de Charisme -10% de Dextérité<br><br>"+
+    			"<b>Relations particulières</b><br>"+
+    			"Les angulains s'entendent plutôt mal avec les <font color=\"darkred\">Hommes</font>, les <font color=\"darkred\">Oculains</font>, et  les <font color=\"darkred\">Ferrés</font> à cause de leur caractère renfermé. Étrangement, ils acceptent la compagnie des <font color=\"darkblue\">Feûlains</font>.");
+    		darace="Angulain";
+    	}
+    	if ($('#raceGolemsang').is(':checked')) {
+    		$("#iconClass").attr("src", "images/Classes/hommeargile.png");
+    		$("#classDesc").html(
+    			"<h2>Golems de Sang</h2><hr>" +
+    			"<i>Les Golems <u>d'Argile</u> sont une création magique des Ferrés, qui voulaient soulever les éléments terrestres à la vie pour en faire des esclaves. Le résultat a été plus que brillant : les serviteurs d'argiles étaient juste assez conscients pour comprendre que leur condition d'esclave ne leur convenait pas.. Certains d'entre eux ont demandé à des mages non-ferrés de les rendre plus \"vivants\", c'est ainsi que les Golems de Sang sont nés, colosses de chair en général calmes et pacifiques, malgré leur stature.</i><br><br>" +
+    			"<b>Paricularités</b><br>" +
+    			"+10% de Force et +10♥max au départ<br>-10% d'Intelligence et -10% d'Agilité<br><br>" +
+    			"<b>Relations particulières</b><br>" +
+    			"Les golems de sang s'entendent mal avec les <font color=\"darkred\">Ferrés</font> depuis l'insurréction. En relation pacifique avec les autres races, ils aiment particulièrement la compagnie des <font color=\"darkblue\">Oculains</font>, créatures appréciant également la paix et la simplicité.");
+    			darace = "Golem";
+    	}
+    });
+  }
+  if (page == "Racetree"){
+    $("#intro_backgroundRace").fadeOut(800).children().fadeOut(2000);
+    $("#intro_backgroundRaceTree").delay(500).fadeIn(800).children().hide().fadeIn(2000);
+    setTimeout(function(){
+      $("#centeredTree").css({
+        "transform": "scale(1)",
+        "opacity": "1"
+      });
+    }, 500);
+  }
+  if (page == "Classe"){
     reset1();
     setSound("EnvB", "Nature");
     setSound("EnvF", "Aucun");
     setSound("Music", "Sunny");
   }
-  if (page == "ClasseMage" || page == "ClasseGuerrier" || page == "ClasseEloquent" || page == "ClasseHabile"){
+  if (page == "ClasseMage" || page == "ClasseGuerrier" || page == "ClasseEloquent" || page == "ClasseAgile"){
     localStorage.lvl="1";
+    localStorage.aboutMenu=0;
   }
   if (page == "ClasseMage"){
     localStorage.classe="Mage";
-  	localStorage.classeXForce="0.7";
+  	localStorage.classeXForce="0.5";
   	localStorage.classeXFesse="1.5";
-  	localStorage.classeXDex="1";
+  	localStorage.classeXSag="1";
   	localStorage.classeXChar="1";
   }
   if (page == "ClasseGuerrier"){
     localStorage.classe="Guerrier";
   	localStorage.classeXForce="1.5";
-  	localStorage.classeXFesse="0.7";
-  	localStorage.classeXDex="1";
+  	localStorage.classeXFesse="0.5";
+  	localStorage.classeXSag="1";
   	localStorage.classeXChar="1";
   }
   if (page == "ClasseEloquent"){
     localStorage.classe="Eloquent";
   	localStorage.classeXForce="1";
   	localStorage.classeXFesse="1";
-  	localStorage.classeXDex="1";
-  	localStorage.classeXChar="1.4";
+  	localStorage.classeXSag="1";
+  	localStorage.classeXChar="1.5";
   }
-  if (page == "ClasseHabile"){
-    localStorage.classe="Habile";
+  if (page == "ClasseAgile"){
+    localStorage.classe="Agile";
   	localStorage.classeXForce="1";
   	localStorage.classeXFesse="1";
-  	localStorage.classeXDex="1.4";
+  	localStorage.classeXSag="1.5";
   	localStorage.classeXChar="1";
   }
-  if (page == 2){setSound("EnvF", "Aucun");}
+  if (page == 2){
+    if (localStorage.aboutMenu == 0){
+      $("#dialoglayer1Text").html('Vous pouvez accéder au menu du jeu à tout moment en appuyant sur la touche "Echap".');
+    	$("#dialoglayer1")
+      .attr("title","Note")
+      .dialog({resizable: false, modal:true, draggable:false, height: "auto", dialogClass: 'dialBg_burlap',
+    		buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAll();} }
+    	});	localStorage.aboutMenu=1;
+    }
+    setSound("EnvF", "Aucun");
+  }
   if (page == 2.1){setSound("EnvF", "StreamAfar");}
   if (page == 2.11){setSound("EnvF", "Stream");}
   if (page == 2.2){
@@ -190,7 +289,7 @@ function refScripts(){
   if (page == 3.2){
     localStorage.sawhole=1;
     if (localStorage.inv_tool_shovel == 1){$(".chance").show();}
-    if (localStorage.totalDex < 3) {
+    if (localStorage.totalSag < 3) {
       $(".ch40").attr("onclick", "").addClass('optNope');
     }
   }
@@ -199,14 +298,74 @@ function refScripts(){
     $(".deco").hide();
   }
 }
+function openRaceTree(){
+
+}
 // *****************************************************************************************************************************
+//Choose Pseudo
+function choosePseudo(){
+	var dapseudo = $('#copseudo').val();
+	dapseudo = dapseudo.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+  	return letter.toUpperCase();});
+	localStorage.pseudo=dapseudo;
+	localStorage.numpage = 'Race'; refAll();
+}
+//Choose Race
+function confirmRace(){
+	if (darace != "none"){
+		localStorage.race=darace;
+		localStorage.plHealth=localStorage.plHealthMax=100;
+		localStorage.raceXDex=localStorage.raceXChar=localStorage.raceXInt=localStorage.raceXSag=localStorage.raceXFesse=localStorage.raceXForce=1;
+		localStorage.bForce=localStorage.bFesse=localStorage.bChar=localStorage.bDex=localStorage.bSag=localStorage.bInt=2;
+		if (darace=="Homme"){
+			localStorage.raceXDex=localStorage.raceXForce=1.1;
+			localStorage.raceXFesse=0.9;
+			localStorage.plHealth=localStorage.plHealthMax=90;
+		}
+		if (darace=="Oculain"){
+			localStorage.raceXDex=localStorage.raceXInt=1.1;
+			localStorage.raceXChar=localStorage.raceXSag=0.9;
+		}
+		if (darace=="Feûlain"){
+			localStorage.raceXChar=localStorage.raceXSag=1.1;
+			localStorage.raceXForce=localStorage.raceXFesse=0.9;
+		}
+		if (darace=="Ferré"){
+			localStorage.raceXInt=localStorage.raceXFesse=1.1;
+			localStorage.raceXForce=0.9;
+			localStorage.plHealth=localStorage.plHealthMax=90;
+		}
+		if (darace=="Angulain"){
+			localStorage.plHealth=localStorage.plHealthMax=110;
+			localStorage.raceXSag=1.1;
+			localStorage.raceXChar=localStorage.raceXDex=0.9;
+		}
+		if (darace=="Golem"){
+			localStorage.plHealth=localStorage.plHealthMax=110;
+			localStorage.raceXForce=1.1;
+			localStorage.raceXInt=localStorage.raceXSag=0.9;
+		}
+		localStorage.race=darace;
+		localStorage.numpage = "Classe";
+    window.location = 'Histoire.html';
+	}
+}
+function closeTree() {
+  $("#centeredTree").css({
+    "transform": "scale(5)",
+    "opacity": "0"
+  });
+  setTimeout(function(){
+    localStorage.numpage = "Race"; refAll();
+  }, 1000);
+}
 //2.211 Interieur Cabane
 function nearbody2_211() {
   if (localStorage.tookCorpseGold == 0) {
     $("#dialoglayer1Text").html("Pour une raison qui ne regarde que vous, vous avez décidé de vous approcher du cadavre. La chance vous sourit ! L'homme portait une sacoche d'or à sa ceinture !");
     $("#dialoglayer1")
     .attr("title", "Un éclat couleur sang")
-    .dialog({ resizable: false, height: "auto", dialogClass: 'classicDialog dialBg_burlap',
+    .dialog({ resizable: false, height: "auto", dialogClass: 'dialBg_burlap',
       buttons: { "Prendre": function(){setSound("UI", "gold"); foundGold(50, "tookCorpseGold"); }}
     });
   }
@@ -214,7 +373,7 @@ function nearbody2_211() {
     setSound("UI", "fleshSigh");
     $("#dialoglayer1Text").html("Vous entrefouillez les tripes et boyaux à pleine mains en quête d'autres trésors dorés, mais non. Vous êtes immonde. Sortez donc dehors.");
     setTimeout(function(){
-      $("#dialoglayer1").attr("title", "Glauque..").dialog({ resizable: false, height: "auto", dialogClass: 'classicDialog dialBg_burlap',
+      $("#dialoglayer1").attr("title", "Glauque..").dialog({ resizable: false, height: "auto", dialogClass: 'dialBg_burlap',
         buttons: { "Ok": function(){ $(".ui-dialog-content").dialog("close"); refAll(); } }
       });
     }, 1500);
