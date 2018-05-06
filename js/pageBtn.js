@@ -39,10 +39,10 @@ function refBtns(){
   var page = localStorage.numpage;
   if (page == "Classe"){
     addBtn(0,0,0,0,0,0,4,0);
-    $("#btnDivers1").html("La magie").attr("onclick","localStorage.numpage='ClasseMage'; refAll();");
-    $("#btnDivers2").html("Les armes").attr("onclick","localStorage.numpage='ClasseGuerrier'; refAll();");
-    $("#btnDivers3").html("Le charisme").attr("onclick","localStorage.numpage='ClasseEloquent'; refAll();");
-    $("#btnDivers4").html("L'habileté").attr("onclick","localStorage.numpage='ClasseHabile'; refAll();");
+    $("#btnDivers1").html("La magie").attr("onclick","localStorage.numpage='ClasseMage'; refAllbutImg();");
+    $("#btnDivers2").html("Les armes").attr("onclick","localStorage.numpage='ClasseGuerrier'; refAllbutImg();");
+    $("#btnDivers3").html("Le charisme").attr("onclick","localStorage.numpage='ClasseEloquent'; refAllbutImg();");
+    $("#btnDivers4").html("L'habileté").attr("onclick","localStorage.numpage='ClasseHabile'; refAllbutImg();");
   }
   if (page == "ClasseMage" || page == "ClasseGuerrier" || page == "ClasseEloquent" || page == "ClasseHabile"){
     addBtn(0,0,0,0,0,0,1,0);

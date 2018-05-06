@@ -4,7 +4,12 @@ function refAll(){
   refStats();
   refScripts();
   refImg();
-  console.log('test');
+}
+function refAllbutImg(){
+  refHistoire();
+  refBtns();
+  refStats();
+  refScripts();
 }
 if (localStorage.justStartedGame == 1){
   localStorage.numpage="Classe";
@@ -49,6 +54,7 @@ function setSound(soundtype, sound){
     window.open("audio"+soundtype+".html", "audio"+soundtype);
   }
 }
+
 function foundGold(amount, storageEvent) {
   setSound("UI", "gold");
   setTimeout(function(){

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset=utf-8>
+	<meta charset="utf-8">
 	<title>La Voie du Grand Malgré-Tout</title>
 	<!-- <link rel="stylesheet" type="text/css" href="css/styles.css"/> -->
 	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
@@ -98,7 +98,6 @@ $(function(){$( document ).tooltip({classes:{"ui-tooltip": "highlight"}});});
 		</div>
 		<div id="manualClosing" onclick="manualClosing()"></div>
 	</div>
-</div>
 <!-- DECO+FOOTER -->
 <div id="allmenus"></div>
 <div id="ang1a"></div><div id="ang1b"></div>
@@ -145,6 +144,7 @@ function OM_setOpenedFolder(itemType){
 /* IMPLEMENTATION DES OBJETS INDIVIDUELLEMENT DEPUIS ITEMSDATA.JS */
 //ARMES
 if (localStorage.inv_arme_branche==1) {addItem(Branche);}
+if (localStorage.inv_arme_baton==1) {addItem(Baton);}
 //OUTILS
 if (localStorage.inv_tool_shovel==1) {addItem(Pelle);}
 /* FONCTION D'AJOUT DES CASES DES OBJETS */

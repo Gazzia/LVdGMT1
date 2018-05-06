@@ -22,7 +22,7 @@ function refHistoire(){
   }
   if (page == "ClasseHabile"){
     $("#histoireTitle").html("Une souplesse à toute épreuve");
-    $("#histoire").html("Enfant, vous aviez un rite nocture fréquent.<br>Doucement -sans un bruit surtout- vous vous glissiez hors des draps, entrabailliez la lourde porte de votre chambre, posiez le pied sur les lattes (mémorisées) qui ne grincaient pas ; puis vous vous feutriez un chemin à travers la masure puis le village. Vous vous introduisiez alors chez la Mère Fridethel assoupie et chipiez les plus belles de ses tartes au poumon de boeuf pour aller les déguster dans les champs endormis : seul et heureux, dans  la douceur sombre et profonde de la nuit.<hr class='hr2'>Ayant choisi la classe Habile, votre <b>Dextérité augmente de 40%</b>.");
+    $("#histoire").html("Il y a de cela deux étés à "+localStorage.origine+", vous vous êtes laissé acculer dans une impasse par une petite frappe qui avait eu l'air de détester que vous soyez à la fois un "+localStorage.race+", et que vous vous trouviez dans son passage. La situation était épineuse et le temps compté avant de recevoir une bonne raclée.<br>Et soudain, votre corps s'est animé et a défié la gravité le temps d'une seconde, pour attraper la rambarde d'un balcon à 3 mètres du sol et vous hisser sur le toit. Tout cela sans un bruit.<br>Quand votre poursuiveur arrivait dans l'impasse, elle était déserte.<hr class='hr2'>Ayant choisi la classe Habile, votre <b>Dextérité augmente de 40%</b>.");
   }
   if (page == 2){
     $("#histoireTitle").html("Errance");
