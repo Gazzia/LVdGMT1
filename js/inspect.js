@@ -1,21 +1,22 @@
 function inspect(){
   var insPage = localStorage.numpage;
-  $("#inspect").dialog({ resizable: false, show:'fade', hide:'fade', modal:true, draggable:false, height: "auto", dialogClass: 'classicDialog', closeOnEscape: false });
+  $('.dialogIcon').html(iconLoupe);
+  $('.dialogButton').hide();
   if (insPage==2){
-    $("#inspectText").html("Quand vous étiez tout jeunot avec vos amis, l'immense plaine du Soufflant était un terrain de jeu formidable. Vous rêviez de la traverser un jour par delà les collines jusqu'à Merryvale, la cité au coeur du vallon ; y découvrir son marché où l'on peut tout trouver, ainsi que son animation débordante...<br><br>Autour de vous, le chemin, bordé d'herbes et de bruyères jaunies par le soleil, descend en pente douce jusqu'au coteau suivant. Le panorama est doux -plutôt redondant en fait-, mais quelques rares émergences sylvatiques accordent à l'oeil un peu de distraction.");
-    $("#inspect").dialog('option', 'buttons', { 'Ok': function(){ $(this).dialog('close');} });
+    $("#dialogTitle").html("Panorama");
+    $("#dialogText").html("L'immense plaine du Soufflant est une formidable création de la nature. La majesté de sa superficie est à couper le souffle. Vous voyez au Nord s'élever la chaîne montagneuse de la Bruisse, frontière naturelle du Soufflant.<br>C'est là que vous vous dirigez : la ville de Merryvale, et son marché reconnu dans toute la région, plantée au coeur d'une faille naturelle qui traverse la montagne.<br><br>Autour de vous, le chemin, bordé d'herbe et de fleurs roses, descend en pente douce jusqu'au coteau suivant. Le panorama est doux -plutôt redondant en fait-, mais quelques rares émergences boisées accordent à l'oeil un peu de distraction.");
+    $('.dialogButton.nb1').html('Continuer').attr('onclick','closeDialog()').show();
   }
   if (insPage==2.1){
-    if (localStorage.inv_arme_branche !== 1) {
-      $("#inspectText").html("Le petit bois n'est pas bien dense, mais la fraîcheur de la cime rameuse des arbres vous est tout de même agréable. Vous souriez à l'odeur des fleurs de céremble, qui cet automne tomberont en tourbillons dans l'herbe claire.<br><br>Dans une clairière, vous apercevez à terre une belle branche qui pourrait vous servir d'arme rudimentaire.<br>Voulez-vous la prendre ?");
-      $("#inspect").dialog('option', 'buttons', {
-        'Prendre': function(){ foundItem("Branche");},
-        'Partir': function(){ $(".ui-dialog-content").dialog('close');}
-      });
+    $("#dialogTitle").html("Ombrage");
+    if (localStorage.inv_arme_branche == 0) {
+      $("#dialogText").html("Le petit bois n'est pas bien dense, mais la fraîcheur de l'ombre des arbres vous est tout de même d'un grand secours. Vous souriez à l'odeur des feuilles de céremble, qui cet automne tomberont en tourbillons dans l'herbe claire.<br><br>Dans une clairière, vous apercevez à terre une belle branche qui pourrait vous servir d'arme rudimentaire.<br>Voulez-vous la prendre ?");
+      $('.dialogButton.nb1').html('Prendre').attr('onclick','foundItem("Branche")').show();
+      $('.dialogButton.nb2').show().html('Partir').attr('onclick','closeDialog()');
     }
     if (localStorage.inv_arme_branche == 1) {
-      $("#inspectText").html("Vous inspectez des yeux le sol, en quête d'une quelconque trouvaille fantastique pour aller avec la branche trouvée ici précédemment, mais non. De l'herbe, des feuilles, des brindilles.");
-      $("#inspect").dialog('option', 'buttons', { 'Partir': function(){ $(this).dialog('close');} });
+      $("#dialogText").html("Vous inspectez des yeux le sol, en quête d'une quelconque trouvaille fantastique pour aller avec la branche trouvée ici précédemment, mais non. De l'herbe, des feuilles, des brindilles.");
+      $('.dialogButton.nb1').show().html('Partir').attr('onclick','closeDialog()');
     }
   }
   if (insPage==2.11){
@@ -51,4 +52,5 @@ function inspect(){
     $("#inspectText").html("Le petit hall n'est pas très grand, et serait complêtement terne si il n'y avait ces quelques fleurs sur le guéridon, au centre. C'est un temple, après tout !");
     $("#inspect").dialog('option', 'buttons', { 'C\'est vrai': function(){ $(this).dialog('close');} });
   }
+  openDialog();
 }

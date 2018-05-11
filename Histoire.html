@@ -206,6 +206,26 @@
 		</div>
 	</aside>
 	<div class="mask"></div>
+	<div id="dialog">
+		<div class="dialogIcon"></div>
+		<div class="shadow">
+			<div class="dialogBox">
+				<header id="dialogTitle">La belle fontaine</header>
+				<main id="dialogTextBox">
+					<div id="dialogText" class="scroll">
+						Généralement, on utilise un texte en faux latin (le texte ne veut rien dire, il a été modifié), le Lorem ipsum ou Lipsum, qui permet donc de faire office de texte d'attente. L'avantage de le mettre en latin est que l'opérateur sait au premier coup d'oeil que la page contenant ces lignes n'est pas valide, et surtout l'attention du client n'est pas dérangée par le contenu, il demeure concentré seulement sur l'aspect graphique.
+					</div>
+				</main>
+				<footer id="dialogButtonset">
+					<a class="dialogButton nb1"></a>
+					<a class="dialogButton nb2"></a>
+					<a class="dialogButton nb3"></a>
+					<a class="dialogButton nb4"></a>
+				</footer>
+			</div>
+			<div id="dialogImage"></div>
+		</div>
+	</div>
 	<audio autoplay="true" loop controls id="playerEnvB"></audio>
 	<audio autoplay="true" loop controls id="playerEnvF"></audio>
 	<audio autoplay="true" controls id="playerMusic"></audio>
@@ -216,29 +236,6 @@ $(".scroll").bind("mousewheel",function(ev, delta) {
     var scrollTop = $(this).scrollTop();
     $(this).scrollTop(scrollTop-Math.round(delta));
 });
-$("*").each( function () {
-    var $this = $(this);
-    if (parseInt($this.css("fontSize")) < 11) {
-        $this.css({ "font-size": "11px" });
-    }
-		if (parseInt($this.css("fontSize")) > 20) {
-        $this.css({ "font-size": "20px" });
-    }
-		if (parseInt($this.css("lineHeight")) > 30) {
-        $this.css({ "line-height": "30px" });
-    }
-})
-$(".uiFG_bot_top_plInfo").each( function () {
-    var $this = $(this);
-    $this.css({ "font-size": $this.height() - 3 });
-	})
-	$(".uiFG_bot_top_plInfo").each( function () {
-	    var $this = $(this);
-	    $this.css({ "font-size": $this.height() - 3 });
-		})
-$(".scrollMidRight").css("top", $(".uiFG_mid_right_title").height());
-$(".scrollMidLeft").css("margin-top", $(".uiFG_mid_left_title").height());
-$(".scrollMidRight").css("height", "calc(100% - 4vh + "+$(".uiFG_mid_right_title").height()+")");
 
 var UIvisibility = 1;
 $('#UIToggle').click(function(){
@@ -283,6 +280,7 @@ $(".statImage.Force").html(iconForce);$(".statImage.Fesse").html(iconFesse);$(".
 <script src="js/pageHistoire.js"></script>
 <script src="js/images.js"></script>
 <script src="js/inspect.js"></script>
+<script src="js/resizing.js"></script>
 <script>refAll();</script>
 </body>
 </html>

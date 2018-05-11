@@ -145,8 +145,6 @@ a {cursor: url(../images/cursors/hand.png), auto !important;}
 	fill: #4c403280;
 }
 .title1 {
-  left: 10vh;
-  position: absolute;
   font-size: 2.5vw;
   font-family: 'Didact Gothic', sans-serif;
   color: #4c403280;
@@ -231,29 +229,30 @@ a {cursor: url(../images/cursors/hand.png), auto !important;}
 	height: 100%;
 }
 #content_Pseudo_TitleBox{
-	height:25%;
-	width:96%;
+	height:40%;
+	width:100%;
 	overflow:hidden;
-	position:absolute;
-	left: 2%;
-	top: 2%;
+	top: 5%;
+	text-align: center;
+	position: absolute;
 }
 #inputPseudo{
 	background-image:url(../images/UI/bgPaper.jpg);
-	top: 41%;
+	bottom: 10%;
 	position: absolute;
-	width: calc(80% - 1vw);
+	width: 80%;
 	left: 10%;
 	height: 45%;
-	border: 1px solid black;
+	border: 1px solid #0006;
 	box-shadow: 0 11px 40px #0003 inset, 0 5px 28px #0000001a inset;
 	border-radius: 11px;
 	font-size: 6vh;
-	padding-left: 1vw;
 	font-family: 'Coming Soon', serif;
 	color: #57423c;
 	text-shadow: 0px 2px 5px #57423c80;
 	letter-spacing: 7px;
+	box-sizing: border-box;
+	padding-left: 1vw;
 }
 #raceBox{
 	height:100%;
@@ -681,3 +680,4 @@ a {cursor: url(../images/cursors/hand.png), auto !important;}
 	background-color: #66567480;
 	border-radius: 15px;
 }
+/* #d44568 */

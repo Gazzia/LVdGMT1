@@ -54,7 +54,15 @@ function setSound(soundtype, sound){
     window.open("audio"+soundtype+".html", "audio"+soundtype);
   }
 }
-
+function openDialog(){
+  $('#dialog').css('left','15%');
+  $('.mask').fadeIn(1000);
+}
+function closeDialog(){
+  $('#dialog').css('left','-100%');
+  $('.mask').fadeOut(1000);
+  $('.dialogButton').hide();
+}
 function foundGold(amount, storageEvent) {
   setSound("UI", "gold");
   setTimeout(function(){
