@@ -259,42 +259,42 @@ function changeClassInfo(raceId){
 			$("#raceImage").css('background-image','url(images/Races/angulain.png)');
 			$("#raceDesc").html("Productivistes souvent considérés comme froids et ternes, les Angulains ne sont pas la population la plus appréciée.<br>On dit souvent qu'ils se sont appropriés progressivement le bien commun pour aujourd'hui être une population assez aisée ; les familles Angulaines sont en effet souvent présentes et influentes dans les cercles de pouvoir. Ils sont souvent surnommés \"Anguleux\" par moquerie vis-à-vis de leur approche très froide et distante.<br> Leur idéologie positive envers l'industrialisation massive des productions ne les sert pas socialement non plus.");
 			$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Feûlains<br><div title='Neutralité' class='relDot yellow'></div>Golems<br><div title='Non-appréciation' class='relDot orange'></div>Oculains et Hommes, notamment en raison de leurs divergences d'opinions<br><div title='Haine' class='relDot red'></div>Ferrés");
-			$("#raceChar").html(iconInt+"<div class='charPlus'>+50%</div><br>"+iconChar+"<div class='charPlus'>+50%</div><br>"+iconFesse+"<div class='charMoins'>-50%</div><br>"+iconSag+"<div class='charMoins'>-50%</div>");
+			$("#raceChar").html(iconInt+"<div class='charPlus'>+10%</div><br>"+iconChar+"<div class='charPlus'>+10%</div><br>"+iconFesse+"<div class='charMoins'>-10%</div><br>"+iconSag+"<div class='charMoins'>-10%</div>");
 		}
 		if (raceId == "OculainIcon"){
 			$("#raceName").html('Oculain');
 			$("#raceImage").css('background-image','url(images/Races/oculain.png)');
 			$("#raceDesc").html("Les Oculains sont des individus simples mais très actifs, à l'instinct grégaire, qui ont un rapport à la nature très fusionnel. Habitant souvent loin de l'agitation des villes, ils préfèrent le calme des régions isolées, où ils vivent d'agriculture dans de petits hameaux, où ils devisent ensemble au crépuscule, avec le rythme de conversation agité et alambiqué qui leur est propre.");
 			$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Golems<br><div title='Neutralité' class='relDot yellow'></div>Ferrés, Hommes et Feûlains<br><div title='Non-appréciation' class='relDot orange'></div>Angulains");
-			$("#raceChar").html(iconInt+"<div class='charPlus'>+50%</div><br>"+iconSag+"<div class='charPlus'>+50%</div><br>"+iconDex+"<div class='charMoins'>-50%</div><br>"+iconChar+"<div class='charMoins'>-50%</div>");
+			$("#raceChar").html(iconInt+"<div class='charPlus'>+10%</div><br>"+iconSag+"<div class='charPlus'>+10%</div><br>"+iconDex+"<div class='charMoins'>-10%</div><br>"+iconChar+"<div class='charMoins'>-10%</div>");
 		}
 		if (raceId == "FeulainIcon"){
 			$("#raceName").html('Feûlain');
 			$("#raceImage").css('background-image','url(images/Races/feulain.png)');
-			$("#raceDesc").html("Faut de combativité, les feûlains se sont très vite rendus compte qu'ils possédaient une capacité à enjôler de leurs mots les autres individus. C'est aujourd'hui une population avant tout marchande, qui se soucie plus de ce qu'ils possèdent que de ce qu'ils savent.");
+			$("#raceDesc").html("Faute de combativité, les feûlains se sont très vite rendus compte qu'ils possédaient une capacité à enjôler de leurs mots les autres individus. C'est aujourd'hui une population avant tout marchande, qui se soucie plus de ce qu'ils possèdent que de ce qu'ils savent.");
 			$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Hommes et Angulains<br><div title='Neutralité' class='relDot yellow'></div>Golems et Oculains<br><div title='Non-appréciation' class='relDot orange'></div>Ferrés");
-			$("#raceChar").html(iconDex+"<div class='charPlus'>+50%</div><br>"+iconChar+"<div class='charPlus'>+50%</div><br>"+iconForce+"<div class='charMoins'>-50%</div><br>"+iconInt+"<div class='charMoins'>-50%</div>");
+			$("#raceChar").html(iconDex+"<div class='charPlus'>+10%</div><br>"+iconChar+"<div class='charPlus'>+10%</div><br>"+iconForce+"<div class='charMoins'>-10%</div><br>"+iconInt+"<div class='charMoins'>-10%</div>");
 		}
 		if (raceId == "FerreIcon"){
 			$("#raceName").html('Ferré');
 			$("#raceImage").css('background-image','url(images/Races/ferre.png)');
 			$("#raceDesc").html("Les Ferrés sont réputés pour êtres les transcripteurs du savoir. Ce sont des créatures très intelligentes, et qui ont un contact supérieur avec l'occulte. Ils vivent souvent seuls, individus à l'ego surdimensionné, pour se consacrer aux arts magiques et à la connaissance.");
 			$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Hommes<br><div title='Neutralité' class='relDot yellow'></div>Oculains<br><div title='Non-appréciation' class='relDot orange'></div>Feûlains<br><div title='Haine' class='relDot red'></div>Golems, depuis l'insurrection Golemme, et Angulains");
-			$("#raceChar").html(iconFesse+"<div class='charPlus'>+50%</div><br>"+iconInt+"<div class='charPlus'>+50%</div><br>"+iconForce+"<div class='charMoins'>-50%</div><br>"+iconDex+"<div class='charMoins'>-50%</div>");
+			$("#raceChar").html(iconFesse+"<div class='charPlus'>+10%</div><br>"+iconInt+"<div class='charPlus'>+10%</div><br>"+iconForce+"<div class='charMoins'>-10%</div><br>"+iconDex+"<div class='charMoins'>-10%</div>");
 		}
 		if (raceId == "HommeIcon"){
 			$("#raceName").html('Homme');
 			$("#raceImage").css('background-image','url(images/Races/homme.png)');
 			$("#raceDesc").html("Les hommes représentent la partie la plus importante de la population mondiale. Leurs avant membres très développés ont très vite fait d'eux des artisans et constructeurs hors-pair. C'est ainsi grâce à leur savoir-faire et leur sens d'entraide et de communauté que les premières villes ont été érigées.");
 			$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Feûlains et Ferrés<br><div title='Neutralité' class='relDot yellow'></div>Golems et Oculains<br><div title='Non-appréciation' class='relDot orange'></div>Angulains");
-			$("#raceChar").html(iconForce+"<div class='charPlus'>+50%</div><br>"+iconDex+"<div class='charPlus'>+50%</div><br>"+iconFesse+"<div class='charMoins'>-50%</div><br>"+iconChar+"<div class='charMoins'>-50%</div>");
+			$("#raceChar").html(iconForce+"<div class='charPlus'>+10%</div><br>"+iconDex+"<div class='charPlus'>+10%</div><br>"+iconFesse+"<div class='charMoins'>-10%</div><br>"+iconChar+"<div class='charMoins'>-10%</div>");
 		}
 		if (raceId == "GolemIcon"){
 			$("#raceName").html('Golem de Sang');
 			$("#raceImage").css('background-image','url(images/Races/golem.png)');
 			$("#raceDesc").html("Les Golems <u>d'Argile</u> sont une création magique des Ferrés, pures élévations de matière inanimée à la vie. Seulement ces créations d'Argiles possédaient juste assez d'intelligence pour se rendre compte de leur situation d'esclaves..<br>Après une violente insurrection, le traité des Golems a été signé, qui les reconnaît comme individus.<br>Certains Golems d'argile ont demandé à des mages non-ferrés de modifier leur constitution et de les rendre plus \"humains\" : c'est ainsi que sont nés les Golems de Sang, plus agiles et sages que leurs frères d'Argile.");
 			$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Oculains<br><div title='Neutralité' class='relDot yellow'></div>Hommes, Angulains et Feûlains<br><div title='Haine' class='relDot red'></div>Ferrés, depuis l'insurrection Golemme");
-			$("#raceChar").html(iconForce+"<div class='charPlus'>+50%</div><br>"+iconSag+"<div class='charPlus'>+50%</div><br>"+iconDex+"<div class='charMoins'>-50%</div><br>"+iconInt+"<div class='charMoins'>-50%</div>");
+			$("#raceChar").html(iconForce+"<div class='charPlus'>+10%</div><br>"+iconSag+"<div class='charPlus'>+10%</div><br>"+iconDex+"<div class='charMoins'>-10%</div><br>"+iconInt+"<div class='charMoins'>-10%</div>");
 		}
 	}, 300);
 	$("#raceName").slideDown(300);
@@ -395,7 +395,7 @@ function randomOrigine(){
 	localStorage.origineXSag = 1;
 	localStorage.origineXInt = 1;
 	localStorage.origineAddGold = 0;
-	localStorage.inv_arme_baton = 0;
+	localStorage.inv_arme_Baton = 0;
 	localStorage.justStartedGame = 1;
 	localStorage.plHealth = localStorage.plHealthMax = 100;
 	var origine = Math.floor(Math.random() * (14 - 1 + 1) + 1);
@@ -481,7 +481,7 @@ function randomOrigine(){
 		var origineName = localStorage.origine = "Rougecombe";//
 		$("#originStat_icon").html(iconStartingWeapon);
 		$("#originStat_text").html("Bâton taillé");
-		localStorage.inv_arme_baton = 1;
+		localStorage.inv_arme_Baton = 1;
 	}
 	if (origine == 15){
 		var origineName = localStorage.origine = "Belledouve";
@@ -508,6 +508,9 @@ function randomOrigine(){
 		localStorage.plHealth = localStorage.plHealthMax = 80;
 	}
 	$('#origin_Place').html(origineName);
+	if ($('#origin_Place').width() > (0.9 * $('#originBox').width())){
+		$('#origin_Place').css("font-size","6vh");
+	}
 }
 function startGame(state){
 	if (state == 'new'){

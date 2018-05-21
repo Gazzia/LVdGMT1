@@ -82,11 +82,12 @@ function refStats(){
 	$("#origineXInt .statNumber").html(origineXInt);
 
 	$("#plGold").html(localStorage.plGold);
-	$('#plHealthBar').progressbar({classes:{"ui-progressbar": "progression", "ui-progressbar-value": "progression-value"}});
-	$('#plHealthBar').progressbar('option', 'value', Number(localStorage.plHealth));
-	$('#plHealthBar').progressbar('option', 'max', Number(localStorage.plHealthMax));
+	$('#plHealthBar').progressbar({classes:{"ui-progressbar": "progression big", "ui-progressbar-value": "progression-value"}});
+	$('#plHealthBar_inv').progressbar({classes:{"ui-progressbar": "progression small inv", "ui-progressbar-value": "progression-value"}});
+	$('#plHealthBar, #plHealthBar_inv').progressbar('option', 'value', Number(localStorage.plHealth));
+	$('#plHealthBar, #plHealthBar_inv').progressbar('option', 'max', Number(localStorage.plHealthMax));
 	$('#plHealthText').html(localStorage.plHealth+"/"+localStorage.plHealthMax);
-	$("#uiFG_bot_top_plPseudo").html(localStorage.pseudo);
-	$("#uiFG_bot_top_plRace").html(localStorage.race);
+	$(".pseudo").html(localStorage.pseudo);
+	$("#uiFG_bot_top_plRace").html(localStorage.race+" de "+localStorage.origine);
 
 }

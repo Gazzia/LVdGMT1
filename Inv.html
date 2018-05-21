@@ -143,10 +143,10 @@ function OM_setOpenedFolder(itemType){
 }
 /* IMPLEMENTATION DES OBJETS INDIVIDUELLEMENT DEPUIS ITEMSDATA.JS */
 //ARMES
-if (localStorage.inv_arme_branche==1) {addItem(Branche);}
-if (localStorage.inv_arme_baton==1) {addItem(Baton);}
+if (localStorage.inv_arme_Branche==1) {addItem(Branche);}
+if (localStorage.inv_arme_Baton==1) {addItem(Baton);}
 //OUTILS
-if (localStorage.inv_tool_shovel==1) {addItem(Pelle);}
+if (localStorage.inv_tool_Shovel==1) {addItem(Pelle);}
 /* FONCTION D'AJOUT DES CASES DES OBJETS */
 function addItem(addedItem){
 	$("#"+addedItem.Type+"List").append('<a onclick="selItem(\''+addedItem.Short+'\');" class="itemCase"><img class="itemClassimg" title="'+addedItem.Name+' - '+addedItem.StatShort+'" src="images/icons/'+addedItem.Img+'"></a>');

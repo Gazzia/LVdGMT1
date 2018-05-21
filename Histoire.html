@@ -12,6 +12,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Didact+Gothic|Slabo+27px" rel="stylesheet">
 	<script src="js/svgvar.js"></script>
 	<script src="js/data/items.js"></script>
+	<script src="js/data/ench.js"></script>
 	<script>
 		$(function(){
 			$(document).tooltip({classes: {"ui-tooltip": "black_tooltip"},	track:true});
@@ -20,24 +21,28 @@
 	<!-- <script>	$( function(){$(document).tooltip({classes: {"ui-tooltip": "highlight"}});});	</script> -->
 </head>
 <body>
-	<div id="uiBG" class="fullscreen">
+		<!-- Composition de l'arrière-plan -->
+	<div id="uiBG" class="fullscreen maxspace">
 		<div id="uiBG_cloudsFG" class="uiBG_clouds"></div><div id="uiBG_cloudsBG" class="uiBG_clouds"></div>
-		<img id="UIBG_imgFullFG" class="UIBG_imgFG UIBG_img"> <img id="UIBG_imgFull" class="UIBG_imgFull UIBG_img UIBG_imgsBG"> <img id="UIBG_imgFullBG" class="UIBG_imgFullBG UIBG_imgFull UIBG_img UIBG_imgsBG">
+		<img id="UIBG_imgFullFG" class="UIBG_imgFG UIBG_img maxheight"> <img id="UIBG_imgFull" class="UIBG_imgFull UIBG_img UIBG_imgsBG maxwidth"> <img id="UIBG_imgFullBG" class="UIBG_imgFullBG UIBG_imgFull UIBG_img UIBG_imgsBG maxwidth">
 		<img id="UIBG_Prop" src="images/Deco/prop/mouches3.gif">
 	</div>
 	<div class="minimap">
 		<img src="images/map/Merry1.png" class="carte">
 		<div class="mapPosition">▲</div>
 	</div>
-	<div id="uiFG" class="midscreen">
-		<div class="uiFG_block uiFG_top"></div>
-		<div class="uiFG_block uiFG_mid">
+		<!-- Interface de base au milieu de l'écran -->
+	<div id="uiFG" class="midscreen maxheight">
+		<div class="maxwidth uiFG_top"></div>
+		<div class="maxwidth uiFG_mid">
+			<!-- Bloc de l'histoire -->
 			<div class="uiFG_mid_left uiFG_mid_block">
 				<div id="histoireTitle" class="uiFG_mid_left_title uiFG_mid_titles">Errance</div>
 				<div class="scrollMidLeft scroll">
 					<p id="histoire" class="histoire"></p>
 				</div>
 			</div>
+			<!-- Bloc des actions -->
 			<div class="uiFG_mid_right uiFG_mid_block">
 				<div class="uiFG_mid_right_title uiFG_mid_titles">ACTIONS</div>
 				<div class="scrollMidRight scroll">
@@ -110,20 +115,25 @@
 				</div>
 			</div>
 		</div>
-		<div class="uiFG_block uiFG_bot">
-			<div class="uiFG_bot_top uiFG_block">
+		<!-- Bloc du bas -->
+		<div class="maxwidth uiFG_bot">
+			<div class="uiFG_bot_top maxwidth">
+				<!-- Boutons de navigation (inventaire par ex) -->
 				<nav class="uiFG_bot_top_nav">
-					<a id="btnInv" class="navBtns" title="Inventaire >" href="Inv.html"></a>
+					<a id="btnInv" class="navBtns" title="Inventaire (I)" onclick="openInventory()"></a>
 					<a id="btnMap" class="navBtns" title="Carte >" href="Map.html"></a>
 				</nav>
-				<div class="uiFG_bot_top_plCont">
-					<div id="uiFG_bot_top_plPseudo" class="uiFG_bot_top_plInfo"></div>
-					<div id="uiFG_bot_top_plRace" class="uiFG_bot_top_plInfo">Ferré du soufflant</div>
+				<!-- Nom et Race du joueur -->
+				<div class="uiFG_bot_top_plCont maxheight">
+					<div id="uiFG_bot_top_plPseudo" class="uiFG_bot_top_plInfo maxwidth pseudo"></div>
+					<div id="uiFG_bot_top_plRace" class="uiFG_bot_top_plInfo maxwidth">Ferré du soufflant</div>
 				</div>
 			</div>
-			<div class="uiFG_bot_bot uiFG_block">
+			<div class="uiFG_bot_bot maxwidth">
+				<!-- Vie du joueur -->
 				<div id="plHealthText"></div>
 				<div id="plHealthBar"></div>
+				<!-- Or du joueur -->
 				<div class="goldContainer" title="Richesse">
 					<img class="goldIcon" src="images/icons/UI/gold.png">
 					<div id="plGold">
@@ -136,27 +146,26 @@
 		<img id="dialoglayer1Img" class="dialogImg">
 		<p id="dialoglayer1Text"></p>
 	</div>
-	<div id="inspect" title="Inspection" style="display:none">
-		<img id="inspectImg" class="dialogImg">
-		<div id="inspectText_div"><p id="inspectText" class="text-focus-in"></p></div>
-	</div>
 	<div id="getitem" style="display:none">
 	   <img id="getitemImg" class="dialogImg">
 			 <p id="getitemText"></p>
   </div>
+
+
+	<!-- Panneau d'info et de config à droite -->
 	<a class="asideRightOpener">
 		<svg id="openAsideRight" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20">
 		  <path d="M0 3h20v2H0V3zm0 4h20v2H0V7zm0 4h20v2H0v-2zm0 4h20v2H0v-2z"/>
 		</svg>
 		<svg id="UIToggle" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M11 11v6h6v-6h-6zm0-2h6V3h-6v6zm-2 2H3v6h6v-6zm0-2V3H3v6h6zm-8 9V1h18v18H1v-1z"/></svg>
 	</a>
-	<aside class="asideRight">
-		<nav class="asideRight_nav">
-			<a class="asideRight_navIcons asideRight_navClose closeIcon"></a>
-			<a id="asideRightNav_Carac" class="asideRight_navIcons navIconsActive" onclick="makeActive('Abiletes')"></a>
-			<a id="asideRightNav_Stats" class="asideRight_navIcons" onclick="makeActive('Stats')"></a>
+	<aside class="asideRight maxheight">
+		<nav class="asideRight_nav maxheight">
+			<a class="asideRight_navIcons asideRight_navClose closeIcon maxwidth_rel"></a>
+			<a id="asideRightNav_Carac" class="asideRight_navIcons navIconsActive maxwidth_rel" onclick="makeActive('Abiletes')"></a>
+			<a id="asideRightNav_Stats" class="asideRight_navIcons maxwidth_rel" onclick="makeActive('Stats')"></a>
 		</nav>
-		<div id="sidebarRight_menuCarac" class="sidebarRight_menu">
+		<div id="sidebarRight_menuCarac" class="sidebarRight_menu maxheight">
 			CARACTÉRISTIQUES
 			<hr class="hr2">
 			<div id="totalForce" class="statLine full"><div class="statText">FOR - Force</div><div class="statNumber"></div></div>
@@ -205,15 +214,20 @@
 			<hr class="hr2">
 		</div>
 	</aside>
-	<div class="mask"></div>
+
+	<!-- Masques foncés sur la page, en dessous d'une overlay -->
+	<div class="mask light brown maxspace"></div>
+	<div class="mask deep lightgrey maxspace"></div>
+
+	<!-- Fenêtre de dialogue (Inspection, messages, etc), caché à gauche par défaut -->
 	<div id="dialog">
 		<div class="dialogIcon"></div>
 		<div class="shadow">
-			<div class="dialogBox">
-				<header id="dialogTitle">La belle fontaine</header>
-				<main id="dialogTextBox">
+			<div class="dialogBox maxheight">
+				<header id="dialogTitle"> <!-- Titre dialogue --> </header>
+				<main id="dialogTextBox" class="maxwidth">
 					<div id="dialogText" class="scroll">
-						Généralement, on utilise un texte en faux latin (le texte ne veut rien dire, il a été modifié), le Lorem ipsum ou Lipsum, qui permet donc de faire office de texte d'attente. L'avantage de le mettre en latin est que l'opérateur sait au premier coup d'oeil que la page contenant ces lignes n'est pas valide, et surtout l'attention du client n'est pas dérangée par le contenu, il demeure concentré seulement sur l'aspect graphique.
+						<!--Texte dialogue -->
 					</div>
 				</main>
 				<footer id="dialogButtonset">
@@ -223,20 +237,118 @@
 					<a class="dialogButton nb4"></a>
 				</footer>
 			</div>
-			<div id="dialogImage"></div>
+			<div id="dialogImage" class="maxheight"></div>
 		</div>
+	</div>
+	<!-- Inventaire -->
+	<div id="InvLPane" class="invPanes">
+		<div id="InvLPane_Left" class="maxheight">
+			<header id="InvLPane_LeftHeader" class="LLPaneBlock bar maxwidth_rel">
+				<span id="pseudo" class="pseudo titleLL"></span>
+				<div id="plHealthBar_inv"></div>
+			</header>
+			<div id="InvLPane_LeftArmorBlock" class="LLPaneBlock bar maxwidth_rel">
+				<div class="blockItem maxwidth_rel">
+					<span class="EquippedType maxheight">Tête</span>
+					<div id="EquippedIcon_head" class="EquippedIcon maxheight"></div>
+				</div>
+				<div class="blockItem maxwidth_rel">
+					<span class="EquippedType maxheight">Torse</span>
+					<div id="EquippedIcon_torse" class="EquippedIcon maxheight"></div>
+				</div>
+				<div class="blockItem maxwidth_rel">
+					<span class="EquippedType maxheight">Jambes</span>
+					<div id="EquippedIcon_leg" class="EquippedIcon maxheight"></div>
+				</div>
+				<div class="blockItem maxwidth_rel">
+					<span class="EquippedType maxheight">Pieds</span>
+					<div id="EquippedIcon_foot" class="EquippedIcon maxheight"></div>
+				</div>
+			</div>
+			<div id="InvLPane_LeftWeaponBlock" class="LLPaneBlock maxwidth_rel bar">
+				<div class="blockItem maxwidth_rel">
+					<div id="weaponLeftHSymbol" class="itemSymbol"></div>
+					<div id="EquippedIcon_arme" class="EquippedIcon maxheight"></div>
+					<div id="weaponRightHSymbol" class="itemSymbol"></div>
+					<div id="EquippedIcon_arme_right" class="EquippedIcon maxheight"></div>
+				</div>
+			</div>
+			<div id="InvLPane_LeftEquippableBlock" class="LLPaneBlock maxwidth_rel">
+				<div class="blockItem maxwidth_rel">
+					<span class="EquippedType maxheight">Collier</span>
+					<div id="EquippedIcon_equippable_collar" class="EquippedIcon maxheight"></div>
+				</div>
+				<div class="blockItem maxwidth_rel">
+					<span class="EquippedType maxheight">Bracelet</span>
+					<div id="EquippedIcon_equippable_wrist" class="EquippedIcon maxheight"></div>
+				</div>
+				<div class="blockItem maxwidth_rel">
+					<span class="EquippedType maxheight ringsTitle">Anneaux</span>
+					<div id="EquippedIcon_equippable_ring1" class="EquippedIcon maxheight ringsBoxes"></div>
+					<div id="EquippedIcon_equippable_ring2" class="EquippedIcon maxheight ringsBoxes"></div>
+					<div id="EquippedIcon_equippable_ring3" class="EquippedIcon maxheight ringsBoxes"></div>
+					<div id="EquippedIcon_equippable_ring4" class="EquippedIcon maxheight ringsBoxes"></div>
+				</div>
+			</div>
+		</div>
+		<div id="InvLPane_Right">
+			<a id="invOpen_arme" class="btnInv nm openable">Armes</a>
+			<a id="invOpen_tool" class="btnInv nm openable">Outils</a>
+			<a class="btnInv nm title">Armures -</a>
+				<a id="invOpen_head" class="btnInv sm openable">Tête</a>
+				<a id="invOpen_torse" class="btnInv sm openable">Torse</a>
+				<a id="invOpen_leg" class="btnInv sm openable">Jambes</a>
+				<a id="invOpen_foot" class="btnInv sm openable">Pieds</a>
+			<a class="btnInv nm title">Équipables -</a>
+				<a id="invOpen_collar" class="btnInv sm openable">Colliers</a>
+				<a id="invOpen_wrist" class="btnInv sm openable">Bracelets</a>
+				<a id="invOpen_ring" class="btnInv sm openable">Anneaux</a>
+			<a class="btnInv nm title">Consommables -</a>
+				<a id="invOpen_food" class="btnInv sm openable">Nourriture</a>
+				<a id="invOpen_potion" class="btnInv sm openable">Potions</a>
+			<a id="invOpen_ingr" class="btnInv nm openable">Ingrédients</a>
+			<a id="invOpen_divers" class="btnInv nm openable">Objets</a>
+		</div>
+	</div>
+	<div id="InvTRPane" class="invPanes">
+		<div id="InvTR_arme" class="InvFolders maxspace"></div>
+		<div id="InvTR_tool" class="InvFolders maxspace"></div>
+		<div id="InvTR_head" class="InvFolders maxspace"></div>
+		<div id="InvTR_torse" class="InvFolders maxspace"></div>
+		<div id="InvTR_leg" class="InvFolders maxspace"></div>
+		<div id="InvTR_foot" class="InvFolders maxspace"></div>
+		<div id="InvTR_collar" class="InvFolders maxspace"></div>
+		<div id="InvTR_wrist" class="InvFolders maxspace"></div>
+		<div id="InvTR_ring" class="InvFolders maxspace"></div>
+		<div id="InvTR_food" class="InvFolders maxspace"></div>
+		<div id="InvTR_potion" class="InvFolders maxspace"></div>
+		<div id="InvTR_ingr" class="InvFolders maxspace"></div>
+		<div id="InvTR_divers" class="InvFolders maxspace"></div>
+	</div>
+	<div id="InvBRPane" class="invPanes">
+		<header id="InvBRPane_Title"></header>
+		<main id="InvBRPane_Content">
+			<div id="InvBRPane_Desc" class="InvBRPane_ContentSub maxwidth_rel underlined"></div>
+			<div id="InvBRPane_Dmg" class="InvBRPane_ContentSub maxwidth_rel underlined"></div>
+			<div id="InvBRPane_Pow" class="InvBRPane_ContentSub maxwidth_rel"></div>
+		</main>
+		<aside id="InvBRPane_Image"></aside>
 	</div>
 	<audio autoplay="true" loop controls id="playerEnvB"></audio>
 	<audio autoplay="true" loop controls id="playerEnvF"></audio>
 	<audio autoplay="true" controls id="playerMusic"></audio>
 	<audio autoplay="true" controls id="playerUI"></audio>
-<!-- SCRIPTS ---------------------------------------------------------------------------------->
+<!-- SCRIPTS ---------------------------------------------------------->
 <script>
+$('.openable').append('<a class="arrowRight icon right"></a>');
+
+//mousewheel jquery
 $(".scroll").bind("mousewheel",function(ev, delta) {
     var scrollTop = $(this).scrollTop();
     $(this).scrollTop(scrollTop-Math.round(delta));
 });
 
+//show-hide UI
 var UIvisibility = 1;
 $('#UIToggle').click(function(){
 	if (UIvisibility==1){
@@ -249,13 +361,14 @@ $('#UIToggle').click(function(){
 		UIvisibility=1;
 	}
 });
+//sidebar droite
 $("#openAsideRight").click(function(){
 	$(".asideRight").addClass('show_asideRight');
-	$(".mask").fadeIn(300);
+	$(".mask.light.brown").fadeIn(300);
 });
 $(".asideRight_navClose").click(function(){
 	$(".asideRight").removeClass('show_asideRight');
-	$(".mask").fadeOut(300);
+	$(".mask.light.brown").fadeOut(300);
 });
 function makeActive(active){
 	$('.navIconsActive').removeClass('navIconsActive');
@@ -269,12 +382,37 @@ function makeActive(active){
 		$('#sidebarRight_menuStats').show(200);
 	}
 }
-$(".statImage.Force").html(iconForce);$(".statImage.Fesse").html(iconFesse);$(".statImage.Char").html(iconChar);$(".statImage.Dex").html(iconDex);$(".statImage.Sag").html(iconSag);$(".statImage.Int").html(iconInt);$('#asideRightNav_Carac').html(iconCarac);$('#asideRightNav_Stats').html(iconStats);$(".closeIcon").html(iconClose);
+//import svg
+$(".statImage.Force").html(iconForce);$(".statImage.Fesse").html(iconFesse);$(".statImage.Char").html(iconChar);$(".statImage.Dex").html(iconDex);$(".statImage.Sag").html(iconSag);$(".statImage.Int").html(iconInt);$('#asideRightNav_Carac').html(iconCarac);$('#asideRightNav_Stats').html(iconStats);$(".closeIcon").html(iconClose);$("#weaponLeftHSymbol").html(iconLeftHand);$("#weaponRightHSymbol").html(iconRightHand);
 
-
-
+//inv
+var isInvOpen=0;
+function openInventory(){
+	isInvOpen=1;
+	refInv();
+	fullRefSel();
+	$('.mask.deep.lightgrey').fadeIn(700);
+	$('#InvLPane').css('left','0');
+	$('#InvTRPane').css('top','0');
+	$('#InvBRPane').css('bottom','0');
+	if (isInvOpen == 1){
+		$(".mask").click(function(){closeInventory();});
+	}
+}
+function closeInventory(){
+	isInvOpen=0;
+	$('.mask.deep.lightgrey').fadeOut(700);
+	$('#InvLPane').css('left','-60%');
+	$('#InvTRPane').css('top','-100%');
+	$('#InvBRPane').css('bottom','-100%');
+}
+$(document).on('keydown',function(e){
+	if (e.key == 'i' && isInvOpen == 1){closeInventory(); e.key=0;}
+	if (e.key == 'i' && isInvOpen == 0){openInventory(); e.key=0;}
+});
 </script>
 <script src="js/statsvar.js"></script>
+<script src="js/inventaire.js"></script>
 <script src="js/pageScripts.js"></script>
 <script src="js/pageBtn.js"></script>
 <script src="js/pageHistoire.js"></script>

@@ -20,18 +20,18 @@ function reset1(){
   //or
   localStorage.plGold= Number(localStorage.origineAddGold) + 10;
   //objets
-	localStorage.inv_arme_branche=0;
-  if (localStorage.inv_arme_baton == 1){
+	localStorage.inv_arme_Branche=0;
+  if (localStorage.inv_arme_Baton == 1){
     localStorage.inv_selected_arme="Baton";
   } else {
     localStorage.inv_selected_arme="Poings";
-    localStorage.inv_arme_baton = 0;
+    localStorage.inv_arme_Baton = 0;
   }
 	localStorage.inv_selected_head="Tete";
 	localStorage.inv_selected_torse="Torse";
 	localStorage.inv_selected_leg="Jambes";
 	localStorage.inv_selected_foot="Pieds";
-	localStorage.inv_tool_shovel=0;
+	localStorage.inv_tool_Shovel=0;
   //
 	localStorage.menuOpen=0;
 	localStorage.inventoryOpen=0;
@@ -47,6 +47,7 @@ function reset1(){
 	localStorage.passedGate=0;
   //
   localStorage.Setting_SoundOn=1;
+  localStorage.itemID=0;
 }
 function setSound(soundtype, sound){
   if (localStorage.Setting_SoundOn==1){
@@ -56,11 +57,11 @@ function setSound(soundtype, sound){
 }
 function openDialog(){
   $('#dialog').css('left','15%');
-  $('.mask').fadeIn(1000);
+  $('.mask.light.brown').fadeIn(700);
 }
 function closeDialog(){
   $('#dialog').css('left','-100%');
-  $('.mask').fadeOut(1000);
+  $('.mask.light.brown').fadeOut(700);
   $('.dialogButton').hide();
 }
 function foundGold(amount, storageEvent) {
@@ -75,28 +76,46 @@ function foundGold(amount, storageEvent) {
     });
   }, 200);
 }
+// var newItem=0;
+// function giveitem(type, name, enchantable){
+//   newItem = 'Non';
+//   var hasEnch = Math.floor(Math.random() * (2 - 1 + 1) + 1);
+//   var ench = 0;
+//   if (hasEnch == 1){ ench=0;}
+//   if (hasEnch == 2){ ench='Swag';}
+//   newItem = $.extend({}, window[name], window[ench]);
+//   // console.log('ench: '+ench+', name: '+newItem.Name)
+//   localStorage.itemID = Number(localStorage.itemID)+1;
+//   // console.log(newItem);
+//   addItem(newItem);
+// }
 function foundItem(item) {
   setSound("UI", "takeStuff");
   setTimeout(function(){
     localStorage[window[item].LSName]=1;
-    $("#getitemText").html(window[item].FoundText);
-    $("#getitemImg").attr("src", "images/icons/"+window[item].Img);
+    $("#dialogText").html(window[item].FoundText);
+    $("#dialogImage").css("background-image", "images/"+window[item].Img);
     if (window[item].Type == "arme"){
-      $("#getitem").attr("title", "Nouvelle arme !");
-      $("#getitem").dialog({ modal: true, resizable: false, dialogClass: 'classicDialog dialBg_burlap', height: "auto",
-      buttons: {
-        "Prendre": function(){$(".ui-dialog-content").dialog("close"); refAll();},
-        "Prendre et équipper": function(){ localStorage.inv_selected_arme=window[item].Short; $(".ui-dialog-content").dialog("close"); refAll(); }
-      } });
+      $('.dialogIcon').html(iconStartingWeapon);
+      $("#dialogTitle").html("Nouvelle arme !");
+      $('.dialogButton.nb1').html('Prendre').attr('onclick','closeDialog()').show();
+      $('.dialogButton.nb2').html('Prendre et équipper').attr('onclick','localStorage.inv_selected_arme=window[item].Short; closeDialog(); refAllbutImg();').show();
     }
     if (window[item].Type == "tool"){
-      $("#getitem").attr("title", "Nouvel outil !");
-      $("#getitem").dialog({ modal: true, resizable: false, dialogClass: 'classicDialog dialBg_burlap', height: "auto",
-      buttons: {
-        "Ok": function(){$(".ui-dialog-content").dialog("close"); refAll();}
-      } });
+      $("#dialogTitle").html("Nouvel outil !");
+      $('.dialogButton.nb1').html('Ok').attr('onclick','closeDialog()').show();
     }
+    dialogColor('orange');
   }, 200);
+}
+function dialogColor(paramColor){
+  if (paramColor == "red"){var mainColor='#d44568'; var textColor='#c2786c'; var backColor='#f0dccc';}
+  if (paramColor == "orange"){var mainColor='#d4a245'; var textColor='#c29b6c'; var backColor='#f0e2cc';}
+  $('#dialogTitle, .dialogButton').css('background-color', mainColor);
+  $('#dialogImage').css('border-left-color', mainColor);
+  $('.dialogIcon svg').css('fill', mainColor);
+  $('#dialogText').css('color', textColor);
+  $('.dialogBox').css('background-image', 'linear-gradient(white, '+backColor+')');
 }
 function knockDoor(){
   if (localStorage.numpage==2.2){
@@ -191,7 +210,7 @@ function refScripts(){
     $(".deco").hide();
   }
   if (page == 2.22){
-    if (localStorage.sawhole == 1 && localStorage.inv_tool_shovel == 0){
+    if (localStorage.sawhole == 1 && localStorage.inv_tool_Shovel == 0){
   	$(".btnM2").show();
   	} else {
   	$(".btnM2").hide();
@@ -203,7 +222,7 @@ function refScripts(){
   }
   if (page == 3.2){
     localStorage.sawhole=1;
-    if (localStorage.inv_tool_shovel == 1){$(".chance").show();}
+    if (localStorage.inv_tool_Shovel == 1){$(".chance").show();}
     if (localStorage.totalDex < 3) {
       $(".ch40").attr("onclick", "").addClass('optNope');
     }

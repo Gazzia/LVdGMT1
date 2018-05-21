@@ -5,19 +5,20 @@ var Poings = {
   StatShort: "0Nor",
   Stat: "Dmg Max : 0 Normal",
   Desc: "Vous ne possédez pas d'arme, et vos maigres poings peu habitués au corps à corps ne vous serviront à presque rien.",
-  Img: "weapons/fist.png",
+  Icon: "weapons/fist.png",
   Short: "Poings"
 };
 var Branche = {
   Type: "arme",
-  Name: "Branche de Tilleul",
+  Name: "Branche de céremble",
   StatShort: "10Nor",
   Stat: "Dmg Max : 10 Normal",
-  Desc: "Une arme rudimentaire. Cette branche pourra peut-être asséner quelques bleus à un adversaire, qui sait?.",
-  Img: "weapons/stick.png",
+  Desc: "Une arme rudimentaire. Cette branche pourra peut-être asséner quelques bleus à un adversaire, qui sait ?",
+  Icon: "weapons/stick.png",
+  Img: "vertical/items/weapons/branche.png",
   Short: "Branche",
-  FoundText: "Vous avez récupéré la branche de tilleul, elle peut servir d'arme en combat, <b>mais vous devrez d'abord l'équipper dans votre inventaire.</b>",
-  LSName: "inv_arme_branche"
+  FoundText: "Vous avez récupéré la branche de céremble, elle peut servir d'arme en combat, <b>mais vous devrez d'abord l'équipper dans votre inventaire.</b>",
+  LSName: "inv_arme_Branche"
 };
 var Baton = {
   Type: "arme",
@@ -25,7 +26,8 @@ var Baton = {
   StatShort: "10Nor",
   Stat: "Dmg Max : 10 Normal",
   Desc: "Un bâton taillé à l'aérodynamique satisfaisante. Vous pourrez toujours asséner plus de dommages qu'avec une simple branche.",
-  Img: "weapons/stick.png",
+  Icon: "weapons/stick.png",
+  Img: "vertical/items/weapons/baton.png",
   Short: "Baton",
   LSName: "inv_arme_baton"
 };
@@ -36,7 +38,7 @@ var Tete = {
   StatShort: "0Nor",
   Stat: "Def Max : 0 Normal",
   Desc: "Vous n'avez aucune protection à la tête.",
-  Img: "armor/head.png",
+  Icon: "armor/head.png",
   Short: "Tete"
 };
 //TORSE
@@ -46,7 +48,7 @@ var Torse = {
   StatShort: "0Nor",
   Stat: "Def Max : 0 Normal",
   Desc: "Vous n'avez aucune protection au torse.",
-  Img: "armor/torso.png",
+  Icon: "armor/torso.png",
   Short: "Torse"
 };
 //JAMBES
@@ -56,7 +58,7 @@ var Jambes = {
   StatShort: "0Nor",
   Stat: "Def Max : 0 Normal",
   Desc: "Vous n'avez aucune protection aux jambes.",
-  Img: "armor/legs.png",
+  Icon: "armor/legs.png",
   Short: "Jambes"
 };
 //PIEDS
@@ -66,7 +68,7 @@ var Pieds = {
   StatShort: "0Nor",
   Stat: "Def Max : 0 Normal",
   Desc: "Vous n'avez aucune protection aux pieds.",
-  Img: "armor/barefoot.png",
+  Icon: "armor/barefoot.png",
   Short: "Pieds"
 };
 //TOOLS
@@ -74,9 +76,9 @@ var Pelle = {
   Type: "tool",
   Name: "Pelle",
   Desc: "Une vieille pelle.",
-  Img: "items/shovel.png",
+  Icon: "items/shovel.png",
   Short: "Pelle",
   FoundText: "Vous avez repéré une pelle a l'air rustique. Exactement ce qu'il vous faut.",
-  LSName: "inv_tool_shovel"
+  LSName: "inv_tool_Shovel"
 };
 //OBJETS

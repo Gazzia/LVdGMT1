@@ -7,13 +7,13 @@ function refAll(){
 }
 function reset1(){
   localStorage.plGold=10;
-	localStorage.inv_arme_branche=0;
+	localStorage.inv_arme_Branche=0;
 	localStorage.inv_selected_arme="Poings";
 	localStorage.inv_selected_head="Tete";
 	localStorage.inv_selected_torse="Torse";
 	localStorage.inv_selected_leg="Jambes";
 	localStorage.inv_selected_foot="Pieds";
-	localStorage.inv_tool_shovel=0;
+	localStorage.inv_tool_Shovel=0;
   //
 	localStorage.menuOpen=0;
 	localStorage.inventoryOpen=0;
@@ -276,7 +276,7 @@ function refScripts(){
     $(".deco").hide();
   }
   if (page == 2.22){
-    if (localStorage.sawhole == 1 && localStorage.inv_tool_shovel == 0){
+    if (localStorage.sawhole == 1 && localStorage.inv_tool_Shovel == 0){
   	$(".btnM2").show();
   	} else {
   	$(".btnM2").hide();
@@ -288,7 +288,7 @@ function refScripts(){
   }
   if (page == 3.2){
     localStorage.sawhole=1;
-    if (localStorage.inv_tool_shovel == 1){$(".chance").show();}
+    if (localStorage.inv_tool_Shovel == 1){$(".chance").show();}
     if (localStorage.totalSag < 3) {
       $(".ch40").attr("onclick", "").addClass('optNope');
     }
