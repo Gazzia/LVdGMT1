@@ -86,7 +86,7 @@ function refBtns(){
   if (page == 3){
     addBtn(1,0,0,1,0,0,0,0);
     $("#btnWalk1").html("Retourner dans la plaine").attr("onclick","localStorage.numpage=2; refAll();");
-    $("#btnTalk1").html("Garde").attr("onclick","localStorage.numpage=3.1;window.location='Dialogue.html';");
+    $("#btnTalk1").html("Garde").attr("onclick","dialogue('Guarde_MerryvalePsud');");
     $("#btnLook1").html("Trouver un autre moyen de passer").attr("onclick","localStorage.numpage=3.2; refAll()").hide();
   }
   if (page == 3.2){

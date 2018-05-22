@@ -1198,3 +1198,53 @@ header#InvLPane_LeftHeader {
 #InvBRPane_Desc{height:45%;}
 #InvBRPane_Dmg{height:20%;}
 #InvBRPane_Pow{height:35%;}
+#dialogWindow{
+  background-color:#ebe4dc;
+  z-index: 10;
+  bottom:-100%;
+  transition: all 1s ease;
+}
+#Dialog_Image{
+  width:23%;
+  background-color: #422222;
+}
+#Dialog_Mainblock{
+  width:calc(77% - 11vh);
+  left:23%;
+  box-shadow: -27px 0 15px #0000001a, -10px 0 7px #0000001a;
+  box-sizing: border-box;
+  padding: 4vh;
+}
+#Dialog_TextBubble{
+  background-color: white;
+  width: 67%;
+  height: 40%;
+  position: absolute;
+  border-radius: 18px;
+  box-sizing: border-box;
+  padding: 2vmin;
+  font-size: 2.6vmin;
+  font-family: 'Didact Gothic', sans-serif;
+}
+#Dialog_TextLines{
+  height:calc(60% - 9vh);
+  width:100%;
+  box-sizing: border-box;
+  padding:4vh 2vh;
+  position: absolute;
+  top: 44%;
+}
+.dial_me{
+  color:black;
+  font-size: 2.5vmin;
+  font-family: 'Didact Gothic', sans-serif;
+  margin-bottom: 1vmin;
+  display:block;
+  transition: color 0.4s ease;
+}
+.dial_me:hover{
+  color:grey;
+}
+.dial_me::before{
+  content:"-";
+}

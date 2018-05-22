@@ -288,10 +288,10 @@ a {cursor: url(../images/cursors/hand.png), auto !important;}
 	box-shadow: 0 4px 10px #0003, 0 1px 4px #0000004d;
 	background-size: 100% 100%;
 	transition:all 0.2s ease-in;
-	background-color: #d0bda1;
+	background-color: #cbbed1;
 }
 .raceArea:hover{
-	background-color: #ddc8a9;
+	background-color: #bbacc5;
 	width: 18vh;
 	height: 18vh;
 	margin-left: -0.5vh;
