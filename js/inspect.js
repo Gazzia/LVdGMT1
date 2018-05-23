@@ -22,9 +22,11 @@ function inspect(){
     }
   }
   if (insPage==2.11){
+    $("#dialogTitle").html("Larcin");
+    $("#dialogImage").css("background-image", "url(images/vertical/ext/riverbourse.png)");
     if (localStorage.tookRiverGold == 0) {
-      $("#dialogText").html("Sur la rive en face, vous apercevez un petit tas de vêtements sur laquelle est attachée une bourse.<BR>Le courant est faible, et l'eau peu profonde (mais divinement fraîche !)<br>Personne en vue.");
-      $('.dialogButton.nb1').html('Traverser et voler la bourse').attr('onclick','foundGold(25, "tookRiverGold")').show();
+      $("#dialogText").html("Sur la rive en face, vous apercevez un petit tas de vêtements sur lequel est attachée une bourse.<BR>Le courant est faible, et l'eau peu profonde (mais divinement fraîche !)<br>Personne en vue.");
+      $('.dialogButton.nb1').html('Traverser et voler la bourse').attr('onclick','foundGold(25, "tookRiverGold");').show();
       $('.dialogButton.nb2').html('Partir l\'âme légère').attr('onclick','closeDialog()').show();
     }
     if (localStorage.tookRiverGold == 1) {
@@ -33,8 +35,22 @@ function inspect(){
     }
   }
   if (insPage==2.2){
+    $("#dialogTitle").html("Devant la masure");
     $("#dialogText").html("A vos pieds, des morceaux de bois déchiquetés et.. mordillés?<br>Devant vous, l'ombre imposante du bâtiment.<br>Derrière vous, la pente de la colline qui mêne au chemin.");
     $('.dialogButton.nb1').html('Ok').attr('onclick','closeDialog()').show();
+  }
+  if (insPage==2.211){
+    if (localStorage.tookCorpseGold == 0) {
+      $("#dialogTitle").html("Un éclat couleur sang");
+      $("#dialogText").html("Pour une raison qui ne regarde que vous, vous avez décidé de vous approcher du cadavre. La chance vous sourit ! L'homme portait une sacoche d'or à sa ceinture !");
+      $('.dialogButton.nb1').html('Prendre').attr('onclick','foundGold(50, "tookCorpseGold")').show();
+    }
+    if (localStorage.tookCorpseGold == 1) {
+      setSound("UI", "fleshSigh");
+      $("#dialogTitle").html("Glauque..");
+      $("#dialogText").html("Vous entrefouillez les tripes et boyaux à pleine mains en quête d'autres trésors dorés, mais non. Vous êtes immonde. Sortez donc dehors.");
+      $('.dialogButton.nb1').html('Ok..').attr('onclick','closeDialog()').show();
+    }
   }
   if (insPage==5.1){
     $("#dialogText").html("La ville apparaît encore plus belle que vous ne l'imaginiez !<br>Autour de vous, trois rues s'encastrent, claires et calmes, entre les bâtiments.. Cette dernière est enfoncée entre les deux falaises, immenses brise-vents de pierre blanche striée d'ardoise. Contre la falaise Est repose, sur une corniche à mi-hauteur, un très grand bâtiment, qui doit être l'hôtel de ville.");

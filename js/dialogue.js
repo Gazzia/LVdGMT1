@@ -1,5 +1,5 @@
 function dialogue(person){
-  $('#dialogWindow').css('bottom','0');
+  $('#dialogueWindow').css('bottom','0');
   $('.dial_me').remove();
   var justStartedTalking = 1;
   if (person == "Guarde_MerryvalePsud"){
@@ -28,23 +28,23 @@ function dialogue(person){
     let dialHistoire_AskAboutChaleur1 = "<a id='dialHistoire_AskAboutChaleur' class='dial_me'>Vous devez avoir chaud là-dessous !</a>";
     let dialHistoire_AskAboutChaleur2 = "<a id='dialHistoire_AskAboutChaleur' class='dial_me'>Vous n'avez pas trop chaud là-dessous ?</a>";
     let dialHistoire_VousEtesArgile = "<a id='dialHistoire_VousEtesArgile' class='dial_me'>Un Golem d'Argile ! Vous êtes le premier que je rencontre, tous les autres avaient été vitalisés !</a>";
-    let dialHistoire_YourChoice = "<a id='dialHistoire_YourChoice' class='dial_me'>C'est un choix !</a>";
-    let dialHistoire_AskWhatsHappening1 = "<a id='dialHistoire_AskWhatsHappening' class='dial_me'>Ah c'est donc récent ! Mais quel intérêt à part faire fuir les visiteurs ?</a>";
+    let dialHistoire_YourChoice = "<a id='dialHistoire_YourChoice' class='dial_me'>C'est un choix.</a>";
+    let dialHistoire_AskWhatsHappening1 = "<a id='dialHistoire_AskWhatsHappening' class='dial_me'>C'est donc récent ! Mais quel intérêt à part faire fuir les visiteurs ?</a>";
     let dialHistoire_AskWhatsHappening2 = "<a id='dialHistoire_AskWhatsHappening' class='dial_me'>Et pourquoi doit-on payer une taxe ?</a>";
     let dialHistoire_AskWhatsHappening3 = "<a id='dialHistoire_AskWhatsHappening' class='dial_me'>Pourquoi doit-on payer une taxe ?</a>";
     if(localStorage.combatWon_RatSoufflant == 0){
-      dialHistoire_NoBandits1 = "<a id='dialHistoire_NoBandits' class='dial_me'>Je n'ai pas croisé de bandits sur le chemin !</a>";
+      dialHistoire_NoBandits1 = "<a id='dialHistoire_NoBandits' class='dial_me'>Je n'ai pas croisé de bandits sur le chemin.</a>";
       dialHistoire_NoBandits2 = "<a id='dialHistoire_NoBandits' class='dial_me'>En tout cas je n'ai pas croisé de bandits sur le chemin !</a>";
     }
     if(localStorage.combatWon_RatSoufflant == "1"){
-      dialHistoire_NoBandits1 = "<a id='dialHistoire_NoBandits' class='dial_me'>Je n'ai pas croisé de bandits sur le chemin ! Juste un rat de la taille d'un petit chien que j'ai dérangé en train de manger quelqu'un.</a>";
+      dialHistoire_NoBandits1 = "<a id='dialHistoire_NoBandits' class='dial_me'>Je n'ai pas croisé de bandits sur le chemin. Juste un rat de la taille d'un petit chien que j'ai dérangé en train de manger quelqu'un.</a>";
       dialHistoire_NoBandits2 = "<a id='dialHistoire_NoBandits' class='dial_me'>En tout cas je n'ai pas croisé de bandits sur le chemin ! Juste un rat de la taille d'un petit chien que j'ai dérangé en train de manger quelqu'un.</a>";
     }
     let dialAskAboutAssis1 = "<a id='dialAskAboutAssis' class='dial_me'>L'Assis ?</a>";
     let dialAskAboutAssis2 = "<a id='dialAskAboutAssis' class='dial_me'>Vous parliez d'un Assis ? Qu'est-ce que c'est ?</a>";
     let dialAskAboutVote1 = "<a id='dialAskAboutVote' class='dial_me'>Il est élu ?</a>";
     let dialAskAboutTax1 = "<a id='dialAskAboutTax' class='dial_me'>Une taxe ? On parle de combien ?</a>";
-    let dialAskAboutTax2 = "<a id='dialAskAboutTax' class='dial_me'>J'ai cru comprendre oui ! Et la taxe est à combien ?</a>";
+    let dialAskAboutTax2 = "<a id='dialAskAboutTax' class='dial_me'>J'ai cru comprendre oui.. Et la taxe est à combien ?</a>";
     let dialAskAboutTax3 = "<a id='dialAskAboutTax' class='dial_me'>Dur dur quoi. Je dois payer combien pour passer et éviter de me refaire cracher dessus ?</a>";
     let dialAskAboutTax4 = "<a id='dialAskAboutTax' class='dial_me'>A combien est la taxe dont vous parliez ?</a>";
     let dialAskAboutCraie1 = "<a id='dialAskAboutCraie' class='dial_me'>Un nuage de craie ?</a>";
@@ -52,66 +52,66 @@ function dialogue(person){
     let dialPay2 = "<a id='dialPay' class='dial_me'>Ok.. Je vais payer les 80 pièces.</i></a>";
     let dialChangeSubject1 = "<a id='dialChangeSubject' class='dial_me'>Oh.. Hmmm, j'avais une autre question.</i></a>";
     if (justStartedTalking == 1){
-      $('#Dialog_TextBubble').html(textHalte1);
-      $('#Dialog_TextLines').append(dialHistoire_AskWhyPeage1+dialAskAboutTax1+dialHistoire_AskAboutChaleur1+dialQuit1);
+      $('#Dialogue_TextBubble').html(textHalte1);
+      $('#Dialogue_TextLines').append(dialHistoire_AskWhyPeage1+dialAskAboutTax1+dialHistoire_AskAboutChaleur1+dialQuit1);
     }
     $(document).on('click', '.dial_me', function(){ $('.dial_me').remove(); });
-    $(document).on('click', '#dialQuit', function(){closeDialog();});
+    $(document).on('click', '#dialQuit', function(){closeDialogue();});
     $(document).on('click', '#dialHistoire_AskWhyPeage', function(){
-      $('#Dialog_TextBubble').html(textPortesFermees1);
-      $('#Dialog_TextLines').append(dialHistoire_AskWhatsHappening1+dialAskAboutTax2+dialQuit2);
+      $('#Dialogue_TextBubble').html(textPortesFermees1);
+      $('#Dialogue_TextLines').append(dialHistoire_AskWhatsHappening1+dialAskAboutTax2+dialQuit2);
     });
     $(document).on('click', '#dialHistoire_AskWhatsHappening', function(){
-      $('#Dialog_TextBubble').html(textTopo1);
-      $('#Dialog_TextLines').append(dialHistoire_NoBandits1+dialAskAboutAssis1+dialAskAboutTax3+dialHistoire_AskAboutChaleur1+dialQuit2);
+      $('#Dialogue_TextBubble').html(textTopo1);
+      $('#Dialogue_TextLines').append(dialHistoire_NoBandits1+dialAskAboutAssis1+dialAskAboutTax3+dialHistoire_AskAboutChaleur1+dialQuit2);
     });
     $(document).on('click', '#dialAskAboutTax', function(){
-      $('#Dialog_TextBubble').html(textPrix);
-      $('#Dialog_TextLines').append(dialAskAboutCraie1+dialHistoire_AskWhatsHappening2);
-      if (localStorage.plGold >= 80){$('#Dialog_TextLines').append(dialPay1+dialQuit5);}
-      if (localStorage.plGold < 80){$('#Dialog_TextLines').append(dialQuit3);}
+      $('#Dialogue_TextBubble').html(textPrix);
+      $('#Dialogue_TextLines').append(dialAskAboutCraie1+dialHistoire_AskWhatsHappening2);
+      if (localStorage.plGold >= 80){$('#Dialogue_TextLines').append(dialPay1+dialQuit5);}
+      if (localStorage.plGold < 80){$('#Dialogue_TextLines').append(dialQuit3);}
     });
     $(document).on('click', '#dialHistoire_AskAboutChaleur', function(){
-      $('#Dialog_TextBubble').html(textChaleur);
-      $('#Dialog_TextLines').append(dialHistoire_VousEtesArgile+dialQuit4);
+      $('#Dialogue_TextBubble').html(textChaleur);
+      $('#Dialogue_TextLines').append(dialHistoire_VousEtesArgile+dialQuit4);
     });
     $(document).on('click', '#dialHistoire_VousEtesArgile', function(){
-      $('#Dialog_TextBubble').html(textPasVitalisé);
-      $('#Dialog_TextLines').append(dialHistoire_YourChoice+dialQuit4);
+      $('#Dialogue_TextBubble').html(textPasVitalisé);
+      $('#Dialogue_TextLines').append(dialHistoire_YourChoice+dialQuit4);
     });
     $(document).on('click', '#dialHistoire_YourChoice', function(){
-      $('#Dialog_TextBubble').html(textMyChoice);
-      $('#Dialog_TextLines').append(dialHistoire_AskWhyPeage2+dialAskAboutTax4+dialQuit4);
+      $('#Dialogue_TextBubble').html(textMyChoice);
+      $('#Dialogue_TextLines').append(dialHistoire_AskWhyPeage2+dialAskAboutTax4+dialQuit4);
     });
     $(document).on('click', '#dialHistoire_NoBandits', function(){
-      $('#Dialog_TextBubble').html(textNoBandits);
-      $('#Dialog_TextLines').append(dialAskAboutAssis2+dialAskAboutTax4+dialQuit4);
+      $('#Dialogue_TextBubble').html(textNoBandits);
+      $('#Dialogue_TextLines').append(dialAskAboutAssis2+dialAskAboutTax4+dialQuit4);
     });
     $(document).on('click', '#dialAskAboutAssis', function(){
-      $('#Dialog_TextBubble').html(textAssis);
-      $('#Dialog_TextLines').append(dialAskAboutVote1+dialQuit4);
+      $('#Dialogue_TextBubble').html(textAssis);
+      $('#Dialogue_TextLines').append(dialAskAboutVote1+dialQuit4);
     });
     $(document).on('click', '#dialAskAboutVote', function(){
-      $('#Dialog_TextBubble').html(textElection);
-      $('#Dialog_TextLines').append(dialHistoire_NoBandits2+dialAskAboutTax4+dialQuit4);
+      $('#Dialogue_TextBubble').html(textElection);
+      $('#Dialogue_TextLines').append(dialHistoire_NoBandits2+dialAskAboutTax4+dialQuit4);
     });
     $(document).on('click', '#dialAskAboutCraie', function(){
-      $('#Dialog_TextBubble').html(textCraie);
-      $('#Dialog_TextLines').append(dialChangeSubject1);
-      if (localStorage.plGold >= 80){$('#Dialog_TextLines').append(dialPay2+dialQuit5);}
-      if (localStorage.plGold < 80){$('#Dialog_TextLines').append(dialQuit6);}
+      $('#Dialogue_TextBubble').html(textCraie);
+      $('#Dialogue_TextLines').append(dialChangeSubject1);
+      if (localStorage.plGold >= 80){$('#Dialogue_TextLines').append(dialPay2+dialQuit5);}
+      if (localStorage.plGold < 80){$('#Dialogue_TextLines').append(dialQuit6);}
     });
     $(document).on('click', '#dialChangeSubject', function(){
-      $('#Dialog_TextBubble').html(textChangeSubject);
-      $('#Dialog_TextLines').append(dialHistoire_AskWhatsHappening3+dialAskAboutTax4+dialHistoire_AskAboutChaleur2+dialQuit7);
+      $('#Dialogue_TextBubble').html(textChangeSubject);
+      $('#Dialogue_TextLines').append(dialHistoire_AskWhatsHappening3+dialAskAboutTax4+dialHistoire_AskAboutChaleur2+dialQuit7);
     });
     $(document).on('click', '#dialPay', function(){
       localStorage.plGold = Number(localStorage.plGold) - 80;
       localStorage.numpage=4; refAll();
-      closeDialog();
+      closeDialogue();
     });
   }
 }
-function closeDialog(){
-  $('#dialogWindow').css('bottom','-100%');
+function closeDialogue(){
+  $('#dialogueWindow').css('bottom','-100%');
 }

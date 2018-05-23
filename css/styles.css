@@ -282,7 +282,7 @@ body {
  position: absolute;
  max-width: calc(15% - 1vw);
  color: #b7a88f;
- font-size: calc(1.7vh - 1px);
+ font-size: calc(1.7vh - 2px);
  font-family: 'Didact Gothic', sans-serif;
  z-index: 1;
  letter-spacing: 1px;
@@ -1198,24 +1198,24 @@ header#InvLPane_LeftHeader {
 #InvBRPane_Desc{height:45%;}
 #InvBRPane_Dmg{height:20%;}
 #InvBRPane_Pow{height:35%;}
-#dialogWindow{
+#dialogueWindow{
   background-color:#ebe4dc;
   z-index: 10;
   bottom:-100%;
   transition: all 1s ease;
 }
-#Dialog_Image{
+#Dialogue_Image{
   width:23%;
   background-color: #422222;
 }
-#Dialog_Mainblock{
+#Dialogue_Mainblock{
   width:calc(77% - 11vh);
   left:23%;
   box-shadow: -27px 0 15px #0000001a, -10px 0 7px #0000001a;
   box-sizing: border-box;
   padding: 4vh;
 }
-#Dialog_TextBubble{
+#Dialogue_TextBubble{
   background: white;
   width: 67%;
   height: 40%;
@@ -1229,7 +1229,7 @@ header#InvLPane_LeftHeader {
   box-shadow: 0 4px 0 #8383831a;
   z-index:21;
 }
-#Dialog_TextBubble::before{
+#Dialogue_TextBubble::before{
   content: "";
   position: absolute;
   bottom: -32px;
@@ -1243,7 +1243,7 @@ header#InvLPane_LeftHeader {
   left: 0;
   width: 1vw;
 }
-#Dialog_TextBubble::after {
+#Dialogue_TextBubble::after {
     content: "";
     position: absolute;
     z-index: -1;
@@ -1261,7 +1261,7 @@ header#InvLPane_LeftHeader {
     -o-transform: translate(-30px, -2px);
     transform: translate(-30px, -2px);
 }
-#Dialog_TextLines{
+#Dialogue_TextLines{
   height:calc(60% - 9vh);
   width:85%;
   box-sizing: border-box;
@@ -1284,4 +1284,38 @@ header#InvLPane_LeftHeader {
 }
 .dial_me::before{
   content:"-";
+}
+#transactions{
+  z-index:22;
+  height:20vh;
+  width:50vh;
+  background-color:white;
+  position:absolute;
+  left:  calc(50% - 25vh);
+  bottom: calc(50% - 10vh);
+  border-radius: 5px;
+  box-shadow: 0 -4px 0 #0003 inset, 0 10px 20px #0000001a, 0 10px 40px #0003;
+  transition: all 0.5s ease;
+  overflow:hidden;
+  display: none;
+}
+#transactions__title{
+  height:5vh;
+  background-color:#d4ba45;
+  font-size: 3vh;
+  text-align: center;
+  line-height: -moz-block-height;
+  color: #fff4e0;
+  font-family: 'Didact Gothic', sans-serif;
+  transition:all 0.3s ease;
+}
+#transactions__gold{
+  color:black;
+  top: 5vh;
+  height: calc(100% - 5vh);
+  line-height: -moz-block-height;
+  text-align: center;
+  font-size: 6vh;
+  font-family: 'Didact Gothic', sans-serif;
+  color: #d1be5b;
 }

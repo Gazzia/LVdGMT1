@@ -76,7 +76,7 @@ function refBtns(){
   if (page == 2.211){
     addBtn(1,0,0,0,0,0,0,1);
     $("#btnWalk1").html("Sortir rapidement !").attr("onclick","localStorage.numpage=2.2; refAll(); $('#sleft, #sright').css('background','linear-gradient(to bottom, #feffe9 -20%, #c5e3e1 70%)');$('.deco').show();");
-    $("#btnLook1").html("S'approcher de la dépouille").attr("onclick","nearbody2_211();");
+    $("#btnLook1").html("S'approcher de la dépouille").attr("onclick","inspect();");
   }
   if (page == 2.22){
     addBtn(1,0,0,0,0,0,0,1);

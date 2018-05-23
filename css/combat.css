@@ -52,13 +52,7 @@ float: left;}
 	text-shadow: 0 1px 6px #4a0000;
 }
 .scroll{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  overflow-y: scroll;
-  right: -1vw;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 #vous{
 	color:#8a4c3c;
@@ -120,12 +114,12 @@ float: left;}
 }
 .infosSubtitle{
 	color:#fffcd7e6;
-	font-size: 1.9vw;
+	font-size: 2.9vmin;
 }
 .infosText{
 	color:#fff;
 	padding-left: 20px;
-	font-size: 1.1vw;
+	font-size: 2vmin;
 }
 .enemyui{
 	width:80%;
@@ -239,7 +233,7 @@ float: left;}
 }
 .highlight {
 	background: linear-gradient(to top , #0003, #0000 39%),linear-gradient(0.95turn, #0000004d, #0000 39%),linear-gradient(0.45turn, #86766c99, #0000 70%),url(../images/UI/leather.jpg);
-	color:white !important;
+	color:black !important;
 	font-size: 2vh !important;
 	border-radius: 5px;
 	padding:0.1vh 1vh !important;

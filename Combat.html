@@ -11,6 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Roboto+Slab" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <script src="js/jquery/mousewheel.js"></script>
   <script src="js/statsvar.js"></script>
   <script src="js/data/enemies.js"></script> <script src="js/data/items.js"></script>
   <script>
@@ -81,7 +82,10 @@ if (localStorage.numpage=2.2){
   $('#dialogCombat_Death p').html("La dernière morsure du rat vous a été fatale. Alors que la vie s'échappe de votre corps, vous pouvez recommencer la partie pour tenter de vous venger de ce rongeur.");
 }
 //FIN
+$(".scroll").bind("mousewheel",function(ev, delta) {
+    var scrollTop = $(this).scrollTop();
+    $(this).scrollTop(scrollTop-Math.round(delta));
+});
 </script>
-<script src="js/globalscripts.js"></script>
 </body>
 </html>

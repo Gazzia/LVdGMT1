@@ -61,20 +61,45 @@ function openDialog(){
 }
 function closeDialog(){
   $('#dialog').css('left','-100%');
-  $('.mask.light.brown').fadeOut(700);
+  $('.mask').fadeOut(700);
   $('.dialogButton').hide();
 }
 function foundGold(amount, storageEvent) {
-  setSound("UI", "gold");
+  closeDialog();
   setTimeout(function(){
-    localStorage[storageEvent]=1; localStorage.plGold= +(localStorage.plGold) + amount; refAll();
-    $("#getitemText").html("+"+amount+" Or !");
-    $("#getitemImg").attr("src", "images/icons/UI/shiny-purse.png");
-    $("#getitem").attr("title", "Jackpot !");
-    $("#getitem").dialog({ modal: true, resizable: false, height: "auto", dialogClass: 'classicDialog dialogGold',
-    buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close");} }
-    });
-  }, 200);
+    localStorage[storageEvent]=1; refAllbutImg();
+    transaction("+"+amount);
+    setTimeout(function(){
+      setSound("UI", "gold");
+    }, 3300);
+  }, 250);
+}
+function transaction(amount){
+  $('.mask.light.brown').fadeIn(700);
+  $("#transactions").css('transition','none');
+  $("#transactions__gold").html(amount+" or !");
+  setTimeout(function(){
+    $("#transactions").css({'left':'calc(50% - 25vh)','bottom':'calc(50% - 10vh)','height':'20vh','width':'50vh'});
+    $("#transactions").fadeIn(400);
+    $("#transactions__title").css('background-color','#e2b948');
+    setTimeout(function(){
+      $("#transactions__title").css('background-color','#d4ba45');
+      setTimeout(function(){
+        $("#transactions__gold").html("");
+        $("#transactions").css({'transition':'all 0.5s ease','left':'69%','width':'5px'});
+        setTimeout(function(){
+          $('.mask').fadeOut(700);
+          $("#transactions").css({'bottom':'3%'});
+          setTimeout(function(){
+            $("#transactions").css({'height':'0'}).fadeOut(100);
+          }, 260);
+        }, 300);
+      }, 1400);
+    }, 600);
+  }, 1000);
+  setTimeout(function(){
+    localStorage.plGold= Number(localStorage.plGold) + Number(amount);
+  },5050);
 }
 // var newItem=0;
 // function giveitem(type, name, enchantable){
@@ -94,7 +119,7 @@ function foundItem(item) {
   setTimeout(function(){
     localStorage[window[item].LSName]=1;
     $("#dialogText").html(window[item].FoundText);
-    $("#dialogImage").css("background-image", "images/"+window[item].Img);
+    $("#dialogImage").css("background-image", "url(images/"+window[item].Img+")");
     if (window[item].Type == "arme"){
       $('.dialogIcon').html(iconStartingWeapon);
       $("#dialogTitle").html("Nouvelle arme !");
@@ -109,8 +134,9 @@ function foundItem(item) {
   }, 200);
 }
 function dialogColor(paramColor){
-  if (paramColor == "red"){var mainColor='#d44568'; var textColor='#c2786c'; var backColor='#f0dccc';}
-  if (paramColor == "orange"){var mainColor='#d4a245'; var textColor='#c29b6c'; var backColor='#f0e2cc';}
+  var mainColor;var textColor;var backColor;
+  if (paramColor == "red"){mainColor='#d44568'; textColor='#c2786c'; backColor='#f0dccc';}
+  if (paramColor == "orange"){mainColor='#d4a245'; textColor='#c29b6c'; backColor='#f0e2cc';}
   $('#dialogTitle, .dialogButton').css('background-color', mainColor);
   $('#dialogImage').css('border-left-color', mainColor);
   $('.dialogIcon svg').css('fill', mainColor);
