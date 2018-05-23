@@ -148,7 +148,7 @@ function enterDoor(){
     setSound("EnvB", "Aucun");
     setSound("EnvF", "Aucun");
     setSound("Music", "Battle1");
-    window.location="2.21 CombatRat.html";
+    window.location="Combat.html";
   }
 }
 // *****************************************************************************************************************************
