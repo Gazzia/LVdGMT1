@@ -92,6 +92,7 @@ function transaction(amount){
           $("#transactions").css({'bottom':'3%'});
           setTimeout(function(){
             $("#transactions").css({'height':'0'}).fadeOut(100);
+            refAllbutImg();
           }, 260);
         }, 300);
       }, 1400);
