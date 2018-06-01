@@ -22,7 +22,7 @@ function reset1(){
 	localStorage.nbKnock2_2=0;
 	localStorage.combatWon_RatSoufflant=0;
 	localStorage.tookCorpseGold=0;
-	localStorage.askGuardAboutTax=0;
+	localStorage.talkedToGuard=0;
 	localStorage.sawhole=0;
 	localStorage.caughtbyguard=0;
 	localStorage.failedToSeduceGuard=0;
@@ -284,7 +284,7 @@ function refScripts(){
   }
   if (page == 3){
     setSound("UI", "Aucun");
-    if (localStorage.askGuardAboutTax == 1 && localStorage.caughtbyguard == 0) { $(".btnM2").show();}
+    if (localStorage.talkedToGuard == 1 && localStorage.caughtbyguard == 0) { $(".btnM2").show();}
   }
   if (page == 3.2){
     localStorage.sawhole=1;

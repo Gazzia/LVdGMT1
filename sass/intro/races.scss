@@ -1,0 +1,352 @@
+#raceBox {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 30;
+  background: url("../images/UI/stars.jpg");
+  bottom: 100%;
+  /* Caché ou non */
+  transition: all 0.6s ease-in;
+  background-size: cover;
+  .slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    transition: all 0.5s ease-in;
+    &.race {
+      bottom: 0;
+      #raceTree {
+        right: calc(50% - 38vh);
+        height: 80%;
+        width: 76vh;
+        position: absolute;
+        top: 10%;
+        transition: all 0.5s ease;
+        .treeBG {
+          position: relative;
+          background: url("../images/UI/raceTree.png");
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          height: 100%;
+          width: 100%;
+        }
+        .raceIcon {
+          width: 17vh;
+          height: 17vh;
+          position: absolute;
+          border-radius: 100%;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.3);
+          background-size: 100% 100%;
+          transition: all 0.2s ease-in;
+          background-color: #cbbed1;
+          &:hover {
+            background-color: #bbacc5;
+            width: 18vh;
+            height: 18vh;
+            margin-left: -0.5vh;
+            margin-top: -0.5vh;
+          }
+          &.Ferre {
+            left: -6%;
+            top: 16%;
+            background-image: url("../images/Races/ferre.png");
+          }
+          &.Homme {
+            left: 38.5%;
+            top: -8%;
+            background-image: url("../images/Races/homme.png");
+          }
+          &.Oculain {
+            left: 82%;
+            top: 16%;
+            background-image: url("../images/Races/oculain.png");
+          }
+          &.Feulain {
+            left: 82%;
+            top: 62%;
+            background-image: url("../images/Races/feulain.png");
+          }
+          &.Angulain {
+            left: 38.5%;
+            top: 86%;
+            background-image: url("../images/Races/angulain.png");
+          }
+          &.Golem {
+            left: -6%;
+            top: 62%;
+            background-image: url("../images/Races/golem.png");
+          }
+          &.flipped {
+            background-image: unset !important;
+            background-color: #554b66;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Didact Gothic', sans-serif;
+            font-size: 3vh;
+            line-height: 16.4vh;
+            &:hover {
+              background-color: #554b66;
+              line-height: 17.4vh;
+            }
+          }
+        }
+      }
+      #raceInfos {
+        width: 39%;
+        height: calc(100% - 8vh);
+        top: 4vh;
+        left: 4vmin;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.1);
+        left: -40%;
+        transition: all 0.5s ease;
+        border-radius: 76%;
+        box-shadow: 0 0 31px rgba(255, 255, 255, 0.1);
+        header {
+          #raceImage {
+            width: 17vh;
+            height: 17vh;
+            position: absolute;
+            border-radius: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.3);
+            background-size: 100% 100%;
+            transition: all 0.2s ease-in;
+            background-color: #dac8e8;
+            z-index: 2;
+          }
+          #raceName {
+            width: calc(100% - 12vh);
+            height: 8vh;
+            background-color: #614f72;
+            position: absolute;
+            right: 3vh;
+            top: 4.5vh;
+            border-radius: 4px;
+            color: #ae9fbe;
+            font-size: 5vh;
+            font-family: 'Didact Gothic', sans-serif;
+            box-sizing: border-box;
+            padding-left: 10vh;
+            line-height: 7.5vh;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+        }
+        main {
+          height: calc(100% - 23vh);
+          bottom: 3vh;
+          width: calc(100% - 6vh);
+          left: 3vh;
+          position: absolute;
+          .infoboxes {
+            &.descBox {
+              height: 50%;
+              width: 100%;
+            }
+            &.relBox {
+              width: 60%;
+              height: calc(50% - 3vh);
+              bottom: 0;
+            }
+            &.caracBox {
+              width: calc(40% - 3vh);
+              height: calc(50% - 3vh);
+              bottom: 0;
+              right: 0;
+            }
+            header {
+              position: absolute;
+              width: 100%;
+              height: 5vh;
+              background-color: #6b5579;
+              border-top-left-radius: 5px;
+              border-top-right-radius: 5px;
+              color: #fffc;
+              font-family: 'Didact Gothic', sans-serif;
+              font-size: 2.5vh;
+              line-height: 4vh;
+              box-sizing: border-box;
+              padding-left: 1vh;
+            }
+            #raceDesc {
+              position: absolute;
+              color: #473258;
+              font-family: 'Vollkorn', sans-serif;
+              margin: 2vh;
+              font-size: 1.2vmax;
+            }
+            #raceRel {
+              position: absolute;
+              color: #473258;
+              font-family: 'Vollkorn', sans-serif;
+              margin: 2vh;
+              font-size: 1.2vmax;
+              .relDot {
+                position: relative;
+                width: 1.5vh;
+                height: 1.5vh;
+                border-radius: 100%;
+                border: 1px solid #fff6;
+                display: inline-block;
+                background-image: linear-gradient(rgba(255, 255, 255, 0.3) 30%, transparent 114%);
+                margin-right: 1.5vh;
+                &.green {
+                  background-color: #22862d;
+                }
+                &.yellow {
+                  background-color: #8ab024;
+                }
+                &.orange {
+                  background-color: #95571b;
+                }
+                &.red {
+                  background-color: #9b1e0a;
+                }
+              }
+            }
+            #raceCara {
+              position: absolute;
+              color: #473258;
+              font-family: 'Didact Gothic', sans-serif;
+              margin: 0 2vh;
+              font-size: 3.2vh;
+              line-height: 3.5vh;
+              svg {
+                width: 4.5vh;
+                height: 4.5vh;
+                display: inline-block;
+                margin-right: 1vh;
+                margin-top: 1.2vh;
+              }
+              .charMoins,
+              .charPlus {
+                display: inline-block;
+              }
+              .charMoins {
+                color: #51214a;
+              }
+              .charPlus {
+                color: #452d69;
+              }
+            }
+          }
+        }
+      }
+      #retourToPseudo {
+        position: absolute;
+        bottom: 1%;
+        height: 3%;
+        width: auto;
+        color: rgba(255, 255, 255, 0.3);
+        left: 2%;
+        font-family: 'Didact Gothic', sans-serif;
+        font-size: 2.2vh;
+        line-height: 3vh;
+        transition: color 0.4s ease-in;
+        svg {
+          position: absolute;
+          height: 80%;
+          fill: rgba(255, 255, 255, 0.3);
+          left: -2.4vh;
+          top: 11%;
+          transition: fill 0.4s ease-in;
+        }
+        &:hover {
+          color: rgba(255, 255, 255, 0.5);
+          svg {
+            fill: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
+    }
+    &.origin {
+      left: -100%;
+      #originBox {
+        width: 30%;
+        height: 6vh;
+        top: 38%;
+        left: 35%;
+        transition: all 0.4s ease;
+        text-align: center;
+        header {
+          position: absolute;
+          width: 100%;
+          height: 5vh;
+          background-color: #6b5579;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          color: #fffc;
+          font-family: 'Didact Gothic', sans-serif;
+          font-size: 2.5vh;
+          line-height: 4vh;
+          box-sizing: border-box;
+          padding-left: 1vh;
+        }
+        .scroll {
+          #endroit {
+            span {
+              color: #554f81;
+              font-family: 'Didact Gothic', sans-serif;
+              &#origin_RaceName {
+                font-size: 4vh;
+                display: block;
+              }
+              &#origin_Place {
+                font-size: 8vh;
+                text-transform: uppercase;
+                display: inline;
+                line-height: -moz-block-height;
+                letter-spacing: 1px;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                overflow: hidden;
+                height: 7vh;
+              }
+            }
+          }
+          #statIcon {
+            width: 14vh;
+            height: 14vh;
+            position: relative;
+            background: linear-gradient(rgba(255, 255, 255, 0.1), transparent),#957bab;
+            border-radius: 100%;
+            left: calc(50% - 7vh);
+            z-index: 3;
+            bottom: -7vh;
+            transition: all 0.2s ease;
+            svg {
+              position: absolute;
+              height: 70%;
+              left: 15%;
+              top: 15%;
+              fill: #d4c9db;
+              filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
+            }
+          }
+          #statTextbox {
+            height: 18vh;
+            position: relative;
+            background-color: #5d4f78;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+            bottom: 0;
+            .text {
+              color: #9f94b1;
+              height: 8vh;
+              bottom: 2vh;
+              position: absolute;
+              width: 100%;
+              text-align: center;
+              font-size: 7vh;
+              font-family: 'Didact Gothic', sans-serif;
+              line-height: 8vh;
+              font-weight: lighter;
+            }
+          }
+        }
+      }
+    }
+  }
+}

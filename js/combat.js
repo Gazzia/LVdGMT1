@@ -103,7 +103,7 @@ function En_Hit(enemyNum){
     $('#vieEnemy'+enemyNum).progressbar('option', 'value', Number(localStorage['En'+enemyNum+'_HP'])).effect( "shake",{ direction: "up", times: 4, distance: 2});
     $('#vieEnemy'+enemyNum+" .progression-value").css("background","red");
     setTimeout(function () {
-      $('#vieEnemy'+enemyNum+" .progression-value").css("background","linear-gradient(to top, #00053180, #0000 50%),linear-gradient(to bottom, #a5383880, #0000 50%), #972750");
+      $('#vieEnemy'+enemyNum+" .progression-value").css("background","linear-gradient(180deg, #00053180, #0000 50%),linear-gradient(to bottom, #a5383880, #0000 50%), #972750");
     }, 200);
     $('#hit_PtoE'+enemyNum).html("Vous infligez "+playerHitDmgCalc+"dmg");
     if (playerHitDmgCalc == 0) {$('#hit_PtoE'+enemyNum).html("L'ennemi esquive !");}
@@ -188,7 +188,7 @@ function Pl_Hit(enemyNum){
     $('#viePlayer').progressbar('option', 'value', Number(localStorage.plHealth)).effect( "shake",{ direction: "up", times: 4, distance: 2});
     $('#viePlayer .progression-value').css("background","red");
     setTimeout(function () {
-      $('#viePlayer .progression-value').css("background","linear-gradient(to top, #00053180, #0000 50%),linear-gradient(to bottom, #a5383880, #0000 50%), #972750");
+      $('#viePlayer .progression-value').css("background","linear-gradient(180deg, #00053180, #0000 50%),linear-gradient(to bottom, #a5383880, #0000 50%), #972750");
     }, 200);
   }
   if (localStorage.plHealth < 0){localStorage.plHealth = 0;}

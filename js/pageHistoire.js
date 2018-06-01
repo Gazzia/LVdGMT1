@@ -54,7 +54,7 @@ function refHistoire(){
   }
   if (page == 3.2){
     $("#histoireTitle").html("Plan B");
-    $("#histoire").html("En suivant le mur, vous rencontrez un trou à dimension humaine menant à un tunnel souterrain. En regardant la courbe de ce dernier et en entendant un bruit d'eau qui court sous la terre venant du trou, vous évaluez que la sortie du tunnel devrait être les égouts de Merryvale !<br>Le hic : le tunnel est en partie éboulé. Si seulement vous aviez une pelle, même une vieille pelle ferait l'affaire..");
+    $("#histoire").html("En suivant le mur, vous rencontrez un trou dans le sol, menant à un tunnel.<br>Vous évaluez que l'autre extrémité du tunnel débouche dans les égouts de la ville : ce serait une belle occasion de rentrer sans payer de taxe !<br>Cependant, il y a un hic : le tunnel est en partie éboulé. Vous ne pourrez rien faire sans l'aide d'une pelle.");
   }
   if (page == 4){
     $("#histoireTitle").html("Vous entrez à Merryvale");

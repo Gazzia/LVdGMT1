@@ -30,7 +30,7 @@ function talk(dial_Said){
     }
     if (localStorage.dial_Said == 'B'){
       $("#histoire").html("\"80 pièces d'or.<br>Attention, une fois toi rentré en ville, jamais ressortir par cette porte.\"");
-      localStorage.askGuardAboutTax=1;
+      localStorage.talkedToGuard=1;
     }
     if (localStorage.dial_Said == 'B1'){
       if (localStorage.plGold < 80){

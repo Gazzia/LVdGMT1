@@ -88,6 +88,6 @@ function refStats(){
 	$('#plHealthBar, #plHealthBar_inv').progressbar('option', 'max', Number(localStorage.plHealthMax));
 	$('#plHealthText').html(localStorage.plHealth+"/"+localStorage.plHealthMax);
 	$(".pseudo").html(localStorage.pseudo);
-	$("#uiFG_bot_top_plRace").html(localStorage.race+" de "+localStorage.origine);
+	$("#topBlock_plRace").html(localStorage.race+" de "+localStorage.origine);
 
 }

@@ -9,7 +9,7 @@ float: left;}
 #intitule{
 	width:100%;
 	height:20%;
- background: linear-gradient(to top,#300808cc,#8e55554d 100%),linear-gradient(to top,#000c,#0000 25%),url(../images/UI/rockBanner.jpg);
+ background: linear-gradient(180deg,#300808cc,#8e55554d 100%),linear-gradient(180deg,#000c,#0000 25%),url(../images/UI/rockBanner.jpg);
 	z-index: 4;
 	box-shadow: 0 10px 21px black;
 	text-align: center;
@@ -24,7 +24,7 @@ float: left;}
 }
 #infos{
 	width:35%;
-	background: linear-gradient(to top,#220909,#7c3032);
+	background: linear-gradient(180deg,#220909,#7c3032);
 	box-shadow: 0 60px 111px black inset;
 }
 #ennemis{
@@ -35,7 +35,7 @@ float: left;}
 #defensif{
 	width:100%;
 	height:7%;
-	background: linear-gradient(to top,#30080899,#8e555533 100%),linear-gradient(to top,#0006,#0000 55%),url(../images/UI/rockBanner.jpg);
+	background: linear-gradient(180deg,#30080899,#8e555533 100%),linear-gradient(180deg,#0006,#0000 55%),url(../images/UI/rockBanner.jpg);
 	z-index: 4;
 	box-shadow: 0 1px 11px #000000e6;
 	border-top: 1px solid #c49d96e6;
@@ -63,7 +63,7 @@ float: left;}
 	text-shadow: 0px 1px 9px #460a0a4d;
 }
 .progression{
-	background:linear-gradient(to top, #0003, #0000 50%), #b08c5f;
+	background:linear-gradient(180deg, #0003, #0000 50%), #b08c5f;
 	width: 85%;
 	height: 1vh !important;
 	left: 7.5%;
@@ -74,7 +74,7 @@ float: left;}
 	left:0;
 }
 .progression-value{
-	background:linear-gradient(to top, #00053180, #0000 50%),linear-gradient(to bottom, #a5383880, #0000 50%), #972750;
+	background:linear-gradient(180deg, #00053180, #0000 50%),linear-gradient(to bottom, #a5383880, #0000 50%), #972750;
 	transition: width 0.25s ease-in, background 0.1s ease-in;
 }
 #playerVieText{
@@ -232,7 +232,7 @@ float: left;}
 	font-size: 1vw;
 }
 .highlight {
-	background: linear-gradient(to top , #0003, #0000 39%),linear-gradient(0.95turn, #0000004d, #0000 39%),linear-gradient(0.45turn, #86766c99, #0000 70%),url(../images/UI/leather.jpg);
+	background: linear-gradient(180deg , #0003, #0000 39%),linear-gradient(0.95turn, #0000004d, #0000 39%),linear-gradient(0.45turn, #86766c99, #0000 70%),url(../images/UI/leather.jpg);
 	color:black !important;
 	font-size: 2vh !important;
 	border-radius: 5px;

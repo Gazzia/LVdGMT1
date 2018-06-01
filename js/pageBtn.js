@@ -16,23 +16,7 @@ function addBtn(walk, take, use, talk, fight, give, divers, look){
   if (look >= 1){$("#actLook").show();}
   for (i8 = 0; i8 < look; i8++) {$("#actLookActions").append("<a id='btnLook"+(i8 + 1)+"' class='action'></a>");}
 }
-  // if (top>=1){ $("#choix").append('<a class="btnD btnT1">1</a>'); }
-  // if (top>=2){ $("#choix").append('<a class="btnD btnT2">2</a>'); }
-  // if (top>=3){ $("#choix").append('<a class="btnD btnT3">3</a>'); }
-  // if (top>=4){ $("#choix").append('<a class="btnD btnT4">4</a>'); }
-  // if (top>=5){ $("#choix").append('<a class="btnD btnT5">5</a>'); }
-  // if (top>=1 && mid+bot >=1){ $("#choix").append("<br>");}
-  // if (mid>=1){ $("#choix").append('<a class="btnD btnM1">1</a>'); }
-  // if (mid>=2){ $("#choix").append('<a class="btnD btnM2">2</a>'); }
-  // if (mid>=3){ $("#choix").append('<a class="btnD btnM3">3</a>'); }
-  // if (mid>=4){ $("#choix").append('<a class="btnD btnM4">4</a>'); }
-  // if (mid>=5){ $("#choix").append('<a class="btnD btnM5">5</a>'); }
-  // if (mid>=1 && bot >=1){ $("#choix").append("<br>");}
-  // if (bot>=1){ $("#choix").append('<a class="btnD btnB1">1</a>'); }
-  // if (bot>=2){ $("#choix").append('<a class="btnD btnB2">2</a>'); }
-  // if (bot>=3){ $("#choix").append('<a class="btnD btnB3">3</a>'); }
-  // if (bot>=4){ $("#choix").append('<a class="btnD btnB4">4</a>'); }
-  // if (bot>=5){ $("#choix").append('<a class="btnD btnB5">5</a>'); }
+// 1-WALK  2-TAKE  3-USE  4-TALK  5-FIGHT  6-GIVE  7-DIVERS  8-LOOK
 function refBtns(){
   $(".actionsCat").hide();
   $(".actionGroup").html('');
@@ -50,28 +34,28 @@ function refBtns(){
   }
   if (page == 2){
     addBtn(3,0,0,0,0,0,0,1);
-    $("#btnWalk1").html("Aller vers l'Ouest").attr("onclick","localStorage.numpage=2.1; refAll();").addClass('btnOuest');
-    $("#btnWalk2").html("Continuer sur le chemin").attr("onclick","localStorage.numpage=3; refAll();").addClass('btnNord');
-    $("#btnWalk3").html("Aller vers l'Est").attr("onclick","localStorage.numpage=2.2; refAll();").addClass('btnEst');
-    $("#btnLook1").html("Inspecter la zone").attr("onclick","inspect()");
+    $("#btnWalk1").html("Aller vers l'Ouest").attr("onclick","localStorage.numpage=2.1; refAll();").addClass('Ouest');
+    $("#btnWalk2").html("Continuer sur le chemin").attr("onclick","localStorage.numpage=3; refAll();").addClass('Nord');
+    $("#btnWalk3").html("Aller vers l'Est").attr("onclick","localStorage.numpage=2.2; refAll();").addClass('Est');
+    $("#btnLook1").html("Panorama").attr("onclick","inspect()");
   }
   if (page == 2.1){
     addBtn(2,0,0,0,0,0,0,1);
-    $("#btnWalk1").html("Suivre le bruit").attr("onclick","localStorage.numpage=2.11; refAll();");
-    $("#btnWalk2").html("Revenir sur le chemin").attr("onclick","localStorage.numpage=2; refAll();");
-    $("#btnLook1").html("Inspecter la zone").attr("onclick","inspect()");
+    $("#btnWalk1").html("Suivre le bruit").attr("onclick","localStorage.numpage=2.11; refAll();").addClass('Ouest');
+    $("#btnWalk2").html("Revenir sur le chemin").attr("onclick","localStorage.numpage=2; refAll();").addClass('Est');
+    $("#btnLook1").html("Sol").attr("onclick","inspect()");
   }
   if (page == 2.11){
     addBtn(1,0,0,0,0,0,0,1);
-    $("#btnWalk1").html("Revenir vers l'entrée du bois").attr("onclick","localStorage.numpage=2.1; refAll();");
-    $("#btnLook1").html("Inspecter la zone").attr("onclick","inspect()");
+    $("#btnWalk1").html("Revenir vers l'entrée du bois").attr("onclick","localStorage.numpage=2.1; refAll();").addClass('Est');
+    $("#btnLook1").html("Rive opposée").attr("onclick","inspect()");
   }
   if (page == 2.2){
     addBtn(2,0,0,0,0,0,1,1);
-    $("#btnWalk1").html("Faire le tour de la cabane").attr("onclick","localStorage.numpage=2.22; refAll();");
-    $("#btnWalk2").html("Revenir sur le chemin").attr("onclick","localStorage.numpage=2; refAll();");
+    $("#btnWalk1").html("Faire le tour de la cabane").attr("onclick","localStorage.numpage=2.22; refAll();").addClass('Est');
+    $("#btnWalk2").html("Revenir sur le chemin").attr("onclick","localStorage.numpage=2; refAll();").addClass('Ouest');
     $("#btnDivers1").html("Frapper à la porte");
-    $("#btnLook1").html("Inspecter la zone").attr("onclick","inspect()");
+    $("#btnLook1").html("Cabane").attr("onclick","inspect()");
   }
   if (page == 2.211){
     addBtn(1,0,0,0,0,0,0,1);
@@ -79,19 +63,21 @@ function refBtns(){
     $("#btnLook1").html("S'approcher de la dépouille").attr("onclick","inspect();");
   }
   if (page == 2.22){
-    addBtn(1,0,0,0,0,0,0,1);
-    $("#btnWalk1").html("Retourner de l'autre côté").attr("onclick","localStorage.numpage=2.2; refAll();");
-    $("#btnLook1").html("Inspecter les outils").attr("onclick","foundItem('Pelle')").hide();
+    addBtn(1,0,0,0,0,0,0,2);
+    $("#btnWalk1").html("Retourner de l'autre côté").attr("onclick","localStorage.numpage=2.2; refAll();").addClass('Ouest');
+    $("#btnLook1").html("Fatras").attr("onclick","inspect('Fatras');");
+    $("#btnLook2").html("Collines").attr("onclick","inspect('Collines');");
+    //foundItem('Pelle')
   }
   if (page == 3){
     addBtn(1,0,0,1,0,0,0,0);
-    $("#btnWalk1").html("Retourner dans la plaine").attr("onclick","localStorage.numpage=2; refAll();");
+    $("#btnWalk1").html("Retourner dans la plaine").attr("onclick","localStorage.numpage=2; refAll();").addClass('Sud');
     $("#btnTalk1").html("Garde").attr("onclick","dialogue('Guarde_MerryvalePsud');");
-    $("#btnLook1").html("Trouver un autre moyen de passer").attr("onclick","localStorage.numpage=3.2; refAll()").hide();
+    // $("#btnLook1").html("Trouver un autre moyen de passer").attr("onclick","localStorage.numpage=3.2; refAll()").hide();
   }
   if (page == 3.2){
     addBtn(1,0,1,0,0,0,0,0);
-    $("#btnWalk1").html("Retourner devant le mur").addClass("retourMur").attr("onclick","localStorage.numpage=3; refAll();");
+    $("#btnWalk1").html("Retourner devant le mur").addClass("retourMur").attr("onclick","localStorage.numpage=3; refAll();").addClass('Ouest');
     $("#btnUse1").html("Pelle").addClass("cursorSkill chance ch10").attr("onclick","dig(1)").hide();
     $("#btnDivers3").html("Creuser silencieusement").addClass("cursorSkill chance ch40").attr("onclick","dig(4)").hide();
     $("#btnWalk2").html("Entrer dans la ville").addClass("enterCity").attr("onclick","localStorage.numpage=4; refAll();").hide();
@@ -169,4 +155,12 @@ function refBtns(){
     $("#btnGive1").html("Réveiller le dormeur").attr("onclick","");
     $("#btnGive2").html("Sortir").attr("onclick","leaveTemple();");
   }
+  if($('#actWalkActions').children(':visible').length == 0) {$('#actWalk').hide();}
+  if($('#actTakeActions').children(':visible').length == 0) {$('#actTake').hide();}
+  if($('#actUseActions').children(':visible').length == 0) {$('#actUse').hide();}
+  if($('#actTalkActions').children(':visible').length == 0) {$('#actTalk').hide();}
+  if($('#actFightActions').children(':visible').length == 0) {$('#actFight').hide();}
+  if($('#actGiveActions').children(':visible').length == 0) {$('#actGive').hide();}
+  if($('#actDiversActions').children(':visible').length == 0) {$('#actDivers').hide();}
+  if($('#actLookActions').children(':visible').length == 0) {$('#actLook').hide();}
 }

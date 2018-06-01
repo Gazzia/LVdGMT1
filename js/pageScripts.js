@@ -40,7 +40,7 @@ function reset1(){
 	localStorage.nbKnock2_2=0;
 	localStorage.combatWon_RatSoufflant=0;
 	localStorage.tookCorpseGold=0;
-	localStorage.askGuardAboutTax=0;
+	localStorage.talkedToGuard=0;
 	localStorage.sawhole=0;
 	localStorage.caughtbyguard=0;
 	localStorage.failedToSeduceGuard=0;
@@ -62,7 +62,7 @@ function openDialog(){
 function closeDialog(){
   $('#dialog').css('left','-100%');
   $('.mask').fadeOut(700);
-  $('.dialogButton').hide();
+  $('#dialog a').hide();
 }
 function foundGold(amount, storageEvent) {
   closeDialog();
@@ -77,15 +77,15 @@ function foundGold(amount, storageEvent) {
 function transaction(amount){
   $('.mask.light.brown').fadeIn(700);
   $("#transactions").css('transition','none');
-  $("#transactions__gold").html(amount+" or !");
+  $("#transactions.gold").html(amount+" or !");
   setTimeout(function(){
     $("#transactions").css({'left':'calc(50% - 25vh)','bottom':'calc(50% - 10vh)','height':'20vh','width':'50vh'});
     $("#transactions").fadeIn(400);
-    $("#transactions__title").css('background-color','#e2b948');
+    $("#transactions.title").css('background-color','#e2b948');
     setTimeout(function(){
-      $("#transactions__title").css('background-color','#d4ba45');
+      $("#transactions.title").css('background-color','#d4ba45');
       setTimeout(function(){
-        $("#transactions__gold").html("");
+        $("#transactions.gold").html("");
         $("#transactions").css({'transition':'all 0.5s ease','left':'69%','width':'5px'});
         setTimeout(function(){
           $('.mask').fadeOut(700);
@@ -119,17 +119,17 @@ function foundItem(item) {
   setSound("UI", "takeStuff");
   setTimeout(function(){
     localStorage[window[item].LSName]=1;
-    $("#dialogText").html(window[item].FoundText);
-    $("#dialogImage").css("background-image", "url(images/"+window[item].Img+")");
+    $("#dialog .text").html(window[item].FoundText);
+    $("#dialog .image").css("background-image", "url(images/"+window[item].Img+")");
     if (window[item].Type == "arme"){
-      $('.dialogIcon').html(iconStartingWeapon);
-      $("#dialogTitle").html("Nouvelle arme !");
-      $('.dialogButton.nb1').html('Prendre').attr('onclick','closeDialog()').show();
-      $('.dialogButton.nb2').html('Prendre et équipper').attr('onclick','localStorage.inv_selected_arme=window[item].Short; closeDialog(); refAllbutImg();').show();
+      $('#dialog .icon').html(iconStartingWeapon);
+      $("#dialog .title").html("Nouvelle arme !");
+      $('#dialog a.nb1').html('Prendre').attr('onclick','closeDialog()').show();
+      $('#dialog a.nb2').html('Prendre et équipper').attr('onclick','localStorage.inv_selected_arme=window[item].Short; closeDialog(); refAllbutImg();').show();
     }
     if (window[item].Type == "tool"){
-      $("#dialogTitle").html("Nouvel outil !");
-      $('.dialogButton.nb1').html('Ok').attr('onclick','closeDialog()').show();
+      $("#dialog .title").html("Nouvel outil !");
+      $('#dialog a.nb1').html('Ok').attr('onclick','closeDialog()').show();
     }
     dialogColor('orange');
   }, 200);
@@ -138,11 +138,11 @@ function dialogColor(paramColor){
   var mainColor;var textColor;var backColor;
   if (paramColor == "red"){mainColor='#d44568'; textColor='#c2786c'; backColor='#f0dccc';}
   if (paramColor == "orange"){mainColor='#d4a245'; textColor='#c29b6c'; backColor='#f0e2cc';}
-  $('#dialogTitle, .dialogButton').css('background-color', mainColor);
-  $('#dialogImage').css('border-left-color', mainColor);
-  $('.dialogIcon svg').css('fill', mainColor);
-  $('#dialogText').css('color', textColor);
-  $('.dialogBox').css('background-image', 'linear-gradient(white, '+backColor+')');
+  $('#dialog .title, #dialog a').css('background-color', mainColor);
+  $('#dialog .image').css('border-left-color', mainColor);
+  $('#dialog .icon svg').css('fill', mainColor);
+  $('#dialog .text').css('color', textColor);
+  $('#dialog .content').css('background-image', 'linear-gradient(white, '+backColor+')');
 }
 function knockDoor(){
   if (localStorage.numpage==2.2){
@@ -236,16 +236,12 @@ function refScripts(){
     $("#sleft, #sright").css("background","linear-gradient(to bottom, #98947c -20%, #1d1b1a 70%)");
     $(".deco").hide();
   }
-  if (page == 2.22){
-    if (localStorage.sawhole == 1 && localStorage.inv_tool_Shovel == 0){
-  	$(".btnM2").show();
-  	} else {
-  	$(".btnM2").hide();
-  	}
-  }
   if (page == 3){
     setSound("UI", "Aucun");
-    if (localStorage.askGuardAboutTax == 1 && localStorage.caughtbyguard == 0) { $(".btnM2").show();}
+    if (localStorage.talkedToGuard == 1 && localStorage.caughtbyguard == 0) {
+      addBtn(0,0,0,0,0,0,0,1);
+      $("#btnLook1").html("Trouver un autre moyen de passer").attr("onclick","localStorage.numpage=3.2; refAll()");
+    }
   }
   if (page == 3.2){
     localStorage.sawhole=1;

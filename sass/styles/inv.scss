@@ -1,0 +1,337 @@
+.invPanes {
+  position: absolute;
+  z-index: 12;
+  transition: all 1s ease;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.3);
+  &#InvLPane {
+    height: 100%;
+    /*! background-color: #000000b3; */
+    width: 38%;
+    left: -60%;
+    #InvLPane_Left {
+      width: 48%;
+      background-image: linear-gradient(110deg, #e4d5c0, #a79782);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6), 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      border-right: 0.35vw solid rgba(0, 0, 0, 0.3);
+      /*! box-sizing: border-box; */
+      .LLPaneBlock {
+        box-sizing: border-box;
+        text-align: center;
+        font-family: 'Didact Gothic', sans-serif;
+        &.bar {
+          padding-bottom: 2vh;
+          margin-bottom: 1vh;
+          &:after {
+            content: "";
+            height: 2px;
+            width: 80%;
+            left: 10%;
+            position: absolute;
+            /*! background-color: #0003; */
+            bottom: -1px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+          }
+        }
+        &header {
+          height: 12%;
+          .titleLL {
+            font-size: 3vh;
+            position: relative;
+            left: 0;
+            top: 2.5vh;
+            color: #8a4973;
+          }
+        }
+        &#InvLPane_LeftArmorBlock {
+          height: 33%;
+        }
+        &#InvLPane_LeftWeaponBlock {
+          height: 9%;
+        }
+        &#InvLPane_LeftEquippableBlock {
+          height: calc(42% - 9vh);
+        }
+        .blockItem {
+          height: 7vh;
+          margin-bottom: 1vh;
+          .EquippedType {
+            width: calc(100% - 15vh);
+            left: 4vh;
+            box-sizing: border-box;
+            padding: 0 2vh;
+            text-align: left;
+            line-height: -moz-block-height;
+            font-size: 3vh;
+            background-color: rgba(250, 245, 245, 0.2);
+            position: absolute;
+            height: 80%;
+            top: 10%;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            color: #a79780;
+            box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1);
+            &.ringsTitle {
+              width: calc(100% - 9.5vh);
+            }
+          }
+          .EquippedIcon {
+            width: 7vh;
+            right: 5vh;
+            background-color: #c4b6a5;
+            box-sizing: border-box;
+            border: 2px solid;
+            box-shadow: inset 2px 3px 15px rgba(0, 0, 0, 0.1), 2px 3px 3px rgba(0, 0, 0, 0.1), -4px -5px 9px transparent;
+            border-radius: 15px;
+            border-color: #b6b3b3 #9c9b9b #909090 #bdbdbd;
+            display: inline-block;
+            background-size: 83%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            transform: rotateY(0deg);
+            transition: all 0.3s ease;
+            &#EquippedIcon_arme {
+              left: 28%;
+            }
+            &#EquippedIcon_arme_right {
+              right: 28%;
+            }
+            &.ringsBoxes {
+              top: 7vh;
+              height: 5vh;
+              width: 5vh;
+              &#EquippedIcon_equippable_ring1 {
+                left: 5vh;
+              }
+              &#EquippedIcon_equippable_ring2 {
+                left: 11vh;
+              }
+              &#EquippedIcon_equippable_ring3 {
+                left: 17vh;
+              }
+              &#EquippedIcon_equippable_ring4 {
+                left: 23vh;
+              }
+            }
+          }
+          .itemSymbol {
+            height: 6vh;
+            width: 6vh;
+            position: absolute;
+            display: inline-block;
+            text-align: center;
+            top: 1vh;
+            svg {
+              height: 100%;
+              display: inline;
+              fill: #714c4c;
+            }
+            &#weaponRightHSymbol {
+              right: 9%;
+            }
+            &#weaponLeftHSymbol {
+              left: 10%;
+            }
+          }
+        }
+      }
+    }
+    #InvLPane_Right {
+      height: 100%;
+      width: 52%;
+      position: absolute;
+      right: 0;
+      background: linear-gradient(110deg, #595146, #36312c);
+      .btnInv {
+        display: block;
+        height: 5vh;
+        background-color: #847a6c;
+        font-family: 'Vollkorn', sans-serif;
+        font-size: 2.6vh;
+        line-height: -moz-block-height;
+        box-sizing: border-box;
+        padding: 0 2vh;
+        color: #49402d;
+        position: relative;
+        transition: all 0.5s ease;
+        &.nm {
+          border-right: 5px solid rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 3px rgba(0, 0, 0, 0.1);
+          z-index: 1;
+          border-bottom: 3px solid rgba(50, 49, 49, 0.1);
+          border-top: 3px solid rgba(209, 190, 190, 0.1);
+          left: 0;
+          &.active {
+            left: 3vh;
+            background-color: #948879;
+            color: #594f3d;
+            border-bottom: 1px solid rgba(50, 49, 49, 0.1);
+            border-top: 1px solid rgba(209, 190, 190, 0.1);
+            border-right: 3px solid rgba(0, 0, 0, 0.1);
+          }
+        }
+        &.sm {
+          /*! width: 80%; */
+          left: 0;
+          background-color: #746a5c;
+          border: solid rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 5px 27px rgba(0, 0, 0, 0.1);
+          border-width: 0 3px 3px 2vh;
+          &.active {
+            left: 3vh;
+            background-color: #887e6d;
+            color: #605648;
+            border-width: 0 2px 3px 3vh;
+          }
+        }
+        &.openable{
+          &.nm:hover {
+            background-color: #7f7567;
+          }
+          &.sm:hover {
+            background-color: #6e6558;
+          }
+        }
+        &.title {
+          height: 4vh;
+          font-style: italic;
+          border-bottom: 11px solid rgba(50, 49, 49, 0.1);
+          font-size: 2.2vh;
+        }
+        &.active:hover{
+          background-color: unset;
+        }
+        .icon {
+          position: absolute;
+          height: 4vh;
+          top: 10%;
+          width: 4vh;
+          background-repeat: no-repeat;
+          line-height: -moz-block-height;
+          &.arrowRight {
+            background-color: rgba(196, 179, 179, 0.3);
+            mask-image: url("../images/icons/UI/arrowRight.svg");
+            mask-size: cover;
+          }
+          &.right {
+            right: 1vh;
+          }
+        }
+      }
+    }
+  }
+  &#InvTRPane {
+    height: 42%;
+    width: 29%;
+    background: linear-gradient(110deg, #62584c, #413c36);
+    right: 0;
+    top: -100%;
+    border-bottom: 6px solid rgba(0, 0, 0, 0.5);
+    border-bottom-left-radius: 11px;
+    .InvFolders {
+      display: none;
+      top: 0;
+      .vide {
+        font-size: 5vh;
+        color: rgba(165, 160, 151, 0.2);
+        font-family: 'Vollkorn', serid;
+        line-height: -moz-block-height;
+        left: calc(50% - 5vh);
+        position: relative;
+      }
+      .btnItem {
+        width: 9vh;
+        height: 9vh;
+        background: #a19688;
+        position: relative;
+        display: inline-block;
+        margin: 3.5vh 0 0 3.7vh;
+        box-sizing: border-box;
+        border: 4px solid;
+        border-color: #878787 #656565 #656565 #9f9f9f;
+        box-shadow: inset 4px 6px 23px rgba(0, 0, 0, 0.5), 4px 5px 5px rgba(0, 0, 0, 0.3), -4px -5px 9px rgba(252, 244, 244, 0.1);
+        border-radius: 15px;
+        .item {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          background-repeat: no-repeat;
+          background-position: center center;
+        }
+      }
+    }
+  }
+  &#InvBRPane {
+    height: 54%;
+    width: 29%;
+    background-color: #413b33;
+    right: 0;
+    bottom: -100%;
+    border-top-left-radius: 4px;
+    opacity: 0.8;
+    header {
+      position: absolute;
+      width: 102%;
+      height: 5vh;
+      background-color: #ad9f8b;
+      left: -2%;
+      border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+      z-index: 3;
+      border-bottom-left-radius: 6px;
+      font-family: 'Vollkorn',serif;
+      line-height: -moz-block-height;
+      font-size: 3vh;
+      color: #5f5b53;
+      padding-left: 2vh;
+    }
+    main {
+      position: absolute;
+      height: calc(100% - 5vh);
+      bottom: 0;
+      width: 65%;
+      background: linear-gradient(110deg, #62584c, #413c36);
+      z-index: 1;
+      border-right: 4px solid rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+      .InvBRPane_ContentSub {
+        box-sizing: border-box;
+        padding: 2vh 3vh;
+        font-family: 'Vollkorn', serif;
+        color: #c0b19d;
+        &.underlined:after {
+          content: "";
+          width: 80%;
+          height: 4px;
+          border: 1px solid rgba(0, 0, 0, 0.3);
+          position: absolute;
+          bottom: 0;
+          left: 10%;
+          border-radius: 1vw;
+        }
+        &#InvBRPane_Desc {
+          height: 45%;
+        }
+        &#InvBRPane_Dmg {
+          height: 20%;
+        }
+        &#InvBRPane_Pow {
+          height: 35%;
+        }
+      }
+    }
+    aside {
+      height: calc(100% - 5vh);
+      bottom: 0;
+      position: absolute;
+      width: 35%;
+      right: 0;
+      box-shadow: inset 6px 9px 63px rgba(0, 0, 0, 0.5);
+      background-color: #877d6f;
+      box-sizing: border-box;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  }
+}
