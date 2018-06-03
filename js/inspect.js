@@ -11,33 +11,52 @@ function inspect(thing){
     $('#dialog a.nb1').html('Continuer').attr('onclick','closeDialog()').show();
   }
   if (insPage==2.1){
-    $("#dialog .title").html("Ombrage");
-    if (localStorage.inv_arme_Branche == 0) {
-      $("#dialog .text").html("Le petit bois n'est pas bien dense, mais la fraîcheur de l'ombre des arbres vous est tout de même d'un grand secours. Vous souriez à l'odeur des feuilles de céremble, qui cet automne tomberont en tourbillons dans l'herbe claire.<br><br>Dans une clairière, vous apercevez à terre une belle branche qui pourrait vous servir d'arme rudimentaire.<br>Voulez-vous la prendre ?");
-      $('#dialog a.nb1').html('Prendre').attr('onclick','foundItem("Branche")').show();
-      $('#dialog a.nb2').show().html('Partir').attr('onclick','closeDialog()');
+    if (thing=='Arbres'){
+      $("#dialog .title").html("Ombrage");
+      $("#dialog .image").css("background-image", "url(images/vertical/ext/forettrees.png)");
+      $("#dialog .text").html("Le petit bois n'est pas bien dense, mais la fraîcheur de l'ombre des arbres vous est tout de même d'un grand secours. Vous souriez à l'odeur des feuilles de céremble, qui cet automne tomberont en tourbillons dans l'herbe claire.");
+      $('#dialog a.nb1').html('Sourire').attr('onclick','closeDialog()').show();
     }
-    if (localStorage.inv_arme_Branche == 1) {
-      $("#dialog .text").html("Vous inspectez des yeux le sol, en quête d'une quelconque trouvaille fantastique pour aller avec la branche trouvée ici précédemment, mais non. De l'herbe, des feuilles, des brindilles.");
-      $('#dialog a.nb1').show().html('Partir').attr('onclick','closeDialog()');
+    if (thing=='Herbe'){
+      $("#dialog .title").html("Herbe");
+      if (localStorage.inv_arme_Branche == 0) {
+        $("#dialog .image").css("background-image", "url(images/vertical/ext/forestgroundBranch.png)");
+        $("#dialog .text").html("Vous apercevez à terre une belle branche qui pourrait vous servir d'arme rudimentaire.<br>Voulez-vous la prendre ?");
+        $('#dialog a.nb1').html('Prendre').attr('onclick','foundItem("Branche")').show();
+        $('#dialog a.nb2').show().html('Partir').attr('onclick','closeDialog()');
+      }
+      if (localStorage.inv_arme_Branche == 1) {
+        $("#dialog .image").css("background-image", "url(images/vertical/ext/forestground.png)");
+        $("#dialog .text").html("Vous inspectez des yeux le sol, en quête d'une quelconque trouvaille fantastique pour aller avec la branche trouvée ici précédemment, mais non. De l'herbe, des feuilles, des brindilles.");
+        $('#dialog a.nb1').show().html('Partir').attr('onclick','closeDialog()');
+      }
     }
   }
   if (insPage==2.11){
-    $("#dialog .title").html("Larcin");
-    $("#dialog .image").css("background-image", "url(images/vertical/ext/riverbourse.png)");
-    if (localStorage.tookRiverGold == 0) {
-      $("#dialog .text").html("Sur la rive en face, vous apercevez un petit tas de vêtements sur lequel est attachée une bourse.<BR>Le courant est faible, et l'eau peu profonde (mais divinement fraîche !)<br>Personne en vue.");
-      $('#dialog a.nb1').html('Traverser et voler la bourse').attr('onclick','foundGold(25, "tookRiverGold");').show();
-      $('#dialog a.nb2').html('Partir l\'âme légère').attr('onclick','closeDialog()').show();
+    if (thing=='Eau'){
+      $("#dialog .title").html("Dans l'onde fraîche");
+      $("#dialog .image").css("background-image", "url(images/vertical/ext/rivewater.png)");
+      $("#dialog .text").html("Le petit bras d'eau est plein de vie -et plein d'eau ! L'endroit est très tranquille et serait propice à une petite halte.");
+      $('#dialog a.nb1').html('Faire une petite halte').attr('onclick','makeHalt()').show();
+      $('#dialog a.nb2').html('Pas le temps !').attr('onclick','closeDialog()').show();
     }
-    if (localStorage.tookRiverGold == 1) {
-      $("#dialog .text").html("Vous avez déjà pris l'or de la bourse, en face. Cela ne vous empêche pas de retraverser tout de même la rivière dans l'idée de vous rafraîchir un peu.");
-      $('#dialog a.nb1').html('Ok').attr('onclick','closeDialog()').show();
+    if (thing=='RiveOpp'){
+      $("#dialog .title").html("Larcin");
+      $("#dialog .image").css("background-image", "url(images/vertical/ext/riverbourse.png)");
+      if (localStorage.tookRiverGold == 0) {
+        $("#dialog .text").html("Sur la rive en face, vous apercevez un petit tas de vêtements sur lequel est attachée une bourse.<BR>Le courant est faible, et l'eau peu profonde (mais divinement fraîche !)<br>Personne en vue.");
+        $('#dialog a.nb1').html('Traverser et voler la bourse').attr('onclick','foundGold(25, "tookRiverGold");').show();
+        $('#dialog a.nb2').html('Partir l\'âme légère').attr('onclick','closeDialog()').show();
+      }
+      if (localStorage.tookRiverGold == 1) {
+        $("#dialog .text").html("Vous avez déjà pris l'or de la bourse, en face. Cela ne vous empêche pas de retraverser tout de même la rivière dans l'idée de vous rafraîchir un peu.");
+        $('#dialog a.nb1').html('Ok').attr('onclick','closeDialog()').show();
+      }
     }
   }
   if (insPage==2.2){
     $("#dialog .title").html("Devant la masure");
-    $("#dialog .text").html("A vos pieds, des morceaux de bois déchiquetés et.. mordillés?<br>Devant vous, l'ombre imposante du bâtiment.<br>Derrière vous, la pente de la colline qui mêne au chemin.");
+    $("#dialog .text").html("Le bâtiment semble abandonné, comme si l'ancien propriétaire, trop las d'appliquer des réparations inefficaces, avait préféré partir. A vos pieds, des morceaux de bois déchiquetés et.. mordillés ?<br>On dirait des empreintes de dents, comme si un énorme rat s'était mis à ronger ces vieilles planches.");
     $('#dialog a.nb1').html('Ok').attr('onclick','closeDialog()').show();
   }
   if (insPage==2.211){
@@ -61,10 +80,17 @@ function inspect(thing){
         $('#dialog a.nb1').html('Ok').attr('onclick','closeDialog()').show();
       }
       if (localStorage.sawhole==1){
-        $("#dialog .title").html("Rien d'intéressant.. Quoique ?");
-        $("#dialog .text").html("Au pied de la cabane, un bel assortiment de ruines siège, scientifiquement ficelé par de la toile d'araignée, et recouvert d'une fine couche de poussière : un manche de pioche, des planches rompues, et des mues d'araignée.<br> Vous voyez également une vieille pelle, qui pourra sûrement vous être utile.");
-        $('#dialog a.nb1').html('Prendre').attr('onclick','foundItem("Pelle")').show();
-        $('#dialog a.nb2').show().html('Partir').attr('onclick','closeDialog()');
+        if (localStorage.inv_tool_Shovel==0){
+          $("#dialog .title").html("Rien d'intéressant.. Quoique ?");
+          $("#dialog .text").html("Au pied de la cabane, un bel assortiment de ruines siège, scientifiquement ficelé par de la toile d'araignée, et recouvert d'une fine couche de poussière : un manche de pioche, des planches rompues, et des mues d'araignée.<br> Vous voyez également une vieille pelle, qui pourra sûrement vous être utile.");
+          $('#dialog a.nb1').html('Prendre').attr('onclick','foundItem("Pelle")').show();
+          $('#dialog a.nb2').show().html('Partir').attr('onclick','closeDialog()');
+        }
+        if (localStorage.inv_tool_Shovel==1){
+          $("#dialog .title").html("PLUS rien d'intéressant..");
+          $("#dialog .text").html("Vous avez déjà pris une pelle en ruine, il n'y a aucune autre solution à vos problèmes ici.");
+          $('#dialog a.nb1').html('Partir').attr('onclick','closeDialog()').show();
+        }
       }
     }
     if (thing=='Collines'){

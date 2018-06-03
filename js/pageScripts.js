@@ -48,12 +48,9 @@ function reset1(){
   //
   localStorage.Setting_SoundOn=1;
   localStorage.itemID=0;
-}
-function setSound(soundtype, sound){
-  if (localStorage.Setting_SoundOn==1){
-    localStorage['audiotype'+soundtype] = sound;
-    window.open("audio"+soundtype+".html", "audio"+soundtype);
-  }
+
+  // localStorage.time = "SunnyAfternoon";
+  // changeColor();
 }
 function openDialog(){
   $('#dialog').css('left','15%');
@@ -92,7 +89,7 @@ function transaction(amount){
           $("#transactions").css({'bottom':'3%'});
           setTimeout(function(){
             $("#transactions").css({'height':'0'}).fadeOut(100);
-            refAllbutImg();
+            refAllbutMedias();
           }, 260);
         }, 300);
       }, 1400);
@@ -115,17 +112,24 @@ function transaction(amount){
 //   // console.log(newItem);
 //   addItem(newItem);
 // }
+function setSound(soundtype, sound){
+  if (localStorage.Setting_SoundOn==1){
+    localStorage['audiotype'+soundtype] = sound;
+    window.open("audio"+soundtype+".html", "audio"+soundtype);
+  }
+}
 function foundItem(item) {
   setSound("UI", "takeStuff");
   setTimeout(function(){
     localStorage[window[item].LSName]=1;
+    $('#dialog a').hide();
     $("#dialog .text").html(window[item].FoundText);
     $("#dialog .image").css("background-image", "url(images/"+window[item].Img+")");
     if (window[item].Type == "arme"){
       $('#dialog .icon').html(iconStartingWeapon);
       $("#dialog .title").html("Nouvelle arme !");
       $('#dialog a.nb1').html('Prendre').attr('onclick','closeDialog()').show();
-      $('#dialog a.nb2').html('Prendre et équipper').attr('onclick','localStorage.inv_selected_arme=window[item].Short; closeDialog(); refAllbutImg();').show();
+      $('#dialog a.nb2').html('Prendre et équipper').attr('onclick','localStorage.inv_selected_arme="'+window[item].Short+'"; closeDialog(); refAllbutMedias();').show();
     }
     if (window[item].Type == "tool"){
       $("#dialog .title").html("Nouvel outil !");
@@ -154,7 +158,7 @@ function knockDoor(){
       $("#dialoglayer1")
       .attr("title","Aucune réponse")
       .dialog({ resizable: false, height: "auto", modal: true, dialogClass: 'classicDialog dialBg_burlap',
-      buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAll();} }
+      buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAllbutMedias();} }
     });
   }, 1000);
 } else {
@@ -165,7 +169,7 @@ function knockDoor(){
     $("#dialoglayer1")
     .attr("title","Aucune réponse")
     .dialog({ resizable: false, height: "auto", modal: true, dialogClass: 'classicDialog dialBg_burlap',
-    buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAll();} }
+    buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAllbutMedias();} }
   });
 }, 1000);
 }
@@ -230,11 +234,12 @@ function refScripts(){
     }
   }
   if (page == 2.211){
+    localStorage.time = "";
     setSound("Music", "MystDark_House");
     setSound("EnvB", "CreakingHouse");
     setSound("EnvF", "bunchOfFlies");
-    $("#sleft, #sright").css("background","linear-gradient(to bottom, #98947c -20%, #1d1b1a 70%)");
-    $(".deco").hide();
+    $(".fullscreen").css("background","linear-gradient(rgb(144, 142, 127), rgb(56, 51, 48))");
+    $(".uiBG_clouds").hide();
   }
   if (page == 3){
     setSound("UI", "Aucun");
@@ -256,6 +261,23 @@ function refScripts(){
   }
 }
 // *****************************************************************************************************************************
+//2.11
+function makeHalt(){
+  closeDialog();
+  $('.midscreen, .asideRightOpener, .minimap').hide(300);
+  setTimeout(function(){
+    $("#dialog .title").html("Super");
+    $("#dialog .image").css("background-image", "url(images/vertical/ext/rivewater.png)");
+    $("#dialog .text").html("Cette petite halte est vraiment très agréable. Repartons maintenant.");
+    $('#dialog a.nb1').html('Non').attr('onclick','makeHalt()').show();
+    $('#dialog a.nb2').html('Partir').attr('onclick','stopHalt()').show();
+    openDialog();
+  },14000);
+}
+function stopHalt(){
+  $('.midscreen, .asideRightOpener, .minimap').show(300);
+  closeDialog();
+}
 //2.211 Interieur Cabane
 function nearbody2_211() {
   if (localStorage.tookCorpseGold == 0) {
@@ -271,10 +293,21 @@ function nearbody2_211() {
     $("#dialoglayer1Text").html("Vous entrefouillez les tripes et boyaux à pleine mains en quête d'autres trésors dorés, mais non. Vous êtes immonde. Sortez donc dehors.");
     setTimeout(function(){
       $("#dialoglayer1").attr("title", "Glauque..").dialog({ resizable: false, height: "auto", dialogClass: 'classicDialog dialBg_burlap',
-        buttons: { "Ok": function(){ $(".ui-dialog-content").dialog("close"); refAll(); } }
+        buttons: { "Ok": function(){ $(".ui-dialog-content").dialog("close"); refAllbutMedias(); } }
       });
     }, 1500);
   }
+}
+function quitMasure(){
+  localStorage.numpage=2.2;
+  $('.fullscreen').css('background','linear-gradient(to bottom, #d7eff5, #c4e8fa 60%)');
+  $('.uiBG_clouds').show();
+  setSound("EnvB", "Nature");
+  setSound("EnvF", "Aucun");
+  setSound("UI", "Aucun");
+  setSound("Music", "Sunny");
+  localStorage.time = "SunnyAfternoon";
+  refAll();
 }
 //3.2 Tunnel
 function dig(chance){
@@ -304,19 +337,19 @@ function dirFrom(dirFrom){
   if (localStorage.numpage == 5.1){
     if (dirFrom == "Sud"){localStorage.numpage=5.2;refAll();dirFrom="Aucune";}
     if (dirFrom == "Est"){localStorage.numpage=6.1;refAll();dirFrom="Aucune";}
-    if (dirFrom == "Ouest"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAll();}
+    if (dirFrom == "Ouest"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAllbutMedias();}
   }
   if (localStorage.numpage == 5.2){
     if (dirFrom == "Sud"){localStorage.numpage=5.3;refAll();dirFrom="Aucune";}
-    if (dirFrom == "Ouest"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAll();}
+    if (dirFrom == "Ouest"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAllbutMedias();}
     if (dirFrom == "Nord"){localStorage.numpage=5.1;refAll();dirFrom="Aucune";}
   }
   if (localStorage.numpage == 5.3){
-    if (dirFrom == "Sud"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAll();}
+    if (dirFrom == "Sud"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAllbutMedias();}
     if (dirFrom == "Nord"){localStorage.numpage=5.2;refAll();dirFrom="Aucune";}
   }
   if (localStorage.numpage == 6.1){
-    if (dirFrom == "SudEst"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAll();}
+    if (dirFrom == "SudEst"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAllbutMedias();}
     if (dirFrom == "Ouest"){localStorage.numpage=5.1;refAll();dirFrom="Aucune";}
   }
 }

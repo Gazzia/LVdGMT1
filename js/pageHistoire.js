@@ -34,7 +34,7 @@ function refHistoire(){
   }
   if (page == 2.11){
     $("#histoireTitle").html("Un torrent qui s'enfuit");
-    $("#histoire").html("Derrière le bois, une petite rivière clairette court entre les rochers moussus. L'eau chantante est transparente, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.<br>L'endroit est très tranquille et serait propice à une petite halte.");
+    $("#histoire").html("Derrière le bois, une petite rivière clairette court entre les rochers moussus. L'eau chantante est transparente, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.");
   }
   if (page == 2.2){
     $("#histoireTitle").html("Une bâtisse dominant la colline");

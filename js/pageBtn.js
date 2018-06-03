@@ -40,15 +40,17 @@ function refBtns(){
     $("#btnLook1").html("Panorama").attr("onclick","inspect()");
   }
   if (page == 2.1){
-    addBtn(2,0,0,0,0,0,0,1);
+    addBtn(2,0,0,0,0,0,0,2);
     $("#btnWalk1").html("Suivre le bruit").attr("onclick","localStorage.numpage=2.11; refAll();").addClass('Ouest');
     $("#btnWalk2").html("Revenir sur le chemin").attr("onclick","localStorage.numpage=2; refAll();").addClass('Est');
-    $("#btnLook1").html("Sol").attr("onclick","inspect()");
+    $("#btnLook1").html("Arbres").attr("onclick","inspect('Arbres')");
+    $("#btnLook2").html("Herbe").attr("onclick","inspect('Herbe')");
   }
   if (page == 2.11){
-    addBtn(1,0,0,0,0,0,0,1);
+    addBtn(1,0,0,0,0,0,0,2);
     $("#btnWalk1").html("Revenir vers l'entrée du bois").attr("onclick","localStorage.numpage=2.1; refAll();").addClass('Est');
-    $("#btnLook1").html("Rive opposée").attr("onclick","inspect()");
+    $("#btnLook1").html("Rive opposée").attr("onclick","inspect('RiveOpp')");
+    $("#btnLook2").html("Eau").attr("onclick","inspect('Eau')");
   }
   if (page == 2.2){
     addBtn(2,0,0,0,0,0,1,1);
@@ -59,7 +61,7 @@ function refBtns(){
   }
   if (page == 2.211){
     addBtn(1,0,0,0,0,0,0,1);
-    $("#btnWalk1").html("Sortir rapidement !").attr("onclick","localStorage.numpage=2.2; refAll(); $('#sleft, #sright').css('background','linear-gradient(to bottom, #feffe9 -20%, #c5e3e1 70%)');$('.deco').show();");
+    $("#btnWalk1").html("Sortir rapidement !").attr("onclick","quitMasure()");
     $("#btnLook1").html("S'approcher de la dépouille").attr("onclick","inspect();");
   }
   if (page == 2.22){
@@ -67,13 +69,11 @@ function refBtns(){
     $("#btnWalk1").html("Retourner de l'autre côté").attr("onclick","localStorage.numpage=2.2; refAll();").addClass('Ouest');
     $("#btnLook1").html("Fatras").attr("onclick","inspect('Fatras');");
     $("#btnLook2").html("Collines").attr("onclick","inspect('Collines');");
-    //foundItem('Pelle')
   }
   if (page == 3){
     addBtn(1,0,0,1,0,0,0,0);
     $("#btnWalk1").html("Retourner dans la plaine").attr("onclick","localStorage.numpage=2; refAll();").addClass('Sud');
     $("#btnTalk1").html("Garde").attr("onclick","dialogue('Guarde_MerryvalePsud');");
-    // $("#btnLook1").html("Trouver un autre moyen de passer").attr("onclick","localStorage.numpage=3.2; refAll()").hide();
   }
   if (page == 3.2){
     addBtn(1,0,1,0,0,0,0,0);
