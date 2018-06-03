@@ -15,6 +15,16 @@
       z-index: 2;
       border-right: 0.35vw solid rgba(0, 0, 0, 0.3);
       /*! box-sizing: border-box; */
+      header {
+        height: 12%;
+        span {
+          font-size: 3vh;
+          position: relative;
+          left: 0;
+          top: 2.5vh;
+          color: #8a4973;
+        }
+      }
       .LLPaneBlock {
         box-sizing: border-box;
         text-align: center;
@@ -32,16 +42,6 @@
             bottom: -1px;
             border: 2px solid rgba(0, 0, 0, 0.1);
             border-radius: 5px;
-          }
-        }
-        &header {
-          height: 12%;
-          .titleLL {
-            font-size: 3vh;
-            position: relative;
-            left: 0;
-            top: 2.5vh;
-            color: #8a4973;
           }
         }
         &#InvLPane_LeftArmorBlock {
