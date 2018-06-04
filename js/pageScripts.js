@@ -49,8 +49,6 @@ function reset1(){
   localStorage.Setting_SoundOn=1;
   localStorage.itemID=0;
 
-  // localStorage.time = "SunnyAfternoon";
-  // changeColor();
 }
 function openDialog(){
   $('#dialog').css('left','15%');
@@ -99,19 +97,6 @@ function transaction(amount){
     localStorage.plGold= Number(localStorage.plGold) + Number(amount);
   },5050);
 }
-// var newItem=0;
-// function giveitem(type, name, enchantable){
-//   newItem = 'Non';
-//   var hasEnch = Math.floor(Math.random() * (2 - 1 + 1) + 1);
-//   var ench = 0;
-//   if (hasEnch == 1){ ench=0;}
-//   if (hasEnch == 2){ ench='Swag';}
-//   newItem = $.extend({}, window[name], window[ench]);
-//   // console.log('ench: '+ench+', name: '+newItem.Name)
-//   localStorage.itemID = Number(localStorage.itemID)+1;
-//   // console.log(newItem);
-//   addItem(newItem);
-// }
 function setSound(soundtype, sound){
   if (localStorage.Setting_SoundOn==1){
     localStorage['audiotype'+soundtype] = sound;
@@ -182,7 +167,7 @@ function enterDoor(){
     window.location="Combat.html";
   }
 }
-// *****************************************************************************************************************************
+// --------------------- ACTUALISATION DE PAGE SELON LA PAGE
 function refScripts(){
   var page = localStorage.numpage;
     if (page == "Classe"){
@@ -193,34 +178,25 @@ function refScripts(){
   }
   if (page == "ClasseMage" || page == "ClasseGuerrier" || page == "ClasseEloquent" || page == "ClasseHabile"){
     localStorage.lvl="1";
+  	localStorage.classeXDex=localStorage.classeXChar=localStorage.classeXFesse=localStorage.classeXForce="1";
   }
   if (page == "ClasseMage"){
     localStorage.classe="Mage";
   	localStorage.classeXForce="0.7";
   	localStorage.classeXFesse="1.5";
-  	localStorage.classeXDex="1";
-  	localStorage.classeXChar="1";
   }
   if (page == "ClasseGuerrier"){
     localStorage.classe="Guerrier";
   	localStorage.classeXForce="1.5";
   	localStorage.classeXFesse="0.7";
-  	localStorage.classeXDex="1";
-  	localStorage.classeXChar="1";
   }
   if (page == "ClasseEloquent"){
     localStorage.classe="Eloquent";
-  	localStorage.classeXForce="1";
-  	localStorage.classeXFesse="1";
-  	localStorage.classeXDex="1";
   	localStorage.classeXChar="1.4";
   }
   if (page == "ClasseHabile"){
     localStorage.classe="Habile";
-  	localStorage.classeXForce="1";
-  	localStorage.classeXFesse="1";
   	localStorage.classeXDex="1.4";
-  	localStorage.classeXChar="1";
   }
   if (page == 2){setSound("EnvF", "Aucun");}
   if (page == 2.1){setSound("EnvF", "StreamAfar");}
@@ -260,7 +236,7 @@ function refScripts(){
     $(".deco").hide();
   }
 }
-// *****************************************************************************************************************************
+// ------------------ FONCTIONS APPELÉES PAR DES BOUTONS
 //2.11
 function makeHalt(){
   closeDialog();
@@ -279,25 +255,6 @@ function stopHalt(){
   closeDialog();
 }
 //2.211 Interieur Cabane
-function nearbody2_211() {
-  if (localStorage.tookCorpseGold == 0) {
-    $("#dialoglayer1Text").html("Pour une raison qui ne regarde que vous, vous avez décidé de vous approcher du cadavre. La chance vous sourit ! L'homme portait une sacoche d'or à sa ceinture !");
-    $("#dialoglayer1")
-    .attr("title", "Un éclat couleur sang")
-    .dialog({ resizable: false, height: "auto", dialogClass: 'classicDialog dialBg_burlap',
-      buttons: { "Prendre": function(){setSound("UI", "gold"); foundGold(50, "tookCorpseGold"); }}
-    });
-  }
-  if (localStorage.tookCorpseGold == 1) {
-    setSound("UI", "fleshSigh");
-    $("#dialoglayer1Text").html("Vous entrefouillez les tripes et boyaux à pleine mains en quête d'autres trésors dorés, mais non. Vous êtes immonde. Sortez donc dehors.");
-    setTimeout(function(){
-      $("#dialoglayer1").attr("title", "Glauque..").dialog({ resizable: false, height: "auto", dialogClass: 'classicDialog dialBg_burlap',
-        buttons: { "Ok": function(){ $(".ui-dialog-content").dialog("close"); refAllbutMedias(); } }
-      });
-    }, 1500);
-  }
-}
 function quitMasure(){
   localStorage.numpage=2.2;
   $('.fullscreen').css('background','linear-gradient(to bottom, #d7eff5, #c4e8fa 60%)');
