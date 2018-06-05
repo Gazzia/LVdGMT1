@@ -48,7 +48,6 @@ function reset1(){
   //
   localStorage.Setting_SoundOn=1;
   localStorage.itemID=0;
-
 }
 function openDialog(){
   $('#dialog').css('left','15%');
@@ -87,7 +86,7 @@ function transaction(amount){
           $("#transactions").css({'bottom':'3%'});
           setTimeout(function(){
             $("#transactions").css({'height':'0'}).fadeOut(100);
-            refAllbutMedias();
+            refAllbutImg();
           }, 260);
         }, 300);
       }, 1400);
@@ -97,12 +96,17 @@ function transaction(amount){
     localStorage.plGold= Number(localStorage.plGold) + Number(amount);
   },5050);
 }
-function setSound(soundtype, sound){
-  if (localStorage.Setting_SoundOn==1){
-    localStorage['audiotype'+soundtype] = sound;
-    window.open("audio"+soundtype+".html", "audio"+soundtype);
-  }
-}
+// function setSound(soundtype, sound){
+//   if (localStorage.Setting_SoundOn==1){
+//     localStorage['audiotype'+soundtype] = sound;
+//     window.open("audio"+soundtype+".html", "audio"+soundtype);
+//   }
+// }
+
+setSound('EnvB', localStorage.soundEnvB);
+setSound('EnvF', localStorage.soundEnvF);
+setSound('Music', localStorage.soundMusic);
+
 function foundItem(item) {
   setSound("UI", "takeStuff");
   setTimeout(function(){
@@ -114,7 +118,7 @@ function foundItem(item) {
       $('#dialog .icon').html(iconStartingWeapon);
       $("#dialog .title").html("Nouvelle arme !");
       $('#dialog a.nb1').html('Prendre').attr('onclick','closeDialog()').show();
-      $('#dialog a.nb2').html('Prendre et équipper').attr('onclick','localStorage.inv_selected_arme="'+window[item].Short+'"; closeDialog(); refAllbutMedias();').show();
+      $('#dialog a.nb2').html('Prendre et équipper').attr('onclick','localStorage.inv_selected_arme="'+window[item].Short+'"; closeDialog(); refAllbutImg();').show();
     }
     if (window[item].Type == "tool"){
       $("#dialog .title").html("Nouvel outil !");
@@ -143,7 +147,7 @@ function knockDoor(){
       $("#dialoglayer1")
       .attr("title","Aucune réponse")
       .dialog({ resizable: false, height: "auto", modal: true, dialogClass: 'classicDialog dialBg_burlap',
-      buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAllbutMedias();} }
+      buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAllbutImg();} }
     });
   }, 1000);
 } else {
@@ -154,7 +158,7 @@ function knockDoor(){
     $("#dialoglayer1")
     .attr("title","Aucune réponse")
     .dialog({ resizable: false, height: "auto", modal: true, dialogClass: 'classicDialog dialBg_burlap',
-    buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAllbutMedias();} }
+    buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAllbutImg();} }
   });
 }, 1000);
 }
@@ -294,19 +298,19 @@ function dirFrom(dirFrom){
   if (localStorage.numpage == 5.1){
     if (dirFrom == "Sud"){localStorage.numpage=5.2;refAll();dirFrom="Aucune";}
     if (dirFrom == "Est"){localStorage.numpage=6.1;refAll();dirFrom="Aucune";}
-    if (dirFrom == "Ouest"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAllbutMedias();}
+    if (dirFrom == "Ouest"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAllbutImg();}
   }
   if (localStorage.numpage == 5.2){
     if (dirFrom == "Sud"){localStorage.numpage=5.3;refAll();dirFrom="Aucune";}
-    if (dirFrom == "Ouest"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAllbutMedias();}
+    if (dirFrom == "Ouest"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAllbutImg();}
     if (dirFrom == "Nord"){localStorage.numpage=5.1;refAll();dirFrom="Aucune";}
   }
   if (localStorage.numpage == 5.3){
-    if (dirFrom == "Sud"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAllbutMedias();}
+    if (dirFrom == "Sud"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAllbutImg();}
     if (dirFrom == "Nord"){localStorage.numpage=5.2;refAll();dirFrom="Aucune";}
   }
   if (localStorage.numpage == 6.1){
-    if (dirFrom == "SudEst"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAllbutMedias();}
+    if (dirFrom == "SudEst"){alert('Vous ne pouvez pas encore faire cela');dirFrom="Aucune";refAllbutImg();}
     if (dirFrom == "Ouest"){localStorage.numpage=5.1;refAll();dirFrom="Aucune";}
   }
 }
