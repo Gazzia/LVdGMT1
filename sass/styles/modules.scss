@@ -67,35 +67,37 @@ hr {
 }
 .asideRight {
   width: 20%;
-  background: #d2c6b4;
+  background-color: #d2c6b4;
   right: -20%;
   top: 0;
   z-index: 12;
-  transition: right 0.25s ease-in;
+  transition: right 0.25s ease-in, background 0.3s ease;
   &.shown {
     right: 0;
   }
-  .asideRight_nav {
+  nav {
     width: 3vw;
     background-color: #97907f;
     padding-top: 1vh;
-    .asideRight_navIcons {
-      transition: background 0.3s ease-in;
+    transition: background-color 0.5s ease;
+    .icons {
+      transition: background 0.3s ease;
       margin-bottom: 1vh;
       display: inline-block;
+      height: 3vw;
       &:hover {
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.15);
       }
       img,
       svg {
-        width: 70%;
-        left: 15%;
+        width: 2.2vw;
+        left: 0.4vw;
+        top: 0.4vw;
         position: relative;
-        margin: 9% 0;
         height: auto;
         fill: #d2c2b4;
       }
-      &.navIconsActive {
+      &.active {
         &:before {
           content: "";
           width: 3px;
@@ -104,27 +106,69 @@ hr {
           position: absolute;
         }
       }
-      &.asideRight_navClose {
-        height: 2vh;
+      &.close {
+        height: 1.5vw;
         text-align: center;
         svg {
           margin: 0;
           width: auto;
-          height: 100%;
+          height: 1vw;
           padding: 0;
           left: calc(50% - 1vh);
+          top:0.25vw;
           position: absolute;
         }
       }
     }
+    .bot {
+      bottom: 1vh;
+      position: absolute;
+      width: 100%;
+    }
   }
-  .sidebarRight_menu {
+  .menus {
     width: calc(100% - 3vw);
     right: 0;
-    padding: 2vh;
-    box-sizing: border-box;
     font-family: 'Didact Gothic', sans-serif;
     font-size: 2vh;
+    header{
+      text-align:center;
+      color: #765f56;
+    }
+    main{
+      .block{
+        display: flow-root;
+        margin-bottom:1vh;
+        .img{
+          background-color: #f2f2f2;
+          position: absolute;
+          left: 0.8vw;
+          width: 18vh;
+          margin-top: 1vh;
+          border-radius: 2px;
+          opacity: 0.5;
+          height: 3.5vh;
+          text-align:center;
+          svg {
+            height: 3vh;
+            fill: #000;
+            margin-top: 0.25vh;
+            left: 10%;
+            stroke: black;
+            display: inline;
+            stroke-width: 1px;
+          }
+        }
+        .text{
+          width:75%;
+          left: 4vh;
+          float:right;
+          color: #9f907a;
+          text-align: right;
+          margin-right: 3px;
+        }
+      }
+    }
     .statLine {
       display: -moz-grid;
       width: 100%;
@@ -194,8 +238,10 @@ hr {
   color: white !important;
   border: 0 !important;
   border-radius: 5px !important;
-  font-size: 1.8vh !important;
-  font-family: 'Didact Gothic', sans-serif !important;
+  font: {
+    size: 1.8vh !important;
+    family: 'Didact Gothic', sans-serif !important;
+  }
 }
 #dialog {
   position: absolute;

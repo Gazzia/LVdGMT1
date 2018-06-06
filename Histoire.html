@@ -150,7 +150,6 @@
 			 <p id="getitemText"></p>
   </div>
 
-
 	<!-- Panneau d'info et de config à droite -->
 	<a class="asideRightOpener">
 		<svg id="openAsideRight" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20">
@@ -160,56 +159,162 @@
 	</a>
 	<aside class="asideRight maxheight">
 		<nav class="asideRight_nav maxheight">
-			<a class="asideRight_navIcons asideRight_navClose closeIcon maxwidth_rel"></a>
-			<a id="asideRightNav_Carac" class="asideRight_navIcons navIconsActive maxwidth_rel" onclick="makeActive('Abiletes')"></a>
-			<a id="asideRightNav_Stats" class="asideRight_navIcons maxwidth_rel" onclick="makeActive('Stats')"></a>
+			<div class="top">
+				<a class="icons close maxwidth_rel"></a>
+			</div>
+			<div class="mid">
+				<a id="openMenuCarac" class="icons active maxwidth_rel" onclick="makeActive('Carac')"></a>
+				<a id="openMenuStats" class="icons maxwidth_rel" onclick="makeActive('Stats')"></a>
+			</div>
+			<div class="bot">
+				<a id="openMenuOptions" class="icons maxwidth_rel" onclick="makeActive('Options')"></a>
+			</div>
 		</nav>
-		<div id="sidebarRight_menuCarac" class="sidebarRight_menu maxheight">
-			CARACTÉRISTIQUES
-			<hr class="hr2">
-			<div id="totalForce" class="statLine full"><div class="statText">FOR - Force</div><div class="statNumber"></div></div>
-				<div class="statImage Force"></div>
-				<div id="bForce" class="statLine sub"><div class="statText">Base</div><div class="statNumber"></div></div>
-				<div id="raceXForce" class="statLine sub"><div class="statText">Race</div><div class="statNumber mult"></div></div>
-				<div id="origineXForce" class="statLine sub"><div class="statText">Origine</div><div class="statNumber mult"></div></div>
-				<div id="classeXForce" class="statLine sub"><div class="statText">Classe</div><div class="statNumber mult"></div></div>
-				<div class="statLine sub"><div class="statText">Objets</div><div class="statNumber"></div></div>
-			<div id="totalFesse" class="statLine full"><div class="statText">FS - Force spirituelle</div><div class="statNumber"></div></div>
+		<div id="menuCarac" class="menus maxheight">
+			<header>
+				CARACTÉRISTIQUES
+				<hr class="hr2">
+			</header>
+			<main>
+				<div class='block statForce'>
+					<div class="img"></div>
+					<div class= 'total'></div>
+					<div class="text">
+						Base<br>Race<br>Origine<br>Classe<br>Objets
+					</div>
+					<div class="nb">
+					</div>
+				</div>
+				<div class='block statFesse'>
+					<div class="img"></div>
+					<div class= 'total'></div>
+					<div class="text">
+						Base<br>Race<br>Origine<br>Classe<br>Objets
+					</div>
+					<div class="nb">
+					</div>
+				</div>
 				<div class="statImage Fesse"></div>
-				<div id="bFesse" class="statLine sub"><div class="statText">Base</div><div class="statNumber"></div></div>
-				<div id="raceXFesse" class="statLine sub"><div class="statText">Race</div><div class="statNumber mult"></div></div>
-				<div id="origineXFesse" class="statLine sub"><div class="statText">Origine</div><div class="statNumber mult"></div></div>
-				<div id="classeXFesse" class="statLine sub"><div class="statText">Classe</div><div class="statNumber mult"></div></div>
-				<div class="statLine sub"><div class="statText">Objets</div><div class="statNumber"></div></div>
-			<div id="totalChar" class="statLine full"><div class="statText">CHAR - Charisme</div><div class="statNumber"></div></div>
+				<div id="bFesse" class="statLine sub">
+					<div class="statText">Base</div>
+					<div class="statNumber"></div>
+				</div>
+				<div id="raceXFesse" class="statLine sub">
+					<div class="statText">Race</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div id="origineXFesse" class="statLine sub">
+					<div class="statText">Origine</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div id="classeXFesse" class="statLine sub">
+					<div class="statText">Classe</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div class="statLine sub">
+					<div class="statText">Objets</div>
+					<div class="statNumber"></div>
+				</div>
+				<div id="totalChar" class="statLine full">
+					<div class="statText">CHAR - Charisme</div>
+					<div class="statNumber"></div>
+				</div>
 				<div class="statImage Char"></div>
-				<div id="bChar" class="statLine sub"><div class="statText">Base</div><div class="statNumber"></div></div>
-				<div id="raceXChar" class="statLine sub"><div class="statText">Race</div><div class="statNumber mult"></div></div>
-				<div id="origineXChar" class="statLine sub"><div class="statText">Origine</div><div class="statNumber mult"></div></div>
-				<div id="classeXChar" class="statLine sub"><div class="statText">Classe</div><div class="statNumber mult"></div></div>
-				<div class="statLine sub"><div class="statText">Objets</div><div class="statNumber"></div></div>
-			<div id="totalDex" class="statLine full"><div class="statText">DEX - Dexterité</div><div class="statNumber"></div></div>
+				<div id="bChar" class="statLine sub">
+					<div class="statText">Base</div>
+					<div class="statNumber"></div>
+				</div>
+				<div id="raceXChar" class="statLine sub">
+					<div class="statText">Race</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div id="origineXChar" class="statLine sub">
+					<div class="statText">Origine</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div id="classeXChar" class="statLine sub">
+					<div class="statText">Classe</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div class="statLine sub">
+					<div class="statText">Objets</div>
+					<div class="statNumber"></div>
+				</div>
+				<div id="totalDex" class="statLine full">
+					<div class="statText">DEX - Dexterité</div>
+					<div class="statNumber"></div>
+				</div>
 				<div class="statImage Dex"></div>
-				<div id="bDex" class="statLine sub"><div class="statText">Base</div><div class="statNumber"></div></div>
-				<div id="raceXDex" class="statLine sub"><div class="statText">Race</div><div class="statNumber mult"></div></div>
-				<div id="origineXDex" class="statLine sub"><div class="statText">Origine</div><div class="statNumber mult"></div></div>
-				<div id="classeXDex" class="statLine sub"><div class="statText">Classe</div><div class="statNumber mult"></div></div>
-				<div class="statLine sub"><div class="statText">Objets</div><div class="statNumber"></div></div>
-			<div id="totalSag" class="statLine full"><div class="statText">SAG - Sagesse</div><div class="statNumber"></div></div>
+				<div id="bDex" class="statLine sub">
+					<div class="statText">Base</div>
+					<div class="statNumber"></div>
+				</div>
+				<div id="raceXDex" class="statLine sub">
+					<div class="statText">Race</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div id="origineXDex" class="statLine sub">
+					<div class="statText">Origine</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div id="classeXDex" class="statLine sub">
+					<div class="statText">Classe</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div class="statLine sub">
+					<div class="statText">Objets</div>
+					<div class="statNumber"></div>
+				</div>
+				<div id="totalSag" class="statLine full">
+					<div class="statText">SAG - Sagesse</div>
+					<div class="statNumber"></div>
+				</div>
 				<div class="statImage Sag"></div>
-				<div id="bSag" class="statLine sub"><div class="statText">Base</div><div class="statNumber"></div></div>
-				<div id="raceXSag" class="statLine sub"><div class="statText">Race</div><div class="statNumber mult"></div></div>
-				<div id="origineXSag" class="statLine sub"><div class="statText">Origine</div><div class="statNumber mult"></div></div>
-				<div class="statLine sub"><div class="statText">Objets</div><div class="statNumber"></div></div>
-			<div id="totalInt" class="statLine full"><div class="statText">INT - Intelligence</div><div class="statNumber"></div></div>
+				<div id="bSag" class="statLine sub">
+					<div class="statText">Base</div>
+					<div class="statNumber"></div>
+				</div>
+				<div id="raceXSag" class="statLine sub">
+					<div class="statText">Race</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div id="origineXSag" class="statLine sub">
+					<div class="statText">Origine</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div class="statLine sub">
+					<div class="statText">Objets</div>
+					<div class="statNumber"></div>
+				</div>
+				<div id="totalInt" class="statLine full">
+					<div class="statText">INT - Intelligence</div>
+					<div class="statNumber"></div>
+				</div>
 				<div class="statImage Int"></div>
-				<div id="bInt" class="statLine sub"><div class="statText">Base</div><div class="statNumber"></div></div>
-				<div id="raceXInt" class="statLine sub"><div class="statText">Race</div><div class="statNumber mult"></div></div>
-				<div id="origineXInt" class="statLine sub"><div class="statText">Origine</div><div class="statNumber mult"></div></div>
-				<div class="statLine sub"><div class="statText">Objets</div><div class="statNumber"></div></div>
+				<div id="bInt" class="statLine sub">
+					<div class="statText">Base</div>
+					<div class="statNumber"></div>
+				</div>
+				<div id="raceXInt" class="statLine sub">
+					<div class="statText">Race</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div id="origineXInt" class="statLine sub">
+					<div class="statText">Origine</div>
+					<div class="statNumber mult"></div>
+				</div>
+				<div class="statLine sub">
+					<div class="statText">Objets</div>
+					<div class="statNumber"></div>
+				</div>
+			</main>
 		</div>
-		<div id="sidebarRight_menuStats" class="sidebarRight_menu maxheight" style="display:none">
+		<div id="menuStats" class="menus maxheight" style="display:none">
 			STATS
+			<hr class="hr2">
+		</div>
+		<div id="menuOptions" class="menus maxheight" style="display:none">
+			OPTIONS
 			<hr class="hr2">
 		</div>
 	</aside>
@@ -378,24 +483,36 @@ $("#openAsideRight").click(function(){
 	$(".asideRight").addClass('shown');
 	$(".mask.light.brown").fadeIn(300);
 });
-$(".asideRight_navClose").click(function(){
+$(".asideRight nav .close").click(function(){
 	$(".asideRight").removeClass('shown');
 	$(".mask.light.brown").fadeOut(300);
 });
-function makeActive(active){
-	$('.navIconsActive').removeClass('navIconsActive');
-	$('.sidebarRight_menu').hide(200)
-	if (active == "Abiletes"){
-		$("#asideRightNav_Carac").addClass('navIconsActive');
-		$('#sidebarRight_menuCarac').show(200);
-	}
-	if (active == "Stats"){
-		$("#asideRightNav_Stats").addClass('navIconsActive');
-		$('#sidebarRight_menuStats').show(200);
+function makeActive(menu){
+	$('.active').removeClass('active');
+	$('.menus').hide(200)
+	$("#openMenu"+menu).addClass('active');
+	$('#menu'+menu).show(200);
+	if (menu == "Options"){
+		$('.asideRight').css('background-color','rgb(127, 171, 156)');
+		$('.asideRight nav').css('background-color','rgb(115, 155, 145)');
+	} else {
+		$('.asideRight').css('background-color','#d2c6b4');
+		$('.asideRight nav').css('background-color','#97907f');
 	}
 }
 //import svg
-$(".statImage.Force").html(iconForce);$(".statImage.Fesse").html(iconFesse);$(".statImage.Char").html(iconChar);$(".statImage.Dex").html(iconDex);$(".statImage.Sag").html(iconSag);$(".statImage.Int").html(iconInt);$('#asideRightNav_Carac').html(iconCarac);$('#asideRightNav_Stats').html(iconStats);$(".closeIcon").html(iconClose);$("#weaponLeftHSymbol").html(iconLeftHand);$("#weaponRightHSymbol").html(iconRightHand);
+$(".statForce .img").html(iconForce);
+$(".statFesse .img").html(iconFesse);
+$(".statImage.Char").html(iconChar);
+$(".statImage.Dex").html(iconDex);
+$(".statImage.Sag").html(iconSag);
+$(".statImage.Int").html(iconInt);
+$('#openMenuCarac').html(iconCarac);
+$('#openMenuStats').html(iconStats);
+$("#openMenuOptions").html(iconOptions);
+$(".asideRight nav .close").html(iconClose);
+$("#weaponLeftHSymbol").html(iconLeftHand);
+$("#weaponRightHSymbol").html(iconRightHand);
 
 //inv
 var isInvOpen=0;

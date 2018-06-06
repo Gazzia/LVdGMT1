@@ -6,7 +6,7 @@ function setSound(soundtype, sound){
       plEnvB = document.getElementById("playerEnvB");
       plEnvB.pause();
       plEnvB.currentTime = 0;
-      if (sound == "None"){$('#playerEnvB').html('');}
+      if (sound == "stop"){$('#playerEnvB').html('');}
       if (sound == 'Nature'){
         var envNb = Math.floor(Math.random() * 4) + 1;
       	if (envNb == 1) {envBtrack ="sound/env/nature/windCricketA1.mp3";playEnvB(envBtrack);plEnvB.volume=0.2;}
@@ -55,7 +55,7 @@ function setSound(soundtype, sound){
       if (sound == "MystDark_House"){musictrack="sound/music/mysterious dark/Carlos Viola - A house in silence.mp3";playMusic(musictrack);plMusic.volume=0.3;}
       if (sound == "Battle1"){musictrack="sound/music/battle/Paul Haslinger - A Chance To Escape.mp3";playMusic(musictrack);plMusic.volume=0.15;}
       //
-      if (sound == "None"){$('#playerMusic').html('');}
+      if (sound == "stop"){$('#playerMusic').html('');}
       $("#playerMusic").bind('ended', function(){
         setSound('Music', localStorage.soundMusic);
       });

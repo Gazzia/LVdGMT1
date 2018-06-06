@@ -99,8 +99,8 @@ function knockDoor(){
 }
 function enterDoor(){
   if (localStorage.numpage==2.2){
-    setSound("EnvB", "Aucun");
-    setSound("EnvF", "Aucun");
+    setSound("EnvB", "stop");
+    setSound("EnvF", "stop");
     setSound("Music", "Battle1");
     window.location="2.21 CombatRat.html";
   }
@@ -110,9 +110,9 @@ function refScripts(){
   var page = localStorage.numpage;
   if (page == "MenuPrincipal"){
     $("#intro_backgroundTitle").fadeIn(800).children().hide().fadeIn(2000);
-    setSound("EnvB", "Aucun");
-    setSound("EnvF", "Aucun");
-    setSound("UI", "Aucun");
+    setSound("EnvB", "stop");
+    setSound("EnvF", "stop");
+    setSound("UI", "stop");
     setSound("Music", "Intro");
   }
   if (page == "Pseudo"){
@@ -212,7 +212,7 @@ function refScripts(){
   if (page == "Classe"){
     reset1();
     setSound("EnvB", "Nature");
-    setSound("EnvF", "Aucun");
+    setSound("EnvF", "stop");
     setSound("Music", "Sunny");
   }
   if (page == "ClasseMage" || page == "ClasseGuerrier" || page == "ClasseEloquent" || page == "ClasseAgile"){
@@ -256,13 +256,13 @@ function refScripts(){
     		buttons: { "Ok": function(){$(".ui-dialog-content").dialog("close"); refAll();} }
     	});	localStorage.aboutMenu=1;
     }
-    setSound("EnvF", "Aucun");
+    setSound("EnvF", "stop");
   }
   if (page == 2.1){setSound("EnvF", "StreamAfar");}
   if (page == 2.11){setSound("EnvF", "Stream");}
   if (page == 2.2){
     if (localStorage.combatWon_RatSoufflant == 0) {
-      if (localStorage.nbKnock2_2 == 0) { $("#btnDivers1").html("Frapper à la porte").attr("onclick", "knockDoor()"); setSound("EnvF", "Aucun"); }
+      if (localStorage.nbKnock2_2 == 0) { $("#btnDivers1").html("Frapper à la porte").attr("onclick", "knockDoor()"); setSound("EnvF", "stop"); }
       if (localStorage.nbKnock2_2 == 1) { $("#btnDivers1").html("Entrer par la porte entrebaillée").attr("onclick", "enterDoor()"); setSound("EnvF", "ratRun"); }
     } else {
       $("#btnDivers1").html("Entrer  à l'intérieur").attr("onclick", "localStorage.numpage=2.211; refAll();");
@@ -283,7 +283,7 @@ function refScripts(){
   	}
   }
   if (page == 3){
-    setSound("UI", "Aucun");
+    setSound("UI", "stop");
     if (localStorage.talkedToGuard == 1 && localStorage.caughtbyguard == 0) { $(".btnM2").show();}
   }
   if (page == 3.2){
@@ -392,9 +392,9 @@ function dig(chance){
 }
 //4
 function enterMerryvale(){
-  setSound("UI", "Aucun");
+  setSound("UI", "stop");
   setSound("EnvB", "CityCalm");
-  setSound("EnvF", "Aucun");
+  setSound("EnvF", "stop");
   setSound("Music", "CityHappy");
   localStorage.talked_guy1=0;
   localStorage.GMTDrankPotion=0;
@@ -464,9 +464,9 @@ function drinkRandomPotion(){
 function enterTemple(){
   setSound("UI", "largeDoorOpen");
   setTimeout(function () {
-    setSound("EnvB", "Aucun");
+    setSound("EnvB", "stop");
     setSound("EnvF", "Snoring");
-    setSound("Music", "Aucun");
+    setSound("Music", "stop");
     localStorage.numpage=6.11; refAll();
   },1000);
 }
@@ -474,7 +474,7 @@ function leaveTemple(){
   $('#sleft, #sright').css('background','linear-gradient(to bottom, #feffe9 -20%, #c5e3e1 70%)');
   $('.deco').show();
   setSound("EnvB", "CityCalm");
-  setSound("EnvF", "Aucun");
+  setSound("EnvF", "stop");
   setSound("Music", "CityHappy");
   localStorage.numpage=6.1;
   localStorage.dirFrom='Door8';

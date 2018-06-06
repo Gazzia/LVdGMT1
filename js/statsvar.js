@@ -47,12 +47,8 @@ function refStats(){
 		localStorage.setItem("dmgbasemax", "10");}
 	maxdmg = localStorage.dmgbasemax;
 	mindmg = localStorage.dmgbasemin;
-	$("#totalForce .statNumber").html(totalForce);
-	$("#bForce .statNumber").html(bForce);
-	$("#raceXForce .statNumber").html(raceXForce);
-	$("#origineXForce .statNumber").html(origineXForce);
-	$("#classeXForce .statNumber").html(classeXForce);
-
+	$(".statForce .text").html('Base: '+bForce+'<br>Race: '+raceXForce+'<br>Origine: '+origineXForce+'<br>Classe: '+classeXForce+'<br>Objets: '+'0');
+	$(".statFesse .text").html('Base: '+bFesse+'<br>Race: '+raceXFesse+'<br>Origine: '+origineXFesse+'<br>Classe: '+classeXFesse+'<br>Objets: '+'0');
 	$("#totalFesse .statNumber").html(totalFesse);
 	$("#bFesse .statNumber").html(bFesse);
 	$("#raceXFesse .statNumber").html(raceXFesse);

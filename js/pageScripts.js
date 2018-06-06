@@ -165,8 +165,8 @@ function knockDoor(){
 }
 function enterDoor(){
   if (localStorage.numpage==2.2){
-    setSound("EnvB", "Aucun");
-    setSound("EnvF", "Aucun");
+    setSound("EnvB", "stop");
+    setSound("EnvF", "stop");
     setSound("Music", "Battle1");
     window.location="Combat.html";
   }
@@ -177,7 +177,7 @@ function refScripts(){
     if (page == "Classe"){
     reset1();
     setSound("EnvB", "Nature");
-    setSound("EnvF", "Aucun");
+    setSound("EnvF", "stop");
     setSound("Music", "Sunny");
   }
   if (page == "ClasseMage" || page == "ClasseGuerrier" || page == "ClasseEloquent" || page == "ClasseHabile"){
@@ -202,12 +202,12 @@ function refScripts(){
     localStorage.classe="Habile";
   	localStorage.classeXDex="1.4";
   }
-  if (page == 2){setSound("EnvF", "Aucun");}
+  if (page == 2){setSound("EnvF", "stop");}
   if (page == 2.1){setSound("EnvF", "StreamAfar");}
   if (page == 2.11){setSound("EnvF", "Stream");}
   if (page == 2.2){
     if (localStorage.combatWon_RatSoufflant == 0) {
-      if (localStorage.nbKnock2_2 == 0) { $("#btnDivers1").html("Frapper à la porte").attr("onclick", "knockDoor()"); setSound("EnvF", "Aucun"); }
+      if (localStorage.nbKnock2_2 == 0) { $("#btnDivers1").html("Frapper à la porte").attr("onclick", "knockDoor()"); setSound("EnvF", "stop"); }
       if (localStorage.nbKnock2_2 == 1) { $("#btnDivers1").html("Entrer par la porte entrebaillée").attr("onclick", "enterDoor()"); setSound("EnvF", "ratRun"); }
     } else {
       $("#btnDivers1").html("Entrer  à l'intérieur").attr("onclick", "localStorage.numpage=2.211; refAll();");
@@ -222,7 +222,7 @@ function refScripts(){
     $(".uiBG_clouds").hide();
   }
   if (page == 3){
-    setSound("UI", "Aucun");
+    setSound("UI", "stop");
     if (localStorage.talkedToGuard == 1 && localStorage.caughtbyguard == 0) {
       addBtn(0,0,0,0,0,0,0,1);
       $("#btnLook1").html("Trouver un autre moyen de passer").attr("onclick","localStorage.numpage=3.2; refAll()");
@@ -264,8 +264,8 @@ function quitMasure(){
   $('.fullscreen').css('background','linear-gradient(to bottom, #d7eff5, #c4e8fa 60%)');
   $('.uiBG_clouds').show();
   setSound("EnvB", "Nature");
-  setSound("EnvF", "Aucun");
-  setSound("UI", "Aucun");
+  setSound("EnvF", "stop");
+  setSound("UI", "stop");
   setSound("Music", "Sunny");
   localStorage.time = "SunnyAfternoon";
   refAll();
@@ -283,9 +283,9 @@ function dig(chance){
 }
 //4
 function enterMerryvale(){
-  setSound("UI", "Aucun");
+  setSound("UI", "stop");
   setSound("EnvB", "CityCalm");
-  setSound("EnvF", "Aucun");
+  setSound("EnvF", "stop");
   setSound("Music", "CityHappy");
   localStorage.talked_guy1=0;
   localStorage.GMTDrankPotion=0;
@@ -355,9 +355,9 @@ function drinkRandomPotion(){
 function enterTemple(){
   setSound("UI", "largeDoorOpen");
   setTimeout(function () {
-    setSound("EnvB", "Aucun");
+    setSound("EnvB", "stop");
     setSound("EnvF", "Snoring");
-    setSound("Music", "Aucun");
+    setSound("Music", "stop");
     localStorage.numpage=6.11; refAll();
   },1000);
 }
@@ -365,7 +365,7 @@ function leaveTemple(){
   $('#sleft, #sright').css('background','linear-gradient(to bottom, #feffe9 -20%, #c5e3e1 70%)');
   $('.deco').show();
   setSound("EnvB", "CityCalm");
-  setSound("EnvF", "Aucun");
+  setSound("EnvF", "stop");
   setSound("Music", "CityHappy");
   localStorage.numpage=6.1;
   localStorage.dirFrom='Door8';
