@@ -49,6 +49,20 @@ function reset1(){
   localStorage.Setting_SoundOn=1;
   localStorage.itemID=0;
 }
+function expandHistoireBlock(){
+  $(".leftblock").css({'width':'50vw'});
+  $(".leftblock footer").fadeOut(300);
+  setTimeout(function(){
+    $(".leftblock").css({'height':'98vh','top':'-9vh'}).addClass('clickToClose');
+  },300);
+}
+$(document).on('click','.leftblock.clickToClose', function(){
+  $(".leftblock").css({'height':'100%','top':'0'}).removeClass('clickToClose');
+  setTimeout(function(){
+    $(".leftblock").css({'width':'calc(60% - 1vw)'});
+    $(".leftblock footer").fadeIn(300);
+  },300);
+})
 function openDialog(){
   $('#dialog').css('left','15%');
   $('.mask.light.brown').fadeIn(700);

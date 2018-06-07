@@ -37,19 +37,29 @@ function setSound(soundtype, sound){
       plMusic.currentTime = 0;
       if (sound == 'Intro'){
         let envNb = Math.floor(Math.random() * 4) + 1;
-        if (envNb == 1) {musictrack ="sound/music/Carlos Viola - Memories.mp3";playMusic(musictrack);plMusic.volume=0.3;}
-        if (envNb == 2) {musictrack ="sound/music/Carlos Viola - Rest In Peace.mp3";playMusic(musictrack);plMusic.volume=0.3;}
-        if (envNb == 3) {musictrack ="sound/music/Carlos Viola - My Last Regrets.mp3";playMusic(musictrack);plMusic.volume=0.3;}
-        if (envNb == 4) {musictrack ="sound/music/Carlos Viola - Letter from a friend.mp3";playMusic(musictrack);plMusic.volume=0.3;}
+        if (envNb == 1) {musictrack ="sound/music/CarlosViolaMemories.mp3";playMusic(musictrack);plMusic.volume=0.3;}
+        //Carlos Viola - Memories
+        if (envNb == 2) {musictrack ="sound/music/CarlosViolaRestInPeace.mp3";playMusic(musictrack);plMusic.volume=0.3;}
+        //Carlos Viola - Rest In Peace
+        if (envNb == 3) {musictrack ="sound/music/CarlosViolaMyLastRegrets.mp3";playMusic(musictrack);plMusic.volume=0.3;}
+        //Carlos Viola - My Last Regrets
+        if (envNb == 4) {musictrack ="sound/music/CarlosViolaLetterFromAFriend.mp3";playMusic(musictrack);plMusic.volume=0.3;}
+        //Carlos Viola - Letter from a friend
       }
       if (sound == 'Sunny'){
       	let envNb = Math.floor(Math.random() * 6) + 1;
-      	if (envNb == 1) {musictrack ="sound/music/sunny/Derek Fiechter - Waltz of the Forest Nymphs.mp3";playMusic(musictrack);plMusic.volume=0.3;}
-      	if (envNb == 2) {musictrack ="sound/music/sunny/Vivaldi - Violin Concerto in F Minor Op 8-4 Winter Largo.mp3";playMusic(musictrack);plMusic.volume=0.15;}
-      	if (envNb == 3) {musictrack ="sound/music/sunny/The Flashbulb - Hello, Im Benn.mp3";playMusic(musictrack);plMusic.volume=0.3;}
-      	if (envNb == 4) {musictrack ="sound/music/sunny/Evelyn Stein - Quiet Resource.mp3";playMusic(musictrack);plMusic.volume=0.3;}
-      	if (envNb == 5) {musictrack ="sound/music/sunny/Ensemble Galilei - Carol Of The Birds.mp3";playMusic(musictrack);plMusic.volume=0.3;}
-      	if (envNb == 6) {musictrack ="sound/music/sunny/Brandon Fiechter - Whispering Oaks.mp3";playMusic(musictrack);plMusic.volume=0.3;}
+      	if (envNb == 1) {musictrack ="sound/music/sunny/DerekFiechterWaltzOfTheForestNymphs.mp3";playMusic(musictrack);plMusic.volume=0.3;}
+        //Derek Fiechter - Waltz of the Forest Nymphs
+      	if (envNb == 2) {musictrack ="sound/music/sunny/VivaldiViolinConcertoInFMin.mp3";playMusic(musictrack);plMusic.volume=0.15;}
+        //Vivaldi - Violin Concerto in F Minor Op 8-4 Winter Largo
+      	if (envNb == 3) {musictrack ="sound/music/sunny/TheFlashbulbHelloImBenn.mp3";playMusic(musictrack);plMusic.volume=0.25;}
+        //The Flashbulb - Hello, Im Benn
+      	if (envNb == 4) {musictrack ="sound/music/sunny/EvelynSteinQuietResource.mp3";playMusic(musictrack);plMusic.volume=0.25;}
+        //Evelyn Stein - Quiet Resource
+      	if (envNb == 5) {musictrack ="sound/music/sunny/EnsembleGalileiCarolOfTheBirds.mp3";playMusic(musictrack);plMusic.volume=0.25;}
+        //Ensemble Galilei - Carol Of The Birds
+      	if (envNb == 6) {musictrack ="sound/music/sunny/BrandonFiechterWhisperingOaks.mp3";playMusic(musictrack);plMusic.volume=0.25;}
+        //Brandon Fiechter - Whispering Oaks
       }
       if (sound == 'CityHappy'){musictrack ="sound/music/cityHappy/Brandon Fiechter - Timber Town.mp3";playMusic(musictrack);plMusic.volume=0.1;}
       if (sound == "MystDark_House"){musictrack="sound/music/mysterious dark/Carlos Viola - A house in silence.mp3";playMusic(musictrack);plMusic.volume=0.3;}

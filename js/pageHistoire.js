@@ -131,4 +131,7 @@ function refHistoire(){
     "<b>A droite</b><br>Une petite porte sombre indique \"Loge du Maître\" et semble mener au 8 de la rue.<br>"+
     "<b>En face</b><br>Un grande porte fermée. Elle est très travaillée et en bois blanc.<br>C'est de là que provient la musique que vous entendiez depuis la rue.<br><b>Derrière vous</b><br>La large porte retourne sur la rue.");
   }
+  if ($('p#histoire').height() > $('.leftblock main').height()){
+    $(".leftblock footer").show();
+  } else {$(".leftblock footer").hide();}
 }

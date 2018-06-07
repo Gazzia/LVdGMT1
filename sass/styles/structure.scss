@@ -124,36 +124,66 @@ a {
       border: 1px solid rgba(0, 0, 0, 0.6);
       border-radius: 4px;
       &.leftblock {
+        top:0;
         height: 100%;
         width: calc(60% - 1vw);
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 7vh),linear-gradient(rgba(0,0,0,0.1) 6vh, transparent 15%),url(../images/UI/bgPaper.jpg);
         overflow: hidden;
         box-shadow: 0 5px 23px rgba(0, 0, 0, 0.3) inset;
-        #histoire {
-          color: #54392b;
-          position: inherit;
-          padding: 0 2vw;
-          font-family: 'Vollkorn', serif;
-          text-align: center;
-          font-size: 2.7vh;
-          line-height: 4vh;
-          letter-spacing: 0.1px;
-          &:after,
-          &:before {
+        z-index:3;
+        transition:all 0.3s ease;
+        main {
+          height: 84.5%;
+          bottom: 6%;
+          overflow:hidden;
+          #histoire {
+            color: #54392b;
+            position: inherit;
+            padding: 0 2vw;
+            font: {
+              family: 'Vollkorn', serif;
+              size: 2.7vh;
+            }
+            text-align: center;
+            line-height: 4vh;
+            letter-spacing: 0.1px;
+            margin: 0;
+          }
+          .guill{
             color: rgba(125, 31, 0, 0.4);
-            font-size: 4vw;
             position: absolute;
-            line-height: 0;
+            line-height:3vw;
+            height:2vw;
+            width:2vw;
+            font-size: 4vw;
+            font-family: 'Vollkorn', serif;
+            &.left {
+              left: 1vh;
+              top: 1vh;
+            }
+            &.right {
+              right: 1vh;
+              bottom: 0;
+            }
           }
-          &:before {
-            content: "“";
-            left: 1vh;
-            top: 12vh;
-          }
-          &:after {
-            content: "”";
-            right: 1vh;
-            margin-top: 5vh;
+        }
+        footer{
+          display: none;
+          background-image:linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+          height:6%;
+          bottom:0;
+          text-align: center;
+          .expandBtn {
+            display: inline-block;
+            height: 2.5vh;
+            width: 5vw;
+            font-size: 2vh;
+            background-color: rgb(215, 201, 192);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Didact Gothic', sans-serif;
+            color: rgba(71, 45, 39, 0.8);
+            line-height: 2.3vh;
           }
         }
       }
@@ -264,12 +294,12 @@ a {
         text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
         line-height: -moz-block-height;
         &.leftblock_title {
-          height: 6vh;
+          height: 6.5%;
           font-size: 3vh;
           max-height: 45px;
         }
         &.rightblock_title {
-          height: 4vh;
+          height: 5%;
           font-size: 2.5vh;
           max-height: 30px;
         }
