@@ -2,11 +2,8 @@ function setSound(soundtype, sound){
   localStorage['sound'+soundtype] = sound;
   if (localStorage.Setting_SoundOn==1){
     if (soundtype == "EnvB"){
-      $('#playerEnvB').html('');
       plEnvB = document.getElementById("playerEnvB");
-      plEnvB.pause();
-      plEnvB.currentTime = 0;
-      if (sound == "stop"){$('#playerEnvB').html('');}
+      if (sound == "stop"){$('#playerEnvB').html('');plEnvB.pause();plEnvB.currentTime = 0;}
       if (sound == 'Nature'){
         var envNb = Math.floor(Math.random() * 4) + 1;
       	if (envNb == 1) {envBtrack ="sound/env/nature/windCricketA1.mp3";playEnvB(envBtrack);plEnvB.volume=0.2;}
@@ -20,10 +17,8 @@ function setSound(soundtype, sound){
       //
     }
     if (soundtype == "EnvF"){
-      $('#playerEnvF').html('');
       var plEnvF = document.getElementById("playerEnvF");
-      plEnvF.pause();
-      plEnvF.currentTime = 0;
+      if (sound == "stop"){$('#playerEnvF').html('');plEnvF.pause();plEnvF.currentTime = 0;}
       if (sound == 'Stream'){envFtrack ="sound/env/streamFlowing.mp3";playEnvF(envFtrack);plEnvF.volume=0.5;}
       if (sound == 'StreamAfar'){envFtrack ="sound/env/streamAfar.mp3";playEnvF(envFtrack);plEnvF.volume=0.46;}
       if (sound == "ratRun"){envFtrack="sound/env/ratRunning.mp3";playEnvF(envFtrack);plEnvF.volume=0.7;}
@@ -31,10 +26,7 @@ function setSound(soundtype, sound){
       if (sound == "Snoring"){envFtrack="sound/env/snoring.mp3";playEnvF(envFtrack);plEnvF.volume=0.2;}
     }
     if (soundtype == "Music"){
-      $('#playerMusic').html('');
       var plMusic = document.getElementById('playerMusic');
-      plMusic.pause();
-      plMusic.currentTime = 0;
       if (sound == 'Intro'){
         let envNb = Math.floor(Math.random() * 4) + 1;
         if (envNb == 1) {musictrack ="sound/music/CarlosViolaMemories.mp3";playMusic(musictrack);plMusic.volume=0.3;}
@@ -65,7 +57,7 @@ function setSound(soundtype, sound){
       if (sound == "MystDark_House"){musictrack="sound/music/mysterious dark/Carlos Viola - A house in silence.mp3";playMusic(musictrack);plMusic.volume=0.3;}
       if (sound == "Battle1"){musictrack="sound/music/battle/Paul Haslinger - A Chance To Escape.mp3";playMusic(musictrack);plMusic.volume=0.15;}
       //
-      if (sound == "stop"){$('#playerMusic').html('');}
+      if (sound == "stop"){$('#playerMusic').html('');plMusic.pause();plMusic.currentTime = 0;}
       $("#playerMusic").bind('ended', function(){
         setSound('Music', localStorage.soundMusic);
       });
@@ -86,25 +78,52 @@ function setSound(soundtype, sound){
 }
 function playEnvB(track){
   plEnvB = document.getElementById("playerEnvB");
-  plEnvB.load();
-  plEnvB.play();
-  $('#playerEnvB').html('<source type="audio/mpeg" id="sourceEnvB" src="'+track+'">');
+  if (track != $("#sourceEnvB").attr('src')){
+    $('#playerEnvB').html('');
+    plEnvB.pause();
+    plEnvB.currentTime = 0;
+    $('#playerEnvB').html('<source type="audio/mpeg" id="sourceEnvB" src="'+track+'">');
+    plEnvB.load();
+    plEnvB.play();
+  } else {
+    if(plEnvB.paused == true){
+      plEnvB.play();
+    }
+  }
 }
 function playEnvF(track){
   plEnvF = document.getElementById("playerEnvF");
-  plEnvF.load();
-  plEnvF.play();
-  $('#playerEnvF').html('<source type="audio/mpeg" id="sourceEnvF" src="'+track+'">');
+  if (track != $("#sourceEnvF").attr('src')){
+    $('#playerEnvF').html('');
+    plEnvF.pause();
+    plEnvF.currentTime = 0;
+    $('#playerEnvF').html('<source type="audio/mpeg" id="sourceEnvF" src="'+track+'">');
+    plEnvF.load();
+    plEnvF.play();
+  } else {
+    if(plEnvF.paused == true){
+      plEnvF.play();
+    }
+  }
 }
 function playMusic(track){
   plMusic = document.getElementById("playerMusic");
-  plMusic.load();
-  plMusic.play();
-  $('#playerMusic').html('<source type="audio/mpeg" id="sourceEnvF" src="'+track+'">');
+  if (track != $("#sourceMusic").attr('src')){
+    $('#playerMusic').html('');
+    plMusic.pause();
+    plMusic.currentTime = 0;
+    $('#playerMusic').html('<source type="audio/mpeg" id="sourceMusic" src="'+track+'">');
+    plMusic.load();
+    plMusic.play();
+  } else {
+    if(plMusic.paused == true){
+      plMusic.play();
+    }
+  }
 }
 function playUI(track){
   plUI = document.getElementById("playerUI");
   plUI.load();
   plUI.play();
-  $('#playerUI').html('<source type="audio/mpeg" id="sourceEnvF" src="'+track+'">');
+  $('#playerUI').html('<source type="audio/mpeg" id="sourceUI" src="'+track+'">');
 }

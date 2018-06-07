@@ -19,6 +19,7 @@ if (localStorage.justStartedGame == 1){
 function reset1(){
   //or
   localStorage.plGold= Number(localStorage.origineAddGold) + 10;
+  localStorage.plHealth= localStorage.plHealthMax;
   //objets
 	localStorage.inv_arme_Branche=0;
   if (localStorage.inv_arme_Baton == 1){
@@ -62,7 +63,13 @@ $(document).on('click','.leftblock.clickToClose', function(){
     $(".leftblock").css({'width':'calc(60% - 1vw)'});
     $(".leftblock footer").fadeIn(300);
   },300);
-})
+});
+function banner(ville){
+  $(".townBanner").html(ville).fadeIn(900);
+  setTimeout(function(){
+    $(".townBanner").fadeOut(900);
+  },2000);
+}
 function openDialog(){
   $('#dialog').css('left','15%');
   $('.mask.light.brown').fadeIn(700);
@@ -76,16 +83,16 @@ function foundGold(amount, storageEvent) {
   closeDialog();
   setTimeout(function(){
     localStorage[storageEvent]=1; refAllbutImg();
-    transaction("+"+amount);
+    transaction(amount,"+");
     setTimeout(function(){
       setSound("UI", "gold");
     }, 3300);
   }, 250);
 }
-function transaction(amount){
+function transaction(amount, positivity){
   $('.mask.light.brown').fadeIn(700);
   $("#transactions").css('transition','none');
-  $("#transactions.gold").html(amount+" or !");
+  $("#transactions .gold").html(positivity+amount+" or !");
   setTimeout(function(){
     $("#transactions").css({'left':'calc(50% - 25vh)','bottom':'calc(50% - 10vh)','height':'20vh','width':'50vh'});
     $("#transactions").fadeIn(400);
@@ -108,7 +115,8 @@ function transaction(amount){
   }, 1000);
   setTimeout(function(){
     localStorage.plGold= Number(localStorage.plGold) + Number(amount);
-  },5050);
+    refAllbutImg();
+  },3500);
 }
 // function setSound(soundtype, sound){
 //   if (localStorage.Setting_SoundOn==1){

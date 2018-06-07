@@ -117,6 +117,7 @@ function dialogue(person){
       localStorage.plGold = Number(localStorage.plGold) - 80;
       localStorage.numpage=4; refAll();
       closeDialogue();
+        banner('Merryvale');
     });
   }
 }

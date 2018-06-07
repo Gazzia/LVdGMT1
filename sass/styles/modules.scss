@@ -464,3 +464,18 @@ hr {
     color: #d1be5b;
   }
 }
+.townBanner{
+  display:none;
+  top:10%;
+  height:20%;
+  text-align:center;
+  color:white;
+  font: {
+    size:15vh;
+    family: 'Vollkorn', serif;
+  }
+  line-height:20vh;
+  z-index:30;
+  background-color: rgba(58, 93, 93, 0.85);
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+}
