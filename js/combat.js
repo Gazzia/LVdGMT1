@@ -207,7 +207,7 @@ function Pl_Hit(enemyNum){
       closeOnEscape: false,
   		buttons: {
   			"Recommencer": function(){
-  				window.location="0.1 Pseudo.html";
+  				window.location="Intro.html";
   			}
   		}
   	});

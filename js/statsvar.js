@@ -47,35 +47,13 @@ function refStats(){
 		localStorage.setItem("dmgbasemax", "10");}
 	maxdmg = localStorage.dmgbasemax;
 	mindmg = localStorage.dmgbasemin;
-	$(".statForce .text").html('Base: '+bForce+'<br>Race: '+raceXForce+'<br>Origine: '+origineXForce+'<br>Classe: '+classeXForce+'<br>Objets: '+'0');
-	$(".statFesse .text").html('Base: '+bFesse+'<br>Race: '+raceXFesse+'<br>Origine: '+origineXFesse+'<br>Classe: '+classeXFesse+'<br>Objets: '+'0');
-	$("#totalFesse .statNumber").html(totalFesse);
-	$("#bFesse .statNumber").html(bFesse);
-	$("#raceXFesse .statNumber").html(raceXFesse);
-	$("#origineXFesse .statNumber").html(origineXFesse);
-	$("#classeXFesse .statNumber").html(classeXFesse);
+	$(".statForce .total").html(totalForce);$(".statForce .total").attr('title','Base: '+bForce+'  |   Race: *'+raceXForce+'  |   Origine: *'+origineXForce+'  |   Classe: *'+classeXForce+'  |   Objets: '+'+0');
+	$(".statFesse .total").html(totalFesse);$(".statFesse .total").attr('title','Base: '+bFesse+'  |   Race: *'+raceXFesse+'  |   Origine: *'+origineXFesse+'  |   Classe: *'+classeXFesse+'  |   Objets: '+'+0');
+	$(".statChar .total").html(totalChar);$(".statChar .total").attr('title','Base: '+bChar+'  |   Race: *'+raceXChar+'  |   Origine: *'+origineXChar+'  |   Classe: *'+classeXChar+'  |   Objets: '+'+0');
+	$(".statDex .total").html(totalDex);$(".statDex .total").attr('title','Base: '+bDex+'  |   Race: *'+raceXDex+'  |   Origine: *'+origineXDex+'  |   Classe: *'+classeXDex+'  |   Objets: '+'+0');
+	$(".statSag .total").html(totalSag);$(".statSag .total").attr('title','Base: '+bSag+'  |   Race: *'+raceXSag+'  |   Origine: *'+origineXSag+'  |   Objets: '+'+0');
+	$(".statInt .total").html(totalInt);$(".statInt .total").attr('title','Base: '+bInt+'  |   Race: *'+raceXInt+'  |   Origine: *'+origineXInt+'  |   Objets: '+'+0');
 
-	$("#totalChar .statNumber").html(totalChar);
-	$("#bChar .statNumber").html(bChar);
-	$("#raceXChar .statNumber").html(raceXChar);
-	$("#origineXChar .statNumber").html(origineXChar);
-	$("#classeXChar .statNumber").html(classeXChar);
-
-	$("#totalDex .statNumber").html(totalDex);
-	$("#bDex .statNumber").html(bDex);
-	$("#raceXDex .statNumber").html(raceXDex);
-	$("#origineXDex .statNumber").html(origineXDex);
-	$("#classeXDex .statNumber").html(classeXDex);
-
-	$("#totalSag .statNumber").html(totalSag);
-	$("#bSag .statNumber").html(bSag);
-	$("#raceXSag .statNumber").html(raceXSag);
-	$("#origineXSag .statNumber").html(origineXSag);
-
-	$("#totalInt .statNumber").html(totalInt);
-	$("#bInt .statNumber").html(bInt);
-	$("#raceXInt .statNumber").html(raceXInt);
-	$("#origineXInt .statNumber").html(origineXInt);
 
 	$("#plGold").html(localStorage.plGold);
 	$('#plHealthBar').progressbar({classes:{"ui-progressbar": "progression big", "ui-progressbar-value": "progression-value"}});

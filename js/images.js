@@ -34,7 +34,6 @@ function refImg(){
     if (page==2.1){
       $("#decoTopLeft").attr("src","images/bg/top/2.0_Left.png");
       $("#decoTopRight").attr("src","images/bg/top/1.0_Right.png");
-      $(".iconPageImg").attr("src","images/icons/page/arbre_normal.png");
       $("#UIBG_imgFullFG").attr("src","images/bg/full/FullFG_2.1.png");
       $("#UIBG_imgFull").attr("src","images/bg/full/Full_2.1.png");
     }
@@ -42,14 +41,10 @@ function refImg(){
       PropMouchePercentage = 9;
       $("#decoTopLeft").attr("src","images/bg/top/2.0_Left.png");
       $("#decoTopRight").attr("src","images/bg/top/1.0_Right.png");
-      $(".iconPageImg").attr("src","images/icons/page/stream.png");
       $("#UIBG_imgFull").attr("src","images/bg/full/Full_2.11.png");
     }
     if (page==2.2){
-      $(".iconPageImg").attr("src","images/icons/page/cabin.png");
-      $("#UIBG_imgLFG").attr("src","images/bg/mid/2.2_Left.png");
-      $("#UIBG_imgLBG").attr("src","images/bg/midbg/2.2_Left.png");
-      $("#UIBG_imgRBG").attr("src","images/bg/midbg/2.2_Right.png");
+      $("#UIBG_imgFull").attr("src","images/bg/full/Full_2.2.png");
     }
     if (page==2.211){
       $(".iconPageImg").attr("src","images/icons/page/morgue.png");

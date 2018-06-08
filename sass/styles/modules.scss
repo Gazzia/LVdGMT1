@@ -115,7 +115,7 @@ hr {
           height: 1vw;
           padding: 0;
           left: calc(50% - 1vh);
-          top:0.25vw;
+          top: 0.25vw;
           position: absolute;
         }
       }
@@ -131,24 +131,29 @@ hr {
     right: 0;
     font-family: 'Didact Gothic', sans-serif;
     font-size: 2vh;
-    header{
-      text-align:center;
+    header {
+      text-align: center;
       color: #765f56;
     }
-    main{
-      .block{
-        display: flow-root;
-        margin-bottom:1vh;
-        .img{
+    main {
+      .block {
+        display: inline-block;
+        margin-bottom: 3vh;
+        background-color: rgba(255,255,255,0.1);
+        border-bottom: 3px solid rgba(0,0,0,0.1);
+        width: 35%;
+        height: 14vh;
+        position: relative;
+        .img {
           background-color: #f2f2f2;
           position: absolute;
-          left: 0.8vw;
-          width: 18vh;
+          left: 0;
+          width: 100%;
           margin-top: 1vh;
           border-radius: 2px;
           opacity: 0.5;
           height: 3.5vh;
-          text-align:center;
+          text-align: center;
           svg {
             height: 3vh;
             fill: #000;
@@ -159,13 +164,24 @@ hr {
             stroke-width: 1px;
           }
         }
-        .text{
-          width:75%;
+        .text {
+          width: 32%;
           left: 4vh;
-          float:right;
+          float: right;
           color: #9f907a;
           text-align: right;
           margin-right: 3px;
+        }
+        .total {
+          position: relative;
+          top: 5vh;
+          width: 66%;
+          height: 8vh;
+          font-size: 5vh;
+          font-family: 'Vollkorn', serif;
+          display: inline-block;
+          text-align: center;
+          color: rgba(0,0,0,0.22);
         }
       }
     }
@@ -464,18 +480,18 @@ hr {
     color: #d1be5b;
   }
 }
-.townBanner{
-  display:none;
-  top:10%;
-  height:20%;
-  text-align:center;
-  color:white;
+.townBanner {
+  display: none;
+  top: 10%;
+  height: 20%;
+  text-align: center;
+  color: white;
   font: {
-    size:15vh;
+    size: 15vh;
     family: 'Vollkorn', serif;
   }
-  line-height:20vh;
-  z-index:30;
+  line-height: 20vh;
+  z-index: 30;
   background-color: rgba(58, 93, 93, 0.85);
   box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
 }
