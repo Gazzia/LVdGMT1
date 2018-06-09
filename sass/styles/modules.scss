@@ -27,6 +27,21 @@
     margin: 0 !important;
     border: none !important;
   }
+  &.combat {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent 50%), #b08c5f;
+    width: 85%;
+    height: 1vh !important;
+    left: 7.5%;
+    position: inherit;
+    .progression-value {
+      background: linear-gradient(180deg, rgba(0,5,49,0.501), transparent 50%),linear-gradient(to bottom, rgba(165,56,56,0.501), transparent 50%), #972750;
+      transition: width 0.25s ease-in, background 0.1s ease-in;
+    }
+    &.enemy {
+      width: calc(100% - 2px);
+      left: 0;
+    }
+  }
 }
 hr {
   &.hr2 {
@@ -239,6 +254,9 @@ hr {
   &.light {
     opacity: 0.3;
   }
+  &.mid {
+    opacity: 0.55;
+  }
   &.deep {
     opacity: 0.8;
   }
@@ -247,6 +265,9 @@ hr {
   }
   &.lightgrey {
     background-color: #818181;
+  }
+  &.darkgrey {
+    background-color: #353535;
   }
 }
 .black_tooltip {
@@ -494,4 +515,25 @@ hr {
   z-index: 30;
   background-color: rgba(58, 93, 93, 0.85);
   box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+}
+.maxspace {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.maxheight {
+  position: absolute;
+  height: 100%;
+}
+.maxheight_rel {
+  position: relative;
+  height: 100%;
+}
+.maxwidth {
+  position: absolute;
+  width: 100%;
+}
+.maxwidth_rel {
+  position: relative;
+  width: 100%;
 }

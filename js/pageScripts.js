@@ -137,7 +137,7 @@ function foundItem(item) {
     $("#dialog .text").html(window[item].FoundText);
     $("#dialog .image").css("background-image", "url(images/"+window[item].Img+")");
     if (window[item].Type == "arme"){
-      $('#dialog .icon').html(iconStartingWeapon);
+      $('#dialog .icon').html(iconWeapon);
       $("#dialog .title").html("Nouvelle arme !");
       $('#dialog a.nb1').html('Prendre').attr('onclick','closeDialog()').show();
       $('#dialog a.nb2').html('Prendre et équipper').attr('onclick','localStorage.inv_selected_arme="'+window[item].Short+'"; closeDialog(); refAllbutImg();').show();

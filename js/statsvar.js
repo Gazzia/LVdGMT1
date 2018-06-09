@@ -45,8 +45,8 @@ function refStats(){
 	if(inv_selected_arme=="Branche"){
 		localStorage.setItem("dmgbasemin", "0");
 		localStorage.setItem("dmgbasemax", "10");}
-	maxdmg = localStorage.dmgbasemax;
-	mindmg = localStorage.dmgbasemin;
+	plMaxDmg = localStorage.dmgbasemax;
+	plMinDmg = localStorage.dmgbasemin;
 	$(".statForce .total").html(totalForce);$(".statForce .total").attr('title','Base: '+bForce+'  |   Race: *'+raceXForce+'  |   Origine: *'+origineXForce+'  |   Classe: *'+classeXForce+'  |   Objets: '+'+0');
 	$(".statFesse .total").html(totalFesse);$(".statFesse .total").attr('title','Base: '+bFesse+'  |   Race: *'+raceXFesse+'  |   Origine: *'+origineXFesse+'  |   Classe: *'+classeXFesse+'  |   Objets: '+'+0');
 	$(".statChar .total").html(totalChar);$(".statChar .total").attr('title','Base: '+bChar+'  |   Race: *'+raceXChar+'  |   Origine: *'+origineXChar+'  |   Classe: *'+classeXChar+'  |   Objets: '+'+0');
