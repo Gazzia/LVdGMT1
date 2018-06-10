@@ -19,40 +19,46 @@
 </head>
 <body onload="refStuff()">
   <div id="blackscreen"><div id="blackscreenText">Combat</div></div>
-  <section id="intitule"> <div id="intituleText"> <div id="intituleHistoire" class="scroll"></div> </div> </section>
+  <section id="intitule"> <div class='text'></div> </section>
   <section id="perso" class="mid">
-    <div id="persoTop"> <div id="vous">Vous</div> <div id="viePlayer"> </div> <div id="playerVieText"></div> </div>
-    <div id="infosPerso"> <div class="scroll">
-      <div class="infosSubtitle">Caractéristiques</div>
-      <div id="infoChara" class="infosText"></div>
-      <div class="infosSubtitle">Arme</div>
-      <div id="infoArme" class="infosText"></div>
-      <div class="infosSubtitle">Race</div>
-      <div id="infoRace" class="infosText"><br></div>
-      <div class="infosSubtitle">Classe</div>
-      <div id="infoClasse" class="infosText"><br></div>
-    </div> </div>
+    <header>
+      <div class="title">Vous</div>
+      <div id="viePlayer"> </div>
+      <div id="playerVieText"></div>
+    </header>
+    <div id="infosPerso">
+      <div class="title">Caractéristiques</div>
+      <p class="infos carac"></p>
+      <div class="title">Arme</div>
+      <p class="infos weapon"></p>
+      <div class="title">Race</div>
+      <p class="infos race"><br></p>
+      <div class="title">Classe</div>
+      <p class="infos classe"><br></p>
+    </div>
   </section>
-  <section id="infos" class="mid"> <div id="infosList" class="scroll">
-    <div id="infoPlayerSide" class="infoSides">
-      <div id="hit_PtoE1" class="hit_all hit_PtoE hit_E1"></div>
-      <div id="hit_PtoE2" class="hit_all hit_PtoE hit_E2"></div>
-      <div id="hit_PtoE3" class="hit_all hit_PtoE hit_E3"></div>
-      <div id="hit_PtoE4" class="hit_all hit_PtoE hit_E4"></div>
-      <div id="hit_PtoE5" class="hit_all hit_PtoE hit_E5"></div>
+  <section id="damageInfos" class="mid">
+    <div class="sideOf player">
+      <div class="hit PtoE E1"></div>
+      <div class="hit PtoE E2"></div>
+      <div class="hit PtoE E3"></div>
+      <div class="hit PtoE E4"></div>
+      <div class="hit PtoE E5"></div>
     </div>
-    <div id="infoEnemiesSide" class="infoSides">
-      <div id="hit_E1toP" class="hit_all hit_EtoP hit_E1"></div>
-      <div id="hit_E2toP" class="hit_all hit_EtoP hit_E2"></div>
-      <div id="hit_E3toP" class="hit_all hit_EtoP hit_E3"></div>
-      <div id="hit_E4toP" class="hit_all hit_EtoP hit_E4"></div>
-      <div id="hit_E5toP" class="hit_all hit_EtoP hit_E5"></div>
+    <div class="sideOf enemies">
+      <div class="hit EtoP E1"></div>
+      <div class="hit EtoP E2"></div>
+      <div class="hit EtoP E3"></div>
+      <div class="hit EtoP E4"></div>
+      <div class="hit EtoP E5"></div>
     </div>
-  </div> </section>
-  <section id="ennemis" class="mid"> <div id="ennemisList" class="scroll"> </div> </section>
-  <section id="defensif"></section>
-  <audio autoplay="false" controls id="playerCombat"> </audio>
+  </section>
+  <section id="ennemis" class="mid"></section><!-- Les bloc d'ennemis sont générés par combat.js -->
+  <section id="defensif"></section><!-- Barre d'en bas -->
+
+  <audio autoplay="false" controls id="playerCombat"></audio>
   <audio autoplay="true" controls id="music"> </audio>
+
   <div class="mask mid darkgrey maxspace"></div>
   <div id="dialog" class="combat">
 		<div class="icon"></div>
@@ -88,7 +94,7 @@ if (localStorage.numpage=2.2){
   localStorage.En4_Dead = 1;
   var zoneClearedLS = "combatWon_RatSoufflant";
   var onWinLocation = 2.211;
-  $('#intituleHistoire').html("Alors que vous entamez votre premier pas au-delà de la porte, une ombre se propulse vers vous.<br>Un énorme rat vous attaque, énervé que vous ayiez trouvé son abri. Vous entrevoyez rapidement un corps à moitié mangé sur le sol, surement l'ancien propriétaire.");
+  $('#intitule .text').html("Alors que vous entamez votre premier pas au-delà de la porte, une ombre se propulse vers vous.<br>Un énorme rat vous attaque, énervé que vous ayiez trouvé son abri. Vous entrevoyez rapidement un corps à moitié mangé sur le sol, surement l'ancien propriétaire.");
   var WinDialog="Le dernier coup asséné a achevé le combat, dont vous sortez victorieux ! Vous pouvez maintenant explorer l'interieur de la masure";
   var DeathDialog="La dernière morsure du rat vous a été fatale. Alors que la vie s'échappe de votre corps, vous pouvez recommencer la partie pour tenter de vous venger de ce rongeur.";
 }

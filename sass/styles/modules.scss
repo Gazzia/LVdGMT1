@@ -148,100 +148,187 @@ hr {
     font-size: 2vh;
     header {
       text-align: center;
-      color: #765f56;
+      color: rgb(118, 99, 92);
+      height: 4.5vh;
+      font-size: 2.5vmin;
+      padding-top: 1vh;
+      background-color: rgb(216, 206, 195);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
     }
-    main {
-      .block {
-        display: inline-block;
-        margin-bottom: 3vh;
-        background-color: rgba(255,255,255,0.1);
-        border-bottom: 3px solid rgba(0,0,0,0.1);
-        width: 35%;
-        height: 14vh;
-        position: relative;
-        .img {
-          background-color: #f2f2f2;
-          position: absolute;
-          left: 0;
-          width: 100%;
-          margin-top: 1vh;
-          border-radius: 2px;
-          opacity: 0.5;
-          height: 3.5vh;
+    &#menuCarac {
+      main {
+        margin-top: 10%;
+        .block {
+          display: inline-block;
+          margin-bottom: 3vh;
+          background-color: rgba(255,255,255,0.1);
+          border-bottom: 3px solid rgba(0,0,0,0.1);
+          width: 35%;
+          height: 14vh;
+          position: relative;
+          left: 10%;
+          margin-right: 1.5vw;
           text-align: center;
-          svg {
-            height: 3vh;
-            fill: #000;
-            margin-top: 0.25vh;
-            left: 10%;
-            stroke: black;
-            display: inline;
-            stroke-width: 1px;
+          .img {
+            background-color: #f2f2f2;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            margin-top: 1vh;
+            border-radius: 2px;
+            opacity: 0.5;
+            height: 3.5vh;
+            text-align: center;
+            svg {
+              height: 3vh;
+              fill: #000;
+              margin-top: 0.25vh;
+              left: 10%;
+              stroke: black;
+              display: inline;
+              stroke-width: 1px;
+            }
+          }
+          .total {
+            position: relative;
+            top: 5vh;
+            font-size: 5vh;
+            font-family: 'Vollkorn', serif;
+            display: inline-block;
+            text-align: center;
+            color: rgba(0,0,0,0.22);
           }
         }
-        .text {
-          width: 32%;
-          left: 4vh;
-          float: right;
-          color: #9f907a;
-          text-align: right;
-          margin-right: 3px;
-        }
-        .total {
+      }
+    }
+    &#menuOptions {
+      main {
+        margin-top: 20%;
+        .block {
           position: relative;
-          top: 5vh;
-          width: 66%;
-          height: 8vh;
-          font-size: 5vh;
-          font-family: 'Vollkorn', serif;
-          display: inline-block;
+          width: 60%;
+          height: 9vw;
+          background-color: #96baad;
+          left: 20%;
+          border-bottom: 8px solid #7aa396;
+          transition: all 0.4s ease;
+          border-radius: 0.5vw;
+          top: 0;
+          margin-bottom: 4vh;
+          &:hover {
+            background-color: #9abfb2;
+            border-bottom: 4px solid #7aa396;
+            top: 4px;
+            margin-bottom: calc(4vh + 4px);
+          }
+          svg {
+            position: absolute;
+            width: 50%;
+            left: 25%;
+            top: 23%;
+            fill: #7aa396;
+          }
+        }
+      }
+    }
+    &#menuOptions_Sound {
+      main {
+        margin-top: 20%;
+        .soundbox {
+          position: relative;
+          width: 80%;
+          left: 10%;
+          height: 7vh;
+          background-color: #739b91;
+          border-bottom: 3px solid #698e85;
+          border-radius: 0.4vw;
+          margin-bottom: 3vh;
           text-align: center;
-          color: rgba(0,0,0,0.22);
-        }
-      }
-    }
-    .statLine {
-      display: -moz-grid;
-      width: 100%;
-      &.sub {
-        color: grey;
-        width: 85%;
-        margin-left: 15%;
-      }
-      &.full {
-        margin-top: 0.5vh;
-        .statNumber {
+          line-height: 7vh;
+          color: rgb(84, 100, 94);
+          font-size: 2.8vmin;
           font-weight: bold;
+          font-family: 'Vollkorn', serif;
+          transition: background-color 0.4s ease, color 0.3s ease;
+          top: 0;
+          &.active {
+            background-color: rgb(146, 197, 184);
+            border-bottom: 3px solid rgb(134, 187, 174);
+            color: #6a9f8c;
+            &:hover {
+              background-color: rgb(146, 197, 184);
+              color: #6a9f8c;
+              border-bottom: 1px solid rgb(134, 187, 174);
+              top: 2px;
+              margin-bottom: calc(3vh + 2px);
+            }
+          }
+          &:hover {
+            background-color: #759d93;
+            color: #59776c;
+            border-bottom: 1px solid #698e85;
+            top: 2px;
+            margin-bottom: calc(3vh + 2px);
+          }
         }
       }
-      &.sub .statNumber.mult:before {
-        content: "*";
-      }
-      .statText {
-        display: inline-block;
-      }
-      .statNumber {
-        display: inline-block;
-        text-align: right;
-      }
     }
-    .statImage {
-      background-color: #f2f2f2;
-      position: absolute;
-      left: 0.8vw;
-      width: 3.5vh;
-      margin-top: 1vh;
-      border-radius: 100%;
-      opacity: 0.5;
-      height: 3.5vh;
-      svg {
-        height: 80%;
-        fill: #000;
-        position: absolute;
-        top: 10%;
-        left: 10%;
-        stroke: black;
-        stroke-width: 1px;
+    &#menuSave {
+      main {
+        margin-top: 5%;
+        .save {
+          position: relative;
+          width: 90%;
+          left: 5%;
+          background-color: #ddd4c5;
+          height: 25vh;
+          border-bottom: 1vh solid #c2b6a5;
+          margin-bottom: 3vh;
+          text-align: center;
+          .num {
+            height: 3vh;
+            background-color: #c2b6a5;
+            line-height: 3vh;
+            color: beige;
+          }
+          .name,
+          .time {
+            position: relative;
+            top: 2vh;
+            box-sizing: border-box;
+            padding: 0 1vw;
+          }
+          .time {
+            font-style: italic;
+            color: #91826d;
+          }
+          .name {
+            color: #91826d;
+          }
+          .saveBtn {
+            width: 20%;
+            height: 3vw;
+            position: absolute;
+            bottom: 1vh;
+            border-radius: 1vh;
+            left: 40%;
+            background-color: #d3c6b4;
+            border-bottom: 3px solid #a59b8e;
+            transition: all 0.2s ease;
+            &:hover {
+              background-color: #cbbead;
+              border-bottom: 2px solid #a0968a;
+            }
+            svg {
+              position: absolute;
+              height: 70%;
+              fill: #8f8577;
+              top: 15%;
+              left: 15%;
+            }
+          }
+        }
       }
     }
   }

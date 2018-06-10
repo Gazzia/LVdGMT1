@@ -10,7 +10,7 @@ function addEnemy(enemyNum, addedEnemy, addedEnemyLvl){
   localStorage['En'+enemyNum+'_HP'] = localStorage['En'+enemyNum+'_MaxHP'] = Math.round(addedEnemy.HealthBase + (addedEnemy.HealthCoef * (addedEnemyLvl - 1)));
   localStorage['En'+enemyNum+'_MaxDmgNor'] = Math.round(addedEnemy.DmgBaseNor + (addedEnemy.DmgCoefNor * (addedEnemyLvl - 1)));
   localStorage['En'+enemyNum+'_MaxDefNor'] = Math.round(addedEnemy.DefBaseNor + (addedEnemy.DefCoefNor * (addedEnemyLvl - 1)));
-	$("#ennemisList").append(
+	$("#ennemis").append(
     '<div id="enemyui'+enemyNum+'" class="enemyui">'+
       '<div id="enemytitle'+enemyNum+'" class="enemytitle">'+
         '<a class="enemypicture"></a>'+
@@ -38,15 +38,15 @@ function addEnemy(enemyNum, addedEnemy, addedEnemyLvl){
 }
 function refStuff() {
   //infos Perso
-  $("#infoChara").html("Force: "+totalForce+" | FS: "+totalFesse);
+  $("#infosPerso .carac").html("Force: "+totalForce+" | FS: "+totalFesse);
   var armeSel = localStorage.inv_selected_arme;
-  $("#infoArme").html(window[armeSel].Name+" | dmg max = "+window[armeSel].StatShort);
+  $("#infosPerso .weapon").html(window[armeSel].Name+" | dmg max = "+window[armeSel].StatShort);
   var textRaceForce = "cette race n'a pas de multiplicateur de Force";
   if (raceXForce == 1.1){textRaceForce = "+10% force";} if (raceXForce == 0.9){textRaceForce = "-10% force";}
-  $("#infoRace").html(localStorage.race+": "+textRaceForce);
+  $("#infosPerso .race").html(localStorage.race+": "+textRaceForce);
   var textClasseForce = "cette classe n'a pas de multiplicateur de Force";
   if (classeXForce == 1.5){textClasseForce = "+50% force";} if (classeXForce == 0.5){textClasseForce = "-50% force";}
-  $("#infoClasse").html(localStorage.classe+": "+textClasseForce);
+  $("#infosPerso .classe").html(localStorage.classe+": "+textClasseForce);
 
   //vie reset
   $('#viePlayer').progressbar({classes:{"ui-progressbar": "progression combat pl", "ui-progressbar-value": "progression-value"}});
@@ -63,18 +63,10 @@ function refStuff() {
     $("#blackscreen").css("background-color","black");
     $(".enemyui").css("left","10%");
   }, 700);
-
 }
-$("#ennemisList").scroll(function(){
-   var target = $("#infosList");
-   $("#ennemisList").scroll(function(){
-     target.prop("scrollTop", this.scrollTop)
-           .prop("scrollLeft", this.scrollLeft);
-   });
- });
 function En_Hit(enemyNum){
   $("#action_HitEn"+enemyNum).attr("onclick","");
-  $('.hit_all').fadeOut(200);
+  $('.hit').fadeOut(200);
   if (localStorage.plHealth > 0) {
     plHitRaw = Math.floor(Math.random() * (plMaxDmg - plMinDmg + 1) + plMinDmg);
     randomcrit = Math.floor(Math.random() * 2) + 1;
@@ -92,24 +84,26 @@ function En_Hit(enemyNum){
     if (plHitCalc > 0){
       //if le coup fait des dégats
       localStorage['En'+enemyNum+'_HP'] -= plHitCalc;
-      $("#playerCombat").html("<source type='audio/mpeg' src='sound/UI/combat/hit_contondant"+Math.floor(Math.random() * (4 - 1 + 1) + 1)+".mp3'>");
-      audio[0].volume=0.5;audio[0].load();audio[0].play();
+      if (localStorage.Setting_SoundOn == 1) {
+        $("#playerCombat").html("<source type='audio/mpeg' src='sound/UI/combat/hit_contondant"+Math.floor(Math.random() * (4 - 1 + 1) + 1)+".mp3'>");
+        audio[0].volume=0.5;audio[0].load();audio[0].play();
+      }
       $("#vieEn"+enemyNum+"Text").html(localStorage['En'+enemyNum+'_HP']+'/'+localStorage['En'+enemyNum+'_MaxHP']);
       $('#vieEnemy'+enemyNum).progressbar('option', 'value', Number(localStorage['En'+enemyNum+'_HP'])).effect( "shake",{ direction: "up", times: 4, distance: 2});
       $('#vieEnemy'+enemyNum+" .progression-value").css("background","red");
       setTimeout(function () {
         $('#vieEnemy'+enemyNum+" .progression-value").css("background","linear-gradient(180deg, #00053180, #0000 50%),linear-gradient(to bottom, #a5383880, #0000 50%), #972750");
       }, 200);
-      $('#hit_PtoE'+enemyNum).html(">"+plHitCalc+" DMG").fadeIn(200);
+      $('.hit.PtoE.E'+enemyNum).html(">"+plHitCalc+" DMG").fadeIn(200);
     }
     if (plHitCalc == 0) {
       //if le coup ne fait pas de dégats
-      $('#hit_PtoE'+enemyNum).html("> Raté !").fadeIn(200);
+      $('.hit.PtoE.E'+enemyNum).html("> Raté !").fadeIn(200);
     }
     if (localStorage['En'+enemyNum+'_HP'] <= 0){
       //if l'ennemi n'a plus de vie
       localStorage['En'+enemyNum+'_HP'] = 0;
-      $('#hit_E'+enemyNum+'toP').html("L'ennemi est mort!").fadeIn(200);
+      $('.hit.EtoP.E'+enemyNum).html("L'ennemi est mort!").fadeIn(200);
       $("#enemyui"+enemyNum).css("margin-left","100%");
       $("#enemytitle"+enemyNum).css("background-color","#2a2929");
       localStorage.enemiesNbLiving=--localStorage.enemiesNbLiving;
@@ -153,14 +147,16 @@ function Pl_HitList(enemyNum){
 }
 function Pl_Hit(enemyNum){
   var enemyatk = Math.floor(Math.random() * (localStorage['En'+enemyNum+'_MaxDmgNor'] - 0 + 1) + 0);
-  $('.hit_PtoE').fadeOut(200);
+  $('.hit.PtoE').fadeOut(200);
   if (enemyatk == 0) {
-    $('#hit_E'+enemyNum+'toP').html("Bloqué !<").fadeIn(200);
+    $('.hit.EtoP.E'+enemyNum).html("Bloqué !<").fadeIn(200);
   } else {
     localStorage.plHealth -= enemyatk;
-    $('#hit_E'+enemyNum+'toP').html(+enemyatk+" DMG<").fadeIn(200);
-    $("#playerCombat").html("<source type='audio/mpeg' src='sound/UI/combat/bite_rat"+Math.floor(Math.random() * (4 - 1 + 1) + 1)+".mp3'>");
-    audio[0].volume=0.5;audio[0].load();audio[0].play();
+    $('.hit.EtoP.E'+enemyNum).html(+enemyatk+" DMG<").fadeIn(200);
+    if (localStorage.Setting_SoundOn == 1) {
+      $("#playerCombat").html("<source type='audio/mpeg' src='sound/UI/combat/bite_rat"+Math.floor(Math.random() * (4 - 1 + 1) + 1)+".mp3'>");
+      audio[0].volume=0.5;audio[0].load();audio[0].play();
+    }
     $('#viePlayer').progressbar('option', 'value', Number(localStorage.plHealth)).effect( "shake",{ direction: "up", times: 4, distance: 2});
     $('#viePlayer .progression-value').css("background","red");
     setTimeout(function () {
