@@ -373,7 +373,7 @@ hr {
   min-height: 74%;
   /* background-color: #e7dada; */
   z-index: 12;
-  left: -100%;
+  left: -65%;
   top: 7%;
   transition: all 1.2s ease;
   .icon {
@@ -463,6 +463,60 @@ hr {
         font-size: 2.6vh;
         color: #c2786c;
       }
+    }
+  }
+}
+#alerte {
+  position: absolute;
+  width: 35%;
+  min-height: 12%;
+  z-index: 12;
+  left: 32.5%;
+  display: none;
+  top: 31%;
+  transition: all 1s ease;
+  background: linear-gradient(rgb(255, 255, 255), rgb(240, 220, 204));
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2),0 10px 20px rgba(0,0,0,0.1);
+  font-family: 'Didact Gothic', sans-serif;
+  text-align: center;
+  header {
+    height: 4vh;
+    width: 100%;
+    background-color: rgb(212, 69, 104);
+    border-bottom: 2px solid rgba(3,2,2,0.1);
+    color: rgb(255, 255, 255);
+    font-size: 3vh;
+    line-height: 4vh;
+  }
+  main {
+    height: calc(100% - 9vh);
+    width: 90%;
+    left: 5%;
+    border-bottom: 1px dashed rgba(0,0,0,0.3);
+    box-sizing: border-box;
+    position: relative;
+    text-align: left;
+    padding: 3vh;
+    color: rgb(149, 81, 81);
+    font-size: 2vh;
+  }
+  footer {
+    height: 5vh;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    a {
+      min-width: 9vw;
+      display: inline-block;
+      height: 3.5vh;
+      font-size: 2vh;
+      background-color: rgb(221, 83, 116);
+      top: 15%;
+      position: relative;
+      line-height: 3.5vh;
+      border-radius: 0.4vh;
+      color: rgb(255, 255, 255);
+      margin: 0 0.5vw;
     }
   }
 }

@@ -182,7 +182,7 @@
 			<div class="bot">
 				<a id="openMenuSave" class="icons maxwidth_rel" onclick="sidebar_makeActiveMenu('Save')"></a>
 				<a id="openMenuOptions" class="icons maxwidth_rel" onclick="sidebar_makeActiveMenu('Options')"></a>
-				<a id="goToHome" class="icons maxwidth_rel" onclick="doYouWantToQuitToMenu()"></a>
+				<a id="goToHome" class="icons maxwidth_rel" onclick="alerte('returnToMenu?');"></a>
 			</div>
 		</nav>
 
@@ -313,6 +313,14 @@
 			</div>
 			<div class="image maxheight"></div>
 		</div>
+	</div>
+	<div id="alerte">
+		<header></header>
+		<main></main>
+		<footer>
+			<a class='btn1' style="display:none"></a>
+			<a class='btn2' style="display:none"></a>
+		</footer>
 	</div>
 	<!-- Mini popup de transactions -->
 	<div id="transactions">
@@ -530,12 +538,9 @@
 
 
 		$(document).on('click', '#menuSave .save .saveBtn', function() {
-			alert("Vous ne pouvez pas sauvegarder,\ncette fonction n'est pas encore complêtement implémentée dans le jeu.")
+			alerte('triedSaving');
 		})
 
-		function doYouWantToQuitToMenu(){
-
-		}
 		//import svg
 		$(".statForce .img").html(iconForce);
 		$(".statFesse .img").html(iconFesse);

@@ -87,15 +87,41 @@ function banner(ville) {
   }, 2000);
 }
 
+function alerte(context){
+  if (context == 'returnToMenu?'){
+    $('#alerte header').html('Retour au menu');
+    $('#alerte main').html('Êtes-vous sûr de vouloir retourner au menu ?<br>Toute progression non-sauvegardée sera perdue.');
+    $('#alerte .btn1').html('Oui').attr('onclick','window.location="Intro.html";').show();
+    $('#alerte .btn2').html('Non').attr('onclick','closeAlerte()').show();
+    dialogColor('green');
+  }
+  if (context == 'triedSaving'){
+    $('#alerte header').html('Sauvegarde impossible');
+    $('#alerte main').html("Vous ne pouvez pas sauvegarder, cette fonction n'est pas encore complêtement implémentée dans le jeu.");
+    $('#alerte .btn1').html('Ok').attr('onclick','closeAlerte()').show();
+    dialogColor('green');
+  }
+  openAlerte();
+}
 function openDialog() {
   $('#dialog').css('left', '15%');
   $('.mask.light.brown').fadeIn(700);
 }
-
 function closeDialog() {
-  $('#dialog').css('left', '-100%');
+  $('#dialog').css('left', '-65%');
   $('.mask').fadeOut(700);
   $('#dialog a').hide();
+}
+function openAlerte() {
+  $('#alerte').css('top','calc(50% - '+$('#alerte').height()+'px)').show();
+  $('.mask.light.brown').fadeIn(700);
+}
+function closeAlerte() {
+  $('#alerte').fadeOut(200);
+  $('.mask').fadeOut(700);
+  setTimeout(function(){
+    $('#alerte a').hide();
+  },200);
 }
 
 function foundGold(amount, storageEvent) {
@@ -201,11 +227,16 @@ function dialogColor(paramColor) {
     textColor = '#c29b6c';
     backColor = '#f0e2cc';
   }
-  $('#dialog .title, #dialog a').css('background-color', mainColor);
+  if (paramColor == "green") {
+    mainColor = 'rgb(127, 171, 156)';
+    textColor = 'rgb(66, 91, 84)';
+    backColor = 'rgb(216, 223, 221)';
+  }
+  $('#dialog .title, #dialog a, #alerte header, #alerte a').css('background-color', mainColor);
   $('#dialog .image').css('border-left-color', mainColor);
   $('#dialog .icon svg').css('fill', mainColor);
-  $('#dialog .text').css('color', textColor);
-  $('#dialog .content').css('background-image', 'linear-gradient(white, ' + backColor + ')');
+  $('#dialog .text, #alerte main').css('color', textColor);
+  $('#dialog .content, #alerte').css('background-image', 'linear-gradient(white, ' + backColor + ')');
 }
 
 function knockDoor() {
