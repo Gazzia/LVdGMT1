@@ -1,540 +1,647 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
 	<title>La Voie du Grand Malgré-Tout</title>
-	<link rel="stylesheet" type="text/css" href="css/intro.css"/>
+	<link rel="stylesheet" type="text/css" href="css/intro.css" />
 	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Vollkorn|Playfair+Display|Gothic+A1|Coming+Soon|Josefin+Slab:100|Didact+Gothic" rel="stylesheet">
 	<script src="js/jquery/mousewheel.js"></script>
+	<script src="js/data/saveParams.js"></script>
 	<script src="js/svgvar.js"></script>
 	<script src="js/statsvar.js"></script>
 	<script>
-		$(function(){
-			$(document).tooltip({classes: {"ui-tooltip": "blacktooltip"},	track:true});
+		$(function() {
+			$(document).tooltip({
+				classes: {
+					"ui-tooltip": "blacktooltip"
+				},
+				track: true
+			});
 		});
 	</script>
 </head>
+
 <body>
-<div class="background"></div>
-<div class="foreground">
-	<div id="disclaimer">
-		<div class="icon">
-			<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 5h2v6H9V5zm0 8h2v2H9v-2z"/></svg>
+	<div class="background"></div>
+	<div class="foreground">
+		<div id="disclaimer">
+			<div class="icon">
+				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 5h2v6H9V5zm0 8h2v2H9v-2z"/></svg>
+			</div>
+			<div class="text">
+				Il est important d'utiliser le navigateur Firefox.
+			</div>
 		</div>
-		<div class="text">
-			Il est important d'utiliser le navigateur Firefox.
-		</div>
-	</div>
-	<section id="GameTitle" class="menu">
-		<div class="line small">LA</div>
-		<div class="line big">VOIE</div>
-		<div class="line small">DU</div>
-		<div class="line big">GRAND MALGRÉ-TOUT</div>
-	</section>
-	<section id="menu" class="menu filled">
-		<div id="content_Main" class="content">
-			<a class="content_Main_btn top">Nouvelle partie</a>
-			<a class="content_Main_btn bot">Charger</a>
-		</div>
-		<div id="content_Load" class="content" style="display:none;">
-			<a id="closeLoad" class="close">
+		<section id="GameTitle" class="menu">
+			<div class="line small">LA</div>
+			<div class="line big">VOIE</div>
+			<div class="line small">DU</div>
+			<div class="line big">GRAND MALGRÉ-TOUT</div>
+		</section>
+		<section id="menu" class="menu filled">
+			<div id="content_Main" class="content">
+				<a class="content_Main_btn top" onclick="openPseudoMenu()">Nouvelle partie</a>
+				<a class="content_Main_btn bot" onclick="openLoadMenu()">Charger</a>
+			</div>
+			<div id="content_Load" class="content" style="display:none;">
+				<a id="closeLoad" class="close" onclick='closeLoadMenu()'>
 					<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
 				</a>
-			<header>
-				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><g class="" ><path d="M64 48c-8.726 0-16 7.274-16 16v384c0 8.726 7.274 16 16 16h236.25l-16-16H64V64h63.375v97.53c0 3.924 3.443 7.095 7.72 7.095h169.81c4.277 0 7.72-3.17 7.72-7.094V64h69.22c.428.318.8.548 1.467 1.094 2.05 1.675 4.962 4.264 8.375 7.406 6.827 6.283 15.65 14.837 24.313 23.5 8.663 8.663 17.217 17.486 23.5 24.313 3.142 3.413 5.73 6.324 7.406 8.374.546.668.776 1.04 1.094 1.47V366h16V128c0-2.68-.657-3.402-1.03-4.156-.375-.754-.725-1.294-1.095-1.844-.74-1.1-1.575-2.19-2.594-3.438-2.036-2.492-4.768-5.55-8.03-9.093-6.524-7.09-15.155-16-23.938-24.782-8.782-8.783-17.692-17.414-24.78-23.938-3.545-3.262-6.6-5.994-9.094-8.03-1.247-1.02-2.337-1.855-3.438-2.595-.55-.37-1.09-.72-1.844-1.094-.754-.373-1.477-1.03-4.156-1.03H64zm87.72 16h48.56c4.277 0 7.72 4.425 7.72 9.938v70.124c0 5.513-3.443 9.938-7.72 9.938h-48.56c-4.277 0-7.72-4.425-7.72-9.938V73.938c0-5.512 3.443-9.937 7.72-9.937zM114 212c-4.432 0-8 3.568-8 8v184c0 4.432 3.568 8 8 8h134.25l-30.625-30.625L202.28 366H279V238h127v-18c0-4.432-3.568-8-8-8H114zm183 44v128h-51.25L352 490.25 458.25 384H407V256H297zm167 147.75l-16 16V448h-28.25l-16 16H448c8.726 0 16-7.274 16-16v-44.25z"></path></g></svg>
-				<span class="text">Charger une sauvegarde</span>
-			</header>
-			<main>
-				<div id="save1" class="savebox">
-					<h1 class="num">1</h1>
-					<div class="desc">La sauvegarde est vide</div>
-					<div class="action top">
-						<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><g class="" ><path d="M64 48c-8.726 0-16 7.274-16 16v384c0 8.726 7.274 16 16 16h236.25l-16-16H64V64h63.375v97.53c0 3.924 3.443 7.095 7.72 7.095h169.81c4.277 0 7.72-3.17 7.72-7.094V64h69.22c.428.318.8.548 1.467 1.094 2.05 1.675 4.962 4.264 8.375 7.406 6.827 6.283 15.65 14.837 24.313 23.5 8.663 8.663 17.217 17.486 23.5 24.313 3.142 3.413 5.73 6.324 7.406 8.374.546.668.776 1.04 1.094 1.47V366h16V128c0-2.68-.657-3.402-1.03-4.156-.375-.754-.725-1.294-1.095-1.844-.74-1.1-1.575-2.19-2.594-3.438-2.036-2.492-4.768-5.55-8.03-9.093-6.524-7.09-15.155-16-23.938-24.782-8.782-8.783-17.692-17.414-24.78-23.938-3.545-3.262-6.6-5.994-9.094-8.03-1.247-1.02-2.337-1.855-3.438-2.595-.55-.37-1.09-.72-1.844-1.094-.754-.373-1.477-1.03-4.156-1.03H64zm87.72 16h48.56c4.277 0 7.72 4.425 7.72 9.938v70.124c0 5.513-3.443 9.938-7.72 9.938h-48.56c-4.277 0-7.72-4.425-7.72-9.938V73.938c0-5.512 3.443-9.937 7.72-9.937zM114 212c-4.432 0-8 3.568-8 8v184c0 4.432 3.568 8 8 8h134.25l-30.625-30.625L202.28 366H279V238h127v-18c0-4.432-3.568-8-8-8H114zm183 44v128h-51.25L352 490.25 458.25 384H407V256H297zm167 147.75l-16 16V448h-28.25l-16 16H448c8.726 0 16-7.274 16-16v-44.25z"></path></g></svg>
+				<header>
+					<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><g class="" ><path d="M64 48c-8.726 0-16 7.274-16 16v384c0 8.726 7.274 16 16 16h236.25l-16-16H64V64h63.375v97.53c0 3.924 3.443 7.095 7.72 7.095h169.81c4.277 0 7.72-3.17 7.72-7.094V64h69.22c.428.318.8.548 1.467 1.094 2.05 1.675 4.962 4.264 8.375 7.406 6.827 6.283 15.65 14.837 24.313 23.5 8.663 8.663 17.217 17.486 23.5 24.313 3.142 3.413 5.73 6.324 7.406 8.374.546.668.776 1.04 1.094 1.47V366h16V128c0-2.68-.657-3.402-1.03-4.156-.375-.754-.725-1.294-1.095-1.844-.74-1.1-1.575-2.19-2.594-3.438-2.036-2.492-4.768-5.55-8.03-9.093-6.524-7.09-15.155-16-23.938-24.782-8.782-8.783-17.692-17.414-24.78-23.938-3.545-3.262-6.6-5.994-9.094-8.03-1.247-1.02-2.337-1.855-3.438-2.595-.55-.37-1.09-.72-1.844-1.094-.754-.373-1.477-1.03-4.156-1.03H64zm87.72 16h48.56c4.277 0 7.72 4.425 7.72 9.938v70.124c0 5.513-3.443 9.938-7.72 9.938h-48.56c-4.277 0-7.72-4.425-7.72-9.938V73.938c0-5.512 3.443-9.937 7.72-9.937zM114 212c-4.432 0-8 3.568-8 8v184c0 4.432 3.568 8 8 8h134.25l-30.625-30.625L202.28 366H279V238h127v-18c0-4.432-3.568-8-8-8H114zm183 44v128h-51.25L352 490.25 458.25 384H407V256H297zm167 147.75l-16 16V448h-28.25l-16 16H448c8.726 0 16-7.274 16-16v-44.25z"></path></g></svg>
+					<span class="text">Charger une sauvegarde</span>
+				</header>
+				<main>
+					<div id="save1" class="savebox">
+						<h1 class="num">1</h1>
+						<div class="time">La sauvegarde est vide</div>
+						<div id="save1_loadBtn" class="action top load"></div>
+						<div id="save1_delBtn" class="action bot delete"></div>
 					</div>
-					<div class="action bot">
-						<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z"/></svg>
+					<div id="save2" class="savebox">
+						<h1 class="num">2</h1>
+						<div class="time">La sauvegarde est vide</div>
+						<div id="save2_loadBtn" class="action top load"></div>
+						<div id="save2_delBtn" class="action bot delete"></div>
 					</div>
-				</div>
-				<div id="save2" class="savebox">
-					<h1 class="num">2</h1>
-					<div class="desc">La sauvegarde est vide</div>
-					<div class="action top">
-						<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><g class="" ><path d="M64 48c-8.726 0-16 7.274-16 16v384c0 8.726 7.274 16 16 16h236.25l-16-16H64V64h63.375v97.53c0 3.924 3.443 7.095 7.72 7.095h169.81c4.277 0 7.72-3.17 7.72-7.094V64h69.22c.428.318.8.548 1.467 1.094 2.05 1.675 4.962 4.264 8.375 7.406 6.827 6.283 15.65 14.837 24.313 23.5 8.663 8.663 17.217 17.486 23.5 24.313 3.142 3.413 5.73 6.324 7.406 8.374.546.668.776 1.04 1.094 1.47V366h16V128c0-2.68-.657-3.402-1.03-4.156-.375-.754-.725-1.294-1.095-1.844-.74-1.1-1.575-2.19-2.594-3.438-2.036-2.492-4.768-5.55-8.03-9.093-6.524-7.09-15.155-16-23.938-24.782-8.782-8.783-17.692-17.414-24.78-23.938-3.545-3.262-6.6-5.994-9.094-8.03-1.247-1.02-2.337-1.855-3.438-2.595-.55-.37-1.09-.72-1.844-1.094-.754-.373-1.477-1.03-4.156-1.03H64zm87.72 16h48.56c4.277 0 7.72 4.425 7.72 9.938v70.124c0 5.513-3.443 9.938-7.72 9.938h-48.56c-4.277 0-7.72-4.425-7.72-9.938V73.938c0-5.512 3.443-9.937 7.72-9.937zM114 212c-4.432 0-8 3.568-8 8v184c0 4.432 3.568 8 8 8h134.25l-30.625-30.625L202.28 366H279V238h127v-18c0-4.432-3.568-8-8-8H114zm183 44v128h-51.25L352 490.25 458.25 384H407V256H297zm167 147.75l-16 16V448h-28.25l-16 16H448c8.726 0 16-7.274 16-16v-44.25z"></path></g></svg>
+					<div id="save3" class="savebox">
+						<h1 class="num">3</h1>
+						<div class="time">La sauvegarde est vide</div>
+						<div id="save3_loadBtn" class="action top load"></div>
+						<div id="save3_delBtn" class="action bot delete"></div>
 					</div>
-					<div class="action bot">
-						<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z"/></svg>
-					</div>
-				</div>
-				<div id="save3" class="savebox">
-					<h1 class="num">3</h1>
-					<div class="desc">La sauvegarde est vide</div>
-					<div class="action top">
-						<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><g class="" ><path d="M64 48c-8.726 0-16 7.274-16 16v384c0 8.726 7.274 16 16 16h236.25l-16-16H64V64h63.375v97.53c0 3.924 3.443 7.095 7.72 7.095h169.81c4.277 0 7.72-3.17 7.72-7.094V64h69.22c.428.318.8.548 1.467 1.094 2.05 1.675 4.962 4.264 8.375 7.406 6.827 6.283 15.65 14.837 24.313 23.5 8.663 8.663 17.217 17.486 23.5 24.313 3.142 3.413 5.73 6.324 7.406 8.374.546.668.776 1.04 1.094 1.47V366h16V128c0-2.68-.657-3.402-1.03-4.156-.375-.754-.725-1.294-1.095-1.844-.74-1.1-1.575-2.19-2.594-3.438-2.036-2.492-4.768-5.55-8.03-9.093-6.524-7.09-15.155-16-23.938-24.782-8.782-8.783-17.692-17.414-24.78-23.938-3.545-3.262-6.6-5.994-9.094-8.03-1.247-1.02-2.337-1.855-3.438-2.595-.55-.37-1.09-.72-1.844-1.094-.754-.373-1.477-1.03-4.156-1.03H64zm87.72 16h48.56c4.277 0 7.72 4.425 7.72 9.938v70.124c0 5.513-3.443 9.938-7.72 9.938h-48.56c-4.277 0-7.72-4.425-7.72-9.938V73.938c0-5.512 3.443-9.937 7.72-9.937zM114 212c-4.432 0-8 3.568-8 8v184c0 4.432 3.568 8 8 8h134.25l-30.625-30.625L202.28 366H279V238h127v-18c0-4.432-3.568-8-8-8H114zm183 44v128h-51.25L352 490.25 458.25 384H407V256H297zm167 147.75l-16 16V448h-28.25l-16 16H448c8.726 0 16-7.274 16-16v-44.25z"></path></g></svg>
-					</div>
-					<div class="action bot">
-						<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z"/></svg>
-					</div>
-				</div>
-			</main>
-		</div>
-		<div id="content_Pseudo" class="content" style="display:none;">
-			<header>
-				<span class="text">Choisissez un nom (masculin)</span>
-			</header>
-			<input type="text" value="" data-lpignore="true">
-			<a id="retourToMenu" class="navBtnsPseudo" onclick="retourToMenu()">
+				</main>
+			</div>
+			<div id="content_Pseudo" class="content" style="display:none;">
+				<header>
+					<span class="text">Choisissez un nom (masculin)</span>
+				</header>
+				<input type="text" value="" data-lpignore="true">
+				<a id="retourToMenu" class="navBtnsPseudo" onclick="retourToMenu()">
 					<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z"/></svg>
 					Retour
 				</a>
-			<a id="gotoRace" class="navBtnsPseudo" onclick="choosePseudo()">
+				<a id="gotoRace" class="navBtnsPseudo" onclick="validatePseudo()">
 					Choix de la race
 					<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
 				</a>
-		</div>
-	</section>
-</div>
-<div id="raceBox">
-	<div class="race slide">
-		<div id="raceTree">
-			<div class="treeBG"></div>
-			<a id="FerreIcon" class="raceIcon Ferre"></a>
-			<a id="HommeIcon" class="raceIcon Homme"></a>
-			<a id="OculainIcon" class="raceIcon Oculain"></a>
-			<a id="FeulainIcon" class="raceIcon Feulain"></a>
-			<a id="AngulainIcon" class="raceIcon Angulain"></a>
-			<a id="GolemIcon" class="raceIcon Golem"></a>
-		</div>
-		<div id="raceInfos">
-			<header>
-				<div id="raceImage"></div>
-				<div id="raceName">
-					<div class="text">Angulain</div>
-				</div>
-			</header>
-			<main>
-				<div class="descBox infoboxes">
-					<header>Description archétypale</header>.
-					<div class="scroll">
-						<p id="raceDesc"></p>
+			</div>
+		</section>
+	</div>
+	<div id="raceBox">
+		<div class="race slide">
+			<div id="raceTree">
+				<div class="treeBG"></div>
+				<a id="FerreIcon" class="raceIcon Ferre"></a>
+				<a id="HommeIcon" class="raceIcon Homme"></a>
+				<a id="OculainIcon" class="raceIcon Oculain"></a>
+				<a id="FeulainIcon" class="raceIcon Feulain"></a>
+				<a id="AngulainIcon" class="raceIcon Angulain"></a>
+				<a id="GolemIcon" class="raceIcon Golem"></a>
+			</div>
+			<div id="raceInfos">
+				<header>
+					<div id="raceImage"></div>
+					<div id="raceName">
+						<div class="text">Angulain</div>
 					</div>
-				</div>
-				<div class="relBox infoboxes">
-					<header>Relations</header>
-					<div class="scroll">
-						<p id="raceRel"></p>
+				</header>
+				<main>
+					<div class="descBox infoboxes">
+						<header>Description archétypale</header>.
+						<div class="scroll">
+							<p id="raceDesc"></p>
+						</div>
 					</div>
-				</div>
-				<div class="caracBox infoboxes">
-					<header>Caractéristiques</header>
-					<div class="scroll">
-						<p id="raceCara"></p>
+					<div class="relBox infoboxes">
+						<header>Relations</header>
+						<div class="scroll">
+							<p id="raceRel"></p>
+						</div>
 					</div>
-				</div>
-			</main>
-		</div>
-		<a id="retourToPseudo" onclick="retourToPseudo()">
+					<div class="caracBox infoboxes">
+						<header>Caractéristiques</header>
+						<div class="scroll">
+							<p id="raceCara"></p>
+						</div>
+					</div>
+				</main>
+			</div>
+			<a id="retourToPseudo" onclick="retourToPseudo()">
 				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z"/></svg>
 				Choix du pseudo
 			</a>
-	</div>
-	<div class="origin slide">
-		<div id="originBox" class="infoboxes">
-			<header>Origine aléatoire..</header>
-			<div class="scroll" style="display:none;">
-				<p id="endroit"><span id="origin_RaceName">Ferré du</span><span id="origin_Place"></span></p>
-				<div id="statIcon"></div>
-				<div id="statTextbox">
-					<div class="text"></div>
+		</div>
+		<div class="origin slide">
+			<div id="originBox" class="infoboxes">
+				<header>Origine aléatoire..</header>
+				<div class="scroll" style="display:none;">
+					<p id="endroit"><span id="origin_RaceName">Ferré du</span><span id="origin_Place"></span></p>
+					<div id="statIcon"></div>
+					<div id="statTextbox">
+						<div class="text"></div>
+					</div>
+				</div>
+				<a id="goToGame" onclick="startGame('new')" style="display:none;">C'est parti</a>
+			</div>
+			<div class="lds-css ng-scope" style="width: 9vh; height: 9vh;">
+				<div style="width:100%;height:100%" class="lds-eclipse">
+					<div></div>
 				</div>
 			</div>
-			<a id="goToGame" onclick="startGame('new')" style="display:none;">C'est parti</a>
-		</div>
-		<div class="lds-css ng-scope" style="width: 9vh; height: 9vh;">
-			<div style="width:100%;height:100%" class="lds-eclipse">
-				<div></div>
-			</div>
 		</div>
 	</div>
-</div>
-<audio autoplay="true" loop controls id="playerEnvB"></audio>
-<audio autoplay="true" loop controls id="playerEnvF"></audio>
-<audio autoplay="true" controls id="playerMusic"></audio>
-<audio autoplay="true" controls id="playerUI"></audio>
-<div id="LoadHistoireBG"></div>
-<script src="js/audio.js"></script>
-<script>
-localStorage.Setting_MusicOn = 1;
-localStorage.Setting_SoundOn = 1;
-setSound("EnvB", "stop");
-setSound("EnvF", "stop");
-setSound("UI", "stop");
-setSound("Music", "Intro");
-$(".scroll").bind("mousewheel",function(ev, delta) {
-    var scrollTop = $(this).scrollTop();
-    $(this).scrollTop(scrollTop-Math.round(delta));
-});
-localStorage.leMomentOuOnTapeLePseudo=0;
-$(".content_Main_btn.bot").on('click',function(){
-	$("#content_Main, #disclaimer").fadeOut(300);
-	$("#GameTitle").css("top","-100%");
-	$("#menu").css({"height":"5%","left":"20%","width":"60%"});
-	setTimeout(function() {
-		$("#menu").css("height","70%");
-		setTimeout(function() {
-			$("#menu").css("bottom","15%");
+	<audio autoplay="true" loop controls id="playerEnvB"></audio>
+	<audio autoplay="true" loop controls id="playerEnvF"></audio>
+	<audio autoplay="true" controls id="playerMusic"></audio>
+	<audio autoplay="true" controls id="playerUI"></audio>
+	<div id="LoadHistoireBG"></div>
+	<script src="js/audio.js"></script>
+	<script>
+		localStorage.Setting_MusicOn = 1;
+		localStorage.Setting_SoundOn = 1;
+		localStorage.leMomentOuOnTapeLePseudo = 0;
+		$(".savebox .action.load").html(iconLoadSave);
+		$(".savebox .action.delete").html(iconDelSave);
+		setSound("EnvB", "stop");
+		setSound("EnvF", "stop");
+		setSound("UI", "stop");
+		setSound("Music", "Intro");
+		$(".scroll").bind("mousewheel", function(ev, delta) {
+			var scrollTop = $(this).scrollTop();
+			$(this).scrollTop(scrollTop - Math.round(delta));
+		});
+
+
+		function openLoadMenu() {
+			$("#content_Main, #disclaimer").fadeOut(300);
+			$("#GameTitle").css("top", "-100%");
+			$("#menu").css({
+				"height": "5%",
+				"left": "20%",
+				"width": "60%"
+			});
 			setTimeout(function() {
-				$("#content_Load").fadeIn(300);
-			}, 300);
-		}, 200);
-	}, 600);
-})
-$('#content_Load .close').on('click',function(){
-	$("#content_Load").fadeOut(300);
-	setTimeout(function() {
-		$("#menu").css("bottom","5%");
-		setTimeout(function() {
-			$("#menu").css("height","5%");
-			setTimeout(function() {
-				$("#menu").css({"height":"14%","left":"35%","width":"30%"});
-				$("#GameTitle").css("top","9%");
-				$("#content_Main, #disclaimer").fadeIn(300);
-			}, 300);
-		}, 300);
-	}, 300);
-})
-$(".content_Main_btn.top").on('click',function(){
-	$("#content_Main, #disclaimer").fadeOut(300);
-	$("#GameTitle").css("top","-100%");
-	$("#menu").css({"width":"10px","left":"calc(50% - 5px)"});
-	setTimeout(function() {
-		$("#menu").css("height","70%");
-		setTimeout(function() {
-			$("#menu").css({"bottom":"40%","height":"20%","background":"linear-gradient(356deg, #fff8a733, transparent 70%), #cbb9a1"});
-			setTimeout(function() {
-				$("#menu").css({"width":"50%","left":"25%"});
+				$("#menu").css("height", "70%");
 				setTimeout(function() {
-					$("#content_Pseudo").fadeIn(300);
-					leMomentOuOnTapeLePseudo();
-				}, 300);
-			}, 500);
-		}, 200);
-	}, 600);
-});
-function leMomentOuOnTapeLePseudo(){
-	$(document).keyup(function(event) {
-		if ($("#content_Pseudo input").is(":focus") && event.key == "Enter") {choosePseudo();}
-	});
-	$("#content_Pseudo input").focus();
-}
-function choosePseudo(){
-	localStorage.pseudo = $('#content_Pseudo input').val().toLowerCase().replace(/\b[a-z]/g, function(letter) {
-  	return letter.toUpperCase();});
-	$("#content_Pseudo").fadeOut(300);
-	$("#menu").css({"height":"10px","bottom":"calc(50% - 5px)"});
-	setTimeout(function() {
-		$("#menu").css({"width":"10px","left":"calc(100%)"});
-		setTimeout(function() {
-			$("#raceBox").css("bottom","0");
-			setTimeout(function() {
-				$("#raceBox").effect("shake", { direction: "up", times: 1, distance: 3000}, 200);
-			}, 650);
-		}, 500);
-	}, 500);
-}
-// function setSound(soundtype, sound){
-//   if (localStorage.Setting_SoundOn==1){
-//     localStorage['audiotype'+soundtype] = sound;
-//     window.open("audio"+soundtype+".html", "audio"+soundtype);
-//   }
-// }
-$(document).on('click', '.raceIcon:not(.flipped)', function(){
-	var leID = this;
-	changeClassInfo(this.id);
-	$("#raceTree").css('right','5vh');
-	$("#raceInfos").css('left','4vh');
-	$(".flipped").css('transform','rotateY(90deg)');
-	$(leID).css('transform','rotateY(90deg)');
-	setTimeout(function() {
-		$(".flipped").html('').css('transform','rotateY(0deg)').removeClass('flipped');
-		$(leID).css('transform','rotateY(0deg)').addClass('flipped');
-		$(".flipped").html('Choisir');
-	}, 300);
-});
-function changeClassInfo(raceId){
-	$("#raceName .text").slideUp(300);
-	$("#raceDesc, #raceRel").fadeOut(300);
-	setTimeout(function() {
-		if (raceId == "AngulainIcon"){
-			$("#raceName .text").html('Angulain');
-			$("#raceImage").css('background-image','url(images/races/angulain.png)');
-			$("#raceDesc").html("Productivistes souvent considérés comme froids et ternes, les Angulains ne sont pas la population la plus appréciée.<br>On dit souvent qu'ils se sont appropriés progressivement le bien commun pour aujourd'hui être une population assez aisée ; les familles Angulaines sont en effet souvent présentes et influentes dans les cercles de pouvoir. Ils sont souvent surnommés \"Anguleux\" par moquerie vis-à-vis de leur approche très froide et distante.<br> Leur idéologie positive envers l'industrialisation massive des productions ne les sert pas socialement non plus.");
-			$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Feûlains<br><div title='Neutralité' class='relDot yellow'></div>Golems<br><div title='Non-appréciation' class='relDot orange'></div>Oculains et Hommes, notamment en raison de leurs divergences d'opinions<br><div title='Haine' class='relDot red'></div>Ferrés");
-			$("#raceCara").html(iconInt+"<div class='charPlus'>+10%</div><br>"+iconChar+"<div class='charPlus'>+10%</div><br>"+iconFesse+"<div class='charMoins'>-10%</div><br>"+iconSag+"<div class='charMoins'>-10%</div>");
-		}
-		if (raceId == "OculainIcon"){
-			$("#raceName .text").html('Oculain');
-			$("#raceImage").css('background-image','url(images/races/oculain.png)');
-			$("#raceDesc").html("Les Oculains sont des individus simples mais très actifs, à l'instinct grégaire, qui ont un rapport à la nature très fusionnel. Habitant souvent loin de l'agitation des villes, ils préfèrent le calme des régions isolées, où ils vivent d'agriculture dans de petits hameaux, où ils devisent ensemble au crépuscule, avec le rythme de conversation agité et alambiqué qui leur est propre.");
-			$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Golems<br><div title='Neutralité' class='relDot yellow'></div>Ferrés, Hommes et Feûlains<br><div title='Non-appréciation' class='relDot orange'></div>Angulains");
-			$("#raceCara").html(iconInt+"<div class='charPlus'>+10%</div><br>"+iconSag+"<div class='charPlus'>+10%</div><br>"+iconDex+"<div class='charMoins'>-10%</div><br>"+iconChar+"<div class='charMoins'>-10%</div>");
-		}
-		if (raceId == "FeulainIcon"){
-			$("#raceName .text").html('Feûlain');
-			$("#raceImage").css('background-image','url(images/races/feulain.png)');
-			$("#raceDesc").html("Faute de combativité, les feûlains se sont très vite rendus compte qu'ils possédaient une capacité à enjôler de leurs mots les autres individus. C'est aujourd'hui une population avant tout marchande, qui se soucie plus de ce qu'ils possèdent que de ce qu'ils savent.");
-			$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Hommes et Angulains<br><div title='Neutralité' class='relDot yellow'></div>Golems et Oculains<br><div title='Non-appréciation' class='relDot orange'></div>Ferrés");
-			$("#raceCara").html(iconDex+"<div class='charPlus'>+10%</div><br>"+iconChar+"<div class='charPlus'>+10%</div><br>"+iconForce+"<div class='charMoins'>-10%</div><br>"+iconInt+"<div class='charMoins'>-10%</div>");
-		}
-		if (raceId == "FerreIcon"){
-			$("#raceName .text").html('Ferré');
-			$("#raceImage").css('background-image','url(images/races/ferre.png)');
-			$("#raceDesc").html("Les Ferrés sont réputés pour êtres les transcripteurs du savoir. Ce sont des créatures très intelligentes, et qui ont un contact supérieur avec l'occulte. Ils vivent souvent seuls, individus à l'ego surdimensionné, pour se consacrer aux arts magiques et à la connaissance.");
-			$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Hommes<br><div title='Neutralité' class='relDot yellow'></div>Oculains<br><div title='Non-appréciation' class='relDot orange'></div>Feûlains<br><div title='Haine' class='relDot red'></div>Golems, depuis l'insurrection Golemme, et Angulains");
-			$("#raceCara").html(iconFesse+"<div class='charPlus'>+10%</div><br>"+iconInt+"<div class='charPlus'>+10%</div><br>"+iconForce+"<div class='charMoins'>-10%</div><br>"+iconDex+"<div class='charMoins'>-10%</div>");
-		}
-		if (raceId == "HommeIcon"){
-			$("#raceName .text").html('Homme');
-			$("#raceImage").css('background-image','url(images/races/homme.png)');
-			$("#raceDesc").html("Les hommes représentent la partie la plus importante de la population mondiale. Leurs avant membres très développés ont très vite fait d'eux des artisans et constructeurs hors-pair. C'est ainsi grâce à leur savoir-faire et leur sens d'entraide et de communauté que les premières villes ont été érigées.");
-			$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Feûlains et Ferrés<br><div title='Neutralité' class='relDot yellow'></div>Golems et Oculains<br><div title='Non-appréciation' class='relDot orange'></div>Angulains");
-			$("#raceCara").html(iconForce+"<div class='charPlus'>+10%</div><br>"+iconDex+"<div class='charPlus'>+10%</div><br>"+iconFesse+"<div class='charMoins'>-10%</div><br>"+iconChar+"<div class='charMoins'>-10%</div>");
-		}
-		if (raceId == "GolemIcon"){
-			$("#raceName .text").html('Golem de Sang');
-			$("#raceImage").css('background-image','url(images/races/golem.png)');
-			$("#raceDesc").html("Les Golems <u>d'Argile</u> sont une création magique des Ferrés, pures élévations de matière inanimée à la vie. Seulement ces créations d'Argiles possédaient juste assez d'intelligence pour se rendre compte de leur situation d'esclaves..<br>Après une violente insurrection, le traité des Golems a été signé, qui les reconnaît comme individus.<br>Certains Golems d'argile ont demandé à des mages non-ferrés de modifier leur constitution et de les rendre plus \"humains\" : c'est ainsi que sont nés les Golems de Sang, plus agiles et sages que leurs frères d'Argile.");
-			$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Oculains<br><div title='Neutralité' class='relDot yellow'></div>Hommes, Angulains et Feûlains<br><div title='Haine' class='relDot red'></div>Ferrés, depuis l'insurrection Golemme");
-			$("#raceCara").html(iconForce+"<div class='charPlus'>+10%</div><br>"+iconSag+"<div class='charPlus'>+10%</div><br>"+iconDex+"<div class='charMoins'>-10%</div><br>"+iconInt+"<div class='charMoins'>-10%</div>");
-		}
-	}, 300);
-	$("#raceName .text").slideDown(300);
-	$("#raceDesc, #raceRel").fadeIn(300);
-}
-function retourToPseudo(){
-	$("#raceBox").css("bottom","100%");
-	setTimeout(function() {
-		$("#menu").css({"width":"50%","left":"25%"});
-		setTimeout(function() {
-			$("#menu").css({"bottom":"40%","height":"20%"});
-			setTimeout(function() {
-				$("#content_Pseudo").fadeIn(300);
-				setTimeout(function() {
-					$("#content_Pseudo input").focus();
-				},300);
-			},300);
-		},300);
-	},300);
-}
-function retourToMenu(){
-	$("#content_Pseudo").fadeOut(300);
-	setTimeout(function() {
-		$("#menu").css({"width":"10px","left":"calc(50% - 5px)"});
-		setTimeout(function() {
-			$("#menu").css({"width":"10px","left":"calc(50% - 5px)"});
-			setTimeout(function() {
-				$("#menu").css({"bottom":"5%","background":"linear-gradient(356deg, #9c608033, transparent 70%), #e6dccf"});
-				setTimeout(function() {
-					$("#menu").css({"height":"14%","left":"35%","width":"30%"});
-					$("#GameTitle").css("top","9%");
-					$("#content_Main, #disclaimer").fadeIn(300);
-				},300);
-			},300);
-		},300);
-	},300);
-}
-$(document).on('click', '.flipped', function(){
-	localStorage.raceXDex=localStorage.raceXChar=localStorage.raceXInt=localStorage.raceXSag=localStorage.raceXFesse=localStorage.raceXForce=1;
-	localStorage.bForce=localStorage.bFesse=localStorage.bChar=localStorage.bDex=localStorage.bSag=localStorage.bInt=2;
-	if(this.id == "HommeIcon"){
-		localStorage.raceXDex=localStorage.raceXForce=1.1;
-		localStorage.raceXFesse=localStorage.raceXChar=0.9;
-		localStorage.race="Homme";
-	}
-	if(this.id == "OculainIcon"){
-		localStorage.raceXInt=localStorage.raceXSag=1.1;
-		localStorage.raceXDex=localStorage.raceXChar=0.9;
-		localStorage.race="Oculain";
-	}
-	if(this.id == "FeulainIcon"){
-		localStorage.raceXDex=localStorage.raceXChar=1.1;
-		localStorage.raceXForce=localStorage.raceXInt=0.9;
-		localStorage.race="Feûlain";
-	}
-	if(this.id == "AngulainIcon"){
-		localStorage.raceXInt=localStorage.raceXChar=1.1;
-		localStorage.raceXFesse=localStorage.raceXSag=0.9;
-		localStorage.race="Angulain";
-	}
-	if(this.id == "GolemIcon"){
-		localStorage.raceXForce=localStorage.raceXSag=1.1;
-		localStorage.raceXDex=localStorage.raceXInt=0.9;
-		localStorage.race="Golem";
-	}
-	if(this.id == "FerreIcon"){
-		localStorage.raceXFesse=localStorage.raceXInt=1.1;
-		localStorage.raceXForce=localStorage.raceXDex=0.9;
-		localStorage.race="Ferré";
-	}
-	$("#raceBox .race").css("bottom","100%");
-	$("#endroit, #originStat").fadeOut(1);
-	$("#raceBox .origin").css("left","0");
-	setTimeout(function() {
-		$(".lds-css").fadeOut(200);
-		randomOrigine();
-		$("#statIcon svg, #statTextbox .text").fadeOut();
-		setTimeout(function() {
-			$("#originBox").css("height","24%");
-			setTimeout(function() {
-				$("#originBox").css({"height":"46%","top":"27%"});
-				$("#raceBox .origin .scroll, #endroit").fadeIn(300);
-				setTimeout(function() {
-					$('#origin_RaceName').html(localStorage.race+" de")
+					$("#menu").css("bottom", "15%");
 					setTimeout(function() {
-						$("#statIcon svg, #statTextbox .text, #goToGame").fadeIn(300);
-					},300);
-				},200);
-			},400);
-		},200);
-	},2000);
-});
-function randomOrigine(){
-	localStorage.origineXForce = 1;
-	localStorage.origineXFesse = 1;
-	localStorage.origineXChar = 1;
-	localStorage.origineXDex = 1;
-	localStorage.origineXSag = 1;
-	localStorage.origineXInt = 1;
-	localStorage.origineAddGold = 0;
-	localStorage.inv_arme_Baton = 0;
-	localStorage.justStartedGame = 1;
-	localStorage.plHealth = localStorage.plHealthMax = 100;
-	var origine = Math.floor(Math.random() * (14 - 1 + 1) + 1);
-	if (origine == 1){
-		var origineName = localStorage.origine = "Port-Racine";
-		$("#statIcon").html(iconStartingGold);
-		$("#statTextbox .text").html("+20");
-		localStorage.origineAddGold = 20;
-	}
-	if (origine == 2){
-		var origineName = localStorage.origine = "Courbevoie";//
-		$("#statIcon").html(iconForce);
-		$("#statTextbox .text").html("+30%");
-		localStorage.origineXForce = 1.3;
-	}
-	if (origine == 3){
-		var origineName = localStorage.origine = "Chênelans";//
-		$("#statIcon").html(iconForce);
-		$("#statTextbox .text").html("-30%");
-		localStorage.origineXForce = 0.7;
-	}
-	if (origine == 4){
-		var origineName = localStorage.origine = "Pont-Sabot";//
-		$("#statIcon").html(iconFesse);
-		$("#statTextbox .text").html("+30%");
-		localStorage.origineXForce = 1.3;
-	}
-	if (origine == 5){
-		var origineName = localStorage.origine = "Mont-d'Argile";//
-		$("#statIcon").html(iconFesse);
-		$("#statTextbox .text").html("-30%");
-		localStorage.origineXForce = 0.7;
-	}
-	if (origine == 6){
-		var origineName = localStorage.origine = "Vigneclaire";//
-		$("#statIcon").html(iconChar);
-		$("#statTextbox .text").html("+30%");
-		localStorage.origineXChar = 1.3;
-	}
-	if (origine == 7){
-		var origineName = localStorage.origine = "Feuilleronne";//
-		$("#statIcon").html(iconChar);
-		$("#statTextbox .text").html("-30%");
-		localStorage.origineXChar = 0.7;
-	}
-	if (origine == 8){
-		var origineName = localStorage.origine = "Aigreville";//
-		$("#statIcon").html(iconDex);
-		$("#statTextbox .text").html("+30%");
-		localStorage.origineXDex = 1.3;
-	}
-	if (origine == 9){
-		var origineName = localStorage.origine = "Ezelanne";//
-		$("#statIcon").html(iconDex);
-		$("#statTextbox .text").html("-30%");
-		localStorage.origineXDex = 0.7;
-	}
-	if (origine == 10){
-		var origineName = localStorage.origine = "Essay-sous-bois";//
-		$("#statIcon").html(iconSag);
-		$("#statTextbox .text").html("+30%");
-		localStorage.origineXSag = 1.3;
-	}
-	if (origine == 11){
-		var origineName = localStorage.origine = "Viflac";//
-		$("#statIcon").html(iconSag);
-		$("#statTextbox .text").html("-30%");
-		localStorage.origineXSag = 0.7;
-	}
-	if (origine == 12){
-		var origineName = localStorage.origine = "Grisval";//
-		$("#statIcon").html(iconInt);
-		$("#statTextbox .text").html("+30%");
-		localStorage.origineXInt = 1.3;
-	}
-	if (origine == 13){
-		var origineName = localStorage.origine = "Comblefier";
-		$("#statIcon").html(iconInt);
-		$("#statTextbox .text").html("-30%");
-		localStorage.origineXInt = 0.7;
-	}
-	if (origine == 14){
-		var origineName = localStorage.origine = "Rougecombe";//
-		$("#statIcon").html(iconWeapon);
-		$("#statTextbox .text").html("Bâton taillé");
-		localStorage.inv_arme_Baton = 1;
-	}
-	if (origine == 15){
-		var origineName = localStorage.origine = "Belledouve";
-		$("#statIcon").html(iconVieMax);
-		$("#statTextbox .text").html("+10");
-		localStorage.plHealth = localStorage.plHealthMax = 110;
-	}
-	if (origine == 16){
-		var origineName = localStorage.origine = "Calmemer";//
-		$("#statIcon").html(iconVieMax);
-		$("#statTextbox .text").html("-10");
-		localStorage.plHealth = localStorage.plHealthMax = 90;
-	}
-	if (origine == 17){
-		var origineName = localStorage.origine = "Viveroche";//
-		$("#statIcon").html(iconVieMax);
-		$("#statTextbox .text").html("+20");
-		localStorage.plHealth = localStorage.plHealthMax = 120;
-	}
-	if (origine == 18){
-		var origineName = localStorage.origine = "Pont-aux-morts";//
-		$("#statIcon").html(iconVieMax);
-		$("#statTextbox .text").html("-20");
-		localStorage.plHealth = localStorage.plHealthMax = 80;
-	}
-	$('#origin_Place').html(origineName);
-	if ($('#origin_Place').width() > (0.9 * $('#originBox').width())){
-		$('#origin_Place').css("font-size","6vh");
-	}
-}
-function startGame(state){
-	if (state == 'new'){
-		$("#LoadHistoireBG").css("background","linear-gradient(to bottom, #d7eff5, #c4e8fa 60%)");
-	}
-	$("#LoadHistoireBG").css("left","0");
-	setTimeout(function() {
-		window.location="Histoire.html";
-	},1000);
-}
-</script>
+						$("#content_Load").fadeIn(300);
+						refSaves();
+					}, 300);
+				}, 200);
+			}, 600);
+		}
+		$(document).on('click', '.action.load.active', function() {
+			var thisid = String((this.id).replace('_loadBtn', ''));
+			if (localStorage[thisid] != undefined || localStorage[thisid] != 0) {
+				load(thisid);
+			}
+		})
+
+		function load(savenum) {
+			var saveID = String(savenum);
+			for (var i = 0; i < saveParams_InvTotal_Length; i++) {
+				localStorage[saveID + '_inv_' + saveParams_InvTotal[i]] = localStorage['inv_' + saveParams_InvTotal[i]];
+			}
+			for (var i = 0; i < saveParams_DiversTotal_Length; i++) {
+				localStorage[saveID + '_' + saveParams_DiversTotal[i]] = localStorage[saveParams_DiversTotal[i]];
+			}
+			window.location = "Histoire.html";
+		}
+		$(document).on('click', '.action.delete.active', function() {
+			var thisid = String((this.id).replace('_delBtn', ''));
+			if (localStorage[thisid] != undefined && localStorage[thisid] != 0) {
+				localStorage[thisid] = 0;
+			}
+			refSaves();
+		})
+
+		function refSaves() {
+			for (i = 1; i <= 3; i++) {
+				if (localStorage['save' + i] != undefined && localStorage['save' + i] != 0) {
+					$('#save' + i + ' .time').html(localStorage['save' + i + 'Time'] + "<br>" + localStorage['save' + i + '_pseudo'] + ", " + localStorage['save' + i + '_race'].toLowerCase() + " " + localStorage['save' + i + '_classe'].toLowerCase() + " de " + localStorage['save' + i + '_origine']);
+					$('#save' + i + ' .action.load, #save' + i + ' .action.delete').addClass('active');
+				} else {
+					$('#save' + i + ' .time').html('Vide');
+					$('#save' + i + ' .action.load, #save' + i + ' .action.delete').removeClass('active');
+				}
+			}
+		}
+
+		function closeLoadMenu() {
+			$("#content_Load").fadeOut(300);
+			setTimeout(function() {
+				$("#menu").css("bottom", "5%");
+				setTimeout(function() {
+					$("#menu").css("height", "5%");
+					setTimeout(function() {
+						$("#menu").css({
+							"height": "14%",
+							"left": "35%",
+							"width": "30%"
+						});
+						$("#GameTitle").css("top", "9%");
+						$("#content_Main, #disclaimer").fadeIn(300);
+					}, 300);
+				}, 300);
+			}, 300);
+		}
+
+		function openPseudoMenu() {
+			$("#content_Main, #disclaimer").fadeOut(300);
+			$("#GameTitle").css("top", "-100%");
+			$("#menu").css({
+				"width": "10px",
+				"left": "calc(50% - 5px)"
+			});
+			setTimeout(function() {
+				$("#menu").css("height", "70%");
+				setTimeout(function() {
+					$("#menu").css({
+						"bottom": "40%",
+						"height": "20%",
+						"background": "linear-gradient(356deg, #fff8a733, transparent 70%), #cbb9a1"
+					});
+					setTimeout(function() {
+						$("#menu").css({
+							"width": "50%",
+							"left": "25%"
+						});
+						setTimeout(function() {
+							$("#content_Pseudo").fadeIn(300);
+							$(document).keyup(function(event) {
+								if ($("#content_Pseudo input").is(":focus") && event.key == "Enter") {
+									validatePseudo();
+								}
+							});
+							$("#content_Pseudo input").focus();
+						}, 300);
+					}, 500);
+				}, 200);
+			}, 600);
+		}
+
+		function validatePseudo() {
+			localStorage.pseudo = $('#content_Pseudo input').val().toLowerCase().replace(/\b[a-z]/g, function(letter) {
+				return letter.toUpperCase();
+			});
+			$("#content_Pseudo").fadeOut(300);
+			$("#menu").css({
+				"height": "10px",
+				"bottom": "calc(50% - 5px)"
+			});
+			setTimeout(function() {
+				$("#menu").css({
+					"width": "10px",
+					"left": "calc(100%)"
+				});
+				setTimeout(function() {
+					$("#raceBox").css("bottom", "0");
+					setTimeout(function() {
+						$("#raceBox").effect("shake", {
+							direction: "up",
+							times: 1,
+							distance: 3000
+						}, 200);
+					}, 650);
+				}, 500);
+			}, 500);
+		}
+		$(document).on('click', '.raceIcon:not(.flipped)', function() {
+			var leID = this;
+			changeClassInfo(this.id);
+			$("#raceTree").css('right', '5vh');
+			$("#raceInfos").css('left', '4vh');
+			$(".flipped").css('transform', 'rotateY(90deg)');
+			$(leID).css('transform', 'rotateY(90deg)');
+			setTimeout(function() {
+				$(".flipped").html('').css('transform', 'rotateY(0deg)').removeClass('flipped');
+				$(leID).css('transform', 'rotateY(0deg)').addClass('flipped');
+				$(".flipped").html('Choisir');
+			}, 300);
+		});
+
+		function changeClassInfo(raceId) {
+			$("#raceName .text").slideUp(300);
+			$("#raceDesc, #raceRel").fadeOut(300);
+			setTimeout(function() {
+				if (raceId == "AngulainIcon") {
+					$("#raceName .text").html('Angulain');
+					$("#raceImage").css('background-image', 'url(images/races/angulain.png)');
+					$("#raceDesc").html(
+						"Productivistes souvent considérés comme froids et ternes, les Angulains ne sont pas la population la plus appréciée.<br>On dit souvent qu'ils se sont appropriés progressivement le bien commun pour aujourd'hui être une population assez aisée ; les familles Angulaines sont en effet souvent présentes et influentes dans les cercles de pouvoir. Ils sont souvent surnommés \"Anguleux\" par moquerie vis-à-vis de leur approche très froide et distante.<br> Leur idéologie positive envers l'industrialisation massive des productions ne les sert pas socialement non plus."
+					);
+					$("#raceRel").html(
+						"<div title='Appréciation' class='relDot green'></div>Feûlains<br><div title='Neutralité' class='relDot yellow'></div>Golems<br><div title='Non-appréciation' class='relDot orange'></div>Oculains et Hommes, notamment en raison de leurs divergences d'opinions<br><div title='Haine' class='relDot red'></div>Ferrés"
+					);
+					$("#raceCara").html(iconInt + "<div class='charPlus'>+10%</div><br>" + iconChar + "<div class='charPlus'>+10%</div><br>" + iconFesse + "<div class='charMoins'>-10%</div><br>" + iconSag + "<div class='charMoins'>-10%</div>");
+				}
+				if (raceId == "OculainIcon") {
+					$("#raceName .text").html('Oculain');
+					$("#raceImage").css('background-image', 'url(images/races/oculain.png)');
+					$("#raceDesc").html(
+						"Les Oculains sont des individus simples mais très actifs, à l'instinct grégaire, qui ont un rapport à la nature très fusionnel. Habitant souvent loin de l'agitation des villes, ils préfèrent le calme des régions isolées, où ils vivent d'agriculture dans de petits hameaux, où ils devisent ensemble au crépuscule, avec le rythme de conversation agité et alambiqué qui leur est propre."
+					);
+					$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Golems<br><div title='Neutralité' class='relDot yellow'></div>Ferrés, Hommes et Feûlains<br><div title='Non-appréciation' class='relDot orange'></div>Angulains");
+					$("#raceCara").html(iconInt + "<div class='charPlus'>+10%</div><br>" + iconSag + "<div class='charPlus'>+10%</div><br>" + iconDex + "<div class='charMoins'>-10%</div><br>" + iconChar + "<div class='charMoins'>-10%</div>");
+				}
+				if (raceId == "FeulainIcon") {
+					$("#raceName .text").html('Feûlain');
+					$("#raceImage").css('background-image', 'url(images/races/feulain.png)');
+					$("#raceDesc").html(
+						"Faute de combativité, les feûlains se sont très vite rendus compte qu'ils possédaient une capacité à enjôler de leurs mots les autres individus. C'est aujourd'hui une population avant tout marchande, qui se soucie plus de ce qu'ils possèdent que de ce qu'ils savent."
+					);
+					$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Hommes et Angulains<br><div title='Neutralité' class='relDot yellow'></div>Golems et Oculains<br><div title='Non-appréciation' class='relDot orange'></div>Ferrés");
+					$("#raceCara").html(iconDex + "<div class='charPlus'>+10%</div><br>" + iconChar + "<div class='charPlus'>+10%</div><br>" + iconForce + "<div class='charMoins'>-10%</div><br>" + iconInt + "<div class='charMoins'>-10%</div>");
+				}
+				if (raceId == "FerreIcon") {
+					$("#raceName .text").html('Ferré');
+					$("#raceImage").css('background-image', 'url(images/races/ferre.png)');
+					$("#raceDesc").html(
+						"Les Ferrés sont réputés pour êtres les transcripteurs du savoir. Ce sont des créatures très intelligentes, et qui ont un contact supérieur avec l'occulte. Ils vivent souvent seuls, individus à l'ego surdimensionné, pour se consacrer aux arts magiques et à la connaissance."
+					);
+					$("#raceRel").html(
+						"<div title='Appréciation' class='relDot green'></div>Hommes<br><div title='Neutralité' class='relDot yellow'></div>Oculains<br><div title='Non-appréciation' class='relDot orange'></div>Feûlains<br><div title='Haine' class='relDot red'></div>Golems, depuis l'insurrection Golemme, et Angulains"
+					);
+					$("#raceCara").html(iconFesse + "<div class='charPlus'>+10%</div><br>" + iconInt + "<div class='charPlus'>+10%</div><br>" + iconForce + "<div class='charMoins'>-10%</div><br>" + iconDex + "<div class='charMoins'>-10%</div>");
+				}
+				if (raceId == "HommeIcon") {
+					$("#raceName .text").html('Homme');
+					$("#raceImage").css('background-image', 'url(images/races/homme.png)');
+					$("#raceDesc").html(
+						"Les hommes représentent la partie la plus importante de la population mondiale. Leurs avant membres très développés ont très vite fait d'eux des artisans et constructeurs hors-pair. C'est ainsi grâce à leur savoir-faire et leur sens d'entraide et de communauté que les premières villes ont été érigées."
+					);
+					$("#raceRel").html("<div title='Appréciation' class='relDot green'></div>Feûlains et Ferrés<br><div title='Neutralité' class='relDot yellow'></div>Golems et Oculains<br><div title='Non-appréciation' class='relDot orange'></div>Angulains");
+					$("#raceCara").html(iconForce + "<div class='charPlus'>+10%</div><br>" + iconDex + "<div class='charPlus'>+10%</div><br>" + iconFesse + "<div class='charMoins'>-10%</div><br>" + iconChar + "<div class='charMoins'>-10%</div>");
+				}
+				if (raceId == "GolemIcon") {
+					$("#raceName .text").html('Golem de Sang');
+					$("#raceImage").css('background-image', 'url(images/races/golem.png)');
+					$("#raceDesc").html(
+						"Les Golems <u>d'Argile</u> sont une création magique des Ferrés, pures élévations de matière inanimée à la vie. Seulement ces créations d'Argiles possédaient juste assez d'intelligence pour se rendre compte de leur situation d'esclaves..<br>Après une violente insurrection, le traité des Golems a été signé, qui les reconnaît comme individus.<br>Certains Golems d'argile ont demandé à des mages non-ferrés de modifier leur constitution et de les rendre plus \"humains\" : c'est ainsi que sont nés les Golems de Sang, plus agiles et sages que leurs frères d'Argile."
+					);
+					$("#raceRel").html(
+						"<div title='Appréciation' class='relDot green'></div>Oculains<br><div title='Neutralité' class='relDot yellow'></div>Hommes, Angulains et Feûlains<br><div title='Haine' class='relDot red'></div>Ferrés, depuis l'insurrection Golemme");
+					$("#raceCara").html(iconForce + "<div class='charPlus'>+10%</div><br>" + iconSag + "<div class='charPlus'>+10%</div><br>" + iconDex + "<div class='charMoins'>-10%</div><br>" + iconInt + "<div class='charMoins'>-10%</div>");
+				}
+			}, 300);
+			$("#raceName .text").slideDown(300);
+			$("#raceDesc, #raceRel").fadeIn(300);
+		}
+
+		function retourToPseudo() {
+			$("#raceBox").css("bottom", "100%");
+			setTimeout(function() {
+				$("#menu").css({
+					"width": "50%",
+					"left": "25%"
+				});
+				setTimeout(function() {
+					$("#menu").css({
+						"bottom": "40%",
+						"height": "20%"
+					});
+					setTimeout(function() {
+						$("#content_Pseudo").fadeIn(300);
+						setTimeout(function() {
+							$("#content_Pseudo input").focus();
+						}, 300);
+					}, 300);
+				}, 300);
+			}, 300);
+		}
+
+		function retourToMenu() {
+			$("#content_Pseudo").fadeOut(300);
+			setTimeout(function() {
+				$("#menu").css({
+					"width": "10px",
+					"left": "calc(50% - 5px)"
+				});
+				setTimeout(function() {
+					$("#menu").css({
+						"width": "10px",
+						"left": "calc(50% - 5px)"
+					});
+					setTimeout(function() {
+						$("#menu").css({
+							"bottom": "5%",
+							"background": "linear-gradient(356deg, #9c608033, transparent 70%), #e6dccf"
+						});
+						setTimeout(function() {
+							$("#menu").css({
+								"height": "14%",
+								"left": "35%",
+								"width": "30%"
+							});
+							$("#GameTitle").css("top", "9%");
+							$("#content_Main, #disclaimer").fadeIn(300);
+						}, 300);
+					}, 300);
+				}, 300);
+			}, 300);
+		}
+		$(document).on('click', '.flipped', function() {
+			localStorage.raceXDex = localStorage.raceXChar = localStorage.raceXInt = localStorage.raceXSag = localStorage.raceXFesse = localStorage.raceXForce = 1;
+			localStorage.bForce = localStorage.bFesse = localStorage.bChar = localStorage.bDex = localStorage.bSag = localStorage.bInt = 2;
+			if (this.id == "HommeIcon") {
+				localStorage.raceXDex = localStorage.raceXForce = 1.1;
+				localStorage.raceXFesse = localStorage.raceXChar = 0.9;
+				localStorage.race = "Homme";
+			}
+			if (this.id == "OculainIcon") {
+				localStorage.raceXInt = localStorage.raceXSag = 1.1;
+				localStorage.raceXDex = localStorage.raceXChar = 0.9;
+				localStorage.race = "Oculain";
+			}
+			if (this.id == "FeulainIcon") {
+				localStorage.raceXDex = localStorage.raceXChar = 1.1;
+				localStorage.raceXForce = localStorage.raceXInt = 0.9;
+				localStorage.race = "Feûlain";
+			}
+			if (this.id == "AngulainIcon") {
+				localStorage.raceXInt = localStorage.raceXChar = 1.1;
+				localStorage.raceXFesse = localStorage.raceXSag = 0.9;
+				localStorage.race = "Angulain";
+			}
+			if (this.id == "GolemIcon") {
+				localStorage.raceXForce = localStorage.raceXSag = 1.1;
+				localStorage.raceXDex = localStorage.raceXInt = 0.9;
+				localStorage.race = "Golem";
+			}
+			if (this.id == "FerreIcon") {
+				localStorage.raceXFesse = localStorage.raceXInt = 1.1;
+				localStorage.raceXForce = localStorage.raceXDex = 0.9;
+				localStorage.race = "Ferré";
+			}
+			$("#raceBox .race").css("bottom", "100%");
+			$("#endroit, #originStat").fadeOut(1);
+			$("#raceBox .origin").css("left", "0");
+			setTimeout(function() {
+				$(".lds-css").fadeOut(200);
+				randomOrigine();
+				$("#statIcon svg, #statTextbox .text").fadeOut();
+				setTimeout(function() {
+					$("#originBox").css("height", "24%");
+					setTimeout(function() {
+						$("#originBox").css({
+							"height": "46%",
+							"top": "27%"
+						});
+						$("#raceBox .origin .scroll, #endroit").fadeIn(300);
+						setTimeout(function() {
+							$('#origin_RaceName').html(localStorage.race + " de")
+							setTimeout(function() {
+								$("#statIcon svg, #statTextbox .text, #goToGame").fadeIn(300);
+							}, 300);
+						}, 200);
+					}, 400);
+				}, 200);
+			}, 2000);
+		});
+
+		function randomOrigine() {
+			localStorage.origineXForce = 1;
+			localStorage.origineXFesse = 1;
+			localStorage.origineXChar = 1;
+			localStorage.origineXDex = 1;
+			localStorage.origineXSag = 1;
+			localStorage.origineXInt = 1;
+			localStorage.origineAddGold = 0;
+			localStorage.inv_arme_Baton = 0;
+			localStorage.justStartedGame = 1;
+			localStorage.plHealth = localStorage.plHealthMax = 100;
+			var origine = Math.floor(Math.random() * (14 - 1 + 1) + 1);
+			if (origine == 1) {
+				var origineName = localStorage.origine = "Port-Racine";
+				$("#statIcon").html(iconStartingGold);
+				$("#statTextbox .text").html("+20");
+				localStorage.origineAddGold = 20;
+			}
+			if (origine == 2) {
+				var origineName = localStorage.origine = "Courbevoie"; //
+				$("#statIcon").html(iconForce);
+				$("#statTextbox .text").html("+30%");
+				localStorage.origineXForce = 1.3;
+			}
+			if (origine == 3) {
+				var origineName = localStorage.origine = "Chênelans"; //
+				$("#statIcon").html(iconForce);
+				$("#statTextbox .text").html("-30%");
+				localStorage.origineXForce = 0.7;
+			}
+			if (origine == 4) {
+				var origineName = localStorage.origine = "Pont-Sabot"; //
+				$("#statIcon").html(iconFesse);
+				$("#statTextbox .text").html("+30%");
+				localStorage.origineXForce = 1.3;
+			}
+			if (origine == 5) {
+				var origineName = localStorage.origine = "Mont-d'Argile"; //
+				$("#statIcon").html(iconFesse);
+				$("#statTextbox .text").html("-30%");
+				localStorage.origineXForce = 0.7;
+			}
+			if (origine == 6) {
+				var origineName = localStorage.origine = "Vigneclaire"; //
+				$("#statIcon").html(iconChar);
+				$("#statTextbox .text").html("+30%");
+				localStorage.origineXChar = 1.3;
+			}
+			if (origine == 7) {
+				var origineName = localStorage.origine = "Feuilleronne"; //
+				$("#statIcon").html(iconChar);
+				$("#statTextbox .text").html("-30%");
+				localStorage.origineXChar = 0.7;
+			}
+			if (origine == 8) {
+				var origineName = localStorage.origine = "Aigreville"; //
+				$("#statIcon").html(iconDex);
+				$("#statTextbox .text").html("+30%");
+				localStorage.origineXDex = 1.3;
+			}
+			if (origine == 9) {
+				var origineName = localStorage.origine = "Ezelanne"; //
+				$("#statIcon").html(iconDex);
+				$("#statTextbox .text").html("-30%");
+				localStorage.origineXDex = 0.7;
+			}
+			if (origine == 10) {
+				var origineName = localStorage.origine = "Essay-sous-bois"; //
+				$("#statIcon").html(iconSag);
+				$("#statTextbox .text").html("+30%");
+				localStorage.origineXSag = 1.3;
+			}
+			if (origine == 11) {
+				var origineName = localStorage.origine = "Viflac"; //
+				$("#statIcon").html(iconSag);
+				$("#statTextbox .text").html("-30%");
+				localStorage.origineXSag = 0.7;
+			}
+			if (origine == 12) {
+				var origineName = localStorage.origine = "Grisval"; //
+				$("#statIcon").html(iconInt);
+				$("#statTextbox .text").html("+30%");
+				localStorage.origineXInt = 1.3;
+			}
+			if (origine == 13) {
+				var origineName = localStorage.origine = "Comblefier";
+				$("#statIcon").html(iconInt);
+				$("#statTextbox .text").html("-30%");
+				localStorage.origineXInt = 0.7;
+			}
+			if (origine == 14) {
+				var origineName = localStorage.origine = "Rougecombe"; //
+				$("#statIcon").html(iconWeapon);
+				$("#statTextbox .text").html("Bâton taillé");
+				localStorage.inv_arme_Baton = 1;
+			}
+			if (origine == 15) {
+				var origineName = localStorage.origine = "Belledouve";
+				$("#statIcon").html(iconVieMax);
+				$("#statTextbox .text").html("+10");
+				localStorage.plHealth = localStorage.plHealthMax = 110;
+			}
+			if (origine == 16) {
+				var origineName = localStorage.origine = "Calmemer"; //
+				$("#statIcon").html(iconVieMax);
+				$("#statTextbox .text").html("-10");
+				localStorage.plHealth = localStorage.plHealthMax = 90;
+			}
+			if (origine == 17) {
+				var origineName = localStorage.origine = "Viveroche"; //
+				$("#statIcon").html(iconVieMax);
+				$("#statTextbox .text").html("+20");
+				localStorage.plHealth = localStorage.plHealthMax = 120;
+			}
+			if (origine == 18) {
+				var origineName = localStorage.origine = "Pont-aux-morts"; //
+				$("#statIcon").html(iconVieMax);
+				$("#statTextbox .text").html("-20");
+				localStorage.plHealth = localStorage.plHealthMax = 80;
+			}
+			$('#origin_Place').html(origineName);
+			if ($('#origin_Place').width() > (0.9 * $('#originBox').width())) {
+				$('#origin_Place').css("font-size", "6vh");
+			}
+		}
+
+		function startGame(state) {
+			if (state == 'new') {
+				$("#LoadHistoireBG").css("background", "linear-gradient(to bottom, #d7eff5, #c4e8fa 60%)");
+			}
+			$("#LoadHistoireBG").css("left", "0");
+			setTimeout(function() {
+				window.location = "Histoire.html";
+			}, 1000);
+		}
+	</script>
 </body>
+
 </html>

@@ -12,6 +12,7 @@
 	<script src="js/jquery/mousewheel.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Vollkorn|Didact+Gothic|Slabo+27px" rel="stylesheet">
 	<script src="js/svgvar.js"></script>
+	<script src="js/data/saveParams.js"></script>
 	<script src="js/data/items.js"></script>
 	<script src="js/data/ench.js"></script>
 	<script>
@@ -478,14 +479,12 @@
 			$('#menu' + menu).show(200);
 			if (menu == "Save") {
 				for (i = 1; i <= 3; i++) {
-					console.log(i);
-					if (localStorage['save' + i] != undefined) {
+					if (localStorage['save' + i] != undefined && localStorage['save' + i] != 0) {
 						$('#save' + i + ' .time').html(localStorage['save' + i + 'Time']);
 					} else {
 						$('#save' + i + ' .time').html('Vide');
 					}
 				}
-
 			}
 			if (menu == "Options" || menu == "Options_Sound") {
 				$('.asideRight').css('background-color', 'rgb(127, 171, 156)');
@@ -550,51 +549,25 @@
 
 		$(document).on('click', '#menuSave .save .saveBtn', function() {
 			var thisid = String((this.id).replace('_btn', ''));
-			if (localStorage[(thisid).replace('_btn', '')] == undefined) {
+			if (localStorage[thisid] == undefined || localStorage[thisid] == 0) {
 				save(thisid);
-				// alert(thisid);
-				if (thisid == 'save1') {
-					localStorage.save1 = 1;
-				}
 			} else {
 				alerte('overwriteSave', thisid);
 			}
-
 		})
 
 		function save(savenum) {
 			var d = new Date();
-			var saveID = String(savenum).replace('_btn', '');
+			var saveID = String(savenum);
 			localStorage[saveID] = 1;
 			localStorage[saveID + 'Time'] = d.getDate() + '/' + (Number(d.getMonth()) + 1) + '/' + d.getFullYear() + ' - ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
 			$('#' + saveID + ' .time').html(localStorage[saveID + 'Time']);
 			//
-			var saveParams_Perso = ["plGold", "plHealthMax", "plHealth"];
-			var saveParams_InvArme = ["selected_arme", "arme_Branche", "arme_Baton"];
-			var saveParams_InvHead = ["selected_head"];
-			var saveParams_InvTorse = ["selected_torse"];
-			var saveParams_InvLeg = ["selected_leg"];
-			var saveParams_InvFoot = ["selected_foot"];
-			var saveParams_InvTools = ["tool_Shovel"];
-			var saveParams_InvTotal = saveParams_InvArme.concat(saveParams_InvHead, saveParams_InvTorse, saveParams_InvLeg, saveParams_InvFoot, saveParams_InvTools);
-			var saveParams_Options = ["Setting_MusicOn", "Setting_SoundOn"];
-			var saveParams_Divers = ["tookRiverGold", "nbKnock2_2", "combatWon_RatSoufflant", "tookCorpseGold", "talkedToGuard", "sawhole", "caughtbyguard", "failedToSeduceGuard", "passedGate"];
-			//
-			var saveParams_Perso_Length = saveParams_Perso.length;
-			var saveParams_InvTotal_Length = saveParams_InvTotal.length;
-			var saveParams_Options_Length = saveParams_Options.length;
-			var saveParams_Divers_Length = saveParams_Divers.length;
-			for (var i = 0; i < saveParams_Perso_Length; i++) {
-				localStorage[saveID + '_' + saveParams_Perso[i]] = localStorage[saveParams_Perso[i]];
-			}
 			for (var i = 0; i < saveParams_InvTotal_Length; i++) {
 				localStorage[saveID + '_inv_' + saveParams_InvTotal[i]] = localStorage['inv_'+saveParams_InvTotal[i]];
 			}
-			for (var i = 0; i < saveParams_Options_Length; i++) {
-				localStorage[saveID + '_' + saveParams_Options[i]] = localStorage[saveParams_Options[i]];
-			}
-			for (var i = 0; i < saveParams_Divers_Length; i++) {
-				localStorage[saveID + '_' + saveParams_Divers[i]] = localStorage[saveParams_Divers[i]];
+			for (var i = 0; i < saveParams_DiversTotal_Length; i++) {
+				localStorage[saveID + '_' + saveParams_DiversTotal[i]] = localStorage[saveParams_DiversTotal[i]];
 			}
 		}
 		//import svg
