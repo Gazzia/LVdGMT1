@@ -51,7 +51,6 @@ function reset1() {
   //
   localStorage.Setting_MusicOn = 1;
   localStorage.Setting_SoundOn = 1;
-  localStorage.itemID = 0;
 }
 
 function expandHistoireBlock() {
@@ -87,7 +86,7 @@ function banner(ville) {
   }, 2000);
 }
 
-function alerte(context){
+function alerte(context, data1){
   if (context == 'returnToMenu?'){
     $('#alerte header').html('Retour au menu');
     $('#alerte main').html('Êtes-vous sûr de vouloir retourner au menu ?<br>Toute progression non-sauvegardée sera perdue.');
@@ -99,6 +98,13 @@ function alerte(context){
     $('#alerte header').html('Sauvegarde impossible');
     $('#alerte main').html("Vous ne pouvez pas sauvegarder, cette fonction n'est pas encore complêtement implémentée dans le jeu.");
     $('#alerte .btn1').html('Ok').attr('onclick','closeAlerte()').show();
+    dialogColor('green');
+  }
+  if (context == 'overwriteSave'){
+    $('#alerte header').html('Sauvegarde pleine !');
+    $('#alerte main').html("Cette sauvegarde est déjà pleine, voulez-vous l'écraser et la remplacer par une nouvelle ?.");
+    $('#alerte .btn1').html('Oui').attr('onclick','save("'+data1+'");closeAlerte();').show();
+    $('#alerte .btn2').html('Non').attr('onclick','closeAlerte();').show();
     dialogColor('green');
   }
   openAlerte();
