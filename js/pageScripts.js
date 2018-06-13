@@ -13,10 +13,11 @@ function refAllbutImg() {
   refScripts();
 }
 if (localStorage.justStartedGame == 1) {
-  localStorage.numpage = "Classe";
+  setpage("Soufflant", "Plaine", "ChoixClasse");
   reset1();
   localStorage.justStartedGame = 0;
 }
+
 
 function reset1() {
   //or
@@ -53,18 +54,7 @@ function reset1() {
   localStorage.Setting_SoundOn = 1;
 }
 
-function expandHistoireBlock() {
-  $(".leftblock").css({
-    'width': '50vw'
-  });
-  $(".leftblock footer").fadeOut(300);
-  setTimeout(function() {
-    $(".leftblock").css({
-      'height': '98vh',
-      'top': '-9vh'
-    }).addClass('clickToClose');
-  }, 300);
-}
+
 
 $(document).on('click', '.leftblock.clickToClose', function() {
   $(".leftblock").css({
@@ -79,174 +69,19 @@ $(document).on('click', '.leftblock.clickToClose', function() {
   }, 300);
 });
 
-function banner(ville) {
-  $(".townBanner").html(ville).fadeIn(900);
-  setTimeout(function() {
-    $(".townBanner").fadeOut(900);
-  }, 2000);
-}
-
-function alerte(context, data1){
-  if (context == 'returnToMenu?'){
-    $('#alerte header').html('Retour au menu');
-    $('#alerte main').html('Êtes-vous sûr de vouloir retourner au menu ?<br>Toute progression non-sauvegardée sera perdue.');
-    $('#alerte .btn1').html('Oui').attr('onclick','window.location="Intro.html";').show();
-    $('#alerte .btn2').html('Non').attr('onclick','closeAlerte()').show();
-    dialogColor('green');
+$(document).on('keydown', function(e) {
+  if (e.key == 'i' && isInvOpen == 1) {
+    closeInventory();
+    e.key = 0;
   }
-  if (context == 'triedSaving'){
-    $('#alerte header').html('Sauvegarde impossible');
-    $('#alerte main').html("Vous ne pouvez pas sauvegarder, cette fonction n'est pas encore complêtement implémentée dans le jeu.");
-    $('#alerte .btn1').html('Ok').attr('onclick','closeAlerte()').show();
-    dialogColor('green');
+  if (e.key == 'i' && isInvOpen == 0) {
+    openInventory();
+    e.key = 0;
   }
-  if (context == 'overwriteSave'){
-    $('#alerte header').html('Sauvegarde pleine !');
-    $('#alerte main').html("Cette sauvegarde est déjà pleine, voulez-vous l'écraser et la remplacer par une nouvelle ?.");
-    $('#alerte .btn1').html('Oui').attr('onclick','save("'+data1+'");closeAlerte();').show();
-    $('#alerte .btn2').html('Non').attr('onclick','closeAlerte();').show();
-    dialogColor('green');
-  }
-  openAlerte();
-}
-function openDialog() {
-  $('#dialog').css('left', '15%');
-  $('.mask.light.brown').fadeIn(700);
-}
-function closeDialog() {
-  $('#dialog').css('left', '-65%');
-  $('.mask').fadeOut(700);
-  $('#dialog a').hide();
-}
-function openAlerte() {
-  $('#alerte').css('top','calc(50% - '+$('#alerte').height()+'px)').show();
-  $('.mask.light.brown').fadeIn(700);
-}
-function closeAlerte() {
-  $('#alerte').fadeOut(200);
-  $('.mask').fadeOut(700);
-  setTimeout(function(){
-    $('#alerte a').hide();
-  },200);
-}
-
-function foundGold(amount, storageEvent) {
-  closeDialog();
-  setTimeout(function() {
-    localStorage[storageEvent] = 1;
-    refAllbutImg();
-    transaction(amount, "+");
-    setTimeout(function() {
-      setSound("UI", "gold");
-    }, 3300);
-  }, 250);
-}
-
-function transaction(amount, positivity) {
-  $('.mask.light.brown').fadeIn(700);
-  $("#transactions").css('transition', 'none');
-  $("#transactions .gold").html(positivity + amount + " or !");
-  setTimeout(function() {
-    $("#transactions").css({
-      'left': 'calc(50% - 25vh)',
-      'bottom': 'calc(50% - 10vh)',
-      'height': '20vh',
-      'width': '50vh'
-    });
-    $("#transactions").fadeIn(400);
-    $("#transactions.title").css('background-color', '#e2b948');
-    setTimeout(function() {
-      $("#transactions.title").css('background-color', '#d4ba45');
-      setTimeout(function() {
-        $("#transactions.gold").html("");
-        $("#transactions").css({
-          'transition': 'all 0.5s ease',
-          'left': '69%',
-          'width': '5px'
-        });
-        setTimeout(function() {
-          $('.mask').fadeOut(700);
-          $("#transactions").css({
-            'bottom': '3%'
-          });
-          setTimeout(function() {
-            $("#transactions").css({
-              'height': '0'
-            }).fadeOut(100);
-            refAllbutImg();
-          }, 260);
-        }, 300);
-      }, 1400);
-    }, 600);
-  }, 1000);
-  setTimeout(function() {
-    localStorage.plGold = Number(localStorage.plGold) + Number(amount);
-    refAllbutImg();
-  }, 3500);
-}
-// function setSound(soundtype, sound){
-//   if (localStorage.Setting_SoundOn==1){
-//     localStorage['audiotype'+soundtype] = sound;
-//     window.open("audio"+soundtype+".html", "audio"+soundtype);
-//   }
-// }
-if (localStorage.Setting_SoundOn == 1) {
-  setSound('EnvB', localStorage.soundEnvB);
-  setSound('EnvF', localStorage.soundEnvF);
-}
-if (localStorage.Setting_MusicOn == 1) {
-  setSound('Music', localStorage.soundMusic);
-}
-
-function foundItem(item) {
-  setSound("UI", "takeStuff");
-  setTimeout(function() {
-    localStorage[window[item].LSName] = 1;
-    $('#dialog a').hide();
-    $("#dialog .text").html(window[item].FoundText);
-    $("#dialog .image").css("background-image", "url(images/" + window[item].Img + ")");
-    if (window[item].Type == "arme") {
-      $('#dialog .icon').html(iconWeapon);
-      $("#dialog .title").html("Nouvelle arme !");
-      $('#dialog a.nb1').html('Prendre').attr('onclick', 'closeDialog()').show();
-      $('#dialog a.nb2').html('Prendre et équipper').attr('onclick', 'localStorage.inv_selected_arme="' + window[item].Short + '"; closeDialog(); refAllbutImg();').show();
-    }
-    if (window[item].Type == "tool") {
-      $("#dialog .title").html("Nouvel outil !");
-      $('#dialog a.nb1').html('Ok').attr('onclick', 'closeDialog()').show();
-    }
-    dialogColor('orange');
-  }, 200);
-}
-
-function dialogColor(paramColor) {
-  var mainColor;
-  var textColor;
-  var backColor;
-  if (paramColor == "red") {
-    mainColor = '#d44568';
-    textColor = '#c2786c';
-    backColor = '#f0dccc';
-  }
-  if (paramColor == "orange") {
-    mainColor = '#d4a245';
-    textColor = '#c29b6c';
-    backColor = '#f0e2cc';
-  }
-  if (paramColor == "green") {
-    mainColor = 'rgb(127, 171, 156)';
-    textColor = 'rgb(66, 91, 84)';
-    backColor = 'rgb(216, 223, 221)';
-  }
-  $('#dialog .title, #dialog a, #alerte header, #alerte a').css('background-color', mainColor);
-  $('#dialog .image').css('border-left-color', mainColor);
-  $('#dialog .icon svg').css('fill', mainColor);
-  $('#dialog .text, #alerte main').css('color', textColor);
-  $('#dialog .content, #alerte').css('background-image', 'linear-gradient(white, ' + backColor + ')');
-}
+});
 
 function knockDoor() {
-  if (localStorage.numpage == 2.2) {
+  if (localStorage.région == "Soufflant" && localStorage.zone == "Cabane") {
     setSound("EnvF", "ratRun");
     setSound("UI", "doorKnockOpen");
     setTimeout(function() {
@@ -291,94 +126,107 @@ function knockDoor() {
 }
 
 function enterDoor() {
-  if (localStorage.numpage == 2.2) {
+  if (localStorage.région == "Soufflant" && localStorage.zone == "Cabane") {
     setSound("EnvB", "stop");
     setSound("EnvF", "stop");
     setSound("Music", "Battle1");
     window.location = "Combat.html";
   }
 }
+if (localStorage.Setting_SoundOn == 1) {
+  setSound('EnvB', localStorage.soundEnvB);
+  setSound('EnvF', localStorage.soundEnvF);
+}
+if (localStorage.Setting_MusicOn == 1) {
+  setSound('Music', localStorage.soundMusic);
+}
 // --------------------- ACTUALISATION DE PAGE SELON LA PAGE
 function refScripts() {
-  var page = localStorage.numpage;
-  if (page == "Classe") {
-    reset1();
-    setSound("EnvB", "Nature");
-    setSound("EnvF", "stop");
-    setSound("Music", "Sunny");
-  }
-  if (page == "ClasseMage" || page == "ClasseGuerrier" || page == "ClasseEloquent" || page == "ClasseHabile") {
-    localStorage.lvl = "1";
-    localStorage.classeXDex = localStorage.classeXChar = localStorage.classeXFesse = localStorage.classeXForce = "1";
-  }
-  if (page == "ClasseMage") {
-    localStorage.classe = "Mage";
-    localStorage.classeXForce = "0.7";
-    localStorage.classeXFesse = "1.5";
-  }
-  if (page == "ClasseGuerrier") {
-    localStorage.classe = "Guerrier";
-    localStorage.classeXForce = "1.5";
-    localStorage.classeXFesse = "0.7";
-  }
-  if (page == "ClasseEloquent") {
-    localStorage.classe = "Eloquent";
-    localStorage.classeXChar = "1.4";
-  }
-  if (page == "ClasseHabile") {
-    localStorage.classe = "Habile";
-    localStorage.classeXDex = "1.4";
-  }
-  if (page == 2) {
-    setSound("EnvF", "stop");
-  }
-  if (page == 2.1) {
-    setSound("EnvF", "StreamAfar");
-  }
-  if (page == 2.11) {
-    setSound("EnvF", "Stream");
-  }
-  if (page == 2.2) {
-    if (localStorage.combatWon_RatSoufflant == 0) {
-      if (localStorage.nbKnock2_2 == 0) {
-        $("#btnDivers1").html("Frapper à la porte").attr("onclick", "knockDoor()");
-        setSound("EnvF", "stop");
+  var région = localStorage.région;
+  var milieu = localStorage.milieu;
+  var zone = localStorage.zone;
+  if (région == "Soufflant") {
+    if (zone == "ChoixClasse") {
+      reset1();
+      setSound("EnvB", "Nature");
+      setSound("EnvF", "stop");
+      setSound("Music", "Sunny");
+    }
+    if (zone == "ClasseMage" || zone == "ClasseGuerrier" || zone == "ClasseEloquent" || zone == "ClasseHabile") {
+      localStorage.lvl = "1";
+      localStorage.classeXDex = localStorage.classeXChar = localStorage.classeXFesse = localStorage.classeXForce = "1";
+    }
+    if (zone == "ClasseMage") {
+      localStorage.classe = "Mage";
+      localStorage.classeXForce = "0.7";
+      localStorage.classeXFesse = "1.5";
+    }
+    if (zone == "ClasseGuerrier") {
+      localStorage.classe = "Guerrier";
+      localStorage.classeXForce = "1.5";
+      localStorage.classeXFesse = "0.7";
+    }
+    if (zone == "ClasseEloquent") {
+      localStorage.classe = "Eloquent";
+      localStorage.classeXChar = "1.4";
+    }
+    if (zone == "ClasseHabile") {
+      localStorage.classe = "Habile";
+      localStorage.classeXDex = "1.4";
+    }
+    if (zone == "Embranchement") {
+      setSound("EnvF", "stop");
+    }
+    if (zone == "Bois") {
+      setSound("EnvF", "StreamAfar");
+    }
+    if (zone == "Rivière") {
+      setSound("EnvF", "Stream");
+    }
+    if (zone == "Cabane") {
+      if (localStorage.combatWon_RatSoufflant == 0) {
+        if (localStorage.nbKnock2_2 == 0) {
+          $("#btnDivers1").html("Frapper à la porte").attr("onclick", "knockDoor()");
+          setSound("EnvF", "stop");
+        }
+        if (localStorage.nbKnock2_2 == 1) {
+          $("#btnDivers1").html("Entrer par la porte entrebaillée").attr("onclick", "enterDoor()");
+          setSound("EnvF", "ratRun");
+        }
+      } else {
+        $("#btnDivers1").html("Entrer  à l'intérieur").attr("onclick", "setpage(0,0,'2.211'); refAll();");
       }
-      if (localStorage.nbKnock2_2 == 1) {
-        $("#btnDivers1").html("Entrer par la porte entrebaillée").attr("onclick", "enterDoor()");
-        setSound("EnvF", "ratRun");
+    }
+    if (zone == "Intérieur") {
+      localStorage.time = "";
+      setSound("Music", "MystDark_House");
+      setSound("EnvB", "CreakingHouse");
+      setSound("EnvF", "bunchOfFlies");
+      $(".fullscreen").css("background", "linear-gradient(rgb(144, 142, 127), rgb(56, 51, 48))");
+      $(".uiBG_clouds").hide();
+    }
+    if (zone == "Mur") {
+      setSound("UI", "stop");
+      if (localStorage.talkedToGuard == 1 && localStorage.caughtbyguard == 0) {
+        addBtn(0, 0, 0, 0, 0, 0, 0, 1);
+        $("#btnLook1").html("Trouver un autre moyen de passer").attr("onclick", "setpage(0,0,'3.2'); refAll()");
       }
-    } else {
-      $("#btnDivers1").html("Entrer  à l'intérieur").attr("onclick", "localStorage.numpage=2.211; refAll();");
+    }
+    if (zone == "Tunnel") {
+      localStorage.sawhole = 1;
+      if (localStorage.inv_tool_Shovel == 1) {
+        $(".chance").show();
+      }
+      if (localStorage.totalDex < 3) {
+        $(".ch40").attr("onclick", "").addClass('optNope');
+      }
     }
   }
-  if (page == 2.211) {
-    localStorage.time = "";
-    setSound("Music", "MystDark_House");
-    setSound("EnvB", "CreakingHouse");
-    setSound("EnvF", "bunchOfFlies");
-    $(".fullscreen").css("background", "linear-gradient(rgb(144, 142, 127), rgb(56, 51, 48))");
-    $(".uiBG_clouds").hide();
-  }
-  if (page == 3) {
-    setSound("UI", "stop");
-    if (localStorage.talkedToGuard == 1 && localStorage.caughtbyguard == 0) {
-      addBtn(0, 0, 0, 0, 0, 0, 0, 1);
-      $("#btnLook1").html("Trouver un autre moyen de passer").attr("onclick", "localStorage.numpage=3.2; refAll()");
+  if (région == "Pouce") {
+    if (zone == 6.11) {
+      $("#sleft, #sright").css("background", "linear-gradient(to bottom, #98947c -20%, #1d1b1a 70%)");
+      $(".deco").hide();
     }
-  }
-  if (page == 3.2) {
-    localStorage.sawhole = 1;
-    if (localStorage.inv_tool_Shovel == 1) {
-      $(".chance").show();
-    }
-    if (localStorage.totalDex < 3) {
-      $(".ch40").attr("onclick", "").addClass('optNope');
-    }
-  }
-  if (page == 6.11) {
-    $("#sleft, #sright").css("background", "linear-gradient(to bottom, #98947c -20%, #1d1b1a 70%)");
-    $(".deco").hide();
   }
 }
 // ------------------ FONCTIONS APPELÉES PAR DES BOUTONS
@@ -402,7 +250,7 @@ function stopHalt() {
 }
 //2.211 Interieur Cabane
 function quitMasure() {
-  localStorage.numpage = 2.2;
+  setpage(0, 0, "Cabane");
   $('.fullscreen').css('background', 'linear-gradient(to bottom, #d7eff5, #c4e8fa 60%)');
   $('.uiBG_clouds').show();
   setSound("EnvB", "Nature");
@@ -434,7 +282,7 @@ function enterMerryvale() {
   localStorage.talked_guy1 = 0;
   localStorage.GMTDrankPotion = 0;
   localStorage.dirFrom = "Sud";
-  localStorage.numpage = 5.1;
+  setpage("Pouce", "Merryvale", "PorteSud");
   refAll();
 }
 //MERRYVALE
@@ -503,79 +351,18 @@ function dirFrom(dirFrom) {
 function drinkRandomPotion() {
   $(".btnM1").hide();
 
-  var oddVialColor = Math.floor(Math.random() * (8 - 1 + 1) + 1);
-  if (oddVialColor == 1) {
-    vialColor = "bleu ";
-  }
-  if (oddVialColor == 2) {
-    vialColor = "rouge ";
-  }
-  if (oddVialColor == 3) {
-    vialColor = "orange ";
-  }
-  if (oddVialColor == 4) {
-    vialColor = "gris ";
-  }
-  if (oddVialColor == 5) {
-    vialColor = "vert ";
-  }
-  if (oddVialColor == 6) {
-    vialColor = "marron ";
-  }
-  if (oddVialColor == 7) {
-    vialColor = "rose ";
-  }
-  if (oddVialColor == 8) {
-    vialColor = "violet ";
-  }
-  var oddVialTint = Math.floor(Math.random() * (3 - 1 + 1) + 1);
-  if (oddVialTint == 1) {
-    vialTint = "translucide ";
-  }
-  if (oddVialTint == 2) {
-    vialTint = "épais ";
-  }
-  if (oddVialTint == 3) {
-    vialTint = "vif ";
-  }
-  var oddVialShape = Math.floor(Math.random() * (6 - 1 + 1) + 1);
-  if (oddVialShape == 1) {
-    vialShape = "bosselée";
-  }
-  if (oddVialShape == 2) {
-    vialShape = "poussiéreuse";
-  }
-  if (oddVialShape == 3) {
-    vialShape = "déjà ouverte";
-  }
-  if (oddVialShape == 4) {
-    vialShape = "qui vous paraît neuve";
-  }
-  if (oddVialShape == 5) {
-    vialShape = "arrondie";
-  }
-  if (oddVialShape == 6) {
-    vialShape = "rectangulaire";
-  }
-  var oddVialSmell = Math.floor(Math.random() * (6 - 1 + 1) + 1);
-  if (oddVialSmell == 1) {
-    vialSmell = "immonde ";
-  }
-  if (oddVialSmell == 2) {
-    vialSmell = "fleurie ";
-  }
-  if (oddVialSmell == 3) {
-    vialSmell = "douce ";
-  }
-  if (oddVialSmell == 4) {
-    vialSmell = "rassurante ";
-  }
-  if (oddVialSmell == 5) {
-    vialSmell = "familière ";
-  }
-  if (oddVialSmell == 6) {
-    vialSmell = "étrange ";
-  }
+  vialColorList = ["bleu ", "rouge ", "orange ", "gris ", "vert ", "marron ", "rose ", "violet ", ];
+  vialColor = vialColorList[Math.floor(Math.random() * (vialColorList.length - 1 + 1) + 1)];
+
+  vialTintList = ["translucide ", "épais ", "vif ", "terne"];
+  vialTint = vialTintList[Math.floor(Math.random() * (vialTintList.length - 1 + 1) + 1)];
+
+  vialShapeList = ["bosselée", "poussiéreuse", "déjà ouverte", "qui vous paraît neuve", "arrondie", "rectangulaire", "à moitié fêlée"];
+  vialShape = vialShapeList[Math.floor(Math.random() * (vialShapeList.length - 1 + 1) + 1)];
+
+  vialSmellList = ["immonde ", "fleurie ", "douce ", "rassurante ", "familière ", "étrange ", "nauséabonde"];
+  vialSmell = vialSmellList[Math.floor(Math.random() * (vialSmellList.length - 1 + 1) + 1)];
+
   var oddVialContent = Math.floor(Math.random() * (10 - 1 + 1) + 1);
   if (oddVialContent == 1) {
     vialContent = "Toutes vos blessures se referment et vous vous sentez plus résistant ! 100%♥ +20max";

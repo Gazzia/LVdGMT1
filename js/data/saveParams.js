@@ -1,7 +1,7 @@
-var saveParams_Perso = ["plGold", "plHealthMax", "plHealth", "numpage", "pseudo", "race", "classe", "origine"];
+var saveParams_Perso = ["plGold", "plHealthMax", "plHealth", "région", "milieu", "zone", "pseudo", "race", "classe", "origine"];
 var saveParams_Stats = ["classeXForce", "classeXFesse", "classeXChar", "classeXDex", "raceXForce", "raceXFesse", "raceXChar", "raceXDex", "raceXSag", "raceXInt", "bForce", "bFesse", "bChar", "bDex", "bSag", "bInt"];
 
-var saveParams_Options = ["Setting_MusicOn", "Setting_SoundOn"];
+var saveParams_Options = ["soundEnvB", "soundEnvF", "soundMusic", "Setting_MusicOn", "Setting_SoundOn"];
 var saveParams_Divers = ["tookRiverGold", "nbKnock2_2", "combatWon_RatSoufflant", "tookCorpseGold", "talkedToGuard", "sawhole", "caughtbyguard", "failedToSeduceGuard", "passedGate"];
 
 var saveParams_InvArme = ["selected_arme", "arme_Branche", "arme_Baton"];

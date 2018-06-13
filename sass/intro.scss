@@ -17,35 +17,7 @@
 audio {
   display:none;
 }
-.lds-css {
-  position: absolute;
-  top: calc(50% - 1.5vh);
-  left: calc(50% - 4.5vh);
-}
-.lds-eclipse {
-  position: relative;
-  top: calc(50% - 4.5vh);
-  left: calc(50% - 4.5vh);
-}
-.lds-eclipse div {
-  position: absolute;
-  -webkit-animation: lds-eclipse 0.8s linear infinite;
-  animation: lds-eclipse 0.8s linear infinite;
-  width: 9vh;
-  height: 9vh;
-  top: calc(50% - 4.5vh);
-  left: calc(50% - 4.5vh);
-  border-radius: 50%;
-  box-shadow: 0 4px 0 0 #ffffff;
-  -webkit-transform-origin: 80px 85px;
-  transform-origin: 4.5vh 4.5vh;
-}
-.lds-eclipse {
-  width: 9vh !important;
-  height: 9vh !important;
-  -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
-  transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
-}
+
 #LoadHistoireBG {
   top: 0;
   left: 100%;
@@ -55,17 +27,4 @@ audio {
   background: linear-gradient(to bottom, #d7eff5, #c4e8fa 60%);
   transition: left 1s ease;
   z-index: 3;
-}
-#goToGame {
-  position: absolute;
-  color: #fffc;
-  width: 50%;
-  left: 25%;
-  top: calc(100% + 3vh);
-  height: 4vh;
-  line-height: 4vh;
-  font-size: 2vh;
-  font-family: 'Didact Gothic', sans-serif;
-  background-color: rgba(102, 86, 116, 0.5);
-  border-radius: 15px;
 }

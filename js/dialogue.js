@@ -115,7 +115,7 @@ function dialogue(person){
     });
     $(document).on('click', '#dialPay', function(){
       localStorage.plGold = Number(localStorage.plGold) - 80;
-      localStorage.numpage=4; refAll();
+      setPage("Pouce","Merryvale","PorteSud"); refAll();
       closeDialogue();
         banner('Merryvale');
     });

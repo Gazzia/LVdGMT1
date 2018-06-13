@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>La Voie du Grand Malgré-Tout</title>
@@ -9,17 +10,29 @@
   <script src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="js/jquery/mousewheel.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Vollkorn|Didact+Gothic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Vollkorn|Didact+Gothic" rel="stylesheet">
   <script src="js/statsvar.js"></script>
   <script src="js/svgvar.js"></script>
-  <script src="js/data/enemies.js"></script> <script src="js/data/items.js"></script>
+  <script src="js/globalFn.js"></script>
+  <script src="js/data/enemies.js"></script>
+  <script src="js/data/items.js"></script>
   <script>
-    $(document).tooltip({classes: {"ui-tooltip": "black_tooltip"},	track:true});
+    $(document).tooltip({
+      classes: {
+        "ui-tooltip": "black_tooltip"
+      },
+      track: true
+    });
   </script>
 </head>
+
 <body onload="refStuff()">
-  <div id="blackscreen"><div id="blackscreenText">Combat</div></div>
-  <section id="intitule"> <div class='text'></div> </section>
+  <div id="blackscreen">
+    <div id="blackscreenText">Combat</div>
+  </div>
+  <section id="intitule">
+    <div class='text'></div>
+  </section>
   <section id="perso" class="mid">
     <header>
       <div class="title">Vous</div>
@@ -53,57 +66,64 @@
       <div class="hit EtoP E5"></div>
     </div>
   </section>
-  <section id="ennemis" class="mid"></section><!-- Les bloc d'ennemis sont générés par combat.js -->
-  <section id="defensif"></section><!-- Barre d'en bas -->
+  <section id="ennemis" class="mid"></section>
+  <!-- Les bloc d'ennemis sont générés par combat.js -->
+  <section id="defensif"></section>
+  <!-- Barre d'en bas -->
 
   <audio autoplay="false" controls id="playerCombat"></audio>
   <audio autoplay="true" controls id="music"> </audio>
 
   <div class="mask mid darkgrey maxspace"></div>
   <div id="dialog" class="combat">
-		<div class="icon"></div>
-		<div class="shadow">
-			<div class="content maxheight">
-				<header class="title"> <!-- Titre dialogue --> </header>
-				<main class="textbox maxwidth">
-					<div class="text scroll">
-						<!--Texte dialogue -->
-					</div>
-				</main>
-				<footer class="buttonset">
-					<a class="nb1"></a>
-					<a class="nb2"></a>
-					<a class="nb3"></a>
-					<a class="nb4"></a>
-				</footer>
-			</div>
-			<div class="image maxheight"></div>
-		</div>
-	</div>
+    <div class="icon"></div>
+    <div class="shadow">
+      <div class="content maxheight">
+        <header class="title">
+          <!-- Titre dialogue -->
+        </header>
+        <main class="textbox maxwidth">
+          <div class="text scroll">
+            <!--Texte dialogue -->
+          </div>
+        </main>
+        <footer class="buttonset">
+          <a class="nb1"></a>
+          <a class="nb2"></a>
+          <a class="nb3"></a>
+          <a class="nb4"></a>
+        </footer>
+      </div>
+      <div class="image maxheight"></div>
+    </div>
+  </div>
 
-<script src="js/combat.js"></script>
-<script>
-localStorage.enemiesNb=0;
-//A PARAMETRER A CHAQUE FOIS
-//Numero, nom, lvl
-if (localStorage.numpage=2.2){
-  addEnemy(1, Rat, 5);
-  localStorage.En1_Dead = 0;
-  localStorage.En2_Dead = 1;
-  localStorage.En3_Dead = 1;
-  localStorage.En4_Dead = 1;
-  var zoneClearedLS = "combatWon_RatSoufflant";
-  var onWinLocation = 2.211;
-  $('#intitule .text').html("Alors que vous entamez votre premier pas au-delà de la porte, une ombre se propulse vers vous.<br>Un énorme rat vous attaque, énervé que vous ayiez trouvé son abri. Vous entrevoyez rapidement un corps à moitié mangé sur le sol, surement l'ancien propriétaire.");
-  var WinDialog="Le dernier coup asséné a achevé le combat, dont vous sortez victorieux ! Vous pouvez maintenant explorer l'interieur de la masure";
-  var DeathDialog="La dernière morsure du rat vous a été fatale. Alors que la vie s'échappe de votre corps, vous pouvez recommencer la partie pour tenter de vous venger de ce rongeur.";
-}
-//FIN
-$(".scroll").bind("mousewheel",function(ev, delta) {
-    var scrollTop = $(this).scrollTop();
-    $(this).scrollTop(scrollTop-Math.round(delta));
-});
-$(".eA_icons.attack").html(iconSword);
-</script>
+  <script src="js/combat.js"></script>
+  <script>
+    localStorage.enemiesNb = 0;
+    //A PARAMETRER A CHAQUE FOIS
+    //Numero, nom, lvl
+    if (localStorage.région == 'Soufflant' && localStorage.zone == "Cabane") {
+      addEnemy(1, Rat, 5);
+      localStorage.En1_Dead = 0;
+      localStorage.En2_Dead = 1;
+      localStorage.En3_Dead = 1;
+      localStorage.En4_Dead = 1;
+      var zoneClearedLS = "combatWon_RatSoufflant";
+      var onWinLocationZone = 'Intérieur';
+      $('#intitule .text').html(
+        "Alors que vous entamez votre premier pas au-delà de la porte, une ombre se propulse vers vous.<br>Un énorme rat vous attaque, énervé que vous ayiez trouvé son abri. Vous entrevoyez rapidement un corps à moitié mangé sur le sol, surement l'ancien propriétaire."
+      );
+      var WinDialog = "Le dernier coup asséné a achevé le combat, dont vous sortez victorieux ! Vous pouvez maintenant explorer l'interieur de la masure";
+      var DeathDialog = "La dernière morsure du rat vous a été fatale. Alors que la vie s'échappe de votre corps, vous pouvez recommencer la partie pour tenter de vous venger de ce rongeur.";
+    }
+    //FIN
+    $(".scroll").bind("mousewheel", function(ev, delta) {
+      var scrollTop = $(this).scrollTop();
+      $(this).scrollTop(scrollTop - Math.round(delta));
+    });
+    $(".eA_icons.attack").html(iconSword);
+  </script>
 </body>
+
 </html>

@@ -15,6 +15,9 @@
 	<script src="js/data/saveParams.js"></script>
 	<script src="js/data/items.js"></script>
 	<script src="js/data/ench.js"></script>
+	<script src="js/globalFn.js"></script>
+	<script src="js/UIFunctions.js"></script>
+	<script src="js/statsvar.js"></script>
 	<script>
 		$(function() {
 			$(document).tooltip({
@@ -437,14 +440,10 @@
 	<audio autoplay="true" controls id="playerUI"></audio>
 	<!-- SCRIPTS ---------------------------------------------------------->
 	<script>
-		$('.openable').append('<a class="arrowRight icon right"></a>');
-
-		//mousewheel jquery
-		$(".scroll").bind("mousewheel", function(ev, delta) {
-			var scrollTop = $(this).scrollTop();
-			$(this).scrollTop(scrollTop - Math.round(delta));
+	//prevent dragging
+		$('*').on('dragstart', function(event) {
+			event.preventDefault();
 		});
-
 		//show-hide UI
 		var UIvisibility = 1;
 		$('#UIToggle').click(function() {
@@ -471,49 +470,6 @@
 			$(".asideRight").removeClass('shown');
 			$(".mask.light.brown").fadeOut(300);
 		});
-
-		function sidebar_makeActiveMenu(menu) {
-			$('.active').removeClass('active');
-			$('.menus').hide(200)
-			$("#openMenu" + menu).addClass('active');
-			$('#menu' + menu).show(200);
-			if (menu == "Save") {
-				for (i = 1; i <= 3; i++) {
-					if (localStorage['save' + i] != undefined && localStorage['save' + i] != 0) {
-						$('#save' + i + ' .time').html(localStorage['save' + i + 'Time']);
-					} else {
-						$('#save' + i + ' .time').html('Vide');
-					}
-				}
-			}
-			if (menu == "Options" || menu == "Options_Sound") {
-				$('.asideRight').css('background-color', 'rgb(127, 171, 156)');
-				$('.asideRight nav').css('background-color', 'rgb(115, 155, 145)');
-				$('.asideRight header').css({
-					'background-color': 'rgb(115, 155, 145)',
-					'color': 'rgb(66, 91, 84)'
-				});
-				if (localStorage.Setting_SoundOn == 1 && $('.soundbox.sounds').hasClass('active') == false) {
-					$('.soundbox.sounds').addClass('active');
-				}
-				if (localStorage.Setting_SoundOn == 0 && $('.soundbox.sounds').hasClass('active') == true) {
-					$('.soundbox.sounds').removeClass('active');
-				}
-				if (localStorage.Setting_MusicOn == 1 && $('.soundbox.music').hasClass('active') == false) {
-					$('.soundbox.music').addClass('active');
-				}
-				if (localStorage.Setting_MusicOn == 0 && $('.soundbox.music').hasClass('active') == true) {
-					$('.soundbox.music').removeClass('active');
-				}
-			} else {
-				$('.asideRight').css('background-color', '#d2c6b4');
-				$('.asideRight nav').css('background-color', '#97907f');
-				$('.asideRight header').css({
-					'background-color': 'rgb(216, 206, 195)',
-					'color': 'rgb(118, 99, 92)'
-				});
-			}
-		}
 
 		$(document).on('keydown', function(e) {
 			if (e.key == 'Escape') {
@@ -556,6 +512,12 @@
 			}
 		})
 
+		//inv
+		var isInvOpen = 0;
+		$('.openable').append('<a class="arrowRight icon right"></a>');
+
+
+		//save
 		function save(savenum) {
 			var d = new Date();
 			var saveID = String(savenum);
@@ -564,7 +526,7 @@
 			$('#' + saveID + ' .time').html(localStorage[saveID + 'Time']);
 			//
 			for (var i = 0; i < saveParams_InvTotal_Length; i++) {
-				localStorage[saveID + '_inv_' + saveParams_InvTotal[i]] = localStorage['inv_'+saveParams_InvTotal[i]];
+				localStorage[saveID + '_inv_' + saveParams_InvTotal[i]] = localStorage['inv_' + saveParams_InvTotal[i]];
 			}
 			for (var i = 0; i < saveParams_DiversTotal_Length; i++) {
 				localStorage[saveID + '_' + saveParams_DiversTotal[i]] = localStorage[saveParams_DiversTotal[i]];
@@ -587,44 +549,7 @@
 		$(".asideRight nav .close").html(iconClose);
 		$("#weaponLeftHSymbol").html(iconLeftHand);
 		$("#weaponRightHSymbol").html(iconRightHand);
-
-		//inv
-		var isInvOpen = 0;
-
-		function openInventory() {
-			isInvOpen = 1;
-			refInv();
-			fullRefSel();
-			$('.mask.deep.lightgrey').fadeIn(700);
-			$('#InvLPane').css('left', '0');
-			$('#InvTRPane').css('top', '0');
-			$('#InvBRPane').css('bottom', '0');
-			if (isInvOpen == 1) {
-				$(".mask").click(function() {
-					closeInventory();
-				});
-			}
-		}
-
-		function closeInventory() {
-			isInvOpen = 0;
-			$('.mask.deep.lightgrey').fadeOut(700);
-			$('#InvLPane').css('left', '-60%');
-			$('#InvTRPane').css('top', '-100%');
-			$('#InvBRPane').css('bottom', '-100%');
-		}
-		$(document).on('keydown', function(e) {
-			if (e.key == 'i' && isInvOpen == 1) {
-				closeInventory();
-				e.key = 0;
-			}
-			if (e.key == 'i' && isInvOpen == 0) {
-				openInventory();
-				e.key = 0;
-			}
-		});
 	</script>
-	<script src="js/statsvar.js"></script>
 	<script src="js/inventaire.js"></script>
 	<script src="js/images.js"></script>
 	<script src="js/audio.js"></script>

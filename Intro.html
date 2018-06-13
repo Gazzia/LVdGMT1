@@ -14,6 +14,7 @@
 	<script src="js/data/saveParams.js"></script>
 	<script src="js/svgvar.js"></script>
 	<script src="js/statsvar.js"></script>
+	<script src="js/globalFn.js"></script>
 	<script>
 		$(function() {
 			$(document).tooltip({
@@ -138,21 +139,26 @@
 			</a>
 		</div>
 		<div class="origin slide">
-			<div id="originBox" class="infoboxes">
-				<header>Origine aléatoire..</header>
-				<div class="scroll" style="display:none;">
-					<p id="endroit"><span id="origin_RaceName">Ferré du</span><span id="origin_Place"></span></p>
+			<div id="originLoading">
+				<header>Origine aléatoire</header>
+				<div class="lds-css ng-scope" style="width: 9vh; height: 9vh;">
+					<div style="width:100%;height:100%" class="lds-eclipse">
+						<div></div>
+					</div>
+				</div>
+			</div>
+			<div id="originBox" class="infoboxes" style='display:none;'>
+				<header>Origine</header>
+				<main>
+					<span id="origin_RaceName">Ferré du</span><span id="origin_Place"></span>
+				</main>
+				<footer>
 					<div id="statIcon"></div>
 					<div id="statTextbox">
 						<div class="text"></div>
 					</div>
-				</div>
-				<a id="goToGame" onclick="startGame('new')" style="display:none;">C'est parti</a>
-			</div>
-			<div class="lds-css ng-scope" style="width: 9vh; height: 9vh;">
-				<div style="width:100%;height:100%" class="lds-eclipse">
-					<div></div>
-				</div>
+				</footer>
+				<a id="goToGame" onclick="startGame('new')">C'est parti</a>
 			</div>
 		</div>
 	</div>
@@ -163,9 +169,9 @@
 	<div id="LoadHistoireBG"></div>
 	<script src="js/audio.js"></script>
 	<script>
+		$('*').on('dragstart', function(event) { event.preventDefault(); });
 		localStorage.Setting_MusicOn = 1;
 		localStorage.Setting_SoundOn = 1;
-		localStorage.leMomentOuOnTapeLePseudo = 0;
 		$(".savebox .action.load").html(iconLoadSave);
 		$(".savebox .action.delete").html(iconDelSave);
 		setSound("EnvB", "stop");
@@ -217,15 +223,23 @@
 		$(document).on('click', '.action.delete.active', function() {
 			var thisid = String((this.id).replace('_delBtn', ''));
 			if (localStorage[thisid] != undefined && localStorage[thisid] != 0) {
-				localStorage[thisid] = 0;
+				localStorage.removeItem(thisid);
 			}
+			for (var i = 0; i < saveParams_InvTotal_Length; i++) {
+				localStorage.removeItem(thisid + '_inv_' + saveParams_InvTotal[i]);
+			}
+			for (var i = 0; i < saveParams_DiversTotal_Length; i++) {
+				localStorage.removeItem(thisid + '_' + saveParams_DiversTotal[i]);
+			}
+			localStorage.removeItem(thisid+'Time');
 			refSaves();
 		})
 
 		function refSaves() {
 			for (i = 1; i <= 3; i++) {
 				if (localStorage['save' + i] != undefined && localStorage['save' + i] != 0) {
-					$('#save' + i + ' .time').html(localStorage['save' + i + 'Time'] + "<br>" + localStorage['save' + i + '_pseudo'] + ", " + localStorage['save' + i + '_race'].toLowerCase() + " " + localStorage['save' + i + '_classe'].toLowerCase() + " de " + localStorage['save' + i + '_origine']);
+					$('#save' + i + ' .time').html(localStorage['save' + i + 'Time'] + "<br>" + localStorage['save' + i + '_pseudo'] + ", " + localStorage['save' + i + '_race'].toLowerCase() + " " + localStorage['save' + i + '_classe'].toLowerCase() + " de " +
+						localStorage['save' + i + '_origine']);
 					$('#save' + i + ' .action.load, #save' + i + ' .action.delete').addClass('active');
 				} else {
 					$('#save' + i + ' .time').html('Vide');
@@ -481,32 +495,40 @@
 				localStorage.race = "Ferré";
 			}
 			$("#raceBox .race").css("bottom", "100%");
-			$("#endroit, #originStat").fadeOut(1);
 			$("#raceBox .origin").css("left", "0");
 			setTimeout(function() {
-				$(".lds-css").fadeOut(200);
+				$("#originLoading").fadeOut(200);
 				randomOrigine();
-				$("#statIcon svg, #statTextbox .text").fadeOut();
 				setTimeout(function() {
-					$("#originBox").css("height", "24%");
+					$("#originBox").fadeIn(200);
 					setTimeout(function() {
 						$("#originBox").css({
 							"height": "46%",
-							"top": "27%"
+							"top": "25%"
 						});
-						$("#raceBox .origin .scroll, #endroit").fadeIn(300);
 						setTimeout(function() {
 							$('#origin_RaceName').html(localStorage.race + " de")
 							setTimeout(function() {
-								$("#statIcon svg, #statTextbox .text, #goToGame").fadeIn(300);
+								$("#statIcon svg, #statTextbox, #goToGame").fadeIn(600);
 							}, 300);
 						}, 200);
-					}, 400);
+					}, 1000);//400
 				}, 200);
 			}, 2000);
 		});
 
 		function randomOrigine() {
+			localStorage.removeItem('totalForce');
+			localStorage.removeItem('totalFesse');
+			localStorage.removeItem('totalChar');
+			localStorage.removeItem('totalDex');
+			localStorage.removeItem('totalSag');
+			localStorage.removeItem('totalInt');
+			localStorage.removeItem('classeXDex');
+			localStorage.removeItem('classeXChar');
+			localStorage.removeItem('classeXFesse');
+			localStorage.removeItem('classeXForce');
+
 			localStorage.origineXForce = 1;
 			localStorage.origineXFesse = 1;
 			localStorage.origineXChar = 1;
@@ -521,114 +543,118 @@
 			if (origine == 1) {
 				var origineName = localStorage.origine = "Port-Racine";
 				$("#statIcon").html(iconStartingGold);
-				$("#statTextbox .text").html("+20");
+				$("#statTextbox").html("+20");
 				localStorage.origineAddGold = 20;
 			}
 			if (origine == 2) {
 				var origineName = localStorage.origine = "Courbevoie"; //
 				$("#statIcon").html(iconForce);
-				$("#statTextbox .text").html("+30%");
+				$("#statTextbox").html("+30%");
 				localStorage.origineXForce = 1.3;
 			}
 			if (origine == 3) {
 				var origineName = localStorage.origine = "Chênelans"; //
 				$("#statIcon").html(iconForce);
-				$("#statTextbox .text").html("-30%");
+				$("#statTextbox").html("-30%");
 				localStorage.origineXForce = 0.7;
 			}
 			if (origine == 4) {
 				var origineName = localStorage.origine = "Pont-Sabot"; //
 				$("#statIcon").html(iconFesse);
-				$("#statTextbox .text").html("+30%");
+				$("#statTextbox").html("+30%");
 				localStorage.origineXForce = 1.3;
 			}
 			if (origine == 5) {
 				var origineName = localStorage.origine = "Mont-d'Argile"; //
 				$("#statIcon").html(iconFesse);
-				$("#statTextbox .text").html("-30%");
+				$("#statTextbox").html("-30%");
 				localStorage.origineXForce = 0.7;
 			}
 			if (origine == 6) {
 				var origineName = localStorage.origine = "Vigneclaire"; //
 				$("#statIcon").html(iconChar);
-				$("#statTextbox .text").html("+30%");
+				$("#statTextbox").html("+30%");
 				localStorage.origineXChar = 1.3;
 			}
 			if (origine == 7) {
 				var origineName = localStorage.origine = "Feuilleronne"; //
 				$("#statIcon").html(iconChar);
-				$("#statTextbox .text").html("-30%");
+				$("#statTextbox").html("-30%");
 				localStorage.origineXChar = 0.7;
 			}
 			if (origine == 8) {
 				var origineName = localStorage.origine = "Aigreville"; //
 				$("#statIcon").html(iconDex);
-				$("#statTextbox .text").html("+30%");
+				$("#statTextbox").html("+30%");
 				localStorage.origineXDex = 1.3;
 			}
 			if (origine == 9) {
 				var origineName = localStorage.origine = "Ezelanne"; //
 				$("#statIcon").html(iconDex);
-				$("#statTextbox .text").html("-30%");
+				$("#statTextbox").html("-30%");
 				localStorage.origineXDex = 0.7;
 			}
 			if (origine == 10) {
 				var origineName = localStorage.origine = "Essay-sous-bois"; //
 				$("#statIcon").html(iconSag);
-				$("#statTextbox .text").html("+30%");
+				$("#statTextbox").html("+30%");
 				localStorage.origineXSag = 1.3;
 			}
 			if (origine == 11) {
 				var origineName = localStorage.origine = "Viflac"; //
 				$("#statIcon").html(iconSag);
-				$("#statTextbox .text").html("-30%");
+				$("#statTextbox").html("-30%");
 				localStorage.origineXSag = 0.7;
 			}
 			if (origine == 12) {
 				var origineName = localStorage.origine = "Grisval"; //
 				$("#statIcon").html(iconInt);
-				$("#statTextbox .text").html("+30%");
+				$("#statTextbox").html("+30%");
 				localStorage.origineXInt = 1.3;
 			}
 			if (origine == 13) {
 				var origineName = localStorage.origine = "Comblefier";
 				$("#statIcon").html(iconInt);
-				$("#statTextbox .text").html("-30%");
+				$("#statTextbox").html("-30%");
 				localStorage.origineXInt = 0.7;
 			}
 			if (origine == 14) {
 				var origineName = localStorage.origine = "Rougecombe"; //
 				$("#statIcon").html(iconWeapon);
-				$("#statTextbox .text").html("Bâton taillé");
+				$("#statTextbox").html("Bâton taillé");
 				localStorage.inv_arme_Baton = 1;
 			}
 			if (origine == 15) {
 				var origineName = localStorage.origine = "Belledouve";
 				$("#statIcon").html(iconVieMax);
-				$("#statTextbox .text").html("+10");
+				$("#statTextbox").html("+10");
 				localStorage.plHealth = localStorage.plHealthMax = 110;
 			}
 			if (origine == 16) {
 				var origineName = localStorage.origine = "Calmemer"; //
 				$("#statIcon").html(iconVieMax);
-				$("#statTextbox .text").html("-10");
+				$("#statTextbox").html("-10");
 				localStorage.plHealth = localStorage.plHealthMax = 90;
 			}
 			if (origine == 17) {
 				var origineName = localStorage.origine = "Viveroche"; //
 				$("#statIcon").html(iconVieMax);
-				$("#statTextbox .text").html("+20");
+				$("#statTextbox").html("+20");
 				localStorage.plHealth = localStorage.plHealthMax = 120;
 			}
 			if (origine == 18) {
 				var origineName = localStorage.origine = "Pont-aux-morts"; //
 				$("#statIcon").html(iconVieMax);
-				$("#statTextbox .text").html("-20");
+				$("#statTextbox").html("-20");
 				localStorage.plHealth = localStorage.plHealthMax = 80;
 			}
 			$('#origin_Place').html(origineName);
-			if ($('#origin_Place').width() > (0.9 * $('#originBox').width())) {
-				$('#origin_Place').css("font-size", "6vh");
+			originNameRightSize();
+		}
+
+		function originNameRightSize() {
+			if ($('#origin_Place').height() >= (0.9 * Number($('#originBox').width()))) {
+				$('#origin_Place').css("font-size", "4vh");
 			}
 		}
 

@@ -1,0 +1,23 @@
+Région - Milieu - Zone
+
+région:Soufflant {
+  milieu:Plaine
+    zone:ChoixClasse
+     zone:ClasseMage
+     zone:ClasseHabile
+     zone:ClasseEloquent
+     zone:ClasseGuerrier
+    zone:Embranchement
+    zone:Bois
+     zone:Rivière
+    zone:Cabane (Combat rat ->> zone:Intérieur)
+     zone:Intérieur
+     zone:Fatras
+    zone:Mur (Payé ->> région:Pouce,milieu:Meryvale,zone:PorteSud)
+     zone:Tunnel (Réussi ->> région:Pouce,milieu:Meryvale,zone:Egouts)
+}
+région:Pouce{
+  milieu:Merryvale
+    zone:Egouts
+    zone:PorteSud
+}
