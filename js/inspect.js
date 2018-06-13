@@ -65,7 +65,7 @@ function inspect(thing) {
     if (zone == "Intérieur") {
       if (localStorage.tookCorpseGold == 0) {
         $("#dialog .title").html("Un éclat couleur sang");
-        $("#dialog .text").html("Pour une raison qui ne regarde que vous, vous avez décidé de vous approcher du cadavre. La chance vous sourit ! L'homme portait une sacoche d'or à sa ceinture !");
+        $("#dialog .text").html("Pour une raison qui ne regarde que vous, vous avez décidé de vous approcher du cadavre. La chance vous sourit ! Le cadavre était à-demi couché sur sa bourse d'or !");
         $('#dialog a.nb1').html('Prendre').attr('onclick', 'foundGold(50, "tookCorpseGold")').show();
       }
       if (localStorage.tookCorpseGold == 1) {

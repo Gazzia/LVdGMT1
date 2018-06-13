@@ -171,13 +171,13 @@ function transaction(amount, positivity) {
             refAllbutImg();
           }, 260);
         }, 300);
-      }, 1400);
+      }, 900);
     }, 600);
-  }, 1000);
+  }, 700);
   setTimeout(function() {
     localStorage.plGold = Number(localStorage.plGold) + Number(amount);
     refAllbutImg();
-  }, 3500);
+  }, 1500);
 }
 
 function foundItem(item) {

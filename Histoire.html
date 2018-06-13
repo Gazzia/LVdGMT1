@@ -35,8 +35,10 @@
 	<div id="uiBG" class="fullscreen maxspace">
 		<div id="uiBG_cloudsFG" class="uiBG_clouds"></div>
 		<div id="uiBG_cloudsBG" class="uiBG_clouds"></div>
-		<img id="UIBG_imgFullFG" class="UIBG_imgFG UIBG_img maxheight"> <img id="UIBG_imgFull" class="UIBG_imgFull UIBG_img UIBG_imgsBG maxwidth"> <img id="UIBG_imgFullBG" class="UIBG_imgFullBG UIBG_imgFull UIBG_img UIBG_imgsBG maxwidth">
-		<img id="propMouches" class="bgProp" src="images/bg/prop/mouches3.gif">
+		<img id="UIBG_imgFullFG" class="UIBG_imgFG UIBG_img maxheight" onerror="this.style.display='none'"/>
+		<img id="UIBG_imgFull" class="UIBG_imgFull UIBG_img UIBG_imgsBG maxwidth" onerror="this.style.display='none'"/>
+		<img id="UIBG_imgFullBG" class="UIBG_imgFullBG UIBG_imgFull UIBG_img UIBG_imgsBG maxwidth" onerror="this.style.display='none'"/>
+		<img id="propMouches" class="bgProp" src="images/bg/prop/mouches3.gif"/>
 	</div>
 	<div class="minimap">
 		<img src="images/map/Merry1.png" class="carte">
@@ -440,7 +442,7 @@
 	<audio autoplay="true" controls id="playerUI"></audio>
 	<!-- SCRIPTS ---------------------------------------------------------->
 	<script>
-	//prevent dragging
+		//prevent dragging
 		$('*').on('dragstart', function(event) {
 			event.preventDefault();
 		});

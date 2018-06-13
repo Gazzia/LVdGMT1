@@ -1,61 +1,45 @@
 /*jshint esversion: 6 */
 function refImg() {
   var PropMouchePercentage = 4;
-  $(".UIBG_img, .UIBG_imgFG, .UIBG_Prop").fadeOut(500, function() {
+  var PropMoucheLeft = Math.floor(Math.random() * (80 - 10 + 1) + 10);
+  var PropMoucheBottom = Math.floor(Math.random() * (40 - 2 + 1) + 2)+"%";
+  var PropMoucheFilter = "";
+  $(".UIBG_img, .UIBG_imgFG, .UIBG_Prop").fadeOut(200, function() {
     var région = localStorage.région;
     var milieu = localStorage.milieu;
     var zone = localStorage.zone;
-    $("#decoTopLeft, #decoTopRight, .iconPageImg, .UIBG_img, .UIBG_imgFG, #illustr").attr("src", "");
-    if (région == "Soufflant") {
-      if (zone == "ChoixClasse") {
-        $(".iconPageImg").attr("src", "images/icons/page/footsteps.png");
-        $("#UIBG_imgFull").attr("src", "images/bg/full/Full_Classe.png");
+    setTimeout(function() {
+      $("#UIBG_imgFullFG").attr("src", "images/bg/full/" + région + "_" + milieu + "_" + zone + "_fore.png");
+      setTimeout(function() {
+        $("#UIBG_imgFull").attr("src", "images/bg/full/" + région + "_" + milieu + "_" + zone + "_mid.png");
+        setTimeout(function() {
+          $("#UIBG_imgFullBG").attr("src", "images/bg/full/" + région + "_" + milieu + "_" + zone + "_back.png");
+        }, 100);
+      }, 100);
+      if (localStorage.région == 'Soufflant') {
+        if (localStorage.zone == 'Rivière'){
+          PropMouchePercentage = 10;
+        }
+        if (localStorage.zone == "Intérieur"){
+          PropMouchePercentage = 10;
+          PropMoucheLeft = 11;
+          PropMoucheBottom = "17vw";
+          PropMoucheFilter = "contrast(10%)";
+        }
       }
-      if (zone == "ClasseMage") {
-        $(".iconPageImg").attr("src", "images/icons/page/magic-hat.png");
-        $("#UIBG_imgFull").attr("src", "images/bg/full/Full_Classe.png");
+      if (Math.floor(Math.random() * (10 - 1 + 1) + 1) <= PropMouchePercentage) {
+        $('#propMouches').css({
+          'left': PropMoucheLeft + '%',
+          'bottom': PropMoucheBottom,
+          'filter': PropMoucheFilter
+        }).show();
+      } else {
+        $('#propMouches').hide();
       }
-      if (zone == "ClasseGuerrier") {
-        $(".iconPageImg").attr("src", "images/icons/page/farmer.png");
-        $("#UIBG_imgFull").attr("src", "images/bg/full/Full_Classe.png");
-      }
-      if (zone == "ClasseEloquent") {
-        $(".iconPageImg").attr("src", "images/icons/page/comb.png");
-        $("#UIBG_imgFull").attr("src", "images/bg/full/Full_Classe.png");
-      }
-      if (zone == "ClasseHabile") {
-        $(".iconPageImg").attr("src", "images/icons/page/stealth.png");
-        $("#UIBG_imgFull").attr("src", "images/bg/full/Full_Classe.png");
-      }
-      if (zone == "Embranchement") {
-        $("#UIBG_imgFull").attr("src", "images/bg/full/Full_2.png");
-        $("#UIBG_imgFullBG").attr("src", "images/bg/full/FullBG_2.png");
-      }
-      if (zone == "Bois") {
-        $("#UIBG_imgFullFG").attr("src", "images/bg/full/FullFG_2.1.png");
-        $("#UIBG_imgFull").attr("src", "images/bg/full/Full_2.1.png");
-      }
-      if (zone == "Rivière") {
-        PropMouchePercentage = 9;
-        $("#UIBG_imgFull").attr("src", "images/bg/full/Full_2.11.png");
-      }
-      if (zone == "Cabane") {
-        $("#UIBG_imgFull").attr("src", "images/bg/full/Full_2.2.png");
-      }
-    }
-    var PropMoucheChance = Math.floor(Math.random() * (10 - 1 + 1) + 1);
-    if (PropMoucheChance <= PropMouchePercentage) {
-      $('#propMouches').show();
-    } else {
-      $('#propMouches').hide();
-    }
-    $('#propMouches').css({
-      'left': Math.floor(Math.random() * (80 - 10 + 1) + 10) + '%',
-      'bottom': Math.floor(Math.random() * (40 - 2 + 1) + 2) + '%'
-    });
-    changeColor();
+      changeColor();
+    }, 100);
   });
-  $(".UIBG_img, .UIBG_imgFG, .bgProp").fadeIn(300);
+  $(".UIBG_img, .UIBG_imgFG, .bgProp").fadeIn(600);
 }
 
 var oddNuageF = (Math.floor(Math.random() * 2) + 1);

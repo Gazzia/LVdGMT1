@@ -142,6 +142,7 @@ if (localStorage.Setting_MusicOn == 1) {
 }
 // --------------------- ACTUALISATION DE PAGE SELON LA PAGE
 function refScripts() {
+  $(".midscreen, .minimap, .asideRightOpener, .asideRight, .mask").css("filter","");
   var région = localStorage.région;
   var milieu = localStorage.milieu;
   var zone = localStorage.zone;
@@ -194,7 +195,7 @@ function refScripts() {
           setSound("EnvF", "ratRun");
         }
       } else {
-        $("#btnDivers1").html("Entrer  à l'intérieur").attr("onclick", "setpage(0,0,'2.211'); refAll();");
+        $("#btnDivers1").html("Entrer  à l'intérieur").attr("onclick", "setpage(0,0,'Intérieur'); refAll();");
       }
     }
     if (zone == "Intérieur") {
@@ -202,8 +203,9 @@ function refScripts() {
       setSound("Music", "MystDark_House");
       setSound("EnvB", "CreakingHouse");
       setSound("EnvF", "bunchOfFlies");
-      $(".fullscreen").css("background", "linear-gradient(rgb(144, 142, 127), rgb(56, 51, 48))");
+      $(".fullscreen").css("background", "rgb(18, 15, 8)");
       $(".uiBG_clouds").hide();
+      $(".midscreen, .minimap, .asideRightOpener, .asideRight, .mask").css("filter","brightness(61%) contrast(110%) grayscale(59%)");
     }
     if (zone == "Mur") {
       setSound("UI", "stop");
