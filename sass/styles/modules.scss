@@ -1,28 +1,64 @@
 .progression {
-  background: #b08c5f !important;
   left: 0;
   position: inherit;
   box-sizing: border-box;
   border: solid rgba(0, 0, 0, 0.3) !important;
   border-width: 1px 0 !important;
-  &.big {
-    height: 1.7vh !important;
-    min-height: 12px;
+  z-index: 1;
+  &.health {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent),linear-gradient(to right, rgb(211, 130, 192), rgb(208, 102, 141)) !important;
+    .progression-value {
+      background: linear-gradient(to bottom, rgba(165,56,56,0.2), transparent 50%),linear-gradient(to right, rgb(195, 72, 72), rgb(171, 57, 99)) !important;
+    }
+    &.game {
+      bottom: 0;
+      height: 3vh !important;
+      width: 100%;
+    }
+    &.inv {
+      margin-top: 4vh;
+      border: 0 !important;
+      border-radius: 8px;
+      height: 1.3vh !important;
+      min-height: 9px;
+      width: 84%;
+      left: 8%;
+      &:after {
+        bottom: -0.2vh;
+        font-size: 1.2vh;
+      }
+    }
+    &:after {
+      content: '♥';
+      color: rgb(255, 255, 255);
+      bottom: 0.2vh;
+      position: absolute;
+      font-size: 2.2vh;
+      left: 0.3vw;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.56);
+    }
+  }
+  &.xp {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.06), transparent),linear-gradient(to right, rgb(146, 141, 200), rgb(140, 177, 224)) !important;
+    height: 2vh !important;
+    bottom: 3vh;
     width: 100%;
-  }
-  &.small {
-    height: 1.3vh !important;
-    min-height: 9px;
-    width: 84%;
-    left: 8%;
-  }
-  &.inv {
-    margin-top: 4vh;
-    border: 0 !important;
-    border-radius: 8px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    .progression-value {
+      background: linear-gradient(to bottom, rgba(100,128,119,0.2), transparent 50%),linear-gradient(to right, rgb(92, 90, 144), rgb(79, 103, 130)) !important;
+    }
+    &:after {
+      content: 'EXP';
+      color: rgb(255, 255, 255);
+      bottom: 0;
+      position: absolute;
+      font-size: 1.2vh;
+      left: 0.2vw;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.56);
+    }
   }
   .progression-value {
-    background: linear-gradient(to bottom, rgba(165, 56, 56, 0.2), transparent 50%), #972750 !important;
     transition: width 0.25s ease-in, background 0.1s ease-in;
     margin: 0 !important;
     border: none !important;
@@ -338,6 +374,9 @@ hr {
   left: 0;
   z-index: 10;
   display: none;
+  &.prio {
+    z-index: 30;
+  }
   &.light {
     opacity: 0.3;
   }
@@ -356,6 +395,9 @@ hr {
   &.darkgrey {
     background-color: #353535;
   }
+  &.darkgrey-gradient {
+    background: radial-gradient(ellipse at center bottom, transparent 20%, rgb(179, 212, 202) 50%);
+  }
 }
 .black_tooltip {
   background-color: rgba(0, 0, 0, 0.5) !important;
@@ -372,7 +414,7 @@ hr {
   width: 60%;
   min-height: 74%;
   /* background-color: #e7dada; */
-  z-index: 12;
+  z-index: 13;
   left: -65%;
   top: 7%;
   transition: all 1.2s ease;
@@ -609,40 +651,24 @@ hr {
 }
 #transactions {
   z-index: 22;
-  height: 20vh;
-  width: 50vh;
-  background-color: white;
+  background: linear-gradient(to top, rgb(255, 214, 146), rgb(255, 227, 180));
   position: absolute;
-  left: calc(50% - 25vh);
-  bottom: calc(50% - 10vh);
+  left: calc(50% - 16vh);
+  bottom: calc(50% - 11vh);
+  height: 22vh;
+  width: 32vh;
   border-radius: 5px;
   box-shadow: 0 -4px 0 rgba(0, 0, 0, 0.3) inset, 0 10px 20px rgba(0, 0, 0, 0.1), 0 10px 40px rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
   overflow: hidden;
   display: none;
-  .title {
-    height: 5vh;
-    background-color: #d4ba45;
-    font-size: 3vh;
-    text-align: center;
-    line-height: -moz-block-height;
-    color: #fff4e0;
-    font-family: 'Didact Gothic', sans-serif;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-  }
-  .gold {
-    color: black;
-    top: 5vh;
-    height: calc(100% - 5vh);
-    line-height: -moz-block-height;
-    text-align: center;
-    font-size: 6vh;
-    font-family: 'Didact Gothic', sans-serif;
-    color: #d1be5b;
-  }
+  text-align: center;
+  font-size: 6vh;
+  color: rgb(158, 132, 0);
+  font-family: 'Didact Gothic', sans-serif;
+  line-height: 22vh;
 }
-.townBanner {
+.eventBanner {
   display: none;
   top: 10%;
   height: 20%;
@@ -677,4 +703,117 @@ hr {
 .maxwidth_rel {
   position: relative;
   width: 100%;
+}
+#lvlUpWindow {
+  position: absolute;
+  background: rgb(43, 43, 43);
+  height: 0;
+  width: 40%;
+  left: 30%;
+  bottom: 5%;
+  display: none;
+  //
+  // height: 86vmin;
+  // width: 86vmin;
+  // top: calc(50% - 43vmin);
+  // left: calc(50% - 43vmin);
+  //
+  z-index: 31;
+  border-radius: 10px;
+  transition: all 1s ease;
+  overflow: hidden;
+  text-align: center;
+  h1 {
+    font-family: 'Vollkorn';
+    color: rgb(157, 181, 173);
+    font-size: 7vh;
+    margin: 6vh 0 0;
+    line-height: 6vh;
+  }
+  h2 {
+    font-family: 'Vollkorn';
+    color: rgb(114, 127, 123);
+    font-size: 4vh;
+    margin: 0 0 2vh;
+  }
+  form {
+    [type="radio"] {
+      display: none;
+    }
+    [type="radio"]+label {
+      background-color: rgb(96, 96, 96);
+      position: relative;
+      display: none;
+      height: 0;
+      width: 17vh;
+      margin: 10vh 1.5vh;
+      border-bottom: 6px solid rgb(59, 58, 58);
+      transition: all 0.3s ease;
+      .icone {
+        width: 10vh;
+        height: 10vh;
+        background-color: transparent;
+        position: relative;
+        left: 3.5vh;
+        top: 2vh;
+        display: none;
+        svg {
+          fill: rgb(137, 182, 166);
+        }
+      }
+      .text {
+        color: rgb(137, 182, 166);
+        position: relative;
+        top: 5.7vh;
+        height: 6vh;
+        line-height: 2.5vh;
+        font-size: 2.5vh;
+        font-family: 'Didact Gothic',serif;
+        span {
+          color: rgb(109, 146, 133);
+        }
+      }
+    }
+    [type="radio"]:checked+label {
+      background-color: rgb(118, 141, 135);
+      border-bottom: 6px solid rgb(76, 95, 91);
+      svg {
+        fill: rgb(190, 190, 190);
+      }
+      .text {
+        color: rgb(190, 190, 190);
+        span {
+          color: rgb(158, 158, 158);
+        }
+      }
+    }
+  }
+  #acceptLvlUpgrade {
+    display: none;
+    position: absolute;
+    bottom: 4vh;
+    height: 6vh;
+    width: 6vh;
+    border: {
+      width: 0.5vh;
+      style: solid;
+      color: rgb(157, 181, 173);
+    }
+    color: rgb(157, 181, 173);
+    box-sizing: border-box;
+    left: calc(50% - 3vh);
+    border-radius: 100%;
+    font-size: 3.5vh;
+    transition: all 0.3s ease;
+    line-height: 5.5vh;
+    &:hover {
+      border: {
+        width: 0.1vh;
+        style: solid;
+        color: rgb(157, 181, 173);
+      }
+      color: rgb(157, 181, 173);
+      line-height: 5.8vh;
+    }
+  }
 }

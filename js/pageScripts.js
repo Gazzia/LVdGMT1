@@ -50,8 +50,10 @@ function reset1() {
   localStorage.failedToSeduceGuard = 0;
   localStorage.passedGate = 0;
   //
-  localStorage.Setting_MusicOn = 1;
-  localStorage.Setting_SoundOn = 1;
+  // localStorage.Setting_MusicOn = localStorage.Setting_SoundOn = 1;
+  localStorage.plXp = 0;
+  localStorage.plXpToLevel = 1;
+  localStorage.plLvl = 1;
 }
 
 
@@ -79,6 +81,97 @@ $(document).on('keydown', function(e) {
     e.key = 0;
   }
 });
+
+function getXp(xp) {
+  localStorage.plXp = Math.round(Number(localStorage.plXp) + xp);
+  var i = 0;
+  while (Number(localStorage.plXp) >= Number(localStorage.plXpToLevel)) {
+    i++;
+    localStorage.plLvl = Number(localStorage.plLvl) + 1;
+    localStorage.plXp = Math.round(Number(localStorage.plXp) - Number(localStorage.plXpToLevel));
+  }
+  if (i > 0) {
+    lvlUp(i);
+  }
+  refStats();
+}
+
+function lvlUp(nb) {
+  $(".progression.xp").addClass('shadow-anim');
+  setTimeout(function() {
+    $(".progression.xp").removeClass('shadow-anim');
+    $('#bInt-rad').attr('checked', 'checked');
+    $(".mask.prio.deep.darkgrey-gradient").fadeIn(1200);
+    $("#lvlUpWindow").show().css({
+      'height': '86vmin'
+    });
+    setTimeout(function() {
+      $("#lvlUpWindow").css({
+        'bottom': '7vh',
+        'width': '86vh',
+        'left': 'calc(50% - 43vh)'
+      });
+      setTimeout(function() {
+        $("#lvlUpWindow [type='radio']+label").css({
+          'display': 'inline-block',
+          'margin': '1.5vh 1.5vh',
+          'height': '23vh'
+        });
+        setTimeout(function() {
+          $("#lvlUpWindow [type='radio']+label .icone, #acceptLvlUpgrade").fadeIn(600);
+          $("#acceptLvlUpgrade").attr('onclick', 'acceptLvlUpgrade()');
+          var radios = document.getElementsByName('lvlUpChoice');
+          for (i = 0; i < radios.length; i++) {
+            var radVal = radios[i].value;
+            var radID = radios[i].id;
+            var nbRadVal = parseInt(localStorage[radVal]);
+            if (radVal == "plHealthMax") {
+              $('#' + radID + '+label .text').html("Max<br><span>" + nbRadVal + "</span> ⇝ " + (nbRadVal + 5));
+            } else {
+              $('#' + radID + '+label .text').html("Base<br><span>" + nbRadVal + "</span> ⇝ " + (nbRadVal + 1));
+            }
+          }
+        }, 300);
+      }, 800);
+    }, 100);
+  }, 1000);
+}
+
+function acceptLvlUpgrade() {
+  $("#acceptLvlUpgrade").attr('onclick', '');
+  var statToChange = $("#lvlUpWindow [type='radio']:checked").val();
+  if (statToChange == "plHealthMax") {
+    localStorage.plHealthMax = (parseInt(localStorage.plHealthMax) + 5);
+  } else {
+    localStorage[statToChange] = (parseInt(localStorage[statToChange]) + 1);
+  }
+  localStorage.plHealth = (parseInt(localStorage.plHealth) + (parseInt(localStorage.plHealthMax) - parseInt(localStorage.plHealth)) * 0.6);
+  refStats();
+  $("#lvlUpWindow [type='radio']+label .icone, #acceptLvlUpgrade").fadeOut(400);
+  setTimeout(function() {
+    $("#lvlUpWindow [type='radio']+label").css({
+      'margin': '10vh 1.5vh',
+      'height': '0'
+    });
+    setTimeout(function() {
+      $("#lvlUpWindow [type='radio']+label").hide();
+      $("#lvlUpWindow").css({
+        'bottom': '5%',
+        'width': '40%',
+        'left': '30%'
+      });
+      setTimeout(function() {
+        $("#lvlUpWindow").css({
+          'height': '0'
+        });
+        setTimeout(function() {
+          $("#lvlUpWindow").hide();
+          $(".mask.prio.deep.darkgrey-gradient").fadeOut(300);
+        }, 1000);
+      }, 200);
+    }, 700);
+  }, 400);
+}
 
 function knockDoor() {
   if (localStorage.région == "Soufflant" && localStorage.zone == "Cabane") {
@@ -125,12 +218,23 @@ function knockDoor() {
   }
 }
 
+function thereIsNeed() {
+  for (var i = 0; i < 10; i++) {
+    i2 = Number(i) + 1;
+    console.log(i2);
+    $(".needDex.need" + i2).attr({
+      'title': $(".needDex.need" + i2).attr("title") + ' <br><i>Vous devez avoir ' + i2 + 'lvl de Dextérité</i>',
+      'data-before': i2
+    });
+  }
+}
+
 function enterDoor() {
   if (localStorage.région == "Soufflant" && localStorage.zone == "Cabane") {
     setSound("EnvB", "stop");
     setSound("EnvF", "stop");
     setSound("Music", "Battle1");
-    window.location = "Combat.html";
+    combat();
   }
 }
 if (localStorage.Setting_SoundOn == 1) {
@@ -142,7 +246,7 @@ if (localStorage.Setting_MusicOn == 1) {
 }
 // --------------------- ACTUALISATION DE PAGE SELON LA PAGE
 function refScripts() {
-  $(".midscreen, .minimap, .asideRightOpener, .asideRight, .mask").css("filter","");
+  $(".midscreen, .minimap, .asideRightOpener, .asideRight, .mask").css("filter", "");
   var région = localStorage.région;
   var milieu = localStorage.milieu;
   var zone = localStorage.zone;
@@ -199,35 +303,47 @@ function refScripts() {
       }
     }
     if (zone == "Intérieur") {
-      localStorage.time = "";
       setSound("Music", "MystDark_House");
       setSound("EnvB", "CreakingHouse");
       setSound("EnvF", "bunchOfFlies");
+      localStorage.time = "";
       $(".fullscreen").css("background", "rgb(18, 15, 8)");
       $(".uiBG_clouds").hide();
-      $(".midscreen, .minimap, .asideRightOpener, .asideRight, .mask").css("filter","brightness(61%) contrast(110%) grayscale(59%)");
+      $(".midscreen, .minimap, .asideRightOpener, .asideRight, .mask").css("filter", "brightness(61%) contrast(110%) grayscale(59%)");
     }
     if (zone == "Mur") {
       setSound("UI", "stop");
       if (localStorage.talkedToGuard == 1 && localStorage.caughtbyguard == 0) {
         addBtn(0, 0, 0, 0, 0, 0, 0, 1);
-        $("#btnLook1").html("Trouver un autre moyen de passer").attr("onclick", "setpage(0,0,'3.2'); refAll()");
+        $("#btnLook1").html("Trouver un autre moyen de passer").attr("onclick", "setpage(0,0,'Tunnel'); refAll()");
       }
     }
     if (zone == "Tunnel") {
       localStorage.sawhole = 1;
       if (localStorage.inv_tool_Shovel == 1) {
-        $(".chance").show();
+        $("#actDivers, .chance").show();
       }
       if (localStorage.totalDex < 3) {
-        $(".ch40").attr("onclick", "").addClass('optNope');
+        $(".needDex").attr("onclick", "").addClass('greyed');
       }
+      thereIsNeed();
     }
   }
   if (région == "Pouce") {
-    if (zone == 6.11) {
-      $("#sleft, #sright").css("background", "linear-gradient(to bottom, #98947c -20%, #1d1b1a 70%)");
-      $(".deco").hide();
+    if (milieu == "Merryvale") {
+      if (zone == "Egouts") {
+        setSound("Music", "stop");
+        setSound("EnvB", "stop");
+        setSound("EnvF", "sewer");
+        $(".fullscreen").css("background", "rgb(22, 23, 21)");
+        $(".uiBG_clouds").hide();
+        $(".midscreen, .minimap, .asideRightOpener, .asideRight, .mask").css("filter", "brightness(61%) contrast(110%) grayscale(59%)");
+        localStorage.time = "";
+      }
+      if (zone == 6.11) {
+        $("#sleft, #sright").css("background", "linear-gradient(to bottom, #98947c -20%, #1d1b1a 70%)");
+        $(".deco").hide();
+      }
     }
   }
 }
@@ -263,17 +379,30 @@ function quitMasure() {
   refAll();
 }
 //3.2 Tunnel
-function dig(chance) {
-  if (chance >= Math.floor(Math.random() * (10 - 1 + 1) + 1)) {
-    $("#histoire").html("Vous ne vous êtes pas fait prendre, et la zone éboulée est désormais parfaitement déblayée !<br>Vous êtes désormais dans les égouts souterrains. Au dessus de vous, la lumière arrive par une grille. Au travers, vous entrevoyez l'autre côté du portail. Oui !! Vous délogez la grille et vous hissez à la surface.");
-    $(".btnD").hide();
-    $(".enterCity").show(500);
+function digTunnelSoufflant(chance) {
+  $("#dialog .image").css("background-image", "unset");
+  var i = Math.floor(Math.random() * (10 - 1 + 1) + 1);
+  if (chance >= i) {
+    $("#dialog .title").html("Réussi !");
+    $("#dialog .text").html("Vous ne vous êtes pas fait prendre, et la zone éboulée est désormais parfaitement déblayée !<br>Vous avancez vers les conduits humides des égouts de Merryvale..");
+    $('#dialog a.nb1').html('Continuer').attr('onclick', 'enterMerryvaleParLesEgouts();').show();
+    openDialog();
   } else {
-    $("#histoire").html("<span>Vous vous êtes fait prendre par le garde, qui vous as désormais à l'oeil !</span>");
-    localStorage.caughtbyguard = 1;
-    $(".btnD").hide();
-    $(".retourMur").show();
+    $("#dialog .title").html("Raté !");
+    $("#dialog .text").html("Vous vous êtes fait prendre par le garde, qui vous a désormais à l'oeil !");
+    // localStorage.caughtbyguard = 1;
+    $('#dialog a.nb1').html('Retour').attr('onclick', 'setpage(0,0,"Mur"); refAll(); closeDialog();').show();
+    openDialog();
   }
+}
+
+function enterMerryvaleParLesEgouts() {
+  setpage("Pouce", "Merryvale", "Egouts");
+  refAll();
+  closeDialog();
+  setTimeout(function() {
+    banner("Merryvale");
+  }, 1000);
 }
 //4
 function enterMerryvale() {

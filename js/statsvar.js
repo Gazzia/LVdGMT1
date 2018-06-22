@@ -38,6 +38,11 @@ function refStats(){
 	totalInt = Math.round(+raceXInt * +origineXInt * +bInt);
 	localStorage.totalInt = totalInt;
 
+	if (Number(localStorage.plLvl) == 1){
+		localStorage.plXpToLevel = 100;
+	} else {
+		localStorage.plXpToLevel = Math.round(100 * ((Number(localStorage.plLvl)-1)*1.3));
+	}
 	inv_selected_arme = localStorage.inv_selected_arme;
 	if(inv_selected_arme=="Poings"){
 		localStorage.setItem("dmgbasemin", "0");
@@ -47,21 +52,23 @@ function refStats(){
 		localStorage.setItem("dmgbasemax", "10");}
 	plMaxDmg = localStorage.dmgbasemax;
 	plMinDmg = localStorage.dmgbasemin;
-	$(".statForce .total").html(totalForce);$(".statForce .total").attr('title','Base: '+bForce+'  |   Race: *'+raceXForce+'  |   Origine: *'+origineXForce+'  |   Classe: *'+classeXForce+'  |   Objets: '+'+0');
-	$(".statFesse .total").html(totalFesse);$(".statFesse .total").attr('title','Base: '+bFesse+'  |   Race: *'+raceXFesse+'  |   Origine: *'+origineXFesse+'  |   Classe: *'+classeXFesse+'  |   Objets: '+'+0');
-	$(".statChar .total").html(totalChar);$(".statChar .total").attr('title','Base: '+bChar+'  |   Race: *'+raceXChar+'  |   Origine: *'+origineXChar+'  |   Classe: *'+classeXChar+'  |   Objets: '+'+0');
-	$(".statDex .total").html(totalDex);$(".statDex .total").attr('title','Base: '+bDex+'  |   Race: *'+raceXDex+'  |   Origine: *'+origineXDex+'  |   Classe: *'+classeXDex+'  |   Objets: '+'+0');
-	$(".statSag .total").html(totalSag);$(".statSag .total").attr('title','Base: '+bSag+'  |   Race: *'+raceXSag+'  |   Origine: *'+origineXSag+'  |   Objets: '+'+0');
-	$(".statInt .total").html(totalInt);$(".statInt .total").attr('title','Base: '+bInt+'  |   Race: *'+raceXInt+'  |   Origine: *'+origineXInt+'  |   Objets: '+'+0');
+	$(".statForce .total").html(totalForce);$(".statForce .total").attr('title','<u style="color:lightgrey">Détails</u><br>Base <b>'+bForce+'</b><br>Race <b>*'+raceXForce+'</b><br>Origine <b>*'+origineXForce+'</b><br>Classe <b>*'+classeXForce+'</b><br>Objets <b>'+'+0</b>');
+	$(".statFesse .total").html(totalFesse);$(".statFesse .total").attr('title','<u style="color:lightgrey">Détails</u><br>Base <b>'+bFesse+'</b><br>Race <b>*'+raceXFesse+'</b><br>Origine <b>*'+origineXFesse+'</b><br>Classe <b>*'+classeXFesse+'</b><br>Objets <b>'+'+0</b>');
+	$(".statChar .total").html(totalChar);$(".statChar .total").attr('title','<u style="color:lightgrey">Détails</u><br>Base <b>'+bChar+'</b><br>Race <b>*'+raceXChar+'</b><br>Origine <b>*'+origineXChar+'</b><br>Classe <b>*'+classeXChar+'</b><br>Objets <b>'+'+0</b>');
+	$(".statDex .total").html(totalDex);$(".statDex .total").attr('title','<u style="color:lightgrey">Détails</u><br>Base <b>'+bDex+'</b><br>Race <b>*'+raceXDex+'</b><br>Origine <b>*'+origineXDex+'</b><br>Classe <b>*'+classeXDex+'</b><br>Objets <b>'+'+0</b>');
+	$(".statSag .total").html(totalSag);$(".statSag .total").attr('title','<u style="color:lightgrey">Détails</u><br>Base <b>'+bSag+'</b><br>Race <b>*'+raceXSag+'</b><br>Origine <b>*'+origineXSag+'</b><br>Objets <b>'+'+0</b>');
+	$(".statInt .total").html(totalInt);$(".statInt .total").attr('title','<u style="color:lightgrey">Détails</u><br>Base <b>'+bInt+'</b><br>Race <b>*'+raceXInt+'</b><br>Origine <b>*'+origineXInt+'</b><br>Objets <b>'+'+0</b>');
 
-
-	$("#plGold").html(localStorage.plGold);
-	$('#plHealthBar').progressbar({classes:{"ui-progressbar": "progression big", "ui-progressbar-value": "progression-value"}});
-	$('#plHealthBar_inv').progressbar({classes:{"ui-progressbar": "progression small inv", "ui-progressbar-value": "progression-value"}});
-	$('#plHealthBar, #plHealthBar_inv').progressbar('option', 'value', Number(localStorage.plHealth));
-	$('#plHealthBar, #plHealthBar_inv').progressbar('option', 'max', Number(localStorage.plHealthMax));
-	$('#plHealthText').html(localStorage.plHealth+"/"+localStorage.plHealthMax);
+	//health bars
+	$('#plHealthBar').progressbar({classes:{"ui-progressbar": "progression game health", "ui-progressbar-value": "progression-value"}});
+	$('#plHealthBar_inv').progressbar({classes:{"ui-progressbar": "progression inv health", "ui-progressbar-value": "progression-value"}});
+	$('#plHealthBar').progressbar('option', {'value': Number(localStorage.plHealth), 'max': Number(localStorage.plHealthMax)}).attr('title',localStorage.plHealth+"/"+localStorage.plHealthMax+ "♥");
+	$('#plHealthBar_inv').progressbar('option', {'value': Number(localStorage.plHealth), 'max': Number(localStorage.plHealthMax)}).attr('title',localStorage.plHealth+"/"+localStorage.plHealthMax+ "♥");
+	//xp bar
+	$('#plXpBar').progressbar({classes:{"ui-progressbar": "progression xp", "ui-progressbar-value": "progression-value"}});
+	$('#plXpBar').progressbar('option', {'value': Number(localStorage.plXp), 'max': Number(localStorage.plXpToLevel)}).attr('title','<b>Niveau '+localStorage.plLvl+'</b><br>Expérience :<br>'+localStorage.plXp+"/"+localStorage.plXpToLevel);
+	//
 	$(".pseudo").html(localStorage.pseudo);
-	$("#topBlock_plRace").html(localStorage.race+" de "+localStorage.origine);
+	$("#plGold").html(localStorage.plGold);
 
 }

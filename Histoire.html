@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="shortcut icon" type="image/png" href="images/icone.png" />
-	<title>GMT - Errance</title>
+	<title>LVdGMT</title>
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 	<link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
@@ -15,6 +15,7 @@
 	<script src="js/data/saveParams.js"></script>
 	<script src="js/data/items.js"></script>
 	<script src="js/data/ench.js"></script>
+	<script src="js/data/enemies.js"></script>
 	<script src="js/globalFn.js"></script>
 	<script src="js/UIFunctions.js"></script>
 	<script src="js/statsvar.js"></script>
@@ -24,7 +25,10 @@
 				classes: {
 					"ui-tooltip": "black_tooltip"
 				},
-				track: true
+				track: true,
+				content: function() {
+					return $(this).attr('title');
+				}
 			});
 		});
 	</script>
@@ -35,10 +39,10 @@
 	<div id="uiBG" class="fullscreen maxspace">
 		<div id="uiBG_cloudsFG" class="uiBG_clouds"></div>
 		<div id="uiBG_cloudsBG" class="uiBG_clouds"></div>
-		<img id="UIBG_imgFullFG" class="UIBG_imgFG UIBG_img maxheight" onerror="this.style.display='none'"/>
-		<img id="UIBG_imgFull" class="UIBG_imgFull UIBG_img UIBG_imgsBG maxwidth" onerror="this.style.display='none'"/>
-		<img id="UIBG_imgFullBG" class="UIBG_imgFullBG UIBG_imgFull UIBG_img UIBG_imgsBG maxwidth" onerror="this.style.display='none'"/>
-		<img id="propMouches" class="bgProp" src="images/bg/prop/mouches3.gif"/>
+		<img id="UIBG_imgFullFG" class="UIBG_imgFG UIBG_img maxheight" onerror="this.style.display='none'" />
+		<img id="UIBG_imgFull" class="UIBG_imgFull UIBG_img UIBG_imgsBG maxwidth" onerror="this.style.display='none'" />
+		<img id="UIBG_imgFullBG" class="UIBG_imgFullBG UIBG_imgFull UIBG_img UIBG_imgsBG maxwidth" onerror="this.style.display='none'" />
+		<img id="propMouches" class="bgProp" src="images/bg/prop/mouches3.gif" />
 	</div>
 	<div class="minimap">
 		<img src="images/map/Merry1.png" class="carte">
@@ -135,27 +139,14 @@
 		</div>
 		<!-- Bloc du bas -->
 		<div class="maxwidth uiFG_bot">
-			<div class="topBlock maxwidth">
-				<!-- Boutons de navigation (inventaire par ex) -->
-				<nav class="topBlock_nav">
-					<a id="btnInv" class="navBtns" title="Inventaire (I)" onclick="openInventory()"></a>
-					<a id="btnMap" class="navBtns" title="Carte >" href="Map.html"></a>
-				</nav>
-				<!-- Nom et Race du joueur -->
-				<div class="topBlock_plCont maxheight">
-					<div id="topBlock_plPseudo" class="topBlock_plInfo maxwidth pseudo"></div>
-					<div id="topBlock_plRace" class="topBlock_plInfo maxwidth">Ferré du soufflant</div>
-				</div>
-			</div>
-			<div class="botBlock maxwidth">
-				<!-- Vie du joueur -->
-				<div id="plHealthText"></div>
-				<div id="plHealthBar"></div>
-				<!-- Or du joueur -->
-				<div class="goldContainer" title="Richesse">
-					<img class="goldIcon" src="images/icons/UI/gold.png">
-					<div id="plGold">
-					</div>
+			<!-- Vie et XP du joueur -->
+			<!-- <div id="plHealthText">♥</div> -->
+			<div id="plHealthBar"></div>
+			<div id="plXpBar"></div>
+			<!-- Or du joueur -->
+			<div class="goldContainer" title="Richesse">
+				<img class="goldIcon" src="images/icons/UI/gold.png">
+				<div id="plGold">
 				</div>
 			</div>
 		</div>
@@ -292,10 +283,11 @@
 
 	</aside>
 
-	<div class="townBanner maxwidth"></div>
+	<div class="eventBanner maxwidth"></div>
 	<!-- Masques foncés sur la page, en dessous d'une overlay -->
 	<div class="mask light brown maxspace"></div>
 	<div class="mask deep lightgrey maxspace"></div>
+	<div class="mask prio deep darkgrey-gradient maxspace"></div>
 
 	<!-- Fenêtre de dialogue (Inspection, messages, etc), caché à gauche par défaut -->
 	<div id="dialog">
@@ -329,10 +321,7 @@
 		</footer>
 	</div>
 	<!-- Mini popup de transactions -->
-	<div id="transactions">
-		<div class="title maxwidth">Transaction</div>
-		<div class="gold maxwidth"></div>
-	</div>
+	<div id="transactions"></div>
 	<!-- Inventaire -->
 	<div id="InvLPane" class="invPanes">
 		<div id="InvLPane_Left" class="maxheight">
@@ -436,6 +425,91 @@
 			</div>
 		</main>
 	</div>
+	<div id="lvlUpWindow">
+		<h1>LVL UP !</h1>
+		<h2>Choisissez une amélioration</h2>
+		<form id="formA">
+			<input type="radio" id="bForce-rad" value="bForce" name="lvlUpChoice" checked>
+			<label for="bForce-rad">
+				<div class="icone"></div>
+				<div class="text"></div>
+			</label>
+			<input type="radio" id="bFesse-rad" value="bFesse" name="lvlUpChoice">
+			<label for="bFesse-rad">
+				<div class="icone"></div>
+				<div class="text"></div>
+			</label>
+			<input type="radio" id="bChar-rad" value="bChar" name="lvlUpChoice">
+			<label for="bChar-rad">
+				<div class="icone"></div>
+				<div class="text"></div>
+			</label>
+			<input type="radio" id="bDex-rad" value="bDex" name="lvlUpChoice">
+			<label for="bDex-rad">
+				<div class="icone"></div>
+				<div class="text"></div>
+			</label>
+			<input type="radio" id="bSag-rad" value="bSag" name="lvlUpChoice">
+			<label for="bSag-rad">
+				<div class="icone"></div>
+				<div class="text"></div>
+			</label>
+			<input type="radio" id="bInt-rad" value="bInt" name="lvlUpChoice">
+			<label for="bInt-rad">
+				<div class="icone"></div>
+				<div class="text"></div>
+			</label>
+			<input type="radio" id="heal-rad" value="plHealthMax" name="lvlUpChoice">
+			<label for="heal-rad">
+				<div class="icone"></div>
+				<div class="text"></div>
+			</label>
+		</form>
+		<a id="acceptLvlUpgrade">✔</a>
+	</div>
+
+	<div id="CombatWindow">
+		<section id="intitule">
+			<div class='text'></div>
+		</section>
+		<section id="perso" class="mid">
+			<header>
+				<div class="title">Vous</div>
+				<div id="viePlayer"> </div>
+				<div id="playerVieText"></div>
+			</header>
+			<div id="infosPerso">
+				<div class="title">Caractéristiques</div>
+				<p class="infos carac"></p>
+				<div class="title">Arme</div>
+				<p class="infos weapon"></p>
+				<div class="title">Race</div>
+				<p class="infos race"><br></p>
+				<div class="title">Classe</div>
+				<p class="infos classe"><br></p>
+			</div>
+		</section>
+		<section id="damageInfos" class="mid">
+			<div class="sideOf player">
+				<div class="hit PtoE E1"></div>
+				<div class="hit PtoE E2"></div>
+				<div class="hit PtoE E3"></div>
+				<div class="hit PtoE E4"></div>
+				<div class="hit PtoE E5"></div>
+			</div>
+			<div class="sideOf enemies">
+				<div class="hit EtoP E1"></div>
+				<div class="hit EtoP E2"></div>
+				<div class="hit EtoP E3"></div>
+				<div class="hit EtoP E4"></div>
+				<div class="hit EtoP E5"></div>
+			</div>
+		</section>
+		<section id="ennemis" class="mid"></section>
+		<!-- Les bloc d'ennemis sont générés par combat.js -->
+		<section id="defensif"></section>
+		<!-- Barre d'en bas -->
+	</div>
 	<audio autoplay="true" loop controls id="playerEnvB"></audio>
 	<audio autoplay="true" loop controls id="playerEnvF"></audio>
 	<audio autoplay="true" controls id="playerMusic"></audio>
@@ -504,7 +578,12 @@
 			pauseMusic();
 		})
 
+		//inv
+		var isInvOpen = 0;
+		$('.openable').append('<a class="arrowRight icon right"></a>');
 
+
+		//save
 		$(document).on('click', '#menuSave .save .saveBtn', function() {
 			var thisid = String((this.id).replace('_btn', ''));
 			if (localStorage[thisid] == undefined || localStorage[thisid] == 0) {
@@ -514,12 +593,6 @@
 			}
 		})
 
-		//inv
-		var isInvOpen = 0;
-		$('.openable').append('<a class="arrowRight icon right"></a>');
-
-
-		//save
 		function save(savenum) {
 			var d = new Date();
 			var saveID = String(savenum);
@@ -535,12 +608,13 @@
 			}
 		}
 		//import svg
-		$(".statForce .img").html(iconForce);
-		$(".statFesse .img").html(iconFesse);
-		$(".statChar .img").html(iconChar);
-		$(".statDex .img").html(iconDex);
-		$(".statSag .img").html(iconSag);
-		$(".statInt .img").html(iconInt);
+		$(".statForce .img, #bForce-rad+label .icone").html(iconForce);
+		$(".statFesse .img, #bFesse-rad+label .icone").html(iconFesse);
+		$(".statChar .img, #bChar-rad+label .icone").html(iconChar);
+		$(".statDex .img, .needDex:before, #bDex-rad+label .icone").html(iconDex);
+		$(".statSag .img, #bSag-rad+label .icone").html(iconSag);
+		$(".statInt .img, #bInt-rad+label .icone").html(iconInt);
+		$('#heal-rad+label .icone').html(iconHealth);
 		$("#menuOptions main .sound").html(iconSound);
 		$("#menuOptions main .mechanics").html(iconCog2);
 		$('#openMenuCarac').html(iconCarac);
@@ -551,6 +625,7 @@
 		$(".asideRight nav .close").html(iconClose);
 		$("#weaponLeftHSymbol").html(iconLeftHand);
 		$("#weaponRightHSymbol").html(iconRightHand);
+		$(".eA_icons.attack").html(iconSword);
 	</script>
 	<script src="js/inventaire.js"></script>
 	<script src="js/images.js"></script>
@@ -560,6 +635,7 @@
 	<script src="js/pageHistoire.js"></script>
 	<script src="js/inspect.js"></script>
 	<script src="js/dialogue.js"></script>
+	<script src="js/combat.js"></script>
 	<script src="js/resizing.js"></script>
 	<script>
 		refAll();

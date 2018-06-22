@@ -110,6 +110,7 @@ function closeDialog() {
   $('#dialog').css('left', '-65%');
   $('.mask').fadeOut(700);
   $('#dialog a').hide();
+  $("#dialog .image").css("background-image", "unset");
 }
 
 function openAlerte() {
@@ -133,51 +134,47 @@ function foundGold(amount, storageEvent) {
     transaction(amount, "+");
     setTimeout(function() {
       setSound("UI", "gold");
-    }, 3300);
+    }, 2300);
   }, 250);
 }
 
 function transaction(amount, positivity) {
   $('.mask.light.brown').fadeIn(700);
   $("#transactions").css('transition', 'none');
-  $("#transactions .gold").html(positivity + amount + " or !");
+  $("#transactions").html(positivity + amount + " OR");
   setTimeout(function() {
     $("#transactions").css({
-      'left': 'calc(50% - 25vh)',
-      'bottom': 'calc(50% - 10vh)',
-      'height': '20vh',
-      'width': '50vh'
+      'left': 'calc(50% - 16vh)',
+      'bottom': 'calc(50% - 11vh)',
+      'height': '22vh',
+      'width': '32vh'
     });
     $("#transactions").fadeIn(400);
-    $("#transactions.title").css('background-color', '#e2b948');
     setTimeout(function() {
-      $("#transactions.title").css('background-color', '#d4ba45');
+      $("#transactions").html("");
+      $("#transactions").css({
+        'transition': 'all 0.5s ease',
+        'left': '18.5%',
+        'width': '5px'
+      });
       setTimeout(function() {
-        $("#transactions.gold").html("");
+        $('.mask').fadeOut(700);
         $("#transactions").css({
-          'transition': 'all 0.5s ease',
-          'left': '69%',
-          'width': '5px'
+          'bottom': '2%'
         });
         setTimeout(function() {
-          $('.mask').fadeOut(700);
           $("#transactions").css({
-            'bottom': '3%'
-          });
-          setTimeout(function() {
-            $("#transactions").css({
-              'height': '0'
-            }).fadeOut(100);
-            refAllbutImg();
-          }, 260);
+            'height': '0'
+          }).fadeOut(400);
+          refAllbutImg();
         }, 300);
-      }, 900);
-    }, 600);
+      }, 120);
+    }, 1200);
   }, 700);
   setTimeout(function() {
     localStorage.plGold = Number(localStorage.plGold) + Number(amount);
     refAllbutImg();
-  }, 1500);
+  }, 2300);
 }
 
 function foundItem(item) {
@@ -227,9 +224,41 @@ function dialogColor(paramColor) {
   $('#dialog .content, #alerte').css('background-image', 'linear-gradient(white, ' + backColor + ')');
 }
 
-function banner(ville) {
-  $(".townBanner").html(ville).fadeIn(900);
+function banner(eventname) {
+  if (eventname == "Combat !") {
+    $(".eventBanner").css({
+      'color': 'red',
+      'background-color': 'rgba(0, 0, 0, 0.7)',
+      'top': '0',
+      'height': '100%',
+      'line-height': '100vh'
+    });
+  } else {
+    $(".eventBanner").css({
+      'color': 'white',
+      'background-color': 'rgba(58, 93, 93, 0.85)',
+      'top': '10%',
+      'height': '20%',
+      'line-height': '20vh'
+    });
+  }
+  $(".eventBanner").html(eventname).fadeIn(900);
   setTimeout(function() {
-    $(".townBanner").fadeOut(900);
+    $(".eventBanner").fadeOut(900);
   }, 2000);
+}
+
+function closeCombat() {
+  refAll();
+  setTimeout(function() {
+    $("#CombatWindow").css('bottom', '100%');
+    setTimeout(function() {
+      $("#CombatWindow").hide();
+      setTimeout(function() {
+        var xp = (parseInt(localStorage.en1xp + localStorage.en2xp + localStorage.en3xp + localStorage.en4xp));
+        console.log('XP gagné : ' + xp);
+        getXp(xp);
+      }, 300);
+    }, 1000);
+  }, 500);
 }

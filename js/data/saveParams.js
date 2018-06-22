@@ -1,4 +1,4 @@
-var saveParams_Perso = ["plGold", "plHealthMax", "plHealth", "région", "milieu", "zone", "pseudo", "race", "classe", "origine"];
+var saveParams_Perso = ["plGold", "plHealthMax", "plHealth", "région", "milieu", "zone", "pseudo", "race", "classe", "origine", "plXp", "plXpToLevel", "plLvl"];
 var saveParams_Stats = ["classeXForce", "classeXFesse", "classeXChar", "classeXDex", "raceXForce", "raceXFesse", "raceXChar", "raceXDex", "raceXSag", "raceXInt", "bForce", "bFesse", "bChar", "bDex", "bSag", "bInt"];
 
 var saveParams_Options = ["soundEnvB", "soundEnvF", "soundMusic", "Setting_MusicOn", "Setting_SoundOn"];

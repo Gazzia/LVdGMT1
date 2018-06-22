@@ -212,13 +212,19 @@
 
 		function load(savenum) {
 			var saveID = String(savenum);
+			console.log("///////////////////////DEBUT DE CHARGEMENT DE SAUVEGARDE///////////////////////");
+			console.log("-----------------CHARGEMENT DONNEES INVENTAIRE-----------------");
 			for (var i = 0; i < saveParams_InvTotal_Length; i++) {
-				localStorage[saveID + '_inv_' + saveParams_InvTotal[i]] = localStorage['inv_' + saveParams_InvTotal[i]];
+				console.log(saveParams_InvTotal[i]+ ' = '+localStorage[saveParams_InvTotal[i]]+" ---- "+(Number(i)+1)+"/"+saveParams_InvTotal_Length);
+				localStorage['inv_' + saveParams_InvTotal[i]] = localStorage[saveID + '_inv_' + saveParams_InvTotal[i]];
 			}
+			console.log("-----------------CHARGEMENT DONNEES JEU, PERSO ET OPTIONS-----------------");
 			for (var i = 0; i < saveParams_DiversTotal_Length; i++) {
-				localStorage[saveID + '_' + saveParams_DiversTotal[i]] = localStorage[saveParams_DiversTotal[i]];
+				console.log(saveParams_DiversTotal[i]+ ' = '+localStorage[saveParams_DiversTotal[i]]+" ---- "+(Number(i)+1)+"/"+saveParams_DiversTotal_Length);
+				localStorage[saveParams_DiversTotal[i]] = localStorage[saveID + '_' + saveParams_DiversTotal[i]];
 			}
-			window.location = "Histoire.html";
+			console.log("///////////////////////FIN DE CHARGEMENT DE SAUVEGARDE///////////////////////");
+				window.location = "Histoire.html";
 		}
 		$(document).on('click', '.action.delete.active', function() {
 			var thisid = String((this.id).replace('_delBtn', ''));
@@ -542,7 +548,7 @@
 			var origine = Math.floor(Math.random() * (14 - 1 + 1) + 1);
 			if (origine == 1) {
 				var origineName = localStorage.origine = "Port-Racine";
-				$("#statIcon").html(iconStartingGold);
+				$("#statIcon").html(iconGold);
 				$("#statTextbox").html("+20");
 				localStorage.origineAddGold = 20;
 			}

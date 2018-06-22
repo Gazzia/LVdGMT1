@@ -1,12 +1,55 @@
-refStats();
-var audio = $("#playerCombat");
-var whichSound = 1;
-var dmgBlockedByEnemy = 0;
-var plHitCalc = 0;
-var plHitRaw = 0;
-var randomcrit = 0;
+var zoneClearedLS = '';
+var winZone = '';
+var WinDialog = '';
+var DeathDialog = '';
+var en1DmgBaseNor = 0;
+var en1DmgCoefNor = 0;
+var en1DefBaseNor = 0;
+var en1DefCoefNor = 0;
+var en1HealthBase = 0;
+var en1HealthCoef = 0;
+
+function combat(special) {
+  banner("Combat !");
+  setTimeout(function() {
+    $("#CombatWindow").show();
+    setTimeout(function() {
+      $("#CombatWindow").css('bottom', '0');
+    }, 100);
+  }, 2000);
+  localStorage.en1xp = localStorage.en2xp = localStorage.en3xp = localStorage.en4xp = 0;
+  localStorage.enemiesNb = 0;
+  $("#ennemis").html('');
+  if (localStorage.région == 'Soufflant' && localStorage.zone == "Cabane") {
+    localStorage.En1_Dead = localStorage.En2_Dead = localStorage.En3_Dead = localStorage.En4_Dead = 1;
+    addEnemy(1, Rat, 5);
+    zoneClearedLS = "combatWon_RatSoufflant";
+    winZone = {
+      région: 'Soufflant',
+      milieu: 'Plaine',
+      zone: 'Intérieur'
+    };
+    $('#intitule .text').html(
+      "Alors que vous entamez votre premier pas au-delà de la porte, une ombre se propulse vers vous.<br>Un énorme rat vous attaque, énervé que vous ayiez trouvé son abri. Vous entrevoyez rapidement un corps à moitié mangé sur le sol, surement l'ancien propriétaire."
+    );
+    WinDialog = "Le dernier coup asséné a achevé le combat, dont vous sortez victorieux ! Vous pouvez maintenant explorer l'interieur de la masure";
+    DeathDialog = "La dernière morsure du rat vous a été fatale. Alors que la vie s'échappe de votre corps, vous pouvez recommencer la partie pour tenter de vous venger de ce rongeur.";
+  }
+  refStats();
+  var dmgBlockedByEnemy = 0;
+  var plHitCalc = 0;
+  var plHitRaw = 0;
+  var randomcrit = 0;
+  setTimeout(function() {
+    refCombat();
+  }, 1000);
+}
+
 /* FONCTION D'AJOUT DES CASES DES OBJETS */
 function addEnemy(enemyNum, addedEnemy, addedEnemyLvl) {
+  localStorage['en' + enemyNum + 'xp'] = ((parseInt(addedEnemy.DmgBaseNor) * parseInt(addedEnemy.DmgCoefNor) * parseInt(addedEnemyLvl - 1)) + (parseInt(addedEnemy.DefBaseNor) * parseInt(addedEnemy.DefCoefNor) * parseInt(addedEnemyLvl - 1)) + (parseInt(addedEnemy.HealthBase) * parseInt(addedEnemy.HealthCoef) * parseInt(addedEnemyLvl - 1))) * 0.55;
+  console.log('Ennemi' + enemyNum + ' gain xp = ' + localStorage['en' + enemyNum + 'xp']);
+  localStorage['En' + enemyNum + '_Dead'] = 0;
   localStorage['En' + enemyNum + '_HP'] = localStorage['En' + enemyNum + '_MaxHP'] = Math.round(addedEnemy.HealthBase + (addedEnemy.HealthCoef * (addedEnemyLvl - 1)));
   localStorage['En' + enemyNum + '_MaxDmgNor'] = Math.round(addedEnemy.DmgBaseNor + (addedEnemy.DmgCoefNor * (addedEnemyLvl - 1)));
   localStorage['En' + enemyNum + '_MaxDefNor'] = Math.round(addedEnemy.DefBaseNor + (addedEnemy.DefCoefNor * (addedEnemyLvl - 1)));
@@ -37,7 +80,7 @@ function addEnemy(enemyNum, addedEnemy, addedEnemyLvl) {
   localStorage.enemiesNb = localStorage.enemiesNbLiving = ++localStorage.enemiesNb;
 }
 
-function refStuff() {
+function refCombat() {
   //infos Perso
   $("#infosPerso .carac").html("Force: " + totalForce + " | FS: " + totalFesse);
   var armeSel = localStorage.inv_selected_arme;
@@ -124,12 +167,7 @@ function En_Hit(enemyNum) {
     if (plHitCalc > 0) {
       //if le coup fait des dégats
       localStorage['En' + enemyNum + '_HP'] -= plHitCalc;
-      if (localStorage.Setting_SoundOn == 1) {
-        $("#playerCombat").html("<source type='audio/mpeg' src='sound/UI/combat/hit_contondant" + Math.floor(Math.random() * (4 - 1 + 1) + 1) + ".mp3'>");
-        audio[0].volume = 0.5;
-        audio[0].load();
-        audio[0].play();
-      }
+      setSound('UI', 'combat_pl_contondant');
       $("#vieEn" + enemyNum + "Text").html(localStorage['En' + enemyNum + '_HP'] + '/' + localStorage['En' + enemyNum + '_MaxHP']);
       $('#vieEnemy' + enemyNum).progressbar('option', 'value', Number(localStorage['En' + enemyNum + '_HP'])).effect("shake", {
         direction: "up",
@@ -163,7 +201,7 @@ function En_Hit(enemyNum) {
           $("#dialog .image").css("background-image", "unset");
           $("#dialog .text").html(WinDialog);
           $('#dialog a').hide();
-          $('#dialog a.nb1').html('Ok').attr('onclick', 'setpage(0,0,onWinLocationZone);window.location="Histoire.html";').show();
+          $('#dialog a.nb1').html('Ok').attr('onclick', 'setpage(winZone.région,winZone.milieu,winZone.zone);closeDialog();closeCombat();').show();
           openDialog();
         }, 1000);
       }
@@ -212,10 +250,7 @@ function Pl_Hit(enemyNum) {
     localStorage.plHealth -= enemyatk;
     $('.hit.EtoP.E' + enemyNum).html(+enemyatk + " DMG<").fadeIn(200);
     if (localStorage.Setting_SoundOn == 1) {
-      $("#playerCombat").html("<source type='audio/mpeg' src='sound/UI/combat/bite_rat" + Math.floor(Math.random() * (4 - 1 + 1) + 1) + ".mp3'>");
-      audio[0].volume = 0.5;
-      audio[0].load();
-      audio[0].play();
+      setSound('UI', 'combat_rat');
     }
     $('#viePlayer').progressbar('option', 'value', Number(localStorage.plHealth)).effect("shake", {
       direction: "up",
@@ -240,16 +275,4 @@ function Pl_Hit(enemyNum) {
     $('#dialog a.nb1').html('Recommencer').attr('onclick', 'window.location="Intro.html";').show();
     openDialog();
   }
-}
-
-
-function openDialog() {
-  $('#dialog').css('left', '20%');
-  $('.mask.mid.darkgrey').fadeIn(700);
-}
-
-function closeDialog() {
-  $('#dialog').css('left', '-100%');
-  $('.mask').fadeOut(700);
-  $('#dialog a').hide();
 }

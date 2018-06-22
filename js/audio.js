@@ -6,42 +6,39 @@ function setSound(soundtype, sound) {
       $('#playerEnvB').html('');
       plEnvB.pause();
       plEnvB.currentTime = 0;
-    }
-    if (sound == 'Nature') {
-      var envNb = Math.floor(Math.random() * 4) + 1;
-      if (envNb == 1) {
-        envBtrack = "sound/env/nature/windCricketA1.mp3";
-        playEnvB(envBtrack);
-        plEnvB.volume = 0.2;
+    } else {
+      if (sound == 'Nature') {
+        var envNb = Math.floor(Math.random() * 4) + 1;
+        if (envNb == 1) {
+          envBtrack = "sound/env/nature/windCricketA1.mp3";
+          envBvol = 0.2;
+        }
+        if (envNb == 2) {
+          envBtrack = "sound/env/nature/windCricketA2.mp3";
+          envBvol = 0.2;
+        }
+        if (envNb == 3) {
+          envBtrack = "sound/env/nature/windCricketB1.mp3";
+          envBvol = 0.4;
+        }
+        if (envNb == 4) {
+          envBtrack = "sound/env/nature/windCricketB2.mp3";
+          envBvol = 0.4;
+        }
       }
-      if (envNb == 2) {
-        envBtrack = "sound/env/nature/windCricketA2.mp3";
-        playEnvB(envBtrack);
-        plEnvB.volume = 0.2;
+      if (sound == 'CityCalm') {
+        envBtrack = "sound/env/city/normal01.mp3";
+        envBvol = 1;
       }
-      if (envNb == 3) {
-        envBtrack = "sound/env/nature/windCricketB1.mp3";
-        playEnvB(envBtrack);
-        plEnvB.volume = 0.4;
+      //Ambiances précises
+      if (sound == "CreakingHouse") {
+        envBtrack = "sound/env/creakinghouse.mp3";
+        envBvol = 0.2;
       }
-      if (envNb == 4) {
-        envBtrack = "sound/env/nature/windCricketB2.mp3";
-        playEnvB(envBtrack);
-        plEnvB.volume = 0.4;
-      }
-    }
-    if (sound == 'CityCalm') {
-      envBtrack = "sound/env/city/normal01.mp3";
+      //
       playEnvB(envBtrack);
-      plEnvB.volume = 1;
+      plEnvB.volume = envBvol;
     }
-    //Ambiances précises
-    if (sound == "CreakingHouse") {
-      envBtrack = "sound/env/creakinghouse.mp3";
-      playEnvB(envBtrack);
-      plEnvB.volume = 0.2;
-    }
-    //
   }
   if (soundtype == "EnvF") {
     var plEnvF = document.getElementById("playerEnvF");
@@ -49,31 +46,33 @@ function setSound(soundtype, sound) {
       $('#playerEnvF').html('');
       plEnvF.pause();
       plEnvF.currentTime = 0;
-    }
-    if (sound == 'Stream') {
-      envFtrack = "sound/env/streamFlowing.mp3";
+    } else {
+      if (sound == 'Stream') {
+        envFtrack = "sound/env/streamFlowing.mp3";
+        envFvol = 0.5;
+      }
+      if (sound == 'StreamAfar') {
+        envFtrack = "sound/env/streamAfar.mp3";
+        envFvol = 0.46;
+      }
+      if (sound == "ratRun") {
+        envFtrack = "sound/env/ratRunning.mp3";
+        envFvol = 0.7;
+      }
+      if (sound == "bunchOfFlies") {
+        envFtrack = "sound/env/bunchOfFlies.mp3";
+        envFvol = 0.7;
+      }
+      if (sound == "Snoring") {
+        envFtrack = "sound/env/snoring.mp3";
+        envFvol = 0.2;
+      }
+      if (sound == "sewer") {
+        envFtrack = "sound/env/sewer.mp3";
+        envFvol = 0.3;
+      }
       playEnvF(envFtrack);
-      plEnvF.volume = 0.5;
-    }
-    if (sound == 'StreamAfar') {
-      envFtrack = "sound/env/streamAfar.mp3";
-      playEnvF(envFtrack);
-      plEnvF.volume = 0.46;
-    }
-    if (sound == "ratRun") {
-      envFtrack = "sound/env/ratRunning.mp3";
-      playEnvF(envFtrack);
-      plEnvF.volume = 0.7;
-    }
-    if (sound == "bunchOfFlies") {
-      envFtrack = "sound/env/bunchOfFlies.mp3";
-      playEnvF(envFtrack);
-      plEnvF.volume = 0.7;
-    }
-    if (sound == "Snoring") {
-      envFtrack = "sound/env/snoring.mp3";
-      playEnvF(envFtrack);
-      plEnvF.volume = 0.2;
+      plEnvF.volume = envFvol;
     }
   }
   if (soundtype == "UI") {
@@ -110,6 +109,18 @@ function setSound(soundtype, sound) {
       UItrack = "sound/UI/largeDoorOpen.mp3";
       playUI(UItrack);
       plUI.volume = 0.7;
+    }
+    if (sound == "combat_rat") {
+      let ratBiteNb = Math.floor(Math.random() * (4 - 1 + 1) + 1);
+      UItrack = "sound/UI/combat/bite_rat"+ratBiteNb+".mp3";
+      playUI(UItrack);
+      plUI.volume = 0.5;
+    }
+    if (sound == "combat_pl_contondant") {
+      let contondantNb = Math.floor(Math.random() * (4 - 1 + 1) + 1);
+      UItrack = "sound/UI/combat/hit_contondant"+contondantNb+".mp3";
+      playUI(UItrack);
+      plUI.volume = 0.5;
     }
   }
   if (soundtype == "Music") {

@@ -59,6 +59,7 @@ function inspect(thing) {
     }
     if (zone == "Cabane") {
       $("#dialog .title").html("Devant la masure");
+      $("#dialog .image").css("background-image", "url(images/vertical/ext/Soufflant_Cabane-bois.png)");
       $("#dialog .text").html("Le bâtiment semble abandonné, comme si l'ancien propriétaire, trop las d'appliquer des réparations inefficaces, avait préféré partir. A vos pieds, des morceaux de bois déchiquetés et.. mordillés ?<br>On dirait des empreintes de dents, comme si un énorme rat s'était mis à ronger ces vieilles planches.");
       $('#dialog a.nb1').html('Ok').attr('onclick', 'closeDialog()').show();
     }

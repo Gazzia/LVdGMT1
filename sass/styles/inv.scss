@@ -9,12 +9,12 @@
     width: 38%;
     left: -60%;
     #InvLPane_Left {
-      width: 48%;
-      background-image: linear-gradient(110deg, #e4d5c0, #a79782);
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6), 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 49%;
+      background-image: linear-gradient(110deg, rgb(236, 218, 192), rgb(184, 162, 134));
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.2),0 0 20px rgba(0, 0, 0, 0.39);
       z-index: 2;
-      border-right: 0.35vw solid rgba(0, 0, 0, 0.3);
-      /*! box-sizing: border-box; */
+      border-right: 0.35vw solid rgba(0,0,0,0.3);
+      box-sizing: border-box;
       header {
         height: 12%;
         span {
@@ -45,7 +45,7 @@
           }
         }
         &#InvLPane_LeftArmorBlock {
-          height: 33%;
+          height: 35%;
         }
         &#InvLPane_LeftWeaponBlock {
           height: 9%;
@@ -54,48 +54,48 @@
           height: calc(42% - 9vh);
         }
         .blockItem {
-          height: 7vh;
-          margin-bottom: 1vh;
+          height: 6.5vh;
+          margin-bottom: 2vh;
+          width: 80%;
+          left: 10%;
+          padding: 0 2vh;
+          text-align: left;
+          line-height: -moz-block-height;
+          font-size: 3vh;
+          background-color: rgb(212, 200, 183);
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          color: rgb(167, 151, 128);
+          box-shadow: 2px 3px 3px rgba(0,0,0,0.1);
+          box-sizing: border-box;
           .EquippedType {
-            width: calc(100% - 15vh);
-            left: 4vh;
-            box-sizing: border-box;
-            padding: 0 2vh;
-            text-align: left;
-            line-height: -moz-block-height;
-            font-size: 3vh;
-            background-color: rgba(250, 245, 245, 0.2);
-            position: absolute;
-            height: 80%;
-            top: 10%;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-            color: #a79780;
-            box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1);
             &.ringsTitle {
               width: calc(100% - 9.5vh);
             }
           }
           .EquippedIcon {
-            width: 7vh;
-            right: 5vh;
-            background-color: #c4b6a5;
+            width: 6vh;
+            right: 1vh;
             box-sizing: border-box;
-            border: 2px solid;
-            box-shadow: inset 2px 3px 15px rgba(0, 0, 0, 0.1), 2px 3px 3px rgba(0, 0, 0, 0.1), -4px -5px 9px transparent;
-            border-radius: 15px;
-            border-color: #b6b3b3 #9c9b9b #909090 #bdbdbd;
             display: inline-block;
             background-size: 83%;
             background-repeat: no-repeat;
             background-position: center center;
             transform: rotateY(0deg);
             transition: all 0.3s ease;
+            border-radius: 100%;
+            border-top-left-radius: 100%;
+            border-top-right-radius: 100%;
+            border-bottom-right-radius: 100%;
+            border-bottom-left-radius: 100%;
+            height: 6vh;
+            top: 0.25vh;
+            background-color: rgba(200, 191, 163, 0.47);
             &#EquippedIcon_arme {
-              left: 28%;
+              left: 23%;
             }
             &#EquippedIcon_arme_right {
-              right: 28%;
+              right: 23%;
             }
             &.ringsBoxes {
               top: 7vh;
@@ -116,22 +116,22 @@
             }
           }
           .itemSymbol {
-            height: 6vh;
+            height: 90%;
             width: 6vh;
             position: absolute;
             display: inline-block;
             text-align: center;
-            top: 1vh;
+            top: 10%;
             svg {
               height: 100%;
               display: inline;
-              fill: #714c4c;
+              fill: rgb(181, 159, 132);
             }
             &#weaponRightHSymbol {
-              right: 9%;
+              right: 0.1vw;
             }
             &#weaponLeftHSymbol {
-              left: 10%;
+              left: 0.1vw;
             }
           }
         }
@@ -139,29 +139,26 @@
     }
     #InvLPane_Right {
       height: 100%;
-      width: 52%;
+      width: 51%;
       position: absolute;
       right: 0;
-      background: linear-gradient(110deg, #595146, #36312c);
+      background: linear-gradient(110deg, rgb(89, 81, 70), rgb(54, 49, 44));
       .btnInv {
         display: block;
-        height: 5vh;
-        background-color: #847a6c;
-        font-family: 'Vollkorn', sans-serif;
+        height: 6vh;
+        background-color: rgb(88, 80, 68);
+        font-family: 'Didact Gothic', sans-serif;
         font-size: 2.6vh;
         line-height: -moz-block-height;
         box-sizing: border-box;
         padding: 0 2vh;
-        color: #49402d;
         position: relative;
         transition: all 0.5s ease;
         &.nm {
-          border-right: 5px solid rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 3px rgba(0, 0, 0, 0.1);
           z-index: 1;
-          border-bottom: 3px solid rgba(50, 49, 49, 0.1);
-          border-top: 3px solid rgba(209, 190, 190, 0.1);
           left: 0;
+          margin-top: 1.2vh;
+          color: rgb(145, 138, 123);
           &.active {
             left: 3vh;
             background-color: #948879;
@@ -172,12 +169,12 @@
           }
         }
         &.sm {
-          /*! width: 80%; */
-          left: 0;
-          background-color: #746a5c;
-          border: solid rgba(0, 0, 0, 0.3);
-          box-shadow: inset 0 5px 27px rgba(0, 0, 0, 0.1);
-          border-width: 0 3px 3px 2vh;
+          width: 94%;
+          left: 3%;
+          background-color: rgb(116, 106, 92);
+          box-shadow: inset 0 5px 27px rgba(0,0,0,0.1);
+          border-right: 0.2vw solid rgba(0, 0, 0, 0.25);
+          color: rgb(65, 62, 56);
           &.active {
             left: 3vh;
             background-color: #887e6d;
@@ -185,7 +182,7 @@
             border-width: 0 2px 3px 3vh;
           }
         }
-        &.openable{
+        &.openable {
           &.nm:hover {
             background-color: #7f7567;
           }
@@ -195,11 +192,13 @@
         }
         &.title {
           height: 4vh;
-          font-style: italic;
-          border-bottom: 11px solid rgba(50, 49, 49, 0.1);
           font-size: 2.2vh;
+          background: none;
+          text-align: center;
+          color: rgb(149, 144, 125);
+          display: block;
         }
-        &.active:hover{
+        &.active:hover {
           background-color: unset;
         }
         .icon {

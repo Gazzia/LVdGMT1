@@ -9,11 +9,12 @@ body {
   user-select: none;
   cursor: url("../images/cursors/nope.png") 15 10, auto;
 }
+#menuOptions main .block,
 .action,
 .asideRight:before,
 .navBtns,
 .rightblock,
-#menuOptions main .block,
+input+label,
 a {
   cursor: url(../images/cursors/hand.png), auto !important;
 }
@@ -41,17 +42,16 @@ a {
   transition: filter 4s ease-in;
   .UIBG_img {
     transition: filter 4s ease-in;
-    .UIBG_imgFull {
+    &.UIBG_imgFull {
       z-index: 3;
     }
-    .UIBG_imgFullBG {
+    &.UIBG_imgFullBG {
       z-index: 0;
     }
-    .UIBG_imgsBG {
+    &.UIBG_imgsBG {
       bottom: 0;
     }
-
-    .UIBG_imgFG {
+    &.UIBG_imgFG {
       right: 0;
       z-index: 4;
     }
@@ -126,18 +126,18 @@ a {
       border: 1px solid rgba(0, 0, 0, 0.6);
       border-radius: 4px;
       &.leftblock {
-        top:0;
+        top: 0;
         height: 100%;
         width: calc(60% - 1vw);
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 7vh),linear-gradient(rgba(0,0,0,0.1) 6vh, transparent 15%),url(../images/UI/bgPaper.jpg);
         overflow: hidden;
         box-shadow: 0 5px 23px rgba(0, 0, 0, 0.3) inset;
-        z-index:3;
-        transition:all 0.3s ease;
+        z-index: 3;
+        transition: all 0.3s ease;
         main {
           height: 84.5%;
           bottom: 6%;
-          overflow:hidden;
+          overflow: hidden;
           #histoire {
             color: #54392b;
             position: inherit;
@@ -151,12 +151,12 @@ a {
             letter-spacing: 0.1px;
             margin: 0;
           }
-          .guill{
+          .guill {
             color: rgba(125, 31, 0, 0.4);
             position: absolute;
-            line-height:3vw;
-            height:2vw;
-            width:2vw;
+            line-height: 3vw;
+            height: 2vw;
+            width: 2vw;
             font-size: 4vw;
             font-family: 'Vollkorn', serif;
             &.left {
@@ -169,11 +169,11 @@ a {
             }
           }
         }
-        footer{
+        footer {
           display: none;
-          background-image:linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
-          height:6%;
-          bottom:0;
+          background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+          height: 6%;
+          bottom: 0;
           text-align: center;
           .expandBtn {
             display: inline-block;
@@ -251,6 +251,7 @@ a {
                 width: 100%;
                 transition: all 0.2s linear;
                 box-sizing: border-box;
+                padding-left: 3.5vw;
                 &:before {
                   content: " ";
                   color: #020122;
@@ -262,6 +263,8 @@ a {
                   border-radius: 100%;
                   background-color: #fff3;
                   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                  position: absolute;
+                  left: 0.5vw;
                 }
                 &:hover {
                   color: #eae0d7;
@@ -278,6 +281,29 @@ a {
                 }
                 &.Sud:before {
                   content: "↓";
+                }
+                &.greyed {
+                  background-color: rgba(0, 0, 0, 0.3);
+                  color: rgb(168, 168, 168);
+                }
+                &.need {
+                  &:before {
+                    content: attr(data-before);
+                    height: 1.5vw;
+                    background-size: 1.3vw 1.3vw;
+                    background-repeat: no-repeat;
+                    background-position: 0.15vw, 0.15vw;
+                    border-radius: 0.25vmin;
+                    left: 0.5vh;
+                    width: 2.9vw;
+                    text-align: right;
+                    box-sizing: border-box;
+                    padding-right: 0.5vw;
+                  }
+                  &.needDex:before {
+                    background-image: url("../images/icons/UI/dex.svg");
+                  }
+                  &.need3:before {}
                 }
               }
             }
@@ -309,120 +335,37 @@ a {
     }
   }
   .uiFG_bot {
-    height: 20%;
+    height: 5%;
     bottom: 0;
     max-height: 110px;
-    .topBlock {
-      height: 34%;
-      top: 11%;
-      z-index: 2;
-      .topBlock_nav {
-        height: 70%;
-        top: 15%;
-        width: calc(55% - 1vw);
-        /*! background-color: rgba(0, 0, 0, 0.1); */
-        position: absolute;
-        right: calc(30% + 1vw);
-        .navBtns {
-          height: 4.7vh;
-          width: 4.7vh;
-          background-color: white;
-          position: relative;
-          display: inline-block;
-          float: right;
-          margin-left: 1vw;
-          border-radius: 3px;
-          border: 1px solid rgba(0, 0, 0, 0.3);
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-          transition: box-shadow 0.2s ease-in;
-          max-height: 24px;
-          max-width: 24px;
-          background-size: 95% 95%;
-          background-repeat: no-repeat;
-          background-position: center;
-          &:hover {
-            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
-          }
-          &#btnInv {
-            background-image: url("../images/icons/UI/backpackColor1.png");
-          }
-          &#btnMap {
-            background-image: url("../images/icons/UI/mapColor1.png");
-          }
-        }
-      }
-      .topBlock_plCont {
-        width: calc(30% - 1vw);
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), transparent 20%), #bca487;
-        right: 0;
-        border: solid rgba(0, 0, 0, 0.3);
-        border-width: 1px 1px 0 1px;
-        border-top-right-radius: 4px;
-        border-top-left-radius: 4px;
-        color: #6d3652;
-        .topBlock_plInfo {
-          height: 50%;
-          box-sizing: border-box;
-          padding: 0 1vw;
-          font-family: 'Vollkorn', serif;
-          font-size: 2vh;
-          padding-top: 0.2vh;
-          border-bottom: 1px dotted rgba(221, 211, 198, 0.4);
-          text-align: center;
-          &#topBlock_plRace {
-            bottom: 0;
-          }
-        }
-      }
-    }
-    .botBlock {
-      background: #b7a88f;
-      height: 55%;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.07), 0 0 20px rgba(0, 0, 0, 0.11);
+    .goldContainer {
+      background: rgb(148, 149, 171);
+      width: 15%;
+      height: 5vh;
+      position: absolute;
       bottom: 0;
-      border: solid rgba(0, 0, 0, 0.3);
-      border-width: 0 1px;
-      border-top-left-radius: 2px;
-      border-top-right-radius: 2px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      z-index: 2;
-      background-size: cover;
-      background-repeat: no-repeat;
-      #plHealthText {
-        position: absolute;
-        max-width: calc(15% - 1vw);
-        color: #b7a88f;
-        font-size: calc(1.7vh - 2px);
-        font-family: 'Didact Gothic', sans-serif;
-        z-index: 1;
-        letter-spacing: 1px;
-        font-weight: bold;
-        left: 1px;
+      left: -16vh;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.07), 0 0 20px rgba(0, 0, 0, 0.11);
+      .goldIcon {
+        height: 99%;
+        background-color: rgb(90, 92, 159);
+        border-top-left-radius: 5px;
+        width: 5vh;
+        box-sizing: border-box;
+        padding: 0.3vh;
       }
-      .goldContainer {
-        background: #c6b8a1;
-        width: 12%;
-        height: 5vh;
+      #plGold {
+        color: rgba(40, 37, 98, 0.8);
         position: absolute;
-        bottom: 1vh;
-        right: 1vw;
-        border-radius: 5px;
-        max-height: 28px;
-        min-width: 80px;
-        line-height: -moz-block-height;
-        .goldIcon {
-          height: 100%;
-          background-color: #702f3e;
-          border-top-left-radius: 5px;
-          border-bottom-left-radius: 5px;
-        }
-        #plGold {
-          color: rgba(87, 33, 63, 0.8);
-          position: absolute;
-          bottom: 0;
-          left: 6vh;
-          font-family: 'Didact Gothic', sans-serif;
-          display: inline;
-        }
+        bottom: 0;
+        left: 5vh;
+        font-family: 'Didact Gothic', sans-serif;
+        width: calc(100% - 5vh);
+        text-align: center;
+        font-weight: bold;
       }
     }
   }
