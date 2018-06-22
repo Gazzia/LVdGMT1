@@ -631,12 +631,32 @@ hr {
       position: absolute;
       top: 44%;
       left: 8vw;
+      .icon {
+        display: inline-block;
+        width: 2.7vh;
+        height: 2.7vh;
+        margin-left: 1vh;
+        margin-bottom: -0.4vh;
+        background-size: 100% 100%;
+        &.chance {
+          background-image: url("../images/icons/UI/dice.png");
+        }
+        &.carac {
+          background-image: url("../images/icons/UI/carac.png");
+        }
+        &.leave {
+          background-image: url("../images/icons/UI/leave.png");
+        }
+        &.money {
+          background-image: url("../images/icons/UI/coin.png");
+        }
+      }
       a {
         color: #572525;
         font-size: 2.5vmin;
         font-family: 'Didact Gothic', sans-serif;
         margin-bottom: 1vmin;
-        display: block;
+        display: inline-block;
         transition: color 0.4s ease;
         width: -moz-fit-content;
         &:hover {
