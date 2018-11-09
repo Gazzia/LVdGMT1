@@ -15,8 +15,8 @@ var modalList = {
 	},
 	Test2() {
 		modal.load({
-			title: "Modal de test 1",
-			txt: `Encore du lore comme on l'aime blabla`,
+			title: "Modal de test 2",
+			txt: `Le vieux marchand vous observe un moment, bourre sa pipe, puis vous débite du lore en s'appuyant sur son bon vieux tonneau, son seul camarade de toujours.`,
 			color: "wine",
 			img: "merchant",
 			buttons: [{
