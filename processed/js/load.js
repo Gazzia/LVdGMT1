@@ -324,6 +324,34 @@ var modal = {
 };
 
 var modalList = {
+	Test1() {
+		modal.load({
+			title: "Modal de test 1",
+			txt: `Voili voilouu, blablabla du lore`,
+			color: 0,
+			img: 0,
+			buttons: [{
+				title: "Fermer",
+				script() {
+					modal.close();
+				}
+			}, ],
+		});
+	},
+	Test2() {
+		modal.load({
+			title: "Modal de test 1",
+			txt: `Encore du lore comme on l'aime blabla`,
+			color: "wine",
+			img: "merchant",
+			buttons: [{
+				title: "Fermer",
+				script() {
+					modal.close();
+				}
+			}, ],
+		});
+	},
 	Soufflant_Embranchement_RegarderBois() {
 		modal.load({
 			title: "Bois",
@@ -467,7 +495,6 @@ function Notification(params = {}) {
 	}
 
 	if (this.closable) {
-		console.log("raoui");
 		$closeBtn = $('<div class="close">');
 		this.element.append($closeBtn).css('padding-right', '2vw');
 		$closeBtn.on('click', function() {
@@ -478,11 +505,12 @@ function Notification(params = {}) {
 	if (this.btns) {
 		for (btn of this.btns) {
 			btn.element = $('<div class="btn">');
+			btn.parent = this;
 			this.element.children('.btns').append(
 				btn.element.text(btn.txt).on('click',
-					function() {
+					function () {
 						if (!this.blockOnModal || (this.blockOnModal && !modal.isOpen)) {
-							this.script();
+							this.script().bind(this);
 						} else {
 							this.element.css('background-color', "#b24e4e");
 							delay(function() {
@@ -890,6 +918,6 @@ var time = {
 			$('.cover.-mid, .cover.-fore, .prop')
 				.css('filter', 'saturate(38.3%) brightness(52%) sepia(0%) contrast(113%) hue-rotate(-9deg)');
 		}
-		console.log(time.period);
+		console.info(`TIME : période ${time.period}`);
 	},
 };

@@ -1,4 +1,32 @@
 var modalList = {
+	Test1() {
+		modal.load({
+			title: "Modal de test 1",
+			txt: `Voili voilouu, blablabla du lore`,
+			color: 0,
+			img: 0,
+			buttons: [{
+				title: "Fermer",
+				script() {
+					modal.close();
+				}
+			}, ],
+		});
+	},
+	Test2() {
+		modal.load({
+			title: "Modal de test 1",
+			txt: `Encore du lore comme on l'aime blabla`,
+			color: "wine",
+			img: "merchant",
+			buttons: [{
+				title: "Fermer",
+				script() {
+					modal.close();
+				}
+			}, ],
+		});
+	},
 	Soufflant_Embranchement_RegarderBois() {
 		modal.load({
 			title: "Bois",

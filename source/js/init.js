@@ -19,23 +19,48 @@ game.loadPage(0);
 //****************************
 // Variables provisoires
 //****************************
-
+var test;
 //****************************
-
-new Notification();
+new Notification({
+	timeOut: 40,
+	txt:"Salut Valentin ! Ca fait quoi d'être beta-testeur lol",
+	btns: [{
+		txt: "J'en suis charmé",
+		script() {
+			this.parent.closeNotif();
+			new Notification({
+				type:"success",
+				timeOut: 10,
+				txt:"Super !",
+			});
+		}
+	},
+	{
+		txt: "Ca me dégoute",
+		script() {
+			this.parent.closeNotif();
+			new Notification({
+				type:"error",
+				timeOut: 10,
+				txt:"Pas cool",
+			});
+		}
+	}]
+});
 new Notification({
 	type: "success",
+	txt: "Test : modals",
 	timeOut: false,
 	btns: [{
-		txt: "Modal",
+		txt: "Modal 1",
 		blockOnModal: true,
 		script() {
-			modalList.Soufflant_Embranchement_RegarderCabane();
+			modalList.Test1();
 		}
 	}, {
-		txt: "Modal2",
+		txt: "Modal 2",
 		script() {
-			modalList.Soufflant_Embranchement_RegarderBois();
+			modalList.Test2();
 		}
 	}]
 });

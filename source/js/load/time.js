@@ -133,6 +133,6 @@ var time = {
 			$('.cover.-mid, .cover.-fore, .prop')
 				.css('filter', 'saturate(38.3%) brightness(52%) sepia(0%) contrast(113%) hue-rotate(-9deg)');
 		}
-		console.log(time.period);
+		console.info(`TIME : période ${time.period}`);
 	},
 };

@@ -58,7 +58,6 @@ function Notification(params = {}) {
 	}
 
 	if (this.closable) {
-		console.log("raoui");
 		$closeBtn = $('<div class="close">');
 		this.element.append($closeBtn).css('padding-right', '2vw');
 		$closeBtn.on('click', function() {
@@ -69,11 +68,12 @@ function Notification(params = {}) {
 	if (this.btns) {
 		for (btn of this.btns) {
 			btn.element = $('<div class="btn">');
+			btn.parent = this;
 			this.element.children('.btns').append(
 				btn.element.text(btn.txt).on('click',
-					function() {
+					function () {
 						if (!this.blockOnModal || (this.blockOnModal && !modal.isOpen)) {
-							this.script();
+							this.script().bind(this);
 						} else {
 							this.element.css('background-color', "#b24e4e");
 							delay(function() {
