@@ -19,54 +19,148 @@ game.loadPage(0);
 //****************************
 // Variables provisoires
 //****************************
-var test;
+
 //****************************
-new Notification({
-	timeOut: 40,
-	txt:"Salut Valentin ! Ca fait quoi d'être beta-testeur lol",
-	btns: [{
-		txt: "J'en suis charmé",
-		script() {
-			this.parent.closeNotif();
-			new Notification({
-				type:"success",
-				timeOut: 10,
-				txt:"Super !",
+
+
+chance = {
+	isShown: false,
+	show() {
+		if (!this.isShown) {
+			overlay.show();
+			this.isShown = true;
+			$('.chance').css({
+				'display': 'block',
+				'animation': 'open-modal 0.3s ease forwards'
 			});
+		}
+		delay(function () {
+			dice.show();
+		}, 400);
+	},
+
+	hide() {
+		if (this.isShown) {
+			overlay.hide();
+			$('.chance').css('animation', 'close-modal 0.3s ease forwards');
+			delay(function () {
+				$('.chance').css('display', 'none');
+				this.isShown = false;
+			}, 300);
 		}
 	},
-	{
-		txt: "Ca me dégoute",
-		script() {
-			this.parent.closeNotif();
-			new Notification({
-				type:"error",
-				timeOut: 10,
-				txt:"Pas cool",
-			});
-		}
-	}]
-});
-new Notification({
-	type: "success",
-	txt: "Test : modals",
-	timeOut: false,
-	btns: [{
-		txt: "Modal 1",
-		blockOnModal: true,
-		script() {
-			modalList.Test1();
-		}
-	}, {
-		txt: "Modal 2",
-		script() {
-			modalList.Test2();
-		}
-	}]
-});
-//ajoute chaque notif dans un array à l'indice [0],
-//et multiplie cet indice par genre 5 et ajoute "vh" pour savoir la distance depuis top
 
+	init(params) {
+		this.consq = params.consq;
+		if (params.type == "difficulté") {
+			var diff = params.diff;
+		}
+		if (params.type == "lvl") {
+			//TODO
+		}
+		var resultsRaw = {
+			EcCr: [1, Math.round((diff / 3) * 20) - 1],
+			Ec: [Math.round((diff / 3) * 20), Math.round(diff * 20) - 1],
+			Ré: [Math.round(diff * 20), Math.round((diff + ((1 - diff) / 3) * 2) * 20) - 1],
+			RéCr: [Math.round((diff + ((1 - diff) / 3) * 2) * 20), 20]
+		};
+		var resultsCalc = {
+			EcCr: [],
+			Ec: [],
+			Ré: [],
+			RéCr: []
+		};
+		resultsCalc.Ec = resultsRaw.Ec;
+		resultsCalc.Ré = resultsRaw.Ré;
+		if (resultsRaw.EcCr[1] <= 1) {
+			if (resultsRaw.Ec[0] <= 1) {
+				resultsCalc.EcCr = false;
+				resultsCalc.Ec[0] = 1;
+			} else {
+				resultsCalc.EcCr = 1;
+			}
+		} else {
+			resultsCalc.EcCr = resultsRaw.EcCr;
+		}
+		if (20 <= resultsRaw.RéCr[0]) {
+			if (20 <= resultsRaw.Ré[1]) {
+				resultsCalc.RéCr = false;
+				resultsCalc.Ré[1] = 20;
+			} else {
+				(resultsRaw.Ré[1] <= resultsRaw.Ré[0] && 20 <= resultsRaw.Ré[0]) ?
+				resultsCalc.RéCr = false: resultsCalc.RéCr = 20;
+			}
+		} else {
+			resultsCalc.RéCr = resultsRaw.RéCr;
+		}
+		if (resultsRaw.Ec[1] <= resultsRaw.Ec[0]) resultsCalc.Ec = resultsRaw.Ec[0];
+		if (resultsRaw.Ré[1] <= resultsRaw.Ré[0]) resultsCalc.Ré = resultsRaw.Ré[0];
+
+		chance.resultGrid = resultsCalc;
+
+		$('.chance aside').html('');
+		var _grid = chance.resultGrid;
+		var _cats = {
+			list: [_grid.EcCr, _grid.Ec, _grid.Ré, _grid.RéCr],
+			txt: ["Échec critique", "Échec", "Réussite", "Réussite critique"],
+			names: ["EcCr", "Ec", "Ré", "RéCr"]
+		};
+		for (let cat in _cats.list) {
+			if (_cats.list[cat]) {
+				if (typeof _cats.list[cat] == "number") {
+					$('.chance aside').append(`<div class='${_cats.names[cat]} cat'><h2>${_cats.txt[cat]}</h2>${_cats.list[cat]}`);
+				}
+				if (typeof _cats.list[cat] == "object") {
+					$('.chance aside').append(`<div class='${_cats.names[cat]} cat'><h2>${_cats.txt[cat]}</h2>${_cats.list[cat][0]} à ${_cats.list[cat][1]}`);
+				}
+			}
+		}
+		chance.show();
+	},
+
+	getResult(_diceResult) {
+		var _resultText, _resultClass;
+		var _grid = chance.resultGrid;
+		var _cats = {
+			list: [_grid.EcCr, _grid.Ec, _grid.Ré, _grid.RéCr],
+			txt: ["Échec critique", "Échec", "Réussite", "Réussite critique"],
+			names: ["EcCr", "Ec", "Ré", "RéCr"]
+		};
+		for (cat in _cats.list) {
+			if (_cats.list[cat]) {
+				if (typeof _cats.list[cat] == "number") {
+					if (_diceResult == _cats.list[cat]) {
+						_resultText = _cats.txt[cat];
+						_resultClass = _cats.names[cat];
+					}
+				}
+				if (typeof _cats.list[cat] == "object") {
+					if ((_cats.list[cat][0] <= _diceResult) && (_diceResult <= _cats.list[cat][1])) {
+						_resultText = _cats.txt[cat];
+						_resultClass = _cats.names[cat];
+					}
+				}
+			}
+		}
+
+		$(`.chance aside .${_resultClass}`).css('animation', 'chanceCatShine 3s ease forwards');
+		$(`.chance aside .${_resultClass} h2`).css('animation', 'chanceCatShine_h2 3s ease forwards');
+		var notifDesc;
+		(chance.consq[_resultClass].txt) ? notifDesc = `<br> <i>${chance.consq[_resultClass].txt}`: notifDesc = "";
+		new Notification({
+			type: `test-${_resultClass}`,
+			txt: `Test de chance : ${_resultText}! ${notifDesc}`,
+			timeOut: 80
+		});
+		delay(function () {
+			chance.consq[_resultClass].script();
+		}, 500);
+		delay(function () {
+			chance.hide();
+		}, 3000);
+	}
+};
+//TODO: "Lancez le d20" clignotant
 function toggle_color(div, color2, time) {
   var $selector = document.querySelector(div);
   var color1 = $selector.style.backgroundColor;
@@ -96,19 +190,19 @@ function setTransitionDurations($selector, ms) {
   function sdrag(onDrag, onStop, direction) {
     var startX = 0;
     var startY = 0;
-    var el = this;
+    var element = this;
     var dragging = false;
 
     function move(e) {
       var fix = {};
-      onDrag && onDrag(el, e.pageX, startX, e.pageY, startY, fix);
+      onDrag && onDrag(element, e.pageX, startX, e.pageY, startY, fix);
       if ('vertical' !== direction) {
         var pageX = ('pageX' in fix) ? fix.pageX : e.pageX;
         if ('startX' in fix) {
           startX = fix.startX;
         }
         if (false === ('skipX' in fix)) {
-          el.style.left = (pageX - startX) + 'px';
+          element.style.left = (pageX - startX) + 'px';
         }
       }
       if ('horizontal' !== direction) {
@@ -117,7 +211,7 @@ function setTransitionDurations($selector, ms) {
           startY = fix.startY;
         }
         if (false === ('skipY' in fix)) {
-          el.style.top = (pageY - startY) + 'px';
+          element.style.top = (pageY - startY) + 'px';
         }
       }
     }
@@ -126,8 +220,8 @@ function setTransitionDurations($selector, ms) {
       if (e.currentTarget instanceof HTMLElement || e.currentTarget instanceof SVGElement) {
         dragging = true;
 
-        var left = el.style.left ? parseInt(el.style.left) : 0;
-        var top = el.style.top ? parseInt(el.style.top) : 0;
+        var left = element.style.left ? parseInt(element.style.left) : 0;
+        var top = element.style.top ? parseInt(element.style.top) : 0;
         startX = e.pageX - left;
         startY = e.pageY - top;
         window.addEventListener('mousemove', move);
@@ -141,7 +235,7 @@ function setTransitionDurations($selector, ms) {
       if (true === dragging) {
         dragging = false;
         window.removeEventListener('mousemove', move);
-        onStop && onStop(el, e.pageX, startX, e.pageY, startY);
+        onStop && onStop(element, e.pageX, startX, e.pageY, startY);
       }
     });
   }
@@ -178,53 +272,57 @@ $(document).on('click', function(e) {
 //Quand clic sur un élément d'histoire possédant des actions:
 $(document).on('click', '.click', function(e) {
   e.stopPropagation();
-  if(e.which === 1){
-    //clic gauche
-    leftClickOnTrigger(e);
-  } else if (e.which === 3){
-    //clic droit
-    rightClickOnTrigger(e);
-    return false;
-  }
+  clickOnTrigger(e);
 });
 
 
-function leftClickOnTrigger(e) {
+function clickOnTrigger(e) {
 	//Cette fonction mets à l'écran le popup d'actions
 	//et liste les différentes actions possibles
 	//lorsque l'on appuie sur un .click
 
 	var div = e.target;
+  console.log(e);
 	var triggers = game.scene.triggers;
-	for (trigger in triggers) {
-		if (div.innerText == triggers[trigger].triggerText) {
-			$("#actionmenu ul").html("");
-			$("#actionmenu header").html(
-				`Actions sur <b>${triggers[trigger].showName}</b>`
-			);
-			for (action in triggers[trigger].actions) {
-				$("#actionmenu ul").append(
-					`<li class="${triggers[trigger].actions[action].style}" onclick="game.scene.triggers[${trigger}].actions[${action}].script();">${
-						triggers[trigger].actions[action].name
-					}</li>`
-				);
-			}
-		}
-	}
-	$("#actionmenu").css({
-		display: "block",
-		left: e.pageX-(parseInt($("#actionmenu").css("min-width"),10) / 2),
-		top: e.pageY+5,
-		animation:  "open-actionmenu .3s ease forwards"
-	});
+  if(e.which === 1){
+    //if left click
+    for (trigger in triggers) {
+      if (div.innerText == triggers[trigger].trigText) {
+        $("#actionmenu ul").html("");
+        $("#actionmenu header").html(
+          `Actions sur <b>${triggers[trigger].showName}</b>`
+        );
+        for (action in triggers[trigger].actions) {
+          $("#actionmenu ul").append(
+            `<li class="${triggers[trigger].actions[action].style}" onclick="game.scene.triggers[${trigger}].actions[${action}].script();">${
+              triggers[trigger].actions[action].name
+            }</li>`
+          );
+        }
+      }
+    }
+    $("#actionmenu").css({
+      display: "block",
+      left: e.pageX-(parseInt($("#actionmenu").css("min-width"),10) / 2),
+      top: e.pageY+5,
+      animation:  "open-actionmenu .3s ease forwards"
+    });
+  } else if (e.which === 3) {
+    //if right click
+    for (trigger in triggers) {
+  		if (div.innerText == triggers[trigger].trigText) {
+  			if(triggers[trigger].RClick) triggers[trigger].RClick();
+  		}
+  	}
+  }
 }
 
 function rightClickOnTrigger(e){
   var div = e.target;
 	var triggers = game.scene.triggers;
 	for (trigger in triggers) {
-		if (div.innerText == triggers[trigger].triggerText) {
-			if(triggers[trigger].rightClickScript) triggers[trigger].rightClickScript();
+		if (div.innerText == triggers[trigger].trigText) {
+			if(triggers[trigger].RClick) triggers[trigger].RClick();
 		}
 	}
 }

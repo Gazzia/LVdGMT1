@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   require('google-closure-compiler').grunt(grunt);
   grunt.initConfig({
     watch: {
@@ -90,7 +90,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'source/sass',
-          src: ['*.scss'],
+          src: ['styles.scss'],
           dest: 'processed/css',
           ext: '.min.css'
         }],
@@ -103,7 +103,7 @@ module.exports = function(grunt) {
         dest: 'build/css/styles.css',
       },
     },
-    pug:{
+    pug: {
       default: {
         files: [{
           expand: true,
@@ -112,8 +112,8 @@ module.exports = function(grunt) {
           dest: 'processed/html/PugToHtml',
           ext: '.html'
         }],
-        options:{
-          pretty:true,
+        options: {
+          pretty: true,
         }
       },
     },
@@ -134,6 +134,9 @@ module.exports = function(grunt) {
     },
     uglify: {
       js: {
+        options: {
+          sourceMap: true,
+        },
         files: [{
           expand: true,
           cwd: 'processed/js',
@@ -143,6 +146,9 @@ module.exports = function(grunt) {
         }],
       },
       loadjs: {
+        options: {
+          sourceMap: true,
+        },
         files: [{
           expand: true,
           cwd: 'processed/js',

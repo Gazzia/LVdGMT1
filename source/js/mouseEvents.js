@@ -26,53 +26,57 @@ $(document).on('click', function(e) {
 //Quand clic sur un élément d'histoire possédant des actions:
 $(document).on('click', '.click', function(e) {
   e.stopPropagation();
-  if(e.which === 1){
-    //clic gauche
-    leftClickOnTrigger(e);
-  } else if (e.which === 3){
-    //clic droit
-    rightClickOnTrigger(e);
-    return false;
-  }
+  clickOnTrigger(e);
 });
 
 
-function leftClickOnTrigger(e) {
+function clickOnTrigger(e) {
 	//Cette fonction mets à l'écran le popup d'actions
 	//et liste les différentes actions possibles
 	//lorsque l'on appuie sur un .click
 
 	var div = e.target;
+  console.log(e);
 	var triggers = game.scene.triggers;
-	for (trigger in triggers) {
-		if (div.innerText == triggers[trigger].triggerText) {
-			$("#actionmenu ul").html("");
-			$("#actionmenu header").html(
-				`Actions sur <b>${triggers[trigger].showName}</b>`
-			);
-			for (action in triggers[trigger].actions) {
-				$("#actionmenu ul").append(
-					`<li class="${triggers[trigger].actions[action].style}" onclick="game.scene.triggers[${trigger}].actions[${action}].script();">${
-						triggers[trigger].actions[action].name
-					}</li>`
-				);
-			}
-		}
-	}
-	$("#actionmenu").css({
-		display: "block",
-		left: e.pageX-(parseInt($("#actionmenu").css("min-width"),10) / 2),
-		top: e.pageY+5,
-		animation:  "open-actionmenu .3s ease forwards"
-	});
+  if(e.which === 1){
+    //if left click
+    for (trigger in triggers) {
+      if (div.innerText == triggers[trigger].trigText) {
+        $("#actionmenu ul").html("");
+        $("#actionmenu header").html(
+          `Actions sur <b>${triggers[trigger].showName}</b>`
+        );
+        for (action in triggers[trigger].actions) {
+          $("#actionmenu ul").append(
+            `<li class="${triggers[trigger].actions[action].style}" onclick="game.scene.triggers[${trigger}].actions[${action}].script();">${
+              triggers[trigger].actions[action].name
+            }</li>`
+          );
+        }
+      }
+    }
+    $("#actionmenu").css({
+      display: "block",
+      left: e.pageX-(parseInt($("#actionmenu").css("min-width"),10) / 2),
+      top: e.pageY+5,
+      animation:  "open-actionmenu .3s ease forwards"
+    });
+  } else if (e.which === 3) {
+    //if right click
+    for (trigger in triggers) {
+  		if (div.innerText == triggers[trigger].trigText) {
+  			if(triggers[trigger].RClick) triggers[trigger].RClick();
+  		}
+  	}
+  }
 }
 
 function rightClickOnTrigger(e){
   var div = e.target;
 	var triggers = game.scene.triggers;
 	for (trigger in triggers) {
-		if (div.innerText == triggers[trigger].triggerText) {
-			if(triggers[trigger].rightClickScript) triggers[trigger].rightClickScript();
+		if (div.innerText == triggers[trigger].trigText) {
+			if(triggers[trigger].RClick) triggers[trigger].RClick();
 		}
 	}
 }

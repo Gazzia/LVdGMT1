@@ -24,4 +24,20 @@ var game = {
     game.scene.extras();
     game.page.refBackground();
   },
+  ui:{
+    isHidden:false,
+    show(){
+      $('main.main').css('animation','show-ui-main 0.6s ease forwards');
+      $('nav.gameMenu').css('animation','show-ui-nav 0.6s ease forwards');
+      this.isHidden=false;
+    },
+    hide(){
+      $('main.main').css('animation','hide-ui-main 0.6s ease forwards');
+      $('nav.gameMenu').css('animation','hide-ui-nav 0.6s ease forwards');
+      this.isHidden=true;
+    },
+    toggle(){
+      this.isHidden? this.show() : this.hide();
+    }
+  }
 };

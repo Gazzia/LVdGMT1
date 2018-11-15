@@ -7,10 +7,7 @@ var modal = {
 	fadeIn(params) {
 		this.isOpen = true;
 		modal.apply(params);
-		$(".overlay").css({
-			animation: "fadeIn .5s ease forwards",
-			display: "block"
-		});
+		overlay.show();
 		$(".modal").css({
 			animation: "open-modal .7s cubic-bezier(.16, .81, .32, 1) forwards",
 			display: "block"
@@ -30,11 +27,8 @@ var modal = {
 	},
 	close() {
 		this.isOpen = false;
-		$(".overlay").css("animation", "fadeOut .5s ease forwards");
+		overlay.hide();
 		$(".modal").css("animation", "close-modal .5s ease");
-		delay(function() {
-			$(".modal, .overlay").css("display", "none");
-		}, 500);
 	},
 	apply(params) {
 		this.img = params["img"] || 0;

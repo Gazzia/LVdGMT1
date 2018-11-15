@@ -2,19 +2,142 @@ class Civil {
 	constructor(params = {}) {
 		this.money = {
 			total: params["money"] || 0,
-      log(){
-        var cuivre = this.total%100;
-        var argent = Math.floor(this.total/100)%100;
-        var or = Math.floor(this.total/10000);
-        if(cuivre) console.log(`${cuivre} cuivre`);
-        if(argent) console.log(`${argent} argent`);
-        if(or) console.log(`${or} or`);
-      }
+			add: function (nb) {
+				this.total += nb;
+			},
+			//TODO: money.remove
+			log() {
+				if (this.total.toMoney().cuivre) console.log(`${this.total.toMoney().cuivre} cuivre`);
+				if (this.total.toMoney().argent) console.log(`${this.total.toMoney().argent} argent`);
+				if (this.total.toMoney().or) console.log(`${this.total.toMoney().or} or`);
+			}
 		};
 		this.name = params["name"] || "Gilbert";
 		this.race = params["race"] || "Angulain";
 		this.inv = new Inventory(this);
+		this.health = {
+			showNotifs: false,
+			max: params["healthmax"] || 100,
+			current: params["healthmax"] || 100,
+			change(_params) {
+				if (_params.remove) {
+					if (_params.from == "max") {
+						//SI on retire du maxhealth
+						if (this.max - _params.remove > 0) {
+							//SI après le retrait le maxhealth serait toujours au dessus de 0
+							//ALORS on effectue le retrait
+							this.max -= _params.remove;
+							if (this.showNotifs) {
+								new Notification({
+									type: 'health',
+									txt: `Votre vie maximum a été réduite de ${_params.remove} pts!`,
+									timeOut: 30
+								});
+							}
+						} else {
+							//SI après le retrait le maxhealth est en dessous de 0
+							//ALORS maxhealth est égal à 0
+							this.max = 0;
+							this.die();
+						}
 
+						if (this.max < this.current) {
+							//SI après le retrait le health serait supérieur au maxhealth
+							//ALORS health = maxhealth
+							this.current = this.max;
+						}
+						return this.max;
+
+					} else if (_params.from == "current") {
+						//SI on retire du health
+						if (this.current - _params.remove > 0) {
+							//SI après le retrait le health est toujours au dessus de 0
+							//ALORS on effectue le retrait
+							this.current -= _params.remove;
+							if (this.showNotifs) {
+								new Notification({
+									type: 'health',
+									txt: `Votre vie a diminué de ${_params.remove} pts!`,
+									timeOut: 30
+								});
+							}
+
+						} else {
+							//SI après le retrait le health est en dessous de 0
+							//ALORS health est égal à 0
+							this.current = 0;
+						}
+
+						return this.current;
+					}
+
+					if (this.current == 0) {
+						//SI après tout ça le health est égal à 0
+						//ALORS le civil est mort
+						if (this.showNotifs) {
+							this.die();
+						}
+					}
+
+				} else if (_params.add) {
+					if (_params.from == "max") {
+						//SI on ajoute du maxhealth
+						//ALORS l'ajout se fait
+						this.max += _params.add;
+						if (this.showNotifs) {
+							new Notification({
+								type: 'health',
+								txt: `Votre vie maximum a été augmentée de ${_params.add} pts!`,
+								timeOut: 30
+							});
+						}
+						return this.max;
+
+					} else if (_params.from == "current") {
+						//SI on ajoute du health
+
+						if (this.current + _params.add >= this.max) {
+							//SI après l'ajout, on serait heal complêtement voire trop
+							//ALORS on heal à 100%
+							this.heal();
+
+						} else {
+							//SI après l'ajout, on ne serait pas heal complêtement
+							//ALORS on fait l'ajout
+							this.current += _params.add;
+							if (this.showNotifs) {
+								new Notification({
+									type: 'health',
+									txt: `Votre vie a été regénérée de ${_params.add} pts!`,
+									timeOut: 30
+								});
+							}
+						}
+
+						return this.current;
+					}
+				}
+			},
+			heal() {
+				this.current = this.max;
+				if (this.showNotifs) {
+					new Notification({
+						type: 'health',
+						txt: 'Votre vie a été complêtement regénérée !',
+						timeOut: 30
+					});
+				}
+			},
+			die(){
+				if(this.showNotifs){
+					new Notification({
+						type: 'error',
+						txt: `Vous êtes mort ! (Enfin théoriquement)`,
+						timeOut: false
+					});
+				}
+			}
+		};
 	}
 }
 
@@ -29,18 +152,65 @@ NPC.instances = [];
 class Player extends Civil {
 	constructor(params = {}) {
 		super(params);
-
+		this.money.add = function (nb) {
+			this.total += nb;
+			new Notification({
+				type: 'gold',
+				txt: `Votre richesse a augmenté de ${nb.money_phrase()}!`,
+				timeOut: 15
+			});
+		};
+		this.health.showNotifs = true;
 	}
 
 }
+var dice = {
+   throws: 0,
+   launch() {
+      var cube = document.getElementById('cube');
+      dice.result = random(1, 20);
 
+      cube.className = 'show-' + random(1, 20);
+      delay(function () {
+         cube.className = 'show-' + random(1, 20);
+         delay(function () {
+            cube.className = 'show-' + random(1, 20);
+            delay(function () {
+               cube.className = 'show-' + dice.result;
+               delay(function () {
+                  chance.getResult(dice.result);
+               }, 500);
+            }, 400);
+         }, 400);
+      }, 400);
+   },
+
+
+   show() {
+      $('#d20').css({
+         'display': 'block',
+         'animation': 'fadeIn 0.3s ease forwards',
+      }).on('click', function () {
+         dice.launch();
+         $('#d20').off();
+      });
+   },
+
+   hide() {
+      $('#d20').css('animation', 'fadeOut 0.3s ease forwards');
+      delay(function () {
+         $('#d20').css('display', 'none');
+      }, 300);
+   }
+};
 var Events = {
   //UI
-  helper_btnBlockOnModal:false,
+  helper_btnBlockOnModal: false,
   //STORY
-  tookbaton:false,
+  tookbaton: false,
+  HaltsAtRivière: 0,
+  rivièreTraversée: false,
 };
-
 var extrasDB = {
   time:{
     long_soufflant(){
@@ -86,6 +256,22 @@ var game = {
     game.scene.extras();
     game.page.refBackground();
   },
+  ui:{
+    isHidden:false,
+    show(){
+      $('main.main').css('animation','show-ui-main 0.6s ease forwards');
+      $('nav.gameMenu').css('animation','show-ui-nav 0.6s ease forwards');
+      this.isHidden=false;
+    },
+    hide(){
+      $('main.main').css('animation','hide-ui-main 0.6s ease forwards');
+      $('nav.gameMenu').css('animation','hide-ui-nav 0.6s ease forwards');
+      this.isHidden=true;
+    },
+    toggle(){
+      this.isHidden? this.show() : this.hide();
+    }
+  }
 };
 
 class Inventory {
@@ -136,13 +322,13 @@ class Inventory {
           		txt: "Equipper",
 							blockOnModal: true,
           		script() {
-            		// TODO: EQUIPEMENT
+            		// TODO: INV - Equipement
           		}
           	},{
           		txt: "Inventaire",
 							blockOnModal: true,
           		script() {
-            		// TODO: OUVRIR INVENTAIRE
+            		// TODO: UI - inventaire
           		}
           	}];
 						break;
@@ -187,7 +373,7 @@ class Inventory {
 		}
 	}
 	give(ent, item) {
-    // TODO:
+    // TODO: INV - give
 		// si:
 		//   -objet existe
 		//   -objet existe dans l'inventaire
@@ -247,10 +433,7 @@ var modal = {
 	fadeIn(params) {
 		this.isOpen = true;
 		modal.apply(params);
-		$(".overlay").css({
-			animation: "fadeIn .5s ease forwards",
-			display: "block"
-		});
+		overlay.show();
 		$(".modal").css({
 			animation: "open-modal .7s cubic-bezier(.16, .81, .32, 1) forwards",
 			display: "block"
@@ -270,11 +453,8 @@ var modal = {
 	},
 	close() {
 		this.isOpen = false;
-		$(".overlay").css("animation", "fadeOut .5s ease forwards");
+		overlay.hide();
 		$(".modal").css("animation", "close-modal .5s ease");
-		delay(function() {
-			$(".modal, .overlay").css("display", "none");
-		}, 500);
 	},
 	apply(params) {
 		this.img = params["img"] || 0;
@@ -324,32 +504,47 @@ var modal = {
 };
 
 var modalList = {
-	Test1() {
+	colorTestBtns: [{
+			title: "faded",
+			script() {
+				modalList.colorTest(this.title);
+			}
+		},
+		{
+			title: "alert",
+			script() {
+				modalList.colorTest(this.title);
+			}
+		},
+		{
+			title: "wine",
+			script() {
+				modalList.colorTest(this.title);
+			}
+		},
+		{
+			title: "salmon",
+			script() {
+				modalList.colorTest(this.title);
+			}
+		},
+		{
+			title: "normal",
+			script() {
+				modalList.colorTest(this.title);
+			}
+		},
+		{
+			title: "Quitter",
+			script() {
+				modal.close();
+			}
+		},
+	],
+	colorTest(color) {
 		modal.load({
-			title: "Modal de test 1",
-			txt: `Voili voilouu, blablabla du lore`,
-			color: 0,
-			img: 0,
-			buttons: [{
-				title: "Fermer",
-				script() {
-					modal.close();
-				}
-			}, ],
-		});
-	},
-	Test2() {
-		modal.load({
-			title: "Modal de test 2",
-			txt: `Le vieux marchand vous observe un moment, bourre sa pipe, puis vous débite du lore en s'appuyant sur son bon vieux tonneau, son seul camarade de toujours.`,
-			color: "wine",
-			img: "merchant",
-			buttons: [{
-				title: "Fermer",
-				script() {
-					modal.close();
-				}
-			}, ],
+			color: color,
+			buttons: modalList.colorTestBtns,
 		});
 	},
 	Soufflant_Embranchement_RegarderBois() {
@@ -399,7 +594,7 @@ var modalList = {
 				buttons: [{
 						title: "Prendre",
 						script() {
-							if(player.inv.add('Branche') == true){
+							if (player.inv.add('Branche') == true) {
 								// Events.tookbaton = true;
 								game.page.refBackground();
 								modal.close();
@@ -422,54 +617,240 @@ var modalList = {
 				txt: `Le sol est jonché de vieilles brindilles et de feuilles.`,
 				color: 0,
 				img: 0,
-				buttons: [
-					{
-						title: "Partir",
-						script() {
-							modal.close();
-						}
-					},
-				],
+				buttons: [{
+					title: "Partir",
+					script() {
+						modal.close();
+					}
+				}, ],
 			});
 		}
 	},
-};
+	Soufflant_Riviere_RegarderEau() {
+		modal.load({
+			title: "Dans l'onde fraîche",
+			txt: `Le petit bras d'eau est plein de vie -et plein d'eau ! L'endroit est très tranquille et serait propice à une petite halte.`,
+			color: 'wine',
+			img: 'rivewater',
+			buttons: [{
+					title: "Faire une petite halte",
+					script() {
+						modal.close();
+						game.ui.hide();
+						Events.HaltsAtRivière++;
+						delay(function () {
+							modalList.Soufflant_Riviere_HalteFinie();
+						}, 20000);
+					}
+				},
+				{
+					title: "Pas le temps !",
+					script() {
+						modal.close();
+					}
+				},
+			],
+		});
+	},
 
+	Soufflant_Riviere_HalteFinie() {
+		modal.load({
+			title: "Super",
+			txt: `Cette petite halte est vraiment très agréable. Repartons maintenant.`,
+			color: 'wine',
+			img: 'rivewater',
+			buttons: [{
+					title: "Non",
+					script() {
+						modal.close();
+						game.ui.hide();
+						if (++Events.HaltsAtRivière === 3) {
+							new Notification({
+								type: "magic",
+								timeOut: '30',
+								txt: `Ce petit moment de répit vous a fait du bien, votre vie a été régénérée.`
+							});
+						}
+						delay(function () {
+							modalList.Soufflant_Riviere_HalteFinie();
+						}, 14000);
+					}
+				},
+				{
+					title: "Partir",
+					script() {
+						Events.HaltsAtRivière = 0;
+						modal.close();
+						game.ui.show();
+					}
+				},
+			],
+		});
+	},
+	Soufflant_Riviere_LookRive() {
+		modal.load({
+			title: "De l'autre côté des flots",
+			txt: `Sur l'autre rive, vous apercevez un peu plus en aval ce qui semble être une bourse de pièces au pied d'un arbre..`,
+			img: 'rivewater', //TODO: IMG - tas de fringues
+			buttons: [{
+				title: "Traverser",
+				script() {
+					chance.init({
+						type: "difficulté",
+						diff: .75,
+						consq: {
+							EcCr: {
+								txt: "En essayant de traverser le bras d'eau, votre pied glisse et vous tombez la tête la première sur un rocher.<br>A moitié assommé et le front en sang, vous arrivez sur l'autre rive pour découvrir une bourse d'or vide.",
+								script() {
+									player.health.change({
+										from: "current",
+										remove: 20
+									});
+								}
+							},
+							Ec: {
+								txt: "Vous traversez le bras d'eau sans encombre, mais c'est en arrivant sur l'autre rive tout trempé que vous découvrez la bourse d'or complêtement vide.",
+								script() {
+
+								}
+							},
+							Ré: {
+								txt: "Vous traversez le bras d'eau sans encombre, et en arrivant sur l'autre rive tout trempé, vous êtes récompensé en trouvant dans la bourse quelques pièces d'argent et de cuivre.",
+								script() {
+									player.money.add(515);
+								}
+							},
+							RéCr: {
+								txt: "Vous traversez le bras d'eau aisément, et trouvez dans la bourse, sur l'autre rive, une jolie somme en pièces d'argent et de cuivre !",
+								script() {
+									player.money.add(1504);
+								}
+							},
+						}
+					});
+					Events.rivièreTraversée = true;
+					modal.close();
+				}
+			}, {
+				title: "Partir",
+				script() {
+					modal.close();
+				}
+			}, ],
+		});
+	},
+	Soufflant_Riviere_LookRive_Traversée() {
+		modal.load({
+			title: "De l'autre côté des flots",
+			txt: `Vous venez de traverser les eaux à vos risques et périls, et vous ne voulez plus recommencer. D'ailleurs, il n'y aurait rien dans la bourse en face.`,
+			img: 'rivewater', //TODO: IMG - tas de fringues
+			buttons: [{
+				title: "Partir",
+				script() {
+					modal.close();
+				}
+			}, ],
+		});
+	},
+};
 function Notification(params = {}) {
 	this.type = params.type || "normal";
 	switch (this.type) {
 		case "error":
-			var styleGradient = { from: "#d44d2b", to: "#e92e2e" };
+			var styleGradient = {
+				from: "#d44d2b",
+				to: "#e92e2e"
+			};
 			var styleColor = "white";
 			var defaultText = "Erreur";
 			var styleIcon = "notif-error.svg";
 			break;
 		case "success":
-			var styleGradient = { from: "#5acf9c", to: "#43bc4c" };
+			var styleGradient = {
+				from: "#5acf9c",
+				to: "#43bc4c"
+			};
 			var styleColor = "white";
 			var defaultText = "Succès";
 			var styleIcon = false;
 			break;
 		case "magic":
-			var styleGradient = { from: "rgb(142, 115, 236)", to: "rgb(182, 93, 80)" };
+			var styleGradient = {
+				from: "rgb(142, 115, 236)",
+				to: "rgb(182, 93, 80)"
+			};
 			var styleColor = "white";
 			var defaultText = "Nouvel objet!";
 			var styleIcon = "notif-magic.svg";
 			break;
 		case "inv":
-			var styleGradient = { from: "rgb(236, 152, 115)", to: "rgb(182, 93, 80)" };
+			var styleGradient = {
+				from: "rgb(236, 152, 115)",
+				to: "rgb(182, 93, 80)"
+			};
 			var styleColor = "white";
 			var defaultText = "Nouvel objet!";
 			var styleIcon = "notif-inv.svg";
 			break;
 		case "gold":
-			var styleGradient = { from: "rgb(212, 204, 72)", to: "rgb(182, 93, 80)" };
+			var styleGradient = {
+				from: "rgb(212, 204, 72)",
+				to: "rgb(182, 93, 80)"
+			};
 			var styleColor = "white";
-			var defaultText = "Nouvel objet!";
+			var defaultText = "De l'or!";
 			var styleIcon = "coin.svg";
 			break;
+		case "test-EcCr":
+			var styleGradient = {
+				from: "rgb(100, 35, 35)",
+				to: "rgb(147, 58, 51)"
+			};
+			var styleColor = "white";
+			var defaultText = "";
+			var styleIcon = "notif-d20.svg";
+			break;
+		case "test-Ec":
+			var styleGradient = {
+				from: "rgb(190, 141, 82)",
+				to: "rgb(147, 58, 51)"
+			};
+			var styleColor = "white";
+			var defaultText = "";
+			var styleIcon = "notif-d20.svg";
+			break;
+		case "test-Ré":
+			var styleGradient = {
+				from: "rgb(103, 200, 157)",
+				to: "rgb(51, 147, 113)"
+			};
+			var styleColor = "white";
+			var defaultText = "";
+			var styleIcon = "notif-d20.svg";
+			break;
+		case "test-RéCr":
+			var styleGradient = {
+				from: "rgb(155, 200, 103)",
+				to: "rgb(51, 147, 113)"
+			};
+			var styleColor = "white";
+			var defaultText = "";
+			var styleIcon = "notif-d20.svg";
+			break;
+		case "health":
+			var styleGradient = {
+				from: "rgb(212, 43, 171)",
+				to: "rgb(218, 140, 153)"
+			};
+			var styleColor = "white";
+			var defaultText = "";
+			var styleIcon = "notif-health.svg";
+			break;
 		default:
-			var styleGradient = { from: "#5acecf", to: "#4350bc" };
+			var styleGradient = {
+				from: "#5acecf",
+				to: "#4350bc"
+			};
 			var styleColor = "white";
 			var defaultText = "Information";
 			var styleIcon = "notif-info.svg";
@@ -477,8 +858,8 @@ function Notification(params = {}) {
 
 	this.txt = params.txt || defaultText;
 	this.btns = params.btns || 0;
-	(!params.closable && params.closable !== false)?
-		this.closable = true: this.closable = params.closable;
+	(!params.closable && params.closable !== false) ?
+	this.closable = true: this.closable = params.closable;
 	(!params.timeOut && params.timeOut != false) ? this.timeOut = 5: this.timeOut = params.timeOut;
 	this.element = $(`<div class="notif"><div class="icon"></div>${this.txt}<div class="btns"></div></div>`);
 
@@ -489,7 +870,7 @@ function Notification(params = {}) {
 		animation: "fadeInNotif 0.3s ease-in forwards"
 	});
 
-	if (styleIcon){
+	if (styleIcon) {
 		this.element.children('.icon').css('background-image', `url("../assets/img/ui/${styleIcon}")`);
 		this.element.css('padding-left', '2vw');
 	}
@@ -497,7 +878,7 @@ function Notification(params = {}) {
 	if (this.closable) {
 		$closeBtn = $('<div class="close">');
 		this.element.append($closeBtn).css('padding-right', '2vw');
-		$closeBtn.on('click', function() {
+		$closeBtn.on('click', function () {
 			this.closeNotif();
 		}.bind(this));
 	}
@@ -509,13 +890,13 @@ function Notification(params = {}) {
 			this.element.children('.btns').append(
 				btn.element.text(btn.txt).on('click',
 					function () {
-						if (!this.blockOnModal || (this.blockOnModal && !modal.isOpen)) {
+						if (!this.blockOnModal || (this.blockOnModal && !modal.isOpen && !chance.isShown)) {
 							this.script().bind(this);
 						} else {
 							this.element.css('background-color', "#b24e4e");
-							delay(function() {
+							delay(function () {
 								this.element.css('background-color', "");
-								delay(function() {
+								delay(function () {
 									if (!Events.helper_btnBlockOnModal) {
 										new Notification({
 											txt: "Lorsqu'un bouton de notification clignote rouge une fois cliqué, c'est que sa fonction est interdite dans le contexte actuel (évènement, modal, etc..), mais sera réactivée dès ce contexte terminé.",
@@ -533,18 +914,18 @@ function Notification(params = {}) {
 
 	if (this.timeOut != false) {
 		this.element.append('<div class="progressBar"><div class="progress">');
-		delay(function() {
+		delay(function () {
 			var $progress = this.element.children(".progressBar").children(".progress");
 			$progress.css("animation", "progressDecrease " + this.timeOut + "s linear forwards");
-			delay(function() {
+			delay(function () {
 				this.closeNotif();
 			}.bind(this), this.timeOut * 1000);
 		}.bind(this), 500);
 	}
 
-	this.closeNotif = function() {
+	this.closeNotif = function () {
 		this.element.css("animation", "fadeOutNotif 0.4s ease-out forwards");
-		delay(function() {
+		delay(function () {
 			this.element.remove();
 			var index = Notification.instances.indexOf(this);
 			if (index > -1) {
@@ -556,13 +937,74 @@ function Notification(params = {}) {
 	Notification.instances.unshift(this);
 }
 Notification.instances = [];
+Number.prototype.money_convert = function () {
+   return {
+      or: Math.floor(this / 10000),
+      argent: Math.floor(this / 100) % 100,
+      cuivre: this % 100,
+   };
 
+};
+Number.prototype.money_verbose = function () {
+   var arr = [];
+   var converted = this.money_convert();
+   if (converted.or){
+      if (converted.or > 1) arr.push(`${converted.or} pièces d'or`);
+      if (converted.or == 1) arr.push(`${converted.or} pièce d'or`);
+   }
+   if (converted.argent) {
+      if (converted.argent > 1) arr.push(`${converted.argent} pièces d'argent`);
+      if (converted.argent == 1) arr.push(`${converted.argent} pièce d'argent`);
+   }
+   if (converted.cuivre) {
+      if (converted.cuivre > 1) arr.push(`${converted.cuivre} pièces de cuivre`);
+      if (converted.cuivre == 1) arr.push(`${converted.cuivre} pièce de cuivre`);
+   }
+   return arr;
+};
+Number.prototype.money_phrase = function () {
+   var verb = this.money_verbose();
+   var string = "";
+   for (moneyType in verb) {
+      string += verb[moneyType];
+      if (moneyType < (verb.length - 1)) {
+         if (verb.length == 3 && moneyType == 0) {
+            string += ", ";
+         } else {
+            string += " et ";
+         }
+      }
+   }
+   if (string == "") string = "Pas d'argent";
+   return string;
+};
+var overlay = {
+   isShown: false,
+   show() {
+      if (!this.isShown) {
+         $(".overlay").css({
+            animation: "fadeIn .5s ease forwards",
+            display: "block"
+         });
+         this.isShown = true;
+      }
+   },
+   hide() {
+      if (this.isShown) {
+         $(".overlay").css("animation", "fadeOut .5s ease forwards");
+         delay(function () {
+            $(".modal, .overlay").css("display", "none");
+            this.isShown = false;
+         }, 500);
+      }
+   }
+};
 function Page(obj) {
 	this.sceneID = obj.sceneID || 1;
 	this.title = obj.title;
 	this.fluff = obj.fluff;
 	this.scenes = obj.scenes;
-	this.changeScene = function(id) {
+	this.changeScene = function (id) {
 		this.sceneID = id;
 		game.refreshPage();
 	};
@@ -591,11 +1033,12 @@ function applyBackground(params) {
 		$('.cover.-fore').css('background-image', `none`);
 }
 
-var pageList = [{
+var pageList = [
+	{
 		title: "Errance",
 		fluff: `Vous voilà planté au coeur de la plaine du Soufflant.<br>
     Malgré son nom, la plaine est chaude l'été mais pas la moindre brise ne se fait ressentir.`,
-		refBackground: function() {
+		refBackground: function () {
 			applyBackground({
 				"fore": "Soufflant_Plaine_Embranchement_fore_day",
 				"fore_pos": "right",
@@ -636,9 +1079,9 @@ var pageList = [{
 				extrasDB.time.long_soufflant();
 			},
 			triggers: [{
-					triggerText: "bois",
+					trigText: "bois",
 					showName: "le petit bois",
-					rightClickScript: function() {
+					RClick: function () {
 						game.loadPage(1);
 					},
 					actions: [{
@@ -660,7 +1103,7 @@ var pageList = [{
 					]
 				},
 				{
-					triggerText: "cabane",
+					trigText: "cabane",
 					showName: "la cabane",
 					actions: [{
 							name: "Regarder",
@@ -679,7 +1122,7 @@ var pageList = [{
 					]
 				},
 				{
-					triggerText: "chemin",
+					trigText: "chemin",
 					showName: "le chemin",
 					actions: [{
 						name: "Continuer",
@@ -695,7 +1138,7 @@ var pageList = [{
 	{
 		title: "Une fraîcheur bien méritée",
 		fluff: `Vous voilà à l'entrée d'un petit bois de cérembles.`,
-		refBackground: function() {
+		refBackground: function () {
 			applyBackground({
 				"mid": "Soufflant_Plaine_Bois_mid",
 				"fore": "Soufflant_Plaine_Bois_fore",
@@ -732,7 +1175,7 @@ var pageList = [{
 				extrasDB.time.long_soufflant();
 			},
 			triggers: [{
-					triggerText: "sol",
+					trigText: "sol",
 					showName: "le sol du bois",
 					actions: [{
 						name: "Inspecter",
@@ -744,8 +1187,11 @@ var pageList = [{
 					}]
 				},
 				{
-					triggerText: "bruit",
+					trigText: "bruit",
 					showName: "le bruit d'eau",
+					RClick: function () {
+						game.loadPage(2);
+					},
 					actions: [{
 							name: "Regarder",
 							style: 'normal',
@@ -757,15 +1203,15 @@ var pageList = [{
 							name: "Suivre le bruit",
 							style: 'rightClick',
 							script() {
-								//changement de page : rivière
+								game.loadPage(2);
 							}
 						}
 					]
 				},
 				{
-					triggerText: "chemin",
+					trigText: "chemin",
 					showName: "le chemin",
-					rightClickScript: function() {
+					RClick: function () {
 						game.loadPage(0);
 					},
 					actions: [{
@@ -780,9 +1226,81 @@ var pageList = [{
 			]
 		}]
 	},
+	{
+		title: "Un torrent qui s'enfuit",
+		fluff: `Derrière le <a class='click'>bois</a>, une petite rivière clairette court entre les rochers moussus.`,
+		refBackground: function () {
+			applyBackground({
+				"mid": "Soufflant_Plaine_Rivière_mid",
+			});
+		},
+		scenes: [{
+			story() {
+				if (time.period == "journée") {
+					return `L'eau chantante de la <a class='click'>rivière</a> est transparente, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.`;
+				}
+				if (time.period == "nuit") {
+					return `Vous devinez la masse sombre du court d'eau à peine un mètre avant de tomber dedans. Vous ne voyez pas grand chose d'autre que de petits essaims de bégariannes, qui semblent peu troublés par la profondeur de la nuit. Mais la lumière émise par ces insecte ne vous permettent pas de distinguer autre chose que vos pieds.`;
+				}
+				if (time.period == "crépuscule") {
+					return `L'eau chantante de la <a class='click'>rivière</a> reflète les derniers rayons du soleil, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.`;
+				}
+				if (time.period == "aube") {
+					return `L'eau chantante de la <a class='click'>rivière</a> reflète les permiers rayons du soleil, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.`;
+				}
+			},
+			extras() {
+				if (time.period != "nuit") {
+					extraBlock(`L'eau semble assez peu profonde et le courant assez faible pour traverser vers l'autre <a class="click">rive</a>.`, 'path');
+				}
+				extrasDB.time.long_soufflant();
+			},
+			triggers: [{
+					trigText: "bois",
+					showName: "le bois",
+					RClick: function () {
+						game.loadPage(1);
+					},
+					actions: [{
+						name: "Revenir",
+						style: 'rightClick',
+						script() {
+							game.loadPage(1);
+						}
+					}]
+				},
+				{
+					trigText: "rivière",
+					showName: "la rivière",
+					actions: [{
+						name: "Observer",
+						style: 'normal',
+						script() {
+							//long modal de l'enfer - faire une halte et tout
+							modalList.Soufflant_Riviere_RegarderEau();
+						}
+					}]
+				}, {
+					trigText: "rive",
+					showName: "l'autre rive",
+					actions: [{
+							name: "Observer",
+							style: 'normal', 
+							script() {
+								if (!Events.rivièreTraversée) {
+									modalList.Soufflant_Riviere_LookRive();
+								} else {
+									modalList.Soufflant_Riviere_LookRive_Traversée();
+								}
+							}
+						},
+					]
+				}
+			]
+		}]
+	},
 	//end of pages
 ];
-
 var time = {
 	IRLsectoIGmin: 1.5,
 	hours: 13,

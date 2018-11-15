@@ -3,7 +3,7 @@ function Page(obj) {
 	this.title = obj.title;
 	this.fluff = obj.fluff;
 	this.scenes = obj.scenes;
-	this.changeScene = function(id) {
+	this.changeScene = function (id) {
 		this.sceneID = id;
 		game.refreshPage();
 	};
@@ -32,11 +32,12 @@ function applyBackground(params) {
 		$('.cover.-fore').css('background-image', `none`);
 }
 
-var pageList = [{
+var pageList = [
+	{
 		title: "Errance",
 		fluff: `Vous voilà planté au coeur de la plaine du Soufflant.<br>
     Malgré son nom, la plaine est chaude l'été mais pas la moindre brise ne se fait ressentir.`,
-		refBackground: function() {
+		refBackground: function () {
 			applyBackground({
 				"fore": "Soufflant_Plaine_Embranchement_fore_day",
 				"fore_pos": "right",
@@ -77,9 +78,9 @@ var pageList = [{
 				extrasDB.time.long_soufflant();
 			},
 			triggers: [{
-					triggerText: "bois",
+					trigText: "bois",
 					showName: "le petit bois",
-					rightClickScript: function() {
+					RClick: function () {
 						game.loadPage(1);
 					},
 					actions: [{
@@ -101,7 +102,7 @@ var pageList = [{
 					]
 				},
 				{
-					triggerText: "cabane",
+					trigText: "cabane",
 					showName: "la cabane",
 					actions: [{
 							name: "Regarder",
@@ -120,7 +121,7 @@ var pageList = [{
 					]
 				},
 				{
-					triggerText: "chemin",
+					trigText: "chemin",
 					showName: "le chemin",
 					actions: [{
 						name: "Continuer",
@@ -136,7 +137,7 @@ var pageList = [{
 	{
 		title: "Une fraîcheur bien méritée",
 		fluff: `Vous voilà à l'entrée d'un petit bois de cérembles.`,
-		refBackground: function() {
+		refBackground: function () {
 			applyBackground({
 				"mid": "Soufflant_Plaine_Bois_mid",
 				"fore": "Soufflant_Plaine_Bois_fore",
@@ -173,7 +174,7 @@ var pageList = [{
 				extrasDB.time.long_soufflant();
 			},
 			triggers: [{
-					triggerText: "sol",
+					trigText: "sol",
 					showName: "le sol du bois",
 					actions: [{
 						name: "Inspecter",
@@ -185,8 +186,11 @@ var pageList = [{
 					}]
 				},
 				{
-					triggerText: "bruit",
+					trigText: "bruit",
 					showName: "le bruit d'eau",
+					RClick: function () {
+						game.loadPage(2);
+					},
 					actions: [{
 							name: "Regarder",
 							style: 'normal',
@@ -198,15 +202,15 @@ var pageList = [{
 							name: "Suivre le bruit",
 							style: 'rightClick',
 							script() {
-								//changement de page : rivière
+								game.loadPage(2);
 							}
 						}
 					]
 				},
 				{
-					triggerText: "chemin",
+					trigText: "chemin",
 					showName: "le chemin",
-					rightClickScript: function() {
+					RClick: function () {
 						game.loadPage(0);
 					},
 					actions: [{
@@ -217,6 +221,79 @@ var pageList = [{
 							game.loadPage(0);
 						}
 					}]
+				}
+			]
+		}]
+	},
+	{
+		title: "Un torrent qui s'enfuit",
+		fluff: `Derrière le <a class='click'>bois</a>, une petite rivière clairette court entre les rochers moussus.`,
+		refBackground: function () {
+			applyBackground({
+				"mid": "Soufflant_Plaine_Rivière_mid",
+			});
+		},
+		scenes: [{
+			story() {
+				if (time.period == "journée") {
+					return `L'eau chantante de la <a class='click'>rivière</a> est transparente, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.`;
+				}
+				if (time.period == "nuit") {
+					return `Vous devinez la masse sombre du court d'eau à peine un mètre avant de tomber dedans. Vous ne voyez pas grand chose d'autre que de petits essaims de bégariannes, qui semblent peu troublés par la profondeur de la nuit. Mais la lumière émise par ces insecte ne vous permettent pas de distinguer autre chose que vos pieds.`;
+				}
+				if (time.period == "crépuscule") {
+					return `L'eau chantante de la <a class='click'>rivière</a> reflète les derniers rayons du soleil, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.`;
+				}
+				if (time.period == "aube") {
+					return `L'eau chantante de la <a class='click'>rivière</a> reflète les permiers rayons du soleil, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.`;
+				}
+			},
+			extras() {
+				if (time.period != "nuit") {
+					extraBlock(`L'eau semble assez peu profonde et le courant assez faible pour traverser vers l'autre <a class="click">rive</a>.`, 'path');
+				}
+				extrasDB.time.long_soufflant();
+			},
+			triggers: [{
+					trigText: "bois",
+					showName: "le bois",
+					RClick: function () {
+						game.loadPage(1);
+					},
+					actions: [{
+						name: "Revenir",
+						style: 'rightClick',
+						script() {
+							game.loadPage(1);
+						}
+					}]
+				},
+				{
+					trigText: "rivière",
+					showName: "la rivière",
+					actions: [{
+						name: "Observer",
+						style: 'normal',
+						script() {
+							//long modal de l'enfer - faire une halte et tout
+							modalList.Soufflant_Riviere_RegarderEau();
+						}
+					}]
+				}, {
+					trigText: "rive",
+					showName: "l'autre rive",
+					actions: [{
+							name: "Observer",
+							style: 'normal', 
+							script() {
+								if (!Events.rivièreTraversée) {
+									modalList.Soufflant_Riviere_LookRive();
+								} else {
+									modalList.Soufflant_Riviere_LookRive_Traversée();
+								}
+							}
+						},
+					]
 				}
 			]
 		}]

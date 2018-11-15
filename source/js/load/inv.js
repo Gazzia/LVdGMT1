@@ -46,13 +46,13 @@ class Inventory {
           		txt: "Equipper",
 							blockOnModal: true,
           		script() {
-            		// TODO: EQUIPEMENT
+            		// TODO: INV - Equipement
           		}
           	},{
           		txt: "Inventaire",
 							blockOnModal: true,
           		script() {
-            		// TODO: OUVRIR INVENTAIRE
+            		// TODO: UI - inventaire
           		}
           	}];
 						break;
@@ -97,7 +97,7 @@ class Inventory {
 		}
 	}
 	give(ent, item) {
-    // TODO:
+    // TODO: INV - give
 		// si:
 		//   -objet existe
 		//   -objet existe dans l'inventaire

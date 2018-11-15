@@ -1,6 +1,8 @@
 var Events = {
   //UI
-  helper_btnBlockOnModal:false,
+  helper_btnBlockOnModal: false,
   //STORY
-  tookbaton:false,
+  tookbaton: false,
+  HaltsAtRivière: 0,
+  rivièreTraversée: false,
 };

@@ -2,19 +2,19 @@
   function sdrag(onDrag, onStop, direction) {
     var startX = 0;
     var startY = 0;
-    var el = this;
+    var element = this;
     var dragging = false;
 
     function move(e) {
       var fix = {};
-      onDrag && onDrag(el, e.pageX, startX, e.pageY, startY, fix);
+      onDrag && onDrag(element, e.pageX, startX, e.pageY, startY, fix);
       if ('vertical' !== direction) {
         var pageX = ('pageX' in fix) ? fix.pageX : e.pageX;
         if ('startX' in fix) {
           startX = fix.startX;
         }
         if (false === ('skipX' in fix)) {
-          el.style.left = (pageX - startX) + 'px';
+          element.style.left = (pageX - startX) + 'px';
         }
       }
       if ('horizontal' !== direction) {
@@ -23,7 +23,7 @@
           startY = fix.startY;
         }
         if (false === ('skipY' in fix)) {
-          el.style.top = (pageY - startY) + 'px';
+          element.style.top = (pageY - startY) + 'px';
         }
       }
     }
@@ -32,8 +32,8 @@
       if (e.currentTarget instanceof HTMLElement || e.currentTarget instanceof SVGElement) {
         dragging = true;
 
-        var left = el.style.left ? parseInt(el.style.left) : 0;
-        var top = el.style.top ? parseInt(el.style.top) : 0;
+        var left = element.style.left ? parseInt(element.style.left) : 0;
+        var top = element.style.top ? parseInt(element.style.top) : 0;
         startX = e.pageX - left;
         startY = e.pageY - top;
         window.addEventListener('mousemove', move);
@@ -47,7 +47,7 @@
       if (true === dragging) {
         dragging = false;
         window.removeEventListener('mousemove', move);
-        onStop && onStop(el, e.pageX, startX, e.pageY, startY);
+        onStop && onStop(element, e.pageX, startX, e.pageY, startY);
       }
     });
   }
