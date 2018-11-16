@@ -192,10 +192,10 @@ var modalList = {
 				script() {
 					chance.init({
 						type: "difficulté",
-						diff: .75,
+						diff: .35,
 						consq: {
 							EcCr: {
-								txt: "En essayant de traverser le bras d'eau, votre pied glisse et vous tombez la tête la première sur un rocher.<br>A moitié assommé et le front en sang, vous arrivez sur l'autre rive pour découvrir une bourse d'or vide.",
+								txt: "En essayant de traverser le bras d'eau, votre pied glisse et vous tombez la tête la première sur un rocher.<br>A moitié assommé et le front en sang, vous arrivez sur l'autre rive pour découvrir une bourse vide.",
 								script() {
 									player.health.change({
 										from: "current",
@@ -204,19 +204,19 @@ var modalList = {
 								}
 							},
 							Ec: {
-								txt: "Vous traversez le bras d'eau sans encombre, mais c'est en arrivant sur l'autre rive tout trempé que vous découvrez la bourse d'or complêtement vide.",
+								txt: "Vous traversez le bras d'eau sans encombre, mais c'est en arrivant sur l'autre rive tout trempé que vous découvrez la bourse complêtement vide.",
 								script() {
 
 								}
 							},
 							Ré: {
-								txt: "Vous traversez le bras d'eau sans encombre, et en arrivant sur l'autre rive tout trempé, vous êtes récompensé en trouvant dans la bourse quelques pièces d'argent et de cuivre.",
+								txt: "Vous traversez le bras d'eau sans encombre, et en arrivant sur l'autre rive tout trempé, vous êtes récompensé en trouvant dans la bourse quelques lunes d'argent et de cuivre.",
 								script() {
 									player.money.add(515);
 								}
 							},
 							RéCr: {
-								txt: "Vous traversez le bras d'eau aisément, et trouvez dans la bourse, sur l'autre rive, une jolie somme en pièces d'argent et de cuivre !",
+								txt: "Vous traversez le bras d'eau aisément, et trouvez dans la bourse, sur l'autre rive, une jolie somme en lunes d'argent et de cuivre !",
 								script() {
 									player.money.add(1504);
 								}

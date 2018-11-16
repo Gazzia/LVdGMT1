@@ -10,16 +10,16 @@ Number.prototype.money_verbose = function () {
    var arr = [];
    var converted = this.money_convert();
    if (converted.or){
-      if (converted.or > 1) arr.push(`${converted.or} pièces d'or`);
-      if (converted.or == 1) arr.push(`${converted.or} pièce d'or`);
+      if (converted.or > 1) arr.push(`${converted.or} lunes d'or`);
+      if (converted.or == 1) arr.push(`${converted.or} lune d'or`);
    }
    if (converted.argent) {
-      if (converted.argent > 1) arr.push(`${converted.argent} pièces d'argent`);
-      if (converted.argent == 1) arr.push(`${converted.argent} pièce d'argent`);
+      if (converted.argent > 1) arr.push(`${converted.argent} lunes d'argent`);
+      if (converted.argent == 1) arr.push(`${converted.argent} lune d'argent`);
    }
    if (converted.cuivre) {
-      if (converted.cuivre > 1) arr.push(`${converted.cuivre} pièces de cuivre`);
-      if (converted.cuivre == 1) arr.push(`${converted.cuivre} pièce de cuivre`);
+      if (converted.cuivre > 1) arr.push(`${converted.cuivre} lunes de cuivre`);
+      if (converted.cuivre == 1) arr.push(`${converted.cuivre} lune de cuivre`);
    }
    return arr;
 };
