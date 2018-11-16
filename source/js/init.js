@@ -36,6 +36,7 @@ chance = {
 		}
 		delay(function () {
 			dice.show();
+			$('.chance .clickOnDiceMsg').css('display','inline-block');
 		}, 400);
 	},
 

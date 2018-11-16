@@ -18,6 +18,17 @@
     opacity: 1;
   }
 }
+@keyframes flashTxt {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
 @keyframes spinStars {
   from {
     transform: rotate(0deg);

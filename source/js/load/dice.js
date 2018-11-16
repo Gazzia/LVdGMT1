@@ -26,6 +26,7 @@ var dice = {
          'animation': 'fadeIn 0.3s ease forwards',
       }).on('click', function () {
          dice.launch();
+         $('.chance .clickOnDiceMsg').css('display', 'none');
          $('#d20').off();
       });
    },

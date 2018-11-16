@@ -204,7 +204,7 @@ var modalList = {
 								}
 							},
 							Ec: {
-								txt: "Vous traversez le bras d'eau sans encombre, mais c'est en arrivant sur l'autre rive tout trempé que vous découvrez la bourse complêtement vide.",
+								txt: "Vous traversez le bras d'eau sans encombre, mais en arrivant sur l'autre rive trempé jusqu'aux os, vous découvrez la bourse complêtement vide.",
 								script() {
 
 								}
