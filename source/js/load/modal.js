@@ -25,9 +25,9 @@ var modal = {
 			$(".modal").css("animation", "switch-modal-show 0.4s ease-out forwards");
 		}, 400);
 	},
-	close() {
+	close(params = {}) {
 		this.isOpen = false;
-		overlay.hide();
+		if (!params.keepOverlay) overlay.hide();
 		$(".modal").css("animation", "close-modal .5s ease");
 	},
 	apply(params) {

@@ -224,7 +224,7 @@ var modalList = {
 						}
 					});
 					Events.rivièreTraversée = true;
-					modal.close();
+					modal.close({keepOverlay:true});
 				}
 			}, {
 				title: "Partir",

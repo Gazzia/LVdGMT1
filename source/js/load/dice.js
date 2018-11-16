@@ -21,12 +21,12 @@ var dice = {
 
 
    show() {
+      document.getElementById('cube').className = 'show-10';
       $('#d20').css({
-         'display': 'block',
+         'display': 'inline-block',
          'animation': 'fadeIn 0.3s ease forwards',
       }).on('click', function () {
          dice.launch();
-         $('.chance .clickOnDiceMsg').css('display', 'none');
          $('#d20').off();
       });
    },

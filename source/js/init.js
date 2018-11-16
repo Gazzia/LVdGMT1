@@ -26,8 +26,8 @@ game.loadPage(0);
 chance = {
 	isShown: false,
 	show() {
-		if (!this.isShown) {
-			overlay.show();
+		if (!chance.isShown) {
+			overlay.show("testDark");
 			this.isShown = true;
 			$('.chance').css({
 				'display': 'block',
@@ -36,17 +36,16 @@ chance = {
 		}
 		delay(function () {
 			dice.show();
-			$('.chance .clickOnDiceMsg').css('display','inline-block');
 		}, 400);
 	},
 
 	hide() {
-		if (this.isShown) {
-			overlay.hide();
+		if (chance.isShown) {
 			$('.chance').css('animation', 'close-modal 0.3s ease forwards');
 			delay(function () {
 				$('.chance').css('display', 'none');
-				this.isShown = false;
+				overlay.hide();
+				chance.isShown = false;
 			}, 300);
 		}
 	},

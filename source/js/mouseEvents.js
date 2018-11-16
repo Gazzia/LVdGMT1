@@ -36,7 +36,6 @@ function clickOnTrigger(e) {
 	//lorsque l'on appuie sur un .click
 
 	var div = e.target;
-  console.log(e);
 	var triggers = game.scene.triggers;
   if(e.which === 1){
     //if left click
