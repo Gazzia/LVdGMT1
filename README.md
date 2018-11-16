@@ -1,12 +1,12 @@
 # LVdGMT
 Wallah c'est le jeu<br>
-### /css
-style compressés
-### /images
-explicite
-### /js
-javascript
-### /sass
-fichiers SCSS (css mais en plus mieux) que je compile avec le freeware Scout-App pour que ca ressemble à du CSS normal mais compressé au maximum
-### /sound
-fichiers son du jeu (musiques, bruitages, voix..)
+### /build
+Production code > Le code minimifié, et les fichiers .pug, .scss sont compilés + html-include (tout ça avec grunt)
+C'est le jeu prêt à être joué
+### /source
+Development code > Le code brut tapé avec mes mains, rempli de commentaires et avec des noms de variable de 35 pages
+On ne peut pas lancer le jeu avec ce code
+### /assets
+Les fichiers image et audio du jeu
+### /lib
+Les librairies javascript nécessaires au jeu
