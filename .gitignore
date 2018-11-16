@@ -1,0 +1,4 @@
+processed/
+.vscode/
+node_modules/
+gruntwatch.bat
