@@ -1,1 +1,0 @@
-start cmd /k "cd /d C:\Projects\LVdGMT rework && grunt watch"
