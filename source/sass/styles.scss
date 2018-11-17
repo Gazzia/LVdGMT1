@@ -124,15 +124,14 @@ body {
   }
 
   .stars {
-    width: 150%;
-    height: 140vw;
+    width: 100%;
+    height: 100%;
     position: absolute;
-    background-image: url("../../assets/img/bg/stars.jpg");
-    background-size: 125px auto;
-    transform: rotate(143deg);
-    left: -26%;
-    top: -65%;
-    animation: spinStars 800s linear forwards;
+    background-image: url("../../assets/img/bg/stars.png");
+    background-size: 220px auto;
+    left: 0;
+    top: 0;
+    // animation: spinStars 800s linear forwards infinite;
   }
 }
 

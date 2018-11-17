@@ -160,4 +160,8 @@ chance = {
 		}, 3000);
 	}
 };
+
+$('nav.gameMenu').on('click', function () {
+	modalList.devModal();
+});
 //TODO: "Lancez le d20" clignotant

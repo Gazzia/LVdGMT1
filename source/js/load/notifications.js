@@ -25,7 +25,7 @@ function Notification(params = {}) {
 				to: "rgb(182, 93, 80)"
 			};
 			var styleColor = "white";
-			var defaultText = "Nouvel objet!";
+			var defaultText = "Magie";
 			var styleIcon = "notif-magic.svg";
 			break;
 		case "inv":
@@ -34,7 +34,7 @@ function Notification(params = {}) {
 				to: "rgb(182, 93, 80)"
 			};
 			var styleColor = "white";
-			var defaultText = "Nouvel objet!";
+			var defaultText = "Nouvel objet";
 			var styleIcon = "notif-inv.svg";
 			break;
 		case "gold":
@@ -43,7 +43,7 @@ function Notification(params = {}) {
 				to: "rgb(182, 93, 80)"
 			};
 			var styleColor = "white";
-			var defaultText = "De l'or!";
+			var defaultText = "Transaction";
 			var styleIcon = "coin.svg";
 			break;
 		case "test-EcCr":
@@ -52,7 +52,7 @@ function Notification(params = {}) {
 				to: "rgb(147, 58, 51)"
 			};
 			var styleColor = "white";
-			var defaultText = "";
+			var defaultText = "Test de chance - Echec critique";
 			var styleIcon = "notif-d20.svg";
 			break;
 		case "test-Ec":
@@ -61,7 +61,7 @@ function Notification(params = {}) {
 				to: "rgb(147, 58, 51)"
 			};
 			var styleColor = "white";
-			var defaultText = "";
+			var defaultText = "Test de chance - Echec";
 			var styleIcon = "notif-d20.svg";
 			break;
 		case "test-Ré":
@@ -70,7 +70,7 @@ function Notification(params = {}) {
 				to: "rgb(51, 147, 113)"
 			};
 			var styleColor = "white";
-			var defaultText = "";
+			var defaultText = "Test de chance - Réussite";
 			var styleIcon = "notif-d20.svg";
 			break;
 		case "test-RéCr":
@@ -79,7 +79,7 @@ function Notification(params = {}) {
 				to: "rgb(51, 147, 113)"
 			};
 			var styleColor = "white";
-			var defaultText = "";
+			var defaultText = "Test de chance - Réussite critique";
 			var styleIcon = "notif-d20.svg";
 			break;
 		case "health":
@@ -88,7 +88,7 @@ function Notification(params = {}) {
 				to: "rgb(218, 140, 153)"
 			};
 			var styleColor = "white";
-			var defaultText = "";
+			var defaultText = "Santé";
 			var styleIcon = "notif-health.svg";
 			break;
 		default:

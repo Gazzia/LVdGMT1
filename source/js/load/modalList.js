@@ -1,45 +1,157 @@
 var modalList = {
-	colorTestBtns: [{
-			title: "faded",
+	devModalBtns: [{
+			title: "<i>modalColor</i> - faded",
 			script() {
-				modalList.colorTest(this.title);
+				modalList.devModal("faded");
 			}
 		},
 		{
-			title: "alert",
+			title: "<i>modalColor</i> - aqua",
 			script() {
-				modalList.colorTest(this.title);
+				modalList.devModal("aqua");
 			}
 		},
 		{
-			title: "wine",
+			title: "<i>modalColor</i> - wine",
 			script() {
-				modalList.colorTest(this.title);
+				modalList.devModal("wine");
 			}
 		},
 		{
-			title: "salmon",
+			title: "<i>modalColor</i> - salmon",
 			script() {
-				modalList.colorTest(this.title);
+				modalList.devModal("salmon");
 			}
 		},
 		{
-			title: "normal",
+			title: "<i>modalColor</i> - normal",
 			script() {
-				modalList.colorTest(this.title);
+				modalList.devModal("normal");
 			}
 		},
 		{
-			title: "Quitter",
+			title: "<i>TIME</i> - Journée",
+			script() {
+				time.set({
+					"hours": 12
+				});
+			}
+		},
+		{
+			title: "<i>TIME</i> - Aube",
+			script() {
+				time.set({
+					"hours": 6
+				});
+			}
+		},
+		{
+			title: "<i>TIME</i> - Crépuscule",
+			script() {
+				time.set({
+					"hours": 18
+				});
+			}
+		},
+		{
+			title: "<i>TIME</i> - Nuit",
+			script() {
+				time.set({
+					"hours": 23
+				});
+			}
+		},
+		{
+			title: "<i>TIME</i> - days played +1",
+			script() {
+				++time.daysPlayed;
+				game.refreshPage();
+			}
+		},
+		{
+			title: "<i>NOTIF</i> - sample",
+			script() {
+				new Notification({
+					timeOut:15,
+					type: "error"
+				});
+				delay(function(){
+					new Notification({
+						timeOut: 15,
+						type: "success"
+					});
+					delay(function () {
+						new Notification({
+							timeOut: 15,
+							type: ""
+						});
+						delay(function () {
+							new Notification({
+								timeOut: 15,
+								type: "magic"
+							});
+							delay(function () {
+								new Notification({
+									timeOut: 15,
+									type: "inv"
+								});
+								delay(function () {
+									new Notification({
+										timeOut: 15,
+										type: "gold"
+									});
+									delay(function () {
+										new Notification({
+											timeOut: 15,
+											type: "health"
+										});
+										delay(function () {
+											new Notification({
+												timeOut: 15,
+												type: "test-EcCr"
+											});
+											delay(function () {
+												new Notification({
+													timeOut: 15,
+													type: "test-Ec"
+												});
+												delay(function () {
+													new Notification({
+														timeOut: 15,
+														type: "test-Ré"
+													});
+													delay(function () {
+														new Notification({
+															timeOut: 15,
+															type: "test-RéCr"
+														});
+													}, 500);
+												}, 500);
+											}, 500);
+										}, 500);
+									}, 500);
+								}, 500);
+							}, 500);
+						}, 500);
+					}, 500);
+					
+				}, 500);
+				
+			}
+		},
+		{
+			title: "Quitter le modal",
 			script() {
 				modal.close();
 			}
 		},
 	],
-	colorTest(color) {
+	devModal(color) {
 		modal.load({
+			title:"Modal de développement",
+			txt:"Actions:",
 			color: color,
-			buttons: modalList.colorTestBtns,
+			buttons: modalList.devModalBtns,
 		});
 	},
 	Soufflant_Embranchement_RegarderBois() {
@@ -224,7 +336,9 @@ var modalList = {
 						}
 					});
 					Events.rivièreTraversée = true;
-					modal.close({keepOverlay:true});
+					modal.close({
+						keepOverlay: true
+					});
 				}
 			}, {
 				title: "Partir",

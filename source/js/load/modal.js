@@ -37,8 +37,8 @@ var modal = {
 		this.btnColor = 0;
 		switch (params["color"]) {
 			case "salmon":
-				this.color = "rgb(237, 159, 146)";
-        this.btnColor= "rgb(241, 136, 118)";
+				this.color = "rgb(239, 137, 119)";
+       		 this.btnColor = "rgb(238, 122, 102)";
 				break;
 			case "wine":
 				this.color = "#87475b";
@@ -46,12 +46,12 @@ var modal = {
 			case "faded":
 				this.color = "#6d6875";
 				break;
-			case "alert":
-				this.color = "#600c1c";
+			case "aqua":
+				this.color = "rgb(52, 118, 122)";
 				break;
 			default:
-				this.color = "rgb(100, 86, 83)";
-				this.btnColor = "rgb(148, 117, 111)";
+				this.color = "rgb(167, 113, 103)";
+				this.btnColor = "rgb(167, 113, 103)";
 		}
 		if (!this.btnColor) this.btnColor = this.color;
 		this.img && this.img != "0" ?

@@ -59,7 +59,7 @@ var time = {
 	changePeriod: function(per) {
 		if (per == "journée") {
 			time.period = "journée";
-			$('.background').css('background-color', '');
+			$('.background').css('background-image', 'linear-gradient(to top, rgb(213, 232, 253) 75%, rgb(192, 210, 255))');
 			$('.sun').css({ 'display': '', "z-index": '', "left": '', "top": '' });
 			$('.clouds.-back,.clouds.-front').css({ 'filter': '', 'opacity': 1 });
 			$('.cover, .prop').css('filter', '');
@@ -67,11 +67,11 @@ var time = {
 		}
 		if (per == "crépuscule") {
 			time.period = "crépuscule";
-			$('.background').css('background-color', 'rgb(255, 136, 108)');
+			$('.background').css('background-image', 'radial-gradient(circle at center bottom, rgb(255, 140, 108) 50%, rgb(68, 54, 65) 95%)');
 			$('.sun').css({
 				display: '',
 				"z-index": 1,
-				top: "44vh",
+				top: "56vh",
 				left: "37vw"
 			});
 			$('.stars').css({
@@ -84,7 +84,7 @@ var time = {
 		}
 		if (per == "nuit") {
 			time.period = "nuit";
-			$('.background').css('background-color', 'rgb(30, 26, 36)');
+			$('.background').css('background-image', 'linear-gradient(to top, rgb(22, 10, 30) 37%, rgb(0, 0, 0))');
 			$('.sun').css('display', 'none');
 			$('.stars').css({
         display:'',
@@ -107,17 +107,9 @@ var time = {
 		}
 		if (per == "aube") {
 			time.period = "aube";
-			$('.background').css('background-color', 'rgb(149, 145, 207)');
-			$('.sun').css({
-				display: '',
-				"z-index": 1,
-				top: "32vh",
-				left: "4vw"
-			});
-			$('.stars').css({
-        display:'',
-				opacity: "0.3",
-			});
+			$('.background').css('background-image', 'linear-gradient(to top, rgb(255, 170, 46) 28%, rgb(128, 129, 146))');
+			$('.sun').css('display', 'none');
+			$('.stars').css('display', 'none');
 			$('.clouds.-back')
 				.css({
 					filter: 'saturate(116%) brightness(40%) contrast(147%) hue-rotate(132deg)',
