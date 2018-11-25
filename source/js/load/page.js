@@ -12,30 +12,29 @@ function Page(obj) {
 
 function extraBlock(txt, img) {
 	img ?
-		$("main .extrasContainer").append(`<div class='textbox extra hasimg'><div class='img' style='background-image:url("../assets/img/extraIcons/${img}.png")'></div>${txt}</div>`) :
-		$("main .extrasContainer").append(`<div class='textbox extra'>${txt}</div>`);
+		$("main .extrasContainer").append(`<div class='textbox extra hasimg'><div class='img' style='background-image:url("../assets/img/extraIcons/${img}.png")'></div>${txt.format()}</div>`) :
+		$("main .extrasContainer").append(`<div class='textbox extra'>${txt.format()}</div>`);
 }
 
 function applyBackground(params) {
 	$('.background .prop.object').css('background-image', 'none');
-	params["back"] ?
-		$('.cover.-back').css('background-image', `url("../assets/img/bg/full/${params["back"]}.png")`) :
+	params.back ?
+		$('.cover.-back').css('background-image', `url("../assets/img/bg/full/${params.back}.png")`) :
 		$('.cover.-back').css('background-image', `none`);
-	params["mid"] ?
-		$('.cover.-mid').css('background-image', `url("../assets/img/bg/full/${params["mid"]}.png")`) :
+	params.mid ?
+		$('.cover.-mid').css('background-image', `url("../assets/img/bg/full/${params.mid}.png")`) :
 		$('.cover.-mid').css('background-image', `none`);
-	params["fore"] ?
+	params.fore ?
 		$('.cover.-fore').css({
-			'background-image': `url("../assets/img/bg/full/${params["fore"]}.png")`,
-			'background-position': params["fore_pos"]
+			'background-image': `url("../assets/img/bg/full/${params.fore}.png")`,
+			'background-position': params.fore_pos
 		}) :
 		$('.cover.-fore').css('background-image', `none`);
 }
 
-var pageList = [
-	{
+var pageList = [{
 		title: "Errance",
-		fluff: `Vous voilà planté au coeur de la plaine du Soufflant.<br>
+		fluff: `Vous voilà planté{f:e} au coeur de la plaine du Soufflant.//
     Malgré son nom, la plaine est chaude l'été mais pas la moindre brise ne se fait ressentir.`,
 		refBackground: function () {
 			applyBackground({
@@ -49,36 +48,36 @@ var pageList = [
 		scenes: [{
 			story() {
 				if (time.period == "journée") {
-					return `Les sauterelles chantent sous le ciel d'azur.<br>
-							Vous êtes trempé de sueur et l'atmosphère devient de plus en plus lourde.<br>
-		          En regardant vers l'Ouest, vous apercevez un petit <a class="click">bois</a> où vous pourrez vous rafraîchir.<br>
-		          Vers l'Est, une petite <a class="click">cabane</a> en bois se dresse sur une colline.<br>
-		          Au Nord, le <a class="click">chemin</a> de terre continue et serpente vers un vallon.`;
-				}
-				if (time.period == "nuit") {
-					return `La nuit est tombée mais l'atmosphère continue tout de même à s'allourdir de minutes en minutes.<br>
-		          Vous ne distinguez pas grand-chose, mais savec que vers l'Ouest se trouve un petit <a class="click">bois</a>.<br>
-		          Vers l'Est, une petite <a class="click">cabane</a> en bois se dresse sur une colline.<br>
-		          Au Nord, le <a class="click">chemin</a> de terre continue et serpente dans l'obscurité.`;
+					return `Les sauterelles chantent sous le ciel d'azur.//
+					Vous êtes trempé{f:e} de sueur et l'atmosphère devient de plus en plus lourde..//
+		          En regardant vers l'Ouest, vous apercevez {c:un petit bois|wood} où vous pourrez vous rafraîchir.//
+		          Vers l'Est, {c:une petite cabane en bois|cabane} se dresse sur une colline.//
+		          Au Nord, {c:le chemin de terre|chemin} continue et serpente vers un vallon.`;
 				}
 				if (time.period == "crépuscule") {
-					return `Le nuit tombe et la température redescend lentement, mais l'atmosphère continue tout de même à s'allourdir de minutes en minutes.<br>
-		          Vers l'Ouest se trouve un petit <a class="click">bois</a>, dont les ombres s'allongent de minute en minute.<br>
-		          Vers l'Est, une petite <a class="click">cabane</a> en bois se dresse sur une colline.<br>
-		          Au Nord, le <a class="click">chemin</a> de terre continue et serpente vers le soleil couchant.`;
+					return `Le nuit tombe et la température redescend lentement, mais l'atmosphère continue tout de même à s'allourdir de minutes en minutes.//
+		          Vers l'Ouest se trouve {c:un petit bois|wood}, dont les ombres s'allongent de minute en minute.//
+		          Vers l'Est, {c:une petite cabane en bois|cabane} se dresse sur une colline.//
+		          Au Nord, {c:le chemin de terre|chemin} continue et serpente vers le soleil couchant.`;
+				}
+				if (time.period == "nuit") {
+					return `La nuit est tombée mais l'atmosphère continue tout de même à s'allourdir de minutes en minutes.//
+		          Vous ne distinguez pas grand-chose, seulement que vers l'Ouest se trouve {c:un petit bois obscur|wood}.
+		          Vers l'Est, {c:l'ombre d'une cabane|cabane} se dresse sur une colline.//
+		          Au Nord, {c:le chemin|chemin} continue et serpente dans l'obscurité.`;
 				}
 				if (time.period == "aube") {
-					return `Le jour se lève lentement, avec la même sensation pesante dans l'atmosphère.<br>
-		          Vers l'Ouest se trouve un petit <a class="click">bois</a>, dont les ombres s'allongent de minute en minute.<br>
-		          Vers l'Est, une petite <a class="click">cabane</a> en bois se dresse sur une colline.<br>
-		          Au Nord, le <a class="click">chemin</a> de terre continue et serpente vers le soleil couchant.`;
+					return `Le jour se lève lentement, avec la même sensation pesante dans l'atmosphère.//
+		          Vers l'Ouest se trouve {c:un petit bois|wood}, dont les ombres s'allongent de minute en minute.//
+		          Vers l'Est, {c:une petite cabane en bois|cabane} se dresse sur une colline.//
+		          Au Nord, {c:le chemin de terre|chemin} continue et serpente vers le soleil couchant.`;
 				}
 			},
 			extras() {
 				extrasDB.time.long_soufflant();
 			},
 			triggers: [{
-					trigText: "bois",
+					trigText: "wood",
 					showName: "le petit bois",
 					RClick: function () {
 						game.loadPage(1);
@@ -155,22 +154,22 @@ var pageList = [
 		scenes: [{
 			story() {
 				if (time.period == "journée") {
-					return `De l'ombre ! Enfin !<br>
-						Vous vous apprêtez à vous asseoir au <a class="click">sol</a> au pied d'un jeune tronc, quand vous entendez un <a class="click">bruit</a> : une eau qui s'enfuit un peu plus loin.`;
-				}
-				if (time.period == "nuit") {
-					return `Vous ne distinguez pas grand chose dans le chaos d'ombres des arbres. Cependant, un <a class="click">bruit</a> vous interpelle : le murmure d'une eau qui s'enfuit plus loin.`;
+					return `De l'ombre ! Enfin !//
+						Vous vous apprêtez à vous asseoir {c:dans l'herbe|sol} au pied d'un jeune tronc, quand vous entendez {c:un bruit|bruit} : une eau qui s'enfuit un peu plus loin.`;
 				}
 				if (time.period == "crépuscule") {
-					return `Vous vous apprêtez à vous reposer quelques minutes au <a class="click">sol</a>, parmis les ombres allongeantes. Cependant, un <a class="click">bruit</a> vous interpelle : le murmure d'une eau qui s'enfuit plus loin.`;
+					return `Vous vous apprêtez à vous reposer quelques minutes {c:dans l'herbe |sol}, parmis les ombres allongeantes. Cependant, {c:un bruit|bruit} vous interpelle : le murmure d'une eau qui s'enfuit plus loin.`;
+				}
+				if (time.period == "nuit") {
+					return `Vous ne distinguez pas grand chose dans le chaos d'ombres des arbres. Cependant, {c:un bruissement|bruit} vous interpelle : le murmure d'une eau qui s'enfuit plus loin.`;
 				}
 				if (time.period == "aube") {
-					return `Les arbres se colorent lentement avec le soleil naissant.<br>
-					Passer toute une nuit debout dans la plaine était exténuant : vous vous apprêtez à vous reposer quelques minutes au <a class="click">sol</a>. Cependant, un <a class="click">bruit</a> vous interpelle : le murmure d'une eau qui s'enfuit plus loin.`;
+					return `Les arbres se colorent lentement avec le soleil naissant.//
+					Passer toute une nuit debout dans la plaine était exténuant : vous vous apprêtez à vous reposer quelques minutes {c:par terre|sol}. Cependant, {c:un bruissement|bruit} vous interpelle : le murmure d'une eau qui s'enfuit plus loin.`;
 				}
 			},
 			extras() {
-				extraBlock(`Vous vous êtes légèrement écarté du <a class="click">chemin</a>`, 'path');
+				extraBlock(`Vous vous êtes légèrement écarté{f:e} du {c:sentier}`, 'path');
 				extrasDB.time.long_soufflant();
 			},
 			triggers: [{
@@ -208,7 +207,7 @@ var pageList = [
 					]
 				},
 				{
-					trigText: "chemin",
+					trigText: "sentier",
 					showName: "le chemin",
 					RClick: function () {
 						game.loadPage(0);
@@ -227,7 +226,7 @@ var pageList = [
 	},
 	{
 		title: "Un torrent qui s'enfuit",
-		fluff: `Derrière le <a class='click'>bois</a>, une petite rivière clairette court entre les rochers moussus.`,
+		fluff: `Derrière {c:les arbres|bois}, une petite rivière clairette court entre les rochers moussus.`,
 		refBackground: function () {
 			applyBackground({
 				"mid": "Soufflant_Plaine_Rivière_mid",
@@ -236,21 +235,24 @@ var pageList = [
 		scenes: [{
 			story() {
 				if (time.period == "journée") {
-					return `L'eau chantante de la <a class='click'>rivière</a> est transparente, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.`;
-				}
-				if (time.period == "nuit") {
-					return `Vous devinez la masse sombre du court d'eau à peine un mètre avant de tomber dedans. Vous ne voyez pas grand chose d'autre que de petits essaims de bégariannes, qui semblent peu troublés par la profondeur de la nuit. Mais la lumière émise par ces insecte ne vous permettent pas de distinguer autre chose que vos pieds.`;
+					return `{c:L'eau chantante de la rivière|rivière} est transparente, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.`;
 				}
 				if (time.period == "crépuscule") {
-					return `L'eau chantante de la <a class='click'>rivière</a> reflète les derniers rayons du soleil, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.`;
+					return `{c:Le petit bras d'eau|rivière} reflète les derniers rayons du soleil, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîchissante- entamant l'aventure de la vie.`;
+				}
+				if (time.period == "nuit") {
+					return `Vous devinez la masse sombre du court d'eau à peine un mètre avant de tomber dedans. Vous ne voyez pas grand chose d'autre que {c:de petits essaims de bégariannes|bégariannes}, qui semblent peu troublées par la profondeur de la nuit. Mais la lumière émise par ces insectes ne vous permettent pas de distinguer autre chose que vos pieds.`;
 				}
 				if (time.period == "aube") {
-					return `L'eau chantante de la <a class='click'>rivière</a> reflète les permiers rayons du soleil, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.`;
+					return `{c:L'eau chantante de la rivière|rivière} reflète les permiers rayons du soleil, et sur le bord, vous observez des têtards -tout sémillants dans l'onde fraîche- entamant l'aventure de la vie.`;
 				}
 			},
 			extras() {
 				if (time.period != "nuit") {
-					extraBlock(`L'eau semble assez peu profonde et le courant assez faible pour traverser vers l'autre <a class="click">rive</a>.`, 'path');
+					extraBlock(`L'eau semble assez peu profonde et le courant assez faible pour traverser {c:vers l'autre rive|rive}.`, 'path');
+				}
+				if (time.period == "nuit") {
+					extraBlock(`Mieux vaudrait revenir ici de jour, vous ne voyez pas grand chose..`, 'night');
 				}
 				extrasDB.time.long_soufflant();
 			},
@@ -283,17 +285,26 @@ var pageList = [
 					trigText: "rive",
 					showName: "l'autre rive",
 					actions: [{
-							name: "Observer",
-							style: 'normal', 
-							script() {
-								if (!Events.rivièreTraversée) {
-									modalList.Soufflant_Riviere_LookRive();
-								} else {
-									modalList.Soufflant_Riviere_LookRive_Traversée();
-								}
+						name: "Observer",
+						style: 'normal',
+						script() {
+							if (!Events.rivièreTraversée) {
+								modalList.Soufflant_Riviere_LookRive();
+							} else {
+								modalList.Soufflant_Riviere_LookRive_Traversée();
 							}
-						},
-					]
+						}
+					}, ]
+				}, {
+					trigText: "bégariannes",
+					showName: "les bégariannes",
+					actions: [{
+						name: "Observer",
+						style: 'normal',
+						script() {
+							modalList.Soufflant_Riviere_LookInsectes();
+						}
+					}, ]
 				}
 			]
 		}]

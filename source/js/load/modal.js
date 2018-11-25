@@ -31,11 +31,11 @@ var modal = {
 		$(".modal").css("animation", "close-modal .5s ease");
 	},
 	apply(params) {
-		this.img = params["img"] || 0;
-		this.title = params["title"] || "Pas de titre";
-		this.txt = params["txt"] || "Pas de texte";
+		this.img = params.img || 0;
+		this.title = params.title.format() || "Pas de titre";
+		this.txt = params.txt.format() || "Pas de texte";
 		this.btnColor = 0;
-		switch (params["color"]) {
+		switch (params.color) {
 			case "salmon":
 				this.color = "rgb(239, 137, 119)";
        		 this.btnColor = "rgb(238, 122, 102)";
@@ -66,11 +66,11 @@ var modal = {
 			"border-top-color": this.color
 		});
 		$(".modal main .btns").html("");
-		if (params["buttons"])
-		modal.buttons = params["buttons"];
+		if (params.buttons)
+		modal.buttons = params.buttons;
 			for (btn in modal.buttons) {
 				$(".modal main .btns").append(
-					`<div class='btn' onclick='modal.buttons[${btn}].script()'>${modal.buttons[btn].title}</div>`
+					`<div class='btn' onclick='modal.buttons[${btn}].script()'>${modal.buttons[btn].title.format()}</div>`
 				);
 			}
 		$(".modal main .btns .btn").css("background-color", this.btnColor);

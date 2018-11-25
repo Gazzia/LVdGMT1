@@ -72,10 +72,10 @@ var modalList = {
 			title: "<i>NOTIF</i> - sample",
 			script() {
 				new Notification({
-					timeOut:15,
+					timeOut: 15,
 					type: "error"
 				});
-				delay(function(){
+				delay(function () {
 					new Notification({
 						timeOut: 15,
 						type: "success"
@@ -134,9 +134,9 @@ var modalList = {
 							}, 500);
 						}, 500);
 					}, 500);
-					
+
 				}, 500);
-				
+
 			}
 		},
 		{
@@ -148,8 +148,8 @@ var modalList = {
 	],
 	devModal(color) {
 		modal.load({
-			title:"Modal de développement",
-			txt:"Actions:",
+			title: "Modal de développement",
+			txt: "Actions:",
 			color: color,
 			buttons: modalList.devModalBtns,
 		});
@@ -307,8 +307,8 @@ var modalList = {
 						diff: .35,
 						consq: {
 							EcCr: {
-								txt: "En essayant de traverser le bras d'eau, votre pied glisse et vous tombez la tête la première sur un rocher.<br>A moitié assommé et le front en sang, vous arrivez sur l'autre rive pour découvrir une bourse vide.",
-								script() {
+								txt: "En essayant de traverser le bras d'eau, votre pied glisse et vous tombez la tête la première sur un rocher.<br>A moitié assommé{f:e} et le front en sang, vous arrivez sur l'autre rive pour découvrir une bourse vide.",
+								script: function () {
 									player.health.change({
 										from: "current",
 										remove: 20
@@ -316,20 +316,17 @@ var modalList = {
 								}
 							},
 							Ec: {
-								txt: "Vous traversez le bras d'eau sans encombre, mais en arrivant sur l'autre rive trempé jusqu'aux os, vous découvrez la bourse complêtement vide.",
-								script() {
-
-								}
+								txt: "Vous traversez le bras d'eau sans encombre, mais en arrivant sur l'autre rive trempé{f:e} jusqu'aux os, vous découvrez la bourse complêtement vide.",
 							},
 							Ré: {
-								txt: "Vous traversez le bras d'eau sans encombre, et en arrivant sur l'autre rive tout trempé, vous êtes récompensé en trouvant dans la bourse quelques lunes d'argent et de cuivre.",
-								script() {
+								txt: "Vous traversez le bras d'eau sans encombre, et en arrivant sur l'autre rive tout{f:e} trempé{f:e}, vous êtes récompensé{f:e} en trouvant dans la bourse quelques lunes d'argent et de cuivre.",
+								script: function () {
 									player.money.add(515);
 								}
 							},
 							RéCr: {
 								txt: "Vous traversez le bras d'eau aisément, et trouvez dans la bourse, sur l'autre rive, une jolie somme en lunes d'argent et de cuivre !",
-								script() {
+								script: function () {
 									player.money.add(1504);
 								}
 							},
@@ -361,4 +358,22 @@ var modalList = {
 			}, ],
 		});
 	},
+	Soufflant_Riviere_LookInsectes() {
+		modal.load({
+			title: "Un essaim de lumière",
+			txt: `Les bégariannes sont des insectes volants très étranges, capables de produire autour d'eux, la nuit, un halo de jour large comme la main. Leurs proches cousins, les négariannes, produisent l'effet inverse : on les repère facilement le jour, car elles émettent un halo de nuit autour d'elles.`,
+			img: false, //TODO: IMG - bégariannes
+			buttons: [{
+				title: "Ok",
+				script() {
+					modal.close();
+				}
+			}, {
+				title: "Essayer d'en attraper",
+				script() {
+					modal.close();
+				}
+			}, ],
+		});
+	}
 };

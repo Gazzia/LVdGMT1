@@ -34,13 +34,12 @@ function clickOnTrigger(e) {
 	//Cette fonction mets à l'écran le popup d'actions
 	//et liste les différentes actions possibles
 	//lorsque l'on appuie sur un .click
-
-	var div = e.target;
+	var divTrigger = e.target.dataset.trigger;
 	var triggers = game.scene.triggers;
   if(e.which === 1){
     //if left click
     for (trigger in triggers) {
-      if (div.innerText == triggers[trigger].trigText) {
+      if (divTrigger == triggers[trigger].trigText) {
         $("#actionmenu ul").html("");
         $("#actionmenu header").html(
           `Actions sur <b>${triggers[trigger].showName}</b>`
@@ -63,7 +62,7 @@ function clickOnTrigger(e) {
   } else if (e.which === 3) {
     //if right click
     for (trigger in triggers) {
-  		if (div.innerText == triggers[trigger].trigText) {
+  		if (divTrigger == triggers[trigger].trigText) {
   			if(triggers[trigger].RClick) triggers[trigger].RClick();
   		}
   	}
@@ -71,10 +70,10 @@ function clickOnTrigger(e) {
 }
 
 function rightClickOnTrigger(e){
-  var div = e.target;
+  var divTrigger = e.target.dataset.trigger;
 	var triggers = game.scene.triggers;
 	for (trigger in triggers) {
-		if (div.innerText == triggers[trigger].trigText) {
+		if (divTrigger == triggers[trigger].trigText) {
 			if(triggers[trigger].RClick) triggers[trigger].RClick();
 		}
 	}

@@ -1,0 +1,25 @@
+main.main.nightTheme {
+   background-image: linear-gradient(#33302b, #23211d);
+
+   .textbox {
+      background-color: #746a5a;
+
+      &.title {
+         background-color: #262d28;
+         color: #5d846e;
+      }
+
+      &.extra, &.scene {
+         color: rgba(0, 0, 0, 0.5);
+      }
+
+      &.scene,
+      &.story {
+         background-color: #8e836d;
+         border-left: 8px solid #4a5d4c;
+      }
+      .click{
+         color: #21513d;
+      }
+   }
+}

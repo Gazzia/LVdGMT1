@@ -1,7 +1,7 @@
 class Civil {
 	constructor(params = {}) {
 		this.money = {
-			total: params["money"] || 0,
+			total: params.money || 0,
 			add: function (nb) {
 				this.total += nb;
 			},
@@ -12,13 +12,14 @@ class Civil {
 				if (this.total.toMoney().or) console.log(`${this.total.toMoney().or} or`);
 			}
 		};
-		this.name = params["name"] || "Gilbert";
-		this.race = params["race"] || "Angulain";
+		this.name = params.name || "Gilbert";
+		this.race = params.race || "Angulain";
 		this.inv = new Inventory(this);
+		this.genre = params.genre || "m";
 		this.health = {
 			showNotifs: false,
-			max: params["healthmax"] || 100,
-			current: params["healthmax"] || 100,
+			max: params.healthmax || 100,
+			current: params.healthmax || 100,
 			change(_params) {
 				if (_params.remove) {
 					if (_params.from == "max") {

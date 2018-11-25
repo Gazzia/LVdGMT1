@@ -23,6 +23,23 @@ Number.prototype.money_verbose = function () {
    }
    return arr;
 };
+Number.prototype.money_iconize = function () {
+   var arr = [];
+   var converted = this.money_convert();
+   if (converted.or){
+      if (converted.or > 1) arr.push(`${converted.or}<div class="coinIcon or"></div>`);
+      if (converted.or == 1) arr.push(`${converted.or}<div class="coinIcon or"></div>`);
+   }
+   if (converted.argent) {
+      if (converted.argent > 1) arr.push(`${converted.argent}<div class="coinIcon argent"></div>`);
+      if (converted.argent == 1) arr.push(`${converted.argent}<div class="coinIcon argent"></div>`);
+   }
+   if (converted.cuivre) {
+      if (converted.cuivre > 1) arr.push(`${converted.cuivre}<div class="coinIcon cuivre"></div>`);
+      if (converted.cuivre == 1) arr.push(`${converted.cuivre}<div class="coinIcon cuivre"></div>`);
+   }
+   return arr;
+};
 Number.prototype.money_phrase = function () {
    var verb = this.money_verbose();
    var string = "";
@@ -37,5 +54,17 @@ Number.prototype.money_phrase = function () {
       }
    }
    if (string == "") string = "Pas d'argent";
+   return string;
+};
+Number.prototype.money_icons = function () {
+   var icons = this.money_iconize();
+   var string = "";
+   for (moneyType in icons) {
+      string += icons[moneyType];
+      if (moneyType < (icons.length - 1)) {
+         string += " ";
+      }
+   }
+   if (string == "") string = `0 <div class='coinIcon cuivre'></div>`;
    return string;
 };

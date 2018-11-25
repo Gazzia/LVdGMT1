@@ -100,8 +100,7 @@ function Notification(params = {}) {
 			var defaultText = "Information";
 			var styleIcon = "notif-info.svg";
 	}
-
-	this.txt = params.txt || defaultText;
+	this.txt = (params.txt || defaultText).format();
 	this.btns = params.btns || 0;
 	(!params.closable && params.closable !== false) ?
 	this.closable = true: this.closable = params.closable;

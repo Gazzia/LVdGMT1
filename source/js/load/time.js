@@ -64,6 +64,7 @@ var time = {
 			$('.clouds.-back,.clouds.-front').css({ 'filter': '', 'opacity': 1 });
 			$('.cover, .prop').css('filter', '');
 			$('.stars').css('display', 'none');
+			$('main.main').removeClass('nightTheme');
 		}
 		if (per == "crépuscule") {
 			time.period = "crépuscule";
@@ -81,6 +82,7 @@ var time = {
 			$('.clouds').css('filter', 'saturate(85.3%) brightness(29%) sepia(100%) contrast(127%) hue-rotate(-44deg)');
 			$('.cover, .prop')
 				.css('filter', 'saturate(100.3%) brightness(43%) sepia(52%) contrast(128%) hue-rotate(-52deg)');
+			$('main.main').addClass('nightTheme');
 		}
 		if (per == "nuit") {
 			time.period = "nuit";
@@ -104,6 +106,7 @@ var time = {
 				.css('filter', 'saturate(79.3%) brightness(11%) sepia(100%) contrast(110%) hue-rotate(-119deg)');
 			$('.cover.-mid, .cover.-fore, .prop')
 				.css('filter', 'saturate(126.3%) brightness(13%) sepia(82%) contrast(104%) hue-rotate(-135deg)');
+			$('main.main').addClass('nightTheme');
 		}
 		if (per == "aube") {
 			time.period = "aube";
@@ -124,6 +127,7 @@ var time = {
 				.css('filter', 'saturate(41.3%) brightness(33%) sepia(0%) contrast(100%) hue-rotate(9deg)');
 			$('.cover.-mid, .cover.-fore, .prop')
 				.css('filter', 'saturate(38.3%) brightness(52%) sepia(0%) contrast(113%) hue-rotate(-9deg)');
+			$('main.main').removeClass('nightTheme');
 		}
 		console.info(`TIME : période ${time.period}`);
 	},

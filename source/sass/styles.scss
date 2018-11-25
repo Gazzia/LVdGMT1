@@ -1,5 +1,6 @@
 @import "transitions";
 @import "d20";
+@import "nightTheme";
 
 @mixin fullsized {
   position: absolute;
@@ -144,6 +145,7 @@ main.main {
   background-image: linear-gradient(rgb(212, 199, 175), rgb(174, 163, 145));
   right: 4vw;
   margin-bottom: 8vh;
+  transition: all 1s ease;
 
   &::before {
     content: " ";
@@ -167,10 +169,12 @@ main.main {
     box-sizing: border-box;
     font-size: 1.8vh;
     letter-spacing: 0.02vw;
+    transition: all 1s ease;
 
     .click {
       color: rgb(39, 133, 84);
       cursor: pointer;
+      transition: all 1s ease;
     }
 
     &+.textbox {
@@ -577,7 +581,7 @@ nav.gameMenu {
       margin-top: 4vh;
       text-shadow: none;
       transition: all 0.3s ease;
-      opacity:0.6;
+      opacity: 0.6;
 
       &:nth-child(1) {
         margin-top: 0;
@@ -595,4 +599,37 @@ nav.gameMenu {
       }
     }
   }
+}
+
+.coinIcon {
+  display: inline-block;
+  height: 1.7vh;
+  width: 1.7vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-bottom: -0.15vh;
+
+  &.cuivre {
+    background-image: url("../../assets/img/ui/pièceCuivre.png");
+  }
+
+  &.argent {
+    background-image: url("../../assets/img/ui/pièceArgent.png");
+  }
+
+  &.or {
+    background-image: url("../../assets/img/ui/pièceOr.png");
+  }
+}*
+
+.begariannes{
+  background-image: url("../../assets/img/bg/prop/bégariannes.gif");
+  position: absolute;
+  width:15vh;
+  height:15vh;
+  left:20vh;
+  bottom:10vh;
+  background-size: contain;
+  z-index:60;
+  display: none;
 }
