@@ -6,6 +6,7 @@ var modal = {
 	},
 	fadeIn(params) {
 		this.isOpen = true;
+		game.ui.animations.pause();
 		modal.apply(params);
 		overlay.show();
 		$(".modal").css({
@@ -27,8 +28,13 @@ var modal = {
 	},
 	close(params = {}) {
 		this.isOpen = false;
-		if (!params.keepOverlay) overlay.hide();
-		$(".modal").css("animation", "close-modal .5s ease");
+		if (!params.keepOverlay) {
+			overlay.hide();
+			game.ui.animations.play();
+		}
+		delay(function(){
+			$(".modal").css("animation", "close-modal .5s ease");
+		}, 300);
 	},
 	apply(params) {
 		this.img = params.img || 0;

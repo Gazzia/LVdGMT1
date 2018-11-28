@@ -1,6 +1,6 @@
-@import "transitions";
-@import "d20";
-@import "nightTheme";
+@import "_transitions";
+@import "_d20";
+@import "_nightTheme";
 
 @mixin fullsized {
   position: absolute;
@@ -167,8 +167,8 @@ main.main {
     background-color: rgb(216, 207, 193);
     padding: 3vh;
     box-sizing: border-box;
-    font-size: 1.8vh;
-    letter-spacing: 0.02vw;
+    font-size: calc(8px + 0.8vh);
+    letter-spacing: calc(0.01px + 0.01vw);
     transition: all 1s ease;
 
     .click {
@@ -199,7 +199,7 @@ main.main {
       margin-top: 4vh;
       background-color: rgb(142, 173, 153);
       color: white;
-      font-size: 3vh;
+      font-size: calc(3px + 2.5vh);
 
       &::before {
         border-color: rgba(223, 243, 239, 0.2);
@@ -456,8 +456,23 @@ nav.gameMenu {
   transition: all 0.4s ease;
   transform: translateX(0vh);
 
+  // &::before {
+  //   display: block;
+  //   content: "";
+  //   border-image: url('../../assets/img/ui/border.png') 190 178 190 178 stretch;
+  //   border-style: solid;
+  //   border-width: 9vh;
+  //   position: absolute;
+  //   top: -1vh;
+  //   left: -1vh;
+  //   width: calc(100% - 16vh);
+  //   height: calc(100% - 16vh);
+  //   pointer-events: none;
+  //   z-index: 1;
+  // }
+
   header {
-    background-color: rgb(143, 179, 135);
+    background-color: blue;
     width: 100%;
     height: 6vh;
     line-height: 6vh;
@@ -620,16 +635,16 @@ nav.gameMenu {
   &.or {
     background-image: url("../../assets/img/ui/pièceOr.png");
   }
-}*
+}
 
-.begariannes{
+* .begariannes {
   background-image: url("../../assets/img/bg/prop/bégariannes.gif");
   position: absolute;
-  width:15vh;
-  height:15vh;
-  left:20vh;
-  bottom:10vh;
+  width: 15vh;
+  height: 15vh;
+  left: 20vh;
+  bottom: 10vh;
   background-size: contain;
-  z-index:60;
+  z-index: 60;
   display: none;
 }

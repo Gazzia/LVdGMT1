@@ -1,18 +1,21 @@
 module.exports = function (grunt) {
-  require('google-closure-compiler').grunt(grunt);
   grunt.initConfig({
     watch: {
-      scss: {
-        files: ['source/sass/**/*.scss'],
-        tasks: ['sass'],
-      },
       js_concating: {
         files: ['source/js/*.js'],
         tasks: ['concat:js'],
       },
+      js_compile: {
+        files: ['processed/js/scripts.js'],
+        tasks: ['uglify:js'],
+      },
       loadjs_concating: {
         files: ['source/js/load/*.js'],
         tasks: ['concat:loadjs'],
+      },
+      loadjs_compile: {
+        files: ['processed/js/load.js'],
+        tasks: ['uglify:loadjs'],
       },
       pug: {
         files: ['source/*.pug'],
@@ -22,25 +25,13 @@ module.exports = function (grunt) {
         files: ['processed/html/PugToHtml/*.html'],
         tasks: ['includes'],
       },
-      htmlmin: {
-        files: ['processed/html/IncludeHTML/index.html'],
-        tasks: ['htmlmin'],
-      },
+      // htmlmin: {
+      //   files: ['processed/html/IncludeHTML/index.html'],
+      //   tasks: ['htmlmin'],
+      // },
       beep: {
-        files: ['build/**/*'],
+        files: ['build/**/*.js','build/**/*.html'],
         tasks: ['beep:2'],
-      },
-      css_prefix: {
-        files: ['processed/css/styles.min.css'],
-        tasks: ['autoprefixer'],
-      },
-      js_compile: {
-        files: ['processed/js/scripts.js'],
-        tasks: ['uglify:js'],
-      },
-      loadjs_compile: {
-        files: ['processed/js/load.js'],
-        tasks: ['uglify:loadjs'],
       },
     },
 
@@ -55,83 +46,6 @@ module.exports = function (grunt) {
       },
     },
 
-    'closure-compiler': {
-      js: {
-        files: [{
-          expand: true,
-          cwd: 'processed/js',
-          src: ['scripts.js'],
-          dest: 'build/js',
-          ext: '.js'
-        }],
-        options: {
-          compilation_level: 'SIMPLE',
-        },
-      },
-      loadjs: {
-        files: [{
-          expand: true,
-          cwd: 'processed/js',
-          src: ['load.js'],
-          dest: 'build/js',
-          ext: '.js'
-        }],
-        options: {
-          compilation_level: 'SIMPLE',
-        },
-      },
-    },
-
-    sass: {
-      build: { // Target
-        options: { // Target options
-          style: 'compressed'
-        },
-        files: [{
-          expand: true,
-          cwd: 'source/sass',
-          src: ['styles.scss'],
-          dest: 'processed/css',
-          ext: '.min.css'
-        }],
-      },
-    },
-
-    autoprefixer: {
-      css: {
-        src: 'processed/css/styles.min.css',
-        dest: 'build/css/styles.css',
-      },
-    },
-    pug: {
-      default: {
-        files: [{
-          expand: true,
-          cwd: 'source',
-          src: ['*.pug'],
-          dest: 'processed/html/PugToHtml',
-          ext: '.html'
-        }],
-        options: {
-          pretty: true,
-        }
-      },
-    },
-    htmlmin: {
-      default: {
-        files: [{
-          expand: true,
-          cwd: 'processed/html/IncludeHTML',
-          src: ['*.html'],
-          dest: 'build',
-          ext: '.html'
-        }],
-        options: {
-          collapseWhitespace: true,
-          removeComments: true,
-        },
-      },
-    },
     uglify: {
       js: {
         options: {
@@ -159,22 +73,49 @@ module.exports = function (grunt) {
       },
     },
 
+    pug: {
+      default: {
+        files: [{
+          expand: true,
+          cwd: 'source',
+          src: ['*.pug'],
+          dest: 'processed/html/PugToHtml',
+          ext: '.html'
+        }],
+        options: {
+          pretty: true,
+        }
+      },
+    },
     includes: {
       files: {
         cwd: 'processed/html/PugToHtml',
-        src: ['index.html'], // Source files
-        dest: 'processed/html/IncludeHTML', // Destination directory
+        src: ['index.html'],
+        dest: 'build',
         flatten: true,
         options: {
           silent: true,
         }
       }
-    }
+    },
+    htmlmin: {
+      default: {
+        files: [{
+          expand: true,
+          cwd: 'processed/html/IncludeHTML',
+          src: ['*.html'],
+          dest: 'build',
+          ext: '.html'
+        }],
+        options: {
+          collapseWhitespace: true,
+          removeComments: true,
+        },
+      },
+    },
   });
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-includes');
   grunt.loadNpmTasks('grunt-contrib-uglify-es');

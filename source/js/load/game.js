@@ -36,6 +36,14 @@ var game = {
     },
     toggle() {
       this.isHidden ? this.show() : this.hide();
+    },
+    animations: {
+      pause() {
+        $($animated).css('animation-play-state', 'paused');
+      },
+      play() {
+        $($animated).css('animation-play-state', 'running');
+      },
     }
-  }
+  },
 };

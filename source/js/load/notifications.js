@@ -181,3 +181,9 @@ function Notification(params = {}) {
 	Notification.instances.unshift(this);
 }
 Notification.instances = [];
+
+function closeAllNotifications(){
+	for (notif in Notification.instances){
+		Notification.instances[notif].closeNotif();
+	}
+}

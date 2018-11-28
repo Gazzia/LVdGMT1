@@ -1,0 +1,2 @@
+$clouds = ".clouds";
+$animated = `${$clouds}`;

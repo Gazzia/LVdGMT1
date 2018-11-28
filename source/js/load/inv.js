@@ -3,8 +3,8 @@ class Inventory {
 		this.owner = owner;
 		this.maxWeight = 9;
 		this._itemList = [];
-		this.sum = function(items, prop) {
-			return items.reduce(function(a, b) {
+		this.sum = function (items, prop) {
+			return items.reduce(function (a, b) {
 				return a + b[prop];
 			}, 0);
 		};
@@ -38,32 +38,32 @@ class Inventory {
 		var obj = itemList.find(name);
 		if (obj && this.hasSpaceFor(obj)) {
 			if (this.owner.constructor.name == "Player") {
-        var addTxt, addBtns;
+				var addTxt, addBtns;
 				switch (obj.type) {
 					case "Arme":
 						addTxt = "Nouvelle arme";
-            addBtns=[{
-          		txt: "Equipper",
+						addBtns = [{
+							txt: "Equipper",
 							blockOnModal: true,
-          		script() {
-            		// TODO: INV - Equipement
-          		}
-          	},{
-          		txt: "Inventaire",
+							script() {
+								// TODO: INV - Equipement
+							}
+						}, {
+							txt: "Inventaire",
 							blockOnModal: true,
-          		script() {
-            		// TODO: UI - inventaire
-          		}
-          	}];
+							script() {
+								// TODO: UI - inventaire
+							}
+						}];
 						break;
 					default:
 						addTxt = "Nouvel objet";
-            addBtns = false;
+						addBtns = false;
 				}
 				new Notification({
 					type: "inv",
-					timeOut:false,
-          btns: addBtns,
+					timeOut: false,
+					btns: addBtns,
 					txt: `${addTxt} : ${name} !`
 				});
 			}
@@ -97,7 +97,7 @@ class Inventory {
 		}
 	}
 	give(ent, item) {
-    // TODO: INV - give
+		// TODO: INV - give
 		// si:
 		//   -objet existe
 		//   -objet existe dans l'inventaire

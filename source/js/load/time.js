@@ -4,7 +4,7 @@ var time = {
 	minutes: 0,
 	period: "journée",
 	daysPlayed: 0,
-	set: function(param) {
+	set: function (param) {
 		if (param["minutes"] !== undefined) {
 			this.minutes = param["minutes"];
 			if (this.minutes > 59) {
@@ -16,52 +16,73 @@ var time = {
 		}
 		if (param["hours"] !== undefined) {
 			this.hours = param["hours"];
-			if ((
-					(24 >= this.hours && this.hours >= 21) ||
-					(4 >= this.hours && this.hours >= 0)
-				) && (time.period != "nuit")) { this.changePeriod("nuit"); }
-			if (
-				(9 >= this.hours && this.hours >= 5) &&
-				(time.period != "aube")) { this.changePeriod("aube"); }
-			if (
-				(17 >= this.hours && this.hours >= 10) &&
-				(time.period != "journée")) { this.changePeriod("journée"); }
-			if (
-				(20 >= this.hours && this.hours >= 18) &&
-				(time.period != "crépuscule")) { this.changePeriod("crépuscule"); }
-
-			if (this.hours > 23) {
-				this.set({
-					"hours": 0
-				});
-				this.daysPlayed++;
-			}
+			time.refreshPeriod();
 			game.refreshPage();
 			time.refreshClocks();
 		}
 	},
-	start: function() {
+	start: function () {
 		time.changePeriod('journée');
 		time.refreshClocks();
-		setInterval(function() {
-			time.set({ "minutes": ++time.minutes });
+		setInterval(function () {
+			time.set({
+				"minutes": ++time.minutes
+			});
 			time.refreshClocks();
 		}, time.IRLsectoIGmin * 1000);
 	},
-	formatDate: function() {
+	formatDate: function () {
 		let hours = this.hours < 10 ? "0" + this.hours : this.hours;
 		let minutes = this.minutes < 10 ? "0" + this.minutes : this.minutes;
 		return (hours + ":" + minutes);
 	},
-	refreshClocks: function() {
+	refreshClocks: function () {
 		$('nav').html(time.formatDate());
 	},
-	changePeriod: function(per) {
+	refreshPeriod: function () {
+		if ((
+				(24 >= this.hours && this.hours >= 21) ||
+				(4 >= this.hours && this.hours >= 0)
+			) && (time.period != "nuit")) {
+			this.changePeriod("nuit");
+		}
+		if (
+			(9 >= this.hours && this.hours >= 5) &&
+			(time.period != "aube")) {
+			this.changePeriod("aube");
+		}
+		if (
+			(17 >= this.hours && this.hours >= 10) &&
+			(time.period != "journée")) {
+			this.changePeriod("journée");
+		}
+		if (
+			(20 >= this.hours && this.hours >= 18) &&
+			(time.period != "crépuscule")) {
+			this.changePeriod("crépuscule");
+		}
+
+		if (this.hours > 23) {
+			this.set({
+				"hours": 0
+			});
+			this.daysPlayed++;
+		}
+	},
+	changePeriod: function (per) {
 		if (per == "journée") {
 			time.period = "journée";
 			$('.background').css('background-image', 'linear-gradient(to top, rgb(213, 232, 253) 75%, rgb(192, 210, 255))');
-			$('.sun').css({ 'display': '', "z-index": '', "left": '', "top": '' });
-			$('.clouds.-back,.clouds.-front').css({ 'filter': '', 'opacity': 1 });
+			$('.sun').css({
+				'display': '',
+				"z-index": '',
+				"left": '',
+				"top": ''
+			});
+			$('.clouds.-back,.clouds.-front').css({
+				'filter': '',
+				'opacity': 1
+			});
 			$('.cover, .prop').css('filter', '');
 			$('.stars').css('display', 'none');
 			$('main.main').removeClass('nightTheme');
@@ -89,7 +110,7 @@ var time = {
 			$('.background').css('background-image', 'linear-gradient(to top, rgb(22, 10, 30) 37%, rgb(0, 0, 0))');
 			$('.sun').css('display', 'none');
 			$('.stars').css({
-        display:'',
+				display: '',
 				opacity: "1",
 			});
 			$('.clouds.-back')

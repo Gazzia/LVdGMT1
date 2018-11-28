@@ -2,6 +2,7 @@ chance = {
 	isShown: false,
 	show() {
 		if (!chance.isShown) {
+			game.ui.animations.pause();
 			overlay.show("testDark");
 			this.isShown = true;
 			$('.chance').css({
@@ -18,6 +19,7 @@ chance = {
 		if (chance.isShown) {
 			$('.chance').css('animation', 'close-modal 0.3s ease forwards');
 			delay(function () {
+				game.ui.animations.play();
 				$('.chance').css('display', 'none');
 				overlay.hide();
 				chance.isShown = false;
