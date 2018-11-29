@@ -90,7 +90,7 @@ var modal = {
 		$(".modal main .btns .btn").css("background-color", this.btnColor);
 		delay(function () {
 			if (isOverflown($(".modal main")[0])) {
-				$(".modal").append("<div class='overflowGradient bot'></div><div class='overflowGradient top'></div><div class='overflowIndicator'>...</div>");
+				$(".modal .overflowIndicator, .modal .overflowGradient.bot").css('opacity', 1);
 				$(".modal main").on("wheel", function (event) {
 					delay(function(){
 						if ($(".modal main")[0].scrollTop >= 0.9 * $(".modal main")[0].scrollTopMax)
@@ -104,6 +104,9 @@ var modal = {
 							$(".modal .overflowGradient.top").css('opacity', 0);
 					}, 200);
 				}, false);
+			} else {
+				$(".modal main")[0].scrollTop = 0;
+				$(".modal .overflowGradient").css('opacity', 0);
 			}
 		}, 300);
 	},

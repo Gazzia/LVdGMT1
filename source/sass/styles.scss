@@ -490,6 +490,7 @@ nav.gameMenu {
     transition: opacity 0.3s ease;
     line-height: 0vh;
     pointer-events: none;
+    opacity:0;
   }
 
   .overflowGradient {
@@ -497,6 +498,7 @@ nav.gameMenu {
     width: 100%;
     background-size: 100% 100%;
     pointer-events: none;
+    opacity: 0;
 
     &.bot {
       background-image: url('../../assets/img/ui/overflowBotGradient.png');
@@ -509,7 +511,6 @@ nav.gameMenu {
       background-image: url('../../assets/img/ui/overflowTopGradient.png');
       top: 7vh;
       height: 3vh;
-      opacity: 0;
       transition: opacity 0.12s ease;
     }
   }
