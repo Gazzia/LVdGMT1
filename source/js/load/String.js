@@ -29,6 +29,9 @@ String.prototype.bold = function(){
    // *grâce a cette méthode, ce texte serait en gras* et pas celui là
    return this.replace(/\*+([^*]*)\*/g, "<strong>$1</strong>");
 };
+String.prototype.img = function () {
+   return this.replace(/\{img:([^}]*)\}/g, `<img class="img-story" src="../assets/img/story/$1.png" alt="L'image n'a pas pu être chargée.." onError="this.style.opacity='0.6';"/>`);
+};
 String.prototype.format = function(){
-   return this.genreIt().setTrigs().addLineBreaks().bold();
+   return this.genreIt().setTrigs().addLineBreaks().bold().img();
 };

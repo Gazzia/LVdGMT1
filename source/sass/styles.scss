@@ -41,7 +41,7 @@ body {
   @include fullsized;
   @include flexCenterChildren;
   text-align: center;
-  font-size: 1.98vh;
+  font-size: calc(9px + 0.85vh);
   font-family: "Roboto", sans-serif;
   color: rgb(46, 46, 46);
   overflow: hidden;
@@ -448,7 +448,7 @@ nav.gameMenu {
   z-index: 21;
   display: none;
   position: absolute;
-  max-height: 70vh;
+  max-height: 90vh;
   width: 68vh;
   background: linear-gradient(rgb(222, 214, 208), rgb(194, 181, 181));
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
@@ -456,31 +456,78 @@ nav.gameMenu {
   transition: all 0.4s ease;
   transform: translateX(0vh);
 
-  // &::before {
-  //   display: block;
-  //   content: "";
-  //   border-image: url('../../assets/img/ui/border.png') 190 178 190 178 stretch;
-  //   border-style: solid;
-  //   border-width: 9vh;
-  //   position: absolute;
-  //   top: -1vh;
-  //   left: -1vh;
-  //   width: calc(100% - 16vh);
-  //   height: calc(100% - 16vh);
-  //   pointer-events: none;
-  //   z-index: 1;
-  // }
+  &::before {
+    display: block;
+    content: "";
+    border-image: url('../../assets/img/ui/border.png') 190 178 190 178 stretch;
+    border-style: solid;
+    border-width: 9vh;
+    position: absolute;
+    top: -1vh;
+    left: -1vh;
+    width: calc(100% - 16vh);
+    height: calc(100% - 16vh);
+    pointer-events: none;
+    z-index: 1;
+  }
 
   header {
-    background-color: blue;
     width: 100%;
     height: 6vh;
-    line-height: 6vh;
-    color: white;
+    line-height: 7vh;
+    color: rgb(255, 255, 255);
+    font-size: calc(10px + 1vh);
+    font-family: 'Roboto Slab', serif;
+  }
+
+  .overflowIndicator {
+    position: absolute;
+    bottom: 3vh;
+    width: 100%;
+    font-size: 6vh;
+    height: 3vh;
+    color: rgb(73, 37, 37);
+    transition: opacity 0.3s ease;
+    line-height: 0vh;
+    pointer-events: none;
+  }
+
+  .overflowGradient {
+    position: absolute;
+    width: 100%;
+    background-size: 100% 100%;
+    pointer-events: none;
+
+    &.bot {
+      background-image: url('../../assets/img/ui/overflowBotGradient.png');
+      bottom: 6vh;
+      height: 8vh;
+      transition: opacity 0.3s ease;
+    }
+
+    &.top {
+      background-image: url('../../assets/img/ui/overflowTopGradient.png');
+      top: 7vh;
+      height: 3vh;
+      opacity: 0;
+      transition: opacity 0.12s ease;
+    }
   }
 
   main {
-    margin: 3vh 4vh;
+    scroll-behavior: smooth;
+    margin: 1vh 4vh 3vh 4vh;
+    margin-bottom: 3vh;
+    overflow: hidden;
+    max-height: 72vh;
+    margin-bottom: 6vh;
+    padding-top: 2vh;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+      /* make scrollbar transparent */
+    }
 
     .btns {
       margin-top: 2vh;
@@ -518,6 +565,20 @@ nav.gameMenu {
 
   .txt {
     line-height: 1.4;
+
+    .img-story {
+      display: block;
+      max-width: 94%;
+      margin: 3vh auto;
+      border-radius: 0.5vh;
+      border: 7px solid #a38076;
+      box-sizing: border-box;
+      position: relative;
+      background-color: #a38076;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+      font-size: 1.8vh;
+    }
   }
 
   .img {

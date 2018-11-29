@@ -5,6 +5,10 @@ function round(value, round) {
 const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const delay = (fn, wait, ...args) => setTimeout(fn, wait, ...args);
 
+function isOverflown(element) {
+	return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
 var player = new Player();
 var bob = new NPC({
 	name: "Bob",

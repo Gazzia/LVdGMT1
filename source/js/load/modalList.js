@@ -24,6 +24,12 @@ var modalList = {
 			}
 		},
 		{
+			title: "<i>modalColor</i> - royal",
+			script() {
+				modalList.devModal("royal");
+			}
+		},
+		{
 			title: "<i>modalColor</i> - normal",
 			script() {
 				modalList.devModal("normal");
@@ -157,8 +163,11 @@ var modalList = {
 	Soufflant_Embranchement_RegarderBois() {
 		modal.load({
 			title: "Bois",
-			txt: `La présence de ce petit bois est opportune : il fait très chaud dans la plaine, qui est d'ordinaire plutôt dépourvue d'arbres. Les premiers arbres se situent à une minute de marche, et leur ombre vous fera sûrement le plus grand bien.`,
-			color: 0,
+			txt: `La présence de ce petit bois est opportune : il fait très chaud dans la plaine, qui est d'ordinaire plutôt dépourvue d'arbres. Les premiers arbres se situent à une minute de marche, et leur ombre vous fera sûrement le plus grand bien.
+			{img:lol}
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit.In interdum lectus nec turpis sagittis faucibus.Integer molestie feugiat neque id finibus.Quisque ac velit ut purus hendrerit aliquet.Pellentesque id nunc imperdiet, auctor ante sodales, tristique turpis.Pellentesque facilisis pretium elit sed rutrum.Phasellus eget accumsan quam.Aenean tincidunt interdum interdum.Morbi sed lacus semper, venenatis lorem a, ornare ex.Vivamus congue posuere maximus.Proin ac tincidunt nulla.Nam varius fringilla neque at semper.Vestibulum eu sagittis ipsum, sed varius mi.Proin non placerat elit.Sed pharetra felis a eros suscipit, nec lacinia sapien porttitor.Donec non risus scelerisque, auctor dolor id, egestas tellus.
+			`,
+			color: 'royal',
 			img: 0,
 			buttons: [{
 				title: "Ok",

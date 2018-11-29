@@ -1,6 +1,6 @@
 var modal = {
 	isOpen: false,
-	buttons:[],
+	buttons: [],
 	load(params = {}) {
 		this.isOpen ? this.switch(params) : this.fadeIn(params);
 	},
@@ -14,14 +14,14 @@ var modal = {
 			display: "block"
 		});
 		if (this.img) {
-			delay(function() {
+			delay(function () {
 				$(".modal").css("animation", "adapt-modal 0.4s ease forwards");
 			}, 700);
 		}
 	},
 	switch (params) {
 		$(".modal").css("animation", "switch-modal-hide 0.4s ease-in forwards");
-		delay(function() {
+		delay(function () {
 			modal.apply(params);
 			$(".modal").css("animation", "switch-modal-show 0.4s ease-out forwards");
 		}, 400);
@@ -32,7 +32,7 @@ var modal = {
 			overlay.hide();
 			game.ui.animations.play();
 		}
-		delay(function(){
+		delay(function () {
 			$(".modal").css("animation", "close-modal .5s ease");
 		}, 300);
 	},
@@ -44,7 +44,7 @@ var modal = {
 		switch (params.color) {
 			case "salmon":
 				this.color = "rgb(239, 137, 119)";
-       		 this.btnColor = "rgb(238, 122, 102)";
+				this.btnColor = "rgb(238, 122, 102)";
 				break;
 			case "wine":
 				this.color = "#87475b";
@@ -54,6 +54,9 @@ var modal = {
 				break;
 			case "aqua":
 				this.color = "rgb(52, 118, 122)";
+				break;
+			case "royal":
+				this.color = "rgb(145, 44, 44)";
 				break;
 			default:
 				this.color = "rgb(167, 113, 103)";
@@ -72,13 +75,36 @@ var modal = {
 			"border-top-color": this.color
 		});
 		$(".modal main .btns").html("");
+		$(".modal .img-story")
+			.css({
+				"background-color": this.color,
+				"border-color": this.color
+			});
 		if (params.buttons)
-		modal.buttons = params.buttons;
-			for (btn in modal.buttons) {
-				$(".modal main .btns").append(
-					`<div class='btn' onclick='modal.buttons[${btn}].script()'>${modal.buttons[btn].title.format()}</div>`
-				);
-			}
+			modal.buttons = params.buttons;
+		for (btn in modal.buttons) {
+			$(".modal main .btns").append(
+				`<div class='btn' onclick='modal.buttons[${btn}].script()'>${modal.buttons[btn].title.format()}</div>`
+			);
+		}
 		$(".modal main .btns .btn").css("background-color", this.btnColor);
+		delay(function () {
+			if (isOverflown($(".modal main")[0])) {
+				$(".modal").append("<div class='overflowGradient bot'></div><div class='overflowGradient top'></div><div class='overflowIndicator'>...</div>");
+				$(".modal main").on("wheel", function (event) {
+					delay(function(){
+						if ($(".modal main")[0].scrollTop >= 0.9 * $(".modal main")[0].scrollTopMax)
+							$(".modal .overflowIndicator, .modal .overflowGradient.bot").css('opacity', 0);
+						else
+							$(".modal .overflowIndicator, .modal .overflowGradient.bot").css('opacity', 1);
+
+						if ($(".modal main")[0].scrollTop > 0)
+							$(".modal .overflowGradient.top").css('opacity', 1);
+						else
+							$(".modal .overflowGradient.top").css('opacity', 0);
+					}, 200);
+				}, false);
+			}
+		}, 300);
 	},
 };

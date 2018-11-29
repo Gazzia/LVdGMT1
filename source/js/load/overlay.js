@@ -4,7 +4,7 @@ var overlay = {
       if (color) {
          if (color == "testDark") $(".overlay").css('background-color', 'rgba(49, 35, 17, 0.8)');
       } else {
-         $(".overlay").css('background-color', 'rgba(61, 49, 25, 0.4)');
+         $(".overlay").css('background-color', 'rgba(62, 53, 33, 0.64)');
       }
       if (!this.isShown) {
          $(".overlay").css({
