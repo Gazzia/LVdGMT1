@@ -141,6 +141,8 @@ nav.playerMenu {
   top: 0;
   left: 27.5vw;
   opacity: 0;
+  max-height: 100vh;
+  overflow: hidden auto;
 
   &>.main>ul>.folder>.dg>ul>.title {
     font-weight: 500;
@@ -153,6 +155,9 @@ nav.playerMenu {
 
   .dg {
     font-family: "Fira Sans", sans-serif;
+  }
+  .close-bottom{
+    display: none;
   }
 
 }

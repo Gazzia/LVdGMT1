@@ -123,8 +123,8 @@ class Civil {
 				}
 			},
 			die() {
-				if (!Events.player_isAlreadyDead) {
-					Events.player_isAlreadyDead = true;
+				if (!Events.player_isDead) {
+					Events.player_isDead = true;
 					new Notification({
 						type: 'error',
 						txt: `Vous êtes mort ! (Enfin théoriquement)`,

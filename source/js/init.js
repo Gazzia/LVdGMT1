@@ -61,6 +61,19 @@ var time_days = FOLDER_time.add(time, 'daysPlayed').min(0).step(1).listen().onFi
 var FOLDER_samples = gui.addFolder('GUI samples');
 FOLDER_samples.add(devEvents, 'modal_sample');
 FOLDER_samples.add(devEvents, 'notif_sample');
+var FOLDER_events = gui.addFolder('Events');
+var events_ui = FOLDER_events.addFolder('UI');
+var events_player = FOLDER_events.addFolder('Player');
+for (var ev in Events) {
+	if (Events.hasOwnProperty(ev)) {
+		if (/(helper_)/g.test(ev))
+			events_ui.add(Events, ev);
+		else if (/(player_)/g.test(ev))
+			events_player.add(Events, ev);
+		else
+			FOLDER_events.add(Events, ev);
+	}
+}
 
 var devContainer = document.getElementById('devMenu');
 devContainer.appendChild(gui.domElement);
