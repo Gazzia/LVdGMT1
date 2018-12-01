@@ -3,13 +3,24 @@ html(lang="fr")
   head
     meta(charset='utf-8')
     title Rework
+    //- preload des fonts avant de les load dans _fontLoad.scss
+    <link rel="preload" src="fonts/roboto-v18-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" src="fonts/roboto-v18-latin-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" src="fonts/roboto-slab-v7-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" src="fonts/FiraSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" src="fonts/FiraSans-Italic.woff2" as="font" type="font/woff2" crossorigin>
+    //- css
+    link(rel='stylesheet' type='text/css' href='css/fontLoad.css')
     link(rel='stylesheet' type='text/css' href='../lib/normalize.css')
     link(rel='stylesheet' type='text/css' href='css/styles.css')
-    // <script src="../lib/jquery-3.3.0.min.js"></script>
+    //- librairies js
     script(src='../lib/cash-2.3.9.min.js')
+    script(src='../lib/dat.gui.min.js')
+    script(src='../lib/spell-min.js')
+    // <script src="../lib/jquery-3.3.0.min.js"></script>
     // <script src="../lib/zepto.min.js"></script>
     // <script src="../lib/zepto_fx_methods.js"></script>
-    link(href='https://fonts.googleapis.com/css?family=Fira+Sans:400,400i|Roboto:400,400i,700|Roboto+Slab' rel='stylesheet')
+    //- scripts js devant s'éxécuter pendant le chargement de la page
     script(src='js/load.js')
   body|
     |include "main.html"

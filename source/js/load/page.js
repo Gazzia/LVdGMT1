@@ -52,7 +52,8 @@ var pageList = [{
 					Vous êtes trempé{f:e} de sueur et l'atmosphère devient de plus en plus lourde..//
 		          En regardant vers l'Ouest, vous apercevez {c:un petit bois|wood} où vous pourrez vous rafraîchir.//
 		          Vers l'Est, {c:une petite cabane en bois|cabane} se dresse sur une colline.//
-		          Au Nord, {c:le chemin de terre|chemin} continue et serpente vers un vallon.`;
+		          Au Nord, {c:le chemin de terre|chemin} continue et serpente vers un vallon.
+					 `;
 				}
 				if (time.period == "crépuscule") {
 					return `Le nuit tombe et la température redescend lentement, mais l'atmosphère continue tout de même à s'allourdir de minutes en minutes.//

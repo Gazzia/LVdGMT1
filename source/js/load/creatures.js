@@ -18,72 +18,62 @@ class Civil {
 		this.genre = params.genre || "m";
 		this.health = {
 			showNotifs: false,
-			max: params.healthmax || 100,
-			current: params.healthmax || 100,
+			_max: params.healthmax || 100,
+			_current: params.healthmax || 100,
+			checkNewValue(type) {
+				if (this[type] < 0) this[type] = 0;
+				if (this[type] == 0) this.die();
+				if (this.max < this.current) this.current = this.max;
+			},
+			set max(value) {
+				if (this._max !== 0) {
+					this._max = value;
+					this.checkNewValue("max");
+				}
+			},
+			get max() {
+				return this._max;
+			},
+			set current(value) {
+				if (this._current !== 0){
+					this._current = value;
+					this.checkNewValue("current");
+				}
+			},
+			get current() {
+				return this._current;
+			},
 			change(_params) {
 				if (_params.remove) {
 					if (_params.from == "max") {
-						//SI on retire du maxhealth
-						if (this.max - _params.remove > 0) {
-							//SI après le retrait le maxhealth serait toujours au dessus de 0
-							//ALORS on effectue le retrait
-							this.max -= _params.remove;
-							if (this.showNotifs) {
+						this.max -= _params.remove;
+						this.checkNewValue("max");
+						if (this.showNotifs) {
+							if (this.max > 0) {
 								new Notification({
 									type: 'health',
 									txt: `Votre vie maximum a été réduite de ${_params.remove} pts!`,
 									timeOut: 30
 								});
 							}
-						} else {
-							//SI après le retrait le maxhealth est en dessous de 0
-							//ALORS maxhealth est égal à 0
-							this.max = 0;
-							this.die();
-						}
-
-						if (this.max < this.current) {
-							//SI après le retrait le health serait supérieur au maxhealth
-							//ALORS health = maxhealth
-							this.current = this.max;
 						}
 						return this.max;
-
 					} else if (_params.from == "current") {
-						//SI on retire du health
-						if (this.current - _params.remove > 0) {
-							//SI après le retrait le health est toujours au dessus de 0
-							//ALORS on effectue le retrait
-							this.current -= _params.remove;
-							if (this.showNotifs) {
+						this._current -= _params.remove;
+						this.checkNewValue("current");
+						if (this.showNotifs) {
+							if (this.current > 0) {
 								new Notification({
 									type: 'health',
 									txt: `Votre vie a diminué de ${_params.remove} pts!`,
 									timeOut: 30
 								});
 							}
-
-						} else {
-							//SI après le retrait le health est en dessous de 0
-							//ALORS health est égal à 0
-							this.current = 0;
-						}
-
-						return this.current;
-					}
-
-					if (this.current == 0) {
-						//SI après tout ça le health est égal à 0
-						//ALORS le civil est mort
-						if (this.showNotifs) {
-							this.die();
 						}
 					}
-
 				} else if (_params.add) {
 					if (_params.from == "max") {
-						//SI on ajoute du maxhealth
-						//ALORS l'ajout se fait
+						this.checkNewValue("max");
 						this.max += _params.add;
 						if (this.showNotifs) {
 							new Notification({
@@ -96,23 +86,26 @@ class Civil {
 
 					} else if (_params.from == "current") {
 						//SI on ajoute du health
+						if (this.current != 0) {
+							if (this.current + _params.add >= this.max) {
+								//SI après l'ajout, on serait heal complêtement voire trop
+								//ALORS on heal à 100%
+								this.heal();
 
-						if (this.current + _params.add >= this.max) {
-							//SI après l'ajout, on serait heal complêtement voire trop
-							//ALORS on heal à 100%
-							this.heal();
-
-						} else {
-							//SI après l'ajout, on ne serait pas heal complêtement
-							//ALORS on fait l'ajout
-							this.current += _params.add;
-							if (this.showNotifs) {
-								new Notification({
-									type: 'health',
-									txt: `Votre vie a été regénérée de ${_params.add} pts!`,
-									timeOut: 30
-								});
+							} else {
+								//SI après l'ajout, on ne serait pas heal complêtement
+								//ALORS on fait l'ajout
+								this.current += _params.add;
+								this.checkNewValue("current");
+								if (this.showNotifs) {
+									new Notification({
+										type: 'health',
+										txt: `Votre vie a été regénérée de ${_params.add} pts!`,
+										timeOut: 30
+									});
+								}
 							}
+							
 						}
 
 						return this.current;
@@ -129,12 +122,14 @@ class Civil {
 					});
 				}
 			},
-			die(){
-				if(this.showNotifs){
+			die() {
+				if (!Events.player_isAlreadyDead) {
+					Events.player_isAlreadyDead = true;
 					new Notification({
 						type: 'error',
 						txt: `Vous êtes mort ! (Enfin théoriquement)`,
-						timeOut: false
+						timeOut: false,
+						closable: false
 					});
 				}
 			}

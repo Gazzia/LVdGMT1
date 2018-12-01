@@ -1,0 +1,88 @@
+.background {
+   @include fullsized;
+   transition: background-color 1s ease;
+   left: 0;
+   z-index: -1;
+   background-color: #c9e0fb;
+
+   .cover {
+      @include fullsized;
+
+      &.-mid {
+         z-index: 5;
+
+         background: {
+            size: 100% auto;
+            position: bottom;
+            repeat: no-repeat;
+         }
+      }
+
+      &.-back {
+         z-index: 2;
+
+         background: {
+            size: 100% auto;
+            position: bottom;
+            repeat: no-repeat;
+         }
+      }
+
+      &.-fore {
+         z-index: 6;
+
+         background: {
+            size: auto 100%;
+            position: bottom;
+            repeat: no-repeat;
+         }
+      }
+   }
+
+   .clouds {
+      &.-front {
+         @include cloud(150);
+         z-index: 3;
+         background-image: url("../../assets/img/bg/clouds/Fore01.png");
+      }
+
+      &.-back {
+         @include cloud(200);
+         z-index: 1;
+         margin-top: 11vh;
+         background-image: url("../../assets/img/bg/clouds/Back01.png");
+      }
+   }
+
+   .sun {
+      $SunColor: rgb(244, 255, 250);
+      z-index: 4;
+      position: absolute;
+      top: 6vh;
+      left: 20vw;
+      height: 8vh;
+      width: 8vh;
+      border-radius: 50%;
+      background-color: $SunColor;
+      box-shadow: 0 0 33vh 19vh $SunColor, 0 0 9vh 6vh $SunColor;
+   }
+
+   .prop {
+      z-index: 6;
+      position: absolute;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: bottom;
+   }
+
+   .stars {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-image: url("../../assets/img/bg/stars.png");
+      background-size: 220px auto;
+      left: 0;
+      top: 0;
+      // animation: spinStars 800s linear forwards infinite;
+   }
+}

@@ -111,7 +111,7 @@ function Notification(params = {}) {
 	this.element.css({
 		backgroundImage: `linear-gradient(162deg, ${styleGradient.from}, ${styleGradient.to})`,
 		color: styleColor,
-		animation: "fadeInNotif 0.3s ease-in forwards"
+		animation: "fadeInScrollUp 0.3s ease-in forwards"
 	});
 
 	if (styleIcon) {
@@ -168,7 +168,7 @@ function Notification(params = {}) {
 	}
 
 	this.closeNotif = function () {
-		this.element.css("animation", "fadeOutNotif 0.4s ease-out forwards");
+		this.element.css("animation", "fadeOutScrollDown 0.4s ease-out forwards");
 		delay(function () {
 			this.element.remove();
 			var index = Notification.instances.indexOf(this);

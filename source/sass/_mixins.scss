@@ -1,0 +1,33 @@
+@mixin fullsized {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   margin: 0;
+}
+
+@mixin noselect {
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+@mixin flexCenterChildren {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+@mixin cloud($CloudSpeed) {
+   @include fullsized;
+   height: 40%;
+
+   background: {
+      size: cover;
+      repeat: repeat;
+   }
+
+   transform: translateZ();
+   animation: slide #{$CloudSpeed}s linear infinite;
+}

@@ -2,14 +2,20 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <title>Rework</title>
+    <title>Rework</title><link rel="preload" src="fonts/roboto-v18-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" src="fonts/roboto-v18-latin-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" src="fonts/roboto-slab-v7-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" src="fonts/FiraSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" src="fonts/FiraSans-Italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" type="text/css" href="css/fontLoad.css">
     <link rel="stylesheet" type="text/css" href="../lib/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <!-- <script src="../lib/jquery-3.3.0.min.js"></script>-->
     <script src="../lib/cash-2.3.9.min.js"></script>
+    <script src="../lib/dat.gui.min.js"></script>
+    <script src="../lib/spell-min.js"></script>
+    <!-- <script src="../lib/jquery-3.3.0.min.js"></script>-->
     <!-- <script src="../lib/zepto.min.js"></script>-->
     <!-- <script src="../lib/zepto_fx_methods.js"></script>-->
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i|Roboto:400,400i,700|Roboto+Slab" rel="stylesheet">
     <script src="js/load.js"></script>
   </head>
   <body>
@@ -27,9 +33,14 @@
     </div>
     <main class="main">
       <div class="textbox title"></div>
-      <div class="textbox scene"></div>
-      <div class="textbox story"></div>
-      <div class="extrasContainer"></div>
+      <div class="notTitle">
+        <div class="textbox scene"></div>
+        <div class="textbox story"></div>
+        <div class="extrasContainer"></div>
+      </div>
+      <div class="overflowGradient bot"></div>
+      <div class="overflowGradient top"></div>
+      <div class="overflowIndicator">...</div>
       <div id="actionmenu">
         <header>
           <!-- Titre généré par la fonction clickOnTrigger()-->
@@ -39,9 +50,10 @@
         </ul>
       </div>
     </main>
-    <nav class="gameMenu"></nav>
+    <nav class="playerMenu"></nav>
     <div class="notifications"></div>
-    <div class="overlay"></div>
+    <div class="overlay normal"></div>
+    <div class="overlay important"></div>
     <div class="modal">
       <header></header>
       <main>
@@ -53,6 +65,11 @@
       <div class="overflowGradient top"></div>
       <div class="overflowIndicator">...</div>
     </div>
+    <div class="gameMenu">
+      <div class="head">Menu</div>
+      <div class="content"><a class="btn">Sauvegarder</a><a class="btn">Charger</a><a class="btn">Crédits</a><a class="btn">Quitter</a></div>
+    </div>
+    <div id="devMenu"></div>
     <div class="chance">
       <main>
         <section id="d20">

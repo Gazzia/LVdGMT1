@@ -78,7 +78,7 @@ function rightClickOnTrigger(e) {
   }
 }
 
-$(".modal main").on("wheel", function (event) {
+$(".modal main, .main .notTitle").on("wheel", function (event) {
   if (!event.altKey && !event.shiftKey) {
     var scrollbase = 60;
   } else {

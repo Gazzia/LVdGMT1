@@ -10,17 +10,22 @@
   .begariannes
 main.main
   .textbox.title
-  .textbox.scene
-  .textbox.story
-  .extrasContainer
+  .notTitle
+    .textbox.scene
+    .textbox.story
+    .extrasContainer
+  .overflowGradient.bot
+  .overflowGradient.top
+  .overflowIndicator ...
   #actionmenu
     header
       // Titre généré par la fonction clickOnTrigger()
     ul
       // Actions générées par la fonction clickOnTrigger()
-nav.gameMenu
+nav.playerMenu
 .notifications
-.overlay
+.overlay.normal
+.overlay.important
 .modal
   header
   main
@@ -30,7 +35,14 @@ nav.gameMenu
   .overflowGradient.bot
   .overflowGradient.top
   .overflowIndicator ...
-
+.gameMenu
+  .head Menu
+  .content
+    a.btn Sauvegarder
+    a.btn Charger
+    a.btn Crédits
+    a.btn Quitter
+#devMenu
 .chance
   main
     section#d20

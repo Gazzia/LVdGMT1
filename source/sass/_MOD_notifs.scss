@@ -1,0 +1,110 @@
+.notifications {
+   position: absolute;
+   top: 0;
+   left: 2vh;
+   max-height: 50vh;
+   width: 25vw;
+   z-index: 30;
+
+   .notif {
+      top: 0;
+      width: 100%;
+      padding: 1.8vh 0.5vw;
+      box-sizing: border-box;
+      box-shadow: 0 0.5vh 0.8vh rgba(0, 0, 0, .07);
+      font-size: 1.92vh;
+      text-shadow: 0 1px 2px #0003;
+      margin: 2vh 0;
+      background-image: linear-gradient(162deg, #5acecf, #4350bc);
+      color: white;
+      position: relative;
+      opacity: 0;
+      transform: translateY(-5vh);
+      font-size: 1.8vh;
+      line-height: 1.2;
+      font-style: normal;
+
+      .btns {
+         display: inline-block;
+
+         .btn {
+            box-sizing: border-box;
+            border: 1px solid #fff;
+            display: inline-block;
+            margin: 3px 1vh;
+            padding: 0.2vh 1vh;
+            border-radius: 0.5vh;
+            text-shadow: none;
+            background-image: linear-gradient(transparent, #fff3);
+            transition: background-color 0.3s ease;
+            font-size: 90%;
+            font-weight: 300;
+
+            &:hover {
+               cursor: pointer;
+            }
+         }
+      }
+
+      .close {
+         position: absolute;
+         right: 1vh;
+         background-image: url("../../assets/img/ui/close.png");
+         background-size: 47%;
+         background-repeat: no-repeat;
+         height: 100%;
+         width: 1.5vw;
+         top: 0;
+         background-position: center;
+         filter: invert(100%) drop-shadow(0 1px 2px #0000004d);
+
+         &:hover {
+            cursor: pointer;
+         }
+      }
+
+      .icon {
+         position: absolute;
+         left: 0.5vw;
+         top: 0;
+         width: 1.2vw;
+         height: 100%;
+         background-size: contain;
+         background-repeat: no-repeat;
+         background-position: center;
+         opacity: 0.8;
+         filter: invert(100);
+      }
+
+      .progressBar {
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         width: 100%;
+         height: 2px;
+
+         .progress {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            transition: 0.1s linear;
+         }
+      }
+
+      i {
+         font-weight: 100;
+         opacity: 0.7;
+         font-family: 'Fira Sans';
+         display: block;
+         margin-top: 0.8vh;
+         border-top: 1px solid;
+         padding-top: 1vh;
+         width: 80%;
+         left: 10%;
+         position: relative;
+      }
+   }
+}

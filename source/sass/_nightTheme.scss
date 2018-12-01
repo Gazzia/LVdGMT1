@@ -9,7 +9,8 @@ main.main.nightTheme {
          color: #5d846e;
       }
 
-      &.extra, &.scene {
+      &.extra,
+      &.scene {
          color: rgba(0, 0, 0, 0.5);
       }
 
@@ -18,8 +19,20 @@ main.main.nightTheme {
          background-color: #8e836d;
          border-left: 8px solid #4a5d4c;
       }
-      .click{
+
+      .click {
          color: #21513d;
+      }
+   }
+
+   .overflowGradient {
+
+      &.bot {
+         background-image: url('../../assets/img/ui/overflowBotGradient_night.png');
+      }
+
+      &.top {
+         background-image: url('../../assets/img/ui/overflowTopGradient_night.png');
       }
    }
 }

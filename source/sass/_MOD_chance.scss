@@ -1,0 +1,61 @@
+.chance {
+   display: none;
+   opacity: 0;
+   position: absolute;
+   width: 90vh;
+   height: 58vh;
+   z-index: 22;
+   background-color: #4e0f22;
+   background-image: url("../../assets/img/ui/testChanceBG.png");
+   background-size: contain;
+   font-family: 'Vollkorn';
+   border: 1px solid black;
+   box-shadow: 0 0 56vh black;
+
+   main {
+      position: absolute;
+      left: calc(2.6vh + 7px);
+      bottom: calc(7px + 3.3vh);
+      height: 40vh;
+      width: 53vh;
+      box-sizing: border-box;
+      border-radius: 0.5vh;
+   }
+
+   aside {
+      position: absolute;
+      height: 39vh;
+      width: 19vh;
+      right: 8.4vh;
+      top: 10vh;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      color: #000;
+      font-size: 2vh;
+      box-sizing: border-box;
+      border-radius: .5vh;
+
+      .cat {
+         margin-top: 4vh;
+         text-shadow: none;
+         transition: all 0.3s ease;
+         opacity: 0.6;
+
+         &:nth-child(1) {
+            margin-top: 0;
+         }
+
+         h2 {
+            font-size: 2vh;
+            margin: 0;
+            text-transform: uppercase;
+            font-weight: normal;
+            color: #410506;
+            letter-spacing: 1.2px;
+            text-shadow: none;
+            transition: all 0.3s ease;
+         }
+      }
+   }
+}

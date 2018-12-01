@@ -9,6 +9,7 @@
     transform: translateZ(0);
   }
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -18,17 +19,31 @@
     opacity: 1;
   }
 }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes flashTxt {
   0% {
     opacity: 0.3;
   }
+
   50% {
     opacity: 0.85;
   }
+
   100% {
     opacity: 0.3;
   }
 }
+
 @keyframes spinStars {
   from {
     background-position: top left;
@@ -40,16 +55,8 @@
     transform: translateZ(0);
   }
 }
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
 
-  to {
-    opacity: 0;
-  }
-}
-@keyframes fadeOutNotif {
+@keyframes fadeOutScrollDown {
   0% {
     opacity: 1;
     transform: translateY(0vh);
@@ -64,7 +71,8 @@
     transform: translateY(-5vh);
   }
 }
-@keyframes fadeInNotif {
+
+@keyframes fadeInScrollUp {
   0% {
     opacity: 0;
     transform: translateY(-5vh);
@@ -79,6 +87,7 @@
     transform: translateY(0vh);
   }
 }
+
 @keyframes progressDecrease {
   from {
     width: 100%;
@@ -88,6 +97,7 @@
     width: 0;
   }
 }
+
 @keyframes open-modal {
   from {
     opacity: 0;
@@ -103,6 +113,7 @@
     opacity: 1;
   }
 }
+
 @keyframes adapt-modal {
   from {
     transform: translateX(0vh);
@@ -114,6 +125,7 @@
     opacity: 1;
   }
 }
+
 @keyframes close-modal {
   0% {
     opacity: 1;
@@ -125,6 +137,7 @@
     transform: translate3d(0, 100px, 0);
   }
 }
+
 @keyframes switch-modal-hide {
   from {
     margin-left: 0;
@@ -136,6 +149,7 @@
     opacity: 0;
   }
 }
+
 @keyframes switch-modal-show {
   from {
     margin-left: 100vw;
@@ -147,6 +161,7 @@
     opacity: 1;
   }
 }
+
 @keyframes open-actionmenu {
   from {
     transform: scale(0);
@@ -158,6 +173,7 @@
     opacity: 1;
   }
 }
+
 @keyframes switch-modal-show {
   from {
     margin-left: 100vw;
@@ -169,6 +185,7 @@
     opacity: 1;
   }
 }
+
 @keyframes hide-ui-main {
   0% {
     right: 4vw;
@@ -184,6 +201,7 @@
     opacity: 0;
   }
 }
+
 @keyframes show-ui-main {
   0% {
     right: -36vw;
@@ -199,6 +217,7 @@
     opacity: 1;
   }
 }
+
 @keyframes hide-ui-nav {
   0% {
     bottom: -52vh;
@@ -230,6 +249,7 @@
     opacity: 1;
   }
 }
+
 @keyframes chanceCatShine {
   0% {
     color: inherit;
@@ -271,5 +291,23 @@
   100% {
     color: #7e6897;
     text-shadow: none;
+  }
+}
+@keyframes weird_activate {
+  0% {
+    transform: none;
+  }
+
+  100% {
+    transform : rotateX(147deg) rotateY(28deg) rotateZ(-132deg) scale(0.9);
+  }
+}
+@keyframes weird_desactivate {
+  0% {
+    transform: rotateX(147deg) rotateY(28deg) rotateZ(-132deg) scale(0.9);
+  }
+
+  100% {
+    transform: none;
   }
 }

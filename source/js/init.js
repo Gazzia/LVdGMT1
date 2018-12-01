@@ -5,9 +5,6 @@ function round(value, round) {
 const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const delay = (fn, wait, ...args) => setTimeout(fn, wait, ...args);
 
-function isOverflown(element) {
-	return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
-}
 
 var player = new Player();
 var bob = new NPC({
@@ -21,122 +18,49 @@ time.start();
 game.loadPage(0);
 
 //****************************
-// Variables provisoires
+// Provisoire :
 //****************************
 
-//****************************
-
-$('nav.gameMenu').on('click', function () {
-	modalList.devModal();
+// Spell pour activer le devMenu :
+var spell_dev = new Spell("dev", function () {
+	devMenu.toggle();
 });
 
-var files = {
-	paramsToSave: {
+//init du devMenu :
+var gui = new dat.GUI({
+	autoPlace: false
+});
+var FOLDER_pl = gui.addFolder('Player');
+var pl_name = FOLDER_pl.add(player, 'name');
+var pl_genre = FOLDER_pl.add(player, 'genre', {
+	'Homme': 'm',
+	'Femme': 'f'
+}).onFinishChange(function () {
+	game.refreshPage();
+});
+var pl_money = FOLDER_pl.add(player.money, 'total').min(0).step(1).listen();
+var pl_health = FOLDER_pl.addFolder('Health');
+var pl_hp = pl_health.add(player.health, 'current', 0, player.health.max).step(1).listen();
+var pl_hpmax = pl_health.add(player.health, 'max').min(0).step(1).listen().onFinishChange(function () {
+	pl_hp.max(player.health.max);
+});
+var FOLDER_time = gui.addFolder('Time');
+var time_hours = FOLDER_time.add(time, 'hours', {
+	'Aube': 6,
+	'Journée': 10,
+	'Crépuscule': 19,
+	'Nuit': 22
+}).onFinishChange(function () {
+	time.refreshPeriod();
+	game.refreshPage();
+	time.refreshClocks();
+});
+var time_days = FOLDER_time.add(time, 'daysPlayed').min(0).step(1).listen().onFinishChange(function () {
+	game.refreshPage();
+});
+var FOLDER_samples = gui.addFolder('GUI samples');
+FOLDER_samples.add(devEvents, 'modal_sample');
+FOLDER_samples.add(devEvents, 'notif_sample');
 
-		// GAME ------------------------------
-		get game_pageID() {
-			return game.pageID;
-		},
-		set game_pageID(value) {
-			game.pageID = value;
-		},
-
-		get game_page_sceneID() {
-			return game.page.sceneID;
-		},
-		set game_page_sceneID(value) {
-			game.page.sceneID = value;
-		},
-
-		// EVENTS ------------------------------
-		get events() {
-			return Events;
-		},
-		set events(value) {
-			Events = value;
-		},
-
-		// TIME ------------------------------
-		get time_hours() {
-			return time.hours;
-		},
-		set time_hours(value) {
-			time.hours = value;
-		},
-
-		get time_minutes() {
-			return time.minutes;
-		},
-		set time_minutes(value) {
-			time.minutes = value;
-		},
-
-		get time_daysPlayed() {
-			return time.daysPlayed;
-		},
-		set time_daysPlayed(value) {
-			time.daysPlayed = value;
-		},
-
-		// PLAYER  ------------------------------
-
-		get player_name() {
-			return player.name;
-		},
-		set player_name(value) {
-			player.name = value;
-		},
-
-		get player_genre() {
-			return player.genre;
-		},
-		set player_genre(value) {
-			player.genre = value;
-		},
-
-		get player_money() {
-			return player.money.total;
-		},
-		set player_money(value) {
-			player.money.total = value;
-		},
-
-		get player_currentHP() {
-			return player.health.current;
-		},
-		set player_currentHP(value) {
-			player.health.current = value;
-		},
-
-		get player_maxHP() {
-			return player.health.max;
-		},
-		set player_maxHP(value) {
-			player.health.max = value;
-		},
-
-		get player_inv_itemList() {
-			return player.inv._itemList;
-		},
-		set player_inv_itemList(value) {
-			player.inv._itemList = value;
-		},
-	},
-	save() {
-		for (param in this.paramsToSave) {
-			localStorage[`save_${param}`] = JSON.stringify(this.paramsToSave[param]);
-		}
-		console.info("Jeu sauvegardé !");
-	},
-	load() {
-		modal.close();
-		closeAllNotifications();
-		for (param in this.paramsToSave) {
-			this.paramsToSave[param] = JSON.parse(localStorage[`save_${param}`]);
-		}
-		time.refreshPeriod();
-		time.refreshClocks();
-		game.loadPage(game.pageID);
-		console.info("Jeu chargé !");
-	}
-};
+var devContainer = document.getElementById('devMenu');
+devContainer.appendChild(gui.domElement);
