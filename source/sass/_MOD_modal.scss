@@ -5,25 +5,27 @@
    max-height: 90vh;
    width: 68vh;
    background: linear-gradient(rgb(222, 214, 208), rgb(194, 181, 181));
-   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+   box-shadow: 0 0 2vh 1vh black;
    opacity: 0;
    transition: all 0.4s ease;
    transform: translateX(0vh);
+   min-height: 26vh;
+   max-width: 90vw;
 
    &::before {
       display: block;
       content: "";
-      border-image: url('../../assets/img/ui/border.png') 190 178 190 178 stretch;
-      border-style: solid;
-      border-width: 9vh;
+      border: solid 15vh transparent;
+      border-image: url("../../assets/img/ui/border.png") 190 190 190 190 fill;
       position: absolute;
-      top: -1vh;
-      left: -1vh;
-      width: calc(100% - 16vh);
-      height: calc(100% - 16vh);
+      top: -2vh;
+      left: -2vh;
+      width: calc(100% - 25.5vh);
+      height: calc(100% - 25.5vh);
       pointer-events: none;
       z-index: 1;
    }
+
 
    header {
       width: 100%;

@@ -59,8 +59,8 @@ var modal = {
 				this.color = "rgb(145, 44, 44)";
 				break;
 			default:
-				this.color = "rgb(167, 113, 103)";
-				this.btnColor = "rgb(167, 113, 103)";
+				this.color = "rgb(87, 68, 68)";
+				this.btnColor = "rgb(87, 68, 68)";
 		}
 		if (!this.btnColor) this.btnColor = this.color;
 		this.img && this.img != "0" ?

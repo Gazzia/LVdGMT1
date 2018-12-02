@@ -32,7 +32,14 @@ function applyBackground(params) {
 		$('.cover.-fore').css('background-image', `none`);
 }
 
-var pageList = [{
+var pageList = [
+	{
+		locale: {
+			région: "Soufflant",
+			// interior: false,
+			// city: false,
+			identifier: "Embranchement"
+		},
 		title: "Errance",
 		fluff: `Vous voilà planté{f:e} au coeur de la plaine du Soufflant.//
     Malgré son nom, la plaine est chaude l'été mais pas la moindre brise ne se fait ressentir.`,
@@ -135,6 +142,10 @@ var pageList = [{
 		}]
 	},
 	{
+		locale: {
+			région: "Soufflant",
+			identifier: "Petit bois"
+		},
 		title: "Une fraîcheur bien méritée",
 		fluff: `Vous voilà à l'entrée d'un petit bois de cérembles.`,
 		refBackground: function () {
@@ -226,6 +237,10 @@ var pageList = [{
 		}]
 	},
 	{
+		locale: {
+			région: "Soufflant",
+			identifier: "Rivière"
+		},
 		title: "Un torrent qui s'enfuit",
 		fluff: `Derrière {c:les arbres|bois}, une petite rivière clairette court entre les rochers moussus.`,
 		refBackground: function () {

@@ -5,9 +5,9 @@
 
 #coucoulol {
   position: fixed;
-  font-size:6vh;
+  font-size: 6vh;
   font-family: "Comic Sans MS",
-  fantasy;
+    fantasy;
   color: rgb(255, 0, 229);
   left: 2vw;
   transform: rotate(5deg);
@@ -67,17 +67,17 @@ body {
   }
 }
 
-* .begariannes {
-  background-image: url("../../assets/img/bg/prop/bégariannes.gif");
-  position: absolute;
-  width: 15vh;
-  height: 15vh;
-  left: 20vh;
-  bottom: 10vh;
-  background-size: contain;
-  z-index: 60;
-  display: none;
-}
+// * .begariannes {
+//   background-image: url("../../assets/img/bg/prop/bégariannes.gif");
+//   position: absolute;
+//   width: 15vh;
+//   height: 15vh;
+//   left: 20vh;
+//   bottom: 10vh;
+//   background-size: contain;
+//   z-index: 60;
+//   display: none;
+// }
 
 nav.playerMenu {
   position: absolute;
@@ -126,9 +126,16 @@ nav.playerMenu {
       line-height: 4vh;
       font-size: 95%;
       color: rgb(126, 126, 126);
+      transition: 0.2s;
 
       &+.btn {
         margin-top: 3vh;
+      }
+      &:hover{
+        filter: contrast(1.1) brightness(1.2);
+      }
+      &:active{
+        filter: contrast(1.1) brightness(1.4);
       }
     }
   }
@@ -146,18 +153,45 @@ nav.playerMenu {
 
   &>.main>ul>.folder>.dg>ul>.title {
     font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
 
   }
 
   &>.main>ul>.folder>.dg>ul>.folder>.dg>ul>.title {
     color: rgb(130, 129, 129);
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   .dg {
     font-family: "Fira Sans", sans-serif;
+
+    .property-name {
+      font-size: calc(5px + 0.7vh);
+      text-align: left;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .c {
+      float: right;
+      width:auto;
+
+      input {
+        float:right;
+        &[type="text"] {
+          max-width: 3vw;
+        }
+      }
+    }
   }
-  .close-bottom{
+
+  .close-bottom {
     display: none;
   }
 
+  .dg.main {
+    width: 32vw !important;
+  }
 }

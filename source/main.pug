@@ -38,10 +38,10 @@ nav.playerMenu
 .gameMenu
   .head Menu
   .content
-    a.btn Sauvegarder
-    a.btn Charger
+    a.btn(onclick="files.save();alert('Sauvegardé');") Sauvegarder
+    a.btn(onclick="files.load();gameMenu.hide()") Charger
     a.btn Crédits
-    a.btn Quitter
+    a.btn Quitter le jeu
 #devMenu
 .chance
   main
