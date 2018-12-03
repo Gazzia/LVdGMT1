@@ -57,7 +57,6 @@ var modalList = {
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit.In interdum lectus nec turpis sagittis faucibus.Integer molestie feugiat neque id finibus.Quisque ac velit ut purus hendrerit aliquet.Pellentesque id nunc imperdiet, auctor ante sodales, tristique turpis.Pellentesque facilisis pretium elit sed rutrum.Phasellus eget accumsan quam.Aenean tincidunt interdum interdum.Morbi sed lacus semper, venenatis lorem a, ornare ex.Vivamus congue posuere maximus.Proin ac tincidunt nulla.Nam varius fringilla neque at semper.Vestibulum eu sagittis ipsum, sed varius mi.Proin non placerat elit.Sed pharetra felis a eros suscipit, nec lacinia sapien porttitor.Donec non risus scelerisque, auctor dolor id, egestas tellus.
 			`,
 			color: 'royal',
-			img: 0,
 			buttons: [{
 				title: "Ok",
 				script() {
@@ -79,7 +78,6 @@ var modalList = {
 			title: "Cabane",
 			txt: texte,
 			color: 0,
-			img: 0,
 			buttons: [{
 				title: "Ok",
 				script() {
@@ -95,7 +93,6 @@ var modalList = {
 				txt: `Vous apercevez à terre une belle branche qui pourrait vous servir d'arme rudimentaire.<br>
 				Voulez-vous la prendre ?`,
 				color: 0,
-				img: 0,
 				buttons: [{
 						title: "Prendre",
 						script() {
@@ -121,7 +118,6 @@ var modalList = {
 				title: "Sol",
 				txt: `Le sol est jonché de vieilles brindilles et de feuilles.`,
 				color: 0,
-				img: 0,
 				buttons: [{
 					title: "Partir",
 					script() {
@@ -134,9 +130,8 @@ var modalList = {
 	Soufflant_Riviere_RegarderEau() {
 		modal.load({
 			title: "Dans l'onde fraîche",
-			txt: `Le petit bras d'eau est plein de vie -et plein d'eau ! L'endroit est très tranquille et serait propice à une petite halte.`,
+			txt: `Le petit bras d'eau est plein de vie -et plein d'eau ! L'endroit est très tranquille et serait propice à une petite halte.`, //TODO: image eau
 			color: 'wine',
-			img: 'rivewater',
 			buttons: [{
 					title: "Faire une petite halte",
 					script() {
@@ -161,9 +156,8 @@ var modalList = {
 	Soufflant_Riviere_HalteFinie() {
 		modal.load({
 			title: "Super",
-			txt: `Cette petite halte est vraiment très agréable. Repartons maintenant.`,
+			txt: `Cette petite halte est vraiment très agréable. Repartons maintenant.`, //TODO: image eau
 			color: 'wine',
-			img: 'rivewater',
 			buttons: [{
 					title: "Non",
 					script() {
@@ -195,8 +189,7 @@ var modalList = {
 	Soufflant_Riviere_LookRive() {
 		modal.load({
 			title: "De l'autre côté des flots",
-			txt: `Sur l'autre rive, vous apercevez un peu plus en aval ce qui semble être une bourse de pièces au pied d'un arbre..`,
-			img: 'rivewater', //TODO: IMG - tas de fringues
+			txt: `Sur l'autre rive, vous apercevez un peu plus en aval ce qui semble être une bourse de pièces au pied d'un arbre..`, //TODO: image rive
 			buttons: [{
 				title: "Traverser",
 				script() {
@@ -246,8 +239,7 @@ var modalList = {
 	Soufflant_Riviere_LookRive_Traversée() {
 		modal.load({
 			title: "De l'autre côté des flots",
-			txt: `Vous venez de traverser les eaux à vos risques et périls, et vous ne voulez plus recommencer. D'ailleurs, il n'y aurait rien dans la bourse en face.`,
-			img: 'rivewater', //TODO: IMG - tas de fringues
+			txt: `Vous venez de traverser les eaux à vos risques et périls, et vous ne voulez plus recommencer. D'ailleurs, il n'y aurait rien dans la bourse en face.`, //TODO: image fringues
 			buttons: [{
 				title: "Partir",
 				script() {
@@ -259,8 +251,7 @@ var modalList = {
 	Soufflant_Riviere_LookInsectes() {
 		modal.load({
 			title: "Un essaim de lumière",
-			txt: `Les bégariannes sont des insectes volants très étranges, capables de produire autour d'eux, la nuit, un halo de jour large comme la main. Leurs proches cousins, les négariannes, produisent l'effet inverse : on les repère facilement le jour, car elles émettent un halo de nuit autour d'elles.`,
-			img: false, //TODO: IMG - bégariannes
+			txt: `Les bégariannes sont des insectes volants très étranges, capables de produire autour d'eux, la nuit, un halo de jour large comme la main. Leurs proches cousins, les négariannes, produisent l'effet inverse : on les repère facilement le jour, car elles émettent un halo de nuit autour d'elles.`, //TODO: image bégariannes
 			buttons: [{
 				title: "Ok",
 				script() {

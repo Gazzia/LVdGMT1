@@ -37,7 +37,6 @@ var modal = {
 		}, 300);
 	},
 	apply(params) {
-		this.img = params.img || 0;
 		this.title = params.title.format() || "Pas de titre";
 		this.txt = params.txt.format() || "Pas de texte";
 		this.btnColor = 0;
@@ -63,17 +62,10 @@ var modal = {
 				this.btnColor = "rgb(87, 68, 68)";
 		}
 		if (!this.btnColor) this.btnColor = this.color;
-		this.img && this.img != "0" ?
-			$(".modal").addClass("withImage") :
-			$(".modal").removeClass("withImage");
 		$(".modal header")
 			.html(this.title)
 			.css("background-color", this.color);
 		$(".modal main .txt").html(this.txt);
-		$(".modal .img").css({
-			"background-image": `url('../assets/img/modal/${this.img}.png')`,
-			"border-top-color": this.color
-		});
 		$(".modal main .btns").html("");
 		$(".modal .img-story")
 			.css({

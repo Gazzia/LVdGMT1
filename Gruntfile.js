@@ -21,10 +21,10 @@ module.exports = function (grunt) {
         files: ['source/*.pug'],
         tasks: ['pug'],
       },
-      html_includes: {
-        files: ['processed/html/PugToHtml/*.html'],
-        tasks: ['includes'],
-      },
+      // html_includes: {
+      //   files: ['processed/html/PugToHtml/*.html'],
+      //   tasks: ['includes'],
+      // },
       // htmlmin: {
       //   files: ['processed/html/IncludeHTML/index.html'],
       //   tasks: ['htmlmin'],
@@ -79,7 +79,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'source',
           src: ['*.pug'],
-          dest: 'processed/html/PugToHtml',
+          dest: 'build',
           ext: '.html'
         }],
         options: {

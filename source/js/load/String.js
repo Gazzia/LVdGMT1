@@ -32,6 +32,10 @@ String.prototype.bold = function(){
 String.prototype.img = function () {
    return this.replace(/\{img:([^}]*)\}/g, `<img class="img-story" src="../assets/img/story/$1.png" alt="L'image n'a pas pu être chargée.." onError="this.style.opacity='0.6';"/>`);
 };
-String.prototype.format = function(){
-   return this.genreIt().setTrigs().addLineBreaks().bold().img();
+String.prototype.inlineImg = function () {
+   return this.replace(/\{img_inline:([^}]*)\}/g, `<img class="img-story inline" src="../assets/img/story/$1.png" alt="L'image n'a pas pu être chargée.." onError="this.style.opacity='0.6';"/>`);
 };
+String.prototype.format = function(){
+   return this.genreIt().setTrigs().addLineBreaks().bold().img().inlineImg();
+};
+

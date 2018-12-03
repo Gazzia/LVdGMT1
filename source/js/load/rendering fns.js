@@ -24,6 +24,6 @@ function isOverflown(fullElem) {
       }, false);
    } else {
       $(`${parent} ${container}`)[0].scrollTop = 0;
-      $(`${parent} .overflowGradient`).css('opacity', 0);
+      $(`${parent} .overflowGradient, ${parent} .overflowIndicator`).css('opacity', 0);
    }
 }

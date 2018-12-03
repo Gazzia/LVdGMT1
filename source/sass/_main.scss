@@ -1,3 +1,15 @@
+.mobile {
+   main.main {
+      width: 92vw;
+      height: 45vh;
+      position: absolute;
+      top: 2vh;
+      .notTitle{
+         max-height: 27.5vh;
+      }
+   }
+}
+
 main.main {
    width: 36vw;
    height: 77vh;
@@ -7,7 +19,7 @@ main.main {
    background-image: linear-gradient(rgb(212, 199, 175), rgb(174, 163, 145));
    right: 4vw;
    margin-bottom: 8vh;
-   transition: all 1s ease;
+   // transition: right 1s ease;
    overflow: hidden;
 
    &::before {
@@ -77,12 +89,11 @@ main.main {
       box-sizing: border-box;
       font-size: calc(8px + 0.71vh);
       letter-spacing: calc(0.01px + 0.01vw);
-      transition: all 1s ease;
+      transition: color 1s, background-color 1s;
 
       .click {
          color: rgb(39, 133, 84);
          cursor: pointer;
-         transition: all 1s ease;
       }
 
       &+.textbox {

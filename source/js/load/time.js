@@ -1,5 +1,18 @@
 var time = {
-	IRLsectoIGmin: 1.5,
+	_IRLsectoIGmin: 1.5,
+	get IRLsectoIGmin(){
+		return time._IRLsectoIGmin;
+	},
+	set IRLsectoIGmin(nb){
+		time._IRLsectoIGmin = nb;
+		clearInterval(time.timeloop);
+		time.timeloop = setInterval(function () {
+			time.set({
+				"minutes": ++time.minutes
+			});
+			time.refreshClocks();
+		}, time._IRLsectoIGmin * 1000);
+	},
 	hours: 13,
 	minutes: 0,
 	period: "journée",
@@ -24,12 +37,12 @@ var time = {
 	start: function () {
 		time.changePeriod('journée');
 		time.refreshClocks();
-		setInterval(function () {
+		time.timeloop = setInterval(function () {
 			time.set({
 				"minutes": ++time.minutes
 			});
 			time.refreshClocks();
-		}, time.IRLsectoIGmin * 1000);
+		}, time._IRLsectoIGmin * 1000);
 	},
 	formatDate: function () {
 		let hours = this.hours < 10 ? "0" + this.hours : this.hours;
@@ -37,7 +50,7 @@ var time = {
 		return (hours + ":" + minutes);
 	},
 	refreshClocks: function () {
-		$('nav').html(time.formatDate());
+		$('.playerMenu .clock').html(time.formatDate());
 	},
 	refreshPeriod: function () {
 		if ((

@@ -81,13 +81,103 @@ body {
 
 nav.playerMenu {
   position: absolute;
-  height: 60vh;
+  height: 93vh;
   width: 36vw;
   background-color: rgb(44, 44, 44);
-  bottom: -52vh;
+  bottom: -85vh;
   right: 4vw;
   color: white;
   line-height: 8vh;
+  transition: bottom 0.4s ease;
+
+  .head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8vh;
+  }
+
+  .content {
+    position: absolute;
+    top: 8vh;
+    margin: 0vh 2vw 3vh 2vw;
+    width: calc(100% - 4vw);
+    height: calc(100% - 11vh);
+    background-color: rgb(21, 21, 21);
+    box-sizing: border-box;
+    border-top: 3px solid rgb(7, 7, 7);
+    border-bottom: 3px solid rgb(57, 57, 57);
+    box-shadow: inset 0vh 1vh 1vh rgba(0, 0, 0, 0.29);
+    overflow: hidden;
+    padding-top: 1vw;
+    line-height: 2vw;
+    font-size: 1px;
+    text-overflow: ellipsis;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    align-content: baseline;
+
+  }
+
+  nav.playerMenu {
+
+    color: rgb(255, 255, 255);
+    line-height: 8vh;
+
+  }
+
+  body {
+
+    text-align: center;
+    font-size: calc(8px + 0.9vh);
+    font-family: "Roboto", sans-serif;
+    color: rgb(46, 46, 46);
+
+  }
+
+  html {
+
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+
+  }
+
+  .cat_btn {
+    position: relative;
+    background-color: rgb(54, 45, 43);
+    height: 11vw;
+    width: 11vw;
+    display: inline-block;
+    margin: 1vh;
+    border-radius: 0.5vh;
+    overflow: hidden;
+    box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.12);
+    max-height: 16.4vh;
+    max-width: 16.4vh;
+    min-width: 75px;
+    min-height: 75px;
+
+    .label {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 3vh;
+      overflow: hidden;
+      line-height: 3vh;
+      font-size: calc(3px + 1.2vh);
+      font-family: "Fira Sans",
+        sans-serif;
+      color: rgb(132, 85, 73);
+      background-color: rgb(45, 36, 34);
+      text-transform: uppercase;
+      text-overflow: "..";
+      box-sizing: border-box;
+      padding: 0 1vh;
+
+    }
+  }
 }
 
 .gameMenu {
@@ -131,10 +221,12 @@ nav.playerMenu {
       &+.btn {
         margin-top: 3vh;
       }
-      &:hover{
+
+      &:hover {
         filter: contrast(1.1) brightness(1.2);
       }
-      &:active{
+
+      &:active {
         filter: contrast(1.1) brightness(1.4);
       }
     }
@@ -176,10 +268,11 @@ nav.playerMenu {
 
     .c {
       float: right;
-      width:auto;
+      width: auto;
 
       input {
-        float:right;
+        float: right;
+
         &[type="text"] {
           max-width: 3vw;
         }

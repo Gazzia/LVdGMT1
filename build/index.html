@@ -2,6 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rework</title>
     <link rel="preload" src="fonts/roboto-v18-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" src="fonts/roboto-v18-latin-italic.woff2" as="font" type="font/woff2" crossorigin>
@@ -17,7 +18,6 @@
     <script src="js/load.js"></script>
   </head>
   <body>
-
     <div class="background">
       <div class="clouds -back"></div>
       <div class="cover -back"></div>
@@ -48,7 +48,31 @@
         </ul>
       </div>
     </main>
-    <nav class="playerMenu"></nav>
+    <nav class="playerMenu">
+      <div class="head">
+        <div class="clock"></div>
+      </div>
+      <div class="content">
+        <div class="cat_btn"> 
+          <div class="label">État</div>
+        </div>
+        <div class="cat_btn">
+          <div class="label">Inventaire</div>
+        </div>
+        <div class="cat_btn">
+          <div class="label">Caractéristiques</div>
+        </div>
+        <div class="cat_btn">
+          <div class="label">Compétences</div>
+        </div>
+        <div class="cat_btn">
+          <div class="label">Quêtes</div>
+        </div>
+        <div class="cat_btn">
+          <div class="label">Thésaurus</div>
+        </div>
+      </div>
+    </nav>
     <div class="notifications"></div>
     <div class="overlay normal"></div>
     <div class="overlay important"></div>
@@ -97,7 +121,6 @@
       </main>
       <aside></aside>
     </div>
-    
     <script src="js/scripts.js"></script>
   </body>
 </html>
