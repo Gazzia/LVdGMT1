@@ -88,6 +88,7 @@ var pageList = [
 					trigText: "wood",
 					showName: "le petit bois",
 					RClick: function () {
+						time.ellipse(10);
 						game.loadPage(1);
 					},
 					actions: [{
@@ -103,6 +104,7 @@ var pageList = [
 							style: 'rightClick',
 							script() {
 								//changement de page : bois
+								time.ellipse(10);
 								game.loadPage(1);
 							}
 						}
@@ -200,6 +202,7 @@ var pageList = [
 					trigText: "bruit",
 					showName: "le bruit d'eau",
 					RClick: function () {
+						time.ellipse(5);
 						game.loadPage(2);
 					},
 					actions: [{
@@ -213,6 +216,7 @@ var pageList = [
 							name: "Suivre le bruit",
 							style: 'rightClick',
 							script() {
+								time.ellipse(5);
 								game.loadPage(2);
 							}
 						}
@@ -222,6 +226,7 @@ var pageList = [
 					trigText: "sentier",
 					showName: "le chemin",
 					RClick: function () {
+						time.ellipse(10);
 						game.loadPage(0);
 					},
 					actions: [{
@@ -229,6 +234,7 @@ var pageList = [
 						style: 'rightClick',
 						script() {
 							//changement de page : embranchement
+							time.ellipse(10);
 							game.loadPage(0);
 						}
 					}]
@@ -276,12 +282,14 @@ var pageList = [
 					trigText: "bois",
 					showName: "le bois",
 					RClick: function () {
+						time.ellipse(5);
 						game.loadPage(1);
 					},
 					actions: [{
 						name: "Revenir",
 						style: 'rightClick',
 						script() {
+							time.ellipse(5);
 							game.loadPage(1);
 						}
 					}]

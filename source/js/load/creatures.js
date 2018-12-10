@@ -1,7 +1,19 @@
 class Civil {
 	constructor(params = {}) {
 		this.money = {
-			total: params.money || 0,
+			_total: params.money || 0,
+			get total() {
+				return this._total;
+			},
+			set total(nb) {
+				this._total = nb;
+				this.cuivre = this.total % 100;
+				this.argent = Math.floor(this.total / 100) % 100;
+				this.or = Math.floor(this.total / 10000);
+			},
+			cuivre: this._total % 100,
+			argent: Math.floor(this._total / 100) % 100,
+			or: Math.floor(this._total / 10000),
 			add: function (nb) {
 				this.total += nb;
 			},
@@ -17,7 +29,6 @@ class Civil {
 		this.inv = new Inventory(this);
 		this.genre = params.genre || "m";
 		this.health = {
-			showNotifs: false,
 			_max: params.healthmax || 100,
 			_current: params.healthmax || 100,
 			checkNewValue(type) {
@@ -35,7 +46,7 @@ class Civil {
 				return this._max;
 			},
 			set current(value) {
-				if (this._current !== 0){
+				if (this._current !== 0) {
 					this._current = value;
 					this.checkNewValue("current");
 				}
@@ -43,78 +54,73 @@ class Civil {
 			get current() {
 				return this._current;
 			},
-			change(_params) {
-				if (_params.remove) {
-					if (_params.from == "max") {
-						this.max -= _params.remove;
-						this.checkNewValue("max");
-						if (this.showNotifs) {
-							if (this.max > 0) {
-								new Notification({
-									type: 'health',
-									txt: `Votre vie maximum a été réduite de ${_params.remove} pts!`,
-									timeOut: 30
-								});
-							}
-						}
-						return this.max;
-					} else if (_params.from == "current") {
-						this._current -= _params.remove;
-						this.checkNewValue("current");
-						if (this.showNotifs) {
-							if (this.current > 0) {
-								new Notification({
-									type: 'health',
-									txt: `Votre vie a diminué de ${_params.remove} pts!`,
-									timeOut: 30
-								});
-							}
-						}
-					}
-				} else if (_params.add) {
-					if (_params.from == "max") {
-						this.checkNewValue("max");
-						this.max += _params.add;
-						if (this.showNotifs) {
+			add(nb) {
+				console.log(this.ownerType);
+
+				if (this.current != 0) {
+					if (this.current + nb >= this.max && this.current != this.max) {
+						this.heal();
+
+					} else if (this.current == this.max) {
+						if (this.ownerType == "Player") {
 							new Notification({
 								type: 'health',
-								txt: `Votre vie maximum a été augmentée de ${_params.add} pts!`,
+								txt: `Votre vie est déjà au maximum!`,
 								timeOut: 30
 							});
 						}
-						return this.max;
-
-					} else if (_params.from == "current") {
-						//SI on ajoute du health
-						if (this.current != 0) {
-							if (this.current + _params.add >= this.max) {
-								//SI après l'ajout, on serait heal complêtement voire trop
-								//ALORS on heal à 100%
-								this.heal();
-
-							} else {
-								//SI après l'ajout, on ne serait pas heal complêtement
-								//ALORS on fait l'ajout
-								this.current += _params.add;
-								this.checkNewValue("current");
-								if (this.showNotifs) {
-									new Notification({
-										type: 'health',
-										txt: `Votre vie a été regénérée de ${_params.add} pts!`,
-										timeOut: 30
-									});
-								}
-							}
-							
+					} else {
+						this.current += nb;
+						if (this.ownerType == "Player") {
+							new Notification({
+								type: 'health',
+								txt: `Votre vie a été regénérée de ${nb} pts!`,
+								timeOut: 30
+							});
 						}
+					}
 
-						return this.current;
+				}
+			},
+			addMax(nb) {
+				this.max += nb;
+				if (this.ownerType == "Player") {
+					new Notification({
+						type: 'health',
+						txt: `Votre vie maximum a été augmentée de ${nb} pts!`,
+						timeOut: 30
+					});
+				}
+				return this.max;
+			},
+			remove(nb) {
+				this._current -= nb;
+				if (this.ownerType == "Player") {
+					if (this.current > 0) {
+						new Notification({
+							type: 'health',
+							txt: `Votre vie a diminué de ${nb} pts!`,
+							timeOut: 30
+						});
 					}
 				}
 			},
+			removeMax(nb) {
+				this.max -= nb;
+				if (this.ownerType == "Player") {
+					if (this.max > 0) {
+						new Notification({
+							type: 'health',
+							txt: `Votre vie maximum a été réduite de ${nb} pts!`,
+							timeOut: 30
+						});
+					}
+				}
+				return this.max;
+			},
 			heal() {
 				this.current = this.max;
-				if (this.showNotifs) {
+				if (this.ownerType == "Player") {
 					new Notification({
 						type: 'health',
 						txt: 'Votre vie a été complêtement regénérée !',
@@ -134,6 +140,7 @@ class Civil {
 				}
 			}
 		};
+		this.health.ownerType = this.constructor.name;
 	}
 }
 
@@ -156,7 +163,6 @@ class Player extends Civil {
 				timeOut: 15
 			});
 		};
-		this.health.showNotifs = true;
 	}
 
 }

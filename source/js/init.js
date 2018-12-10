@@ -96,17 +96,6 @@ devContainer.appendChild(gui.domElement);
 
 
 $(document).on("click", ".playerMenu", function (evt) {
-	var tg = $(evt.target || evt.srcElement);
-	console.log(tg);
-
-	if (tg.is(".playerMenu") || tg.is(".head") || tg.is(".clock")) playerMenu.toggle();
+	var trgt = $(evt.target || evt.srcElement);
+	if (trgt.is(".playerMenu") || trgt.is(".head") || trgt.is(".head *")) playerMenu.toggle();
 });
-
-var pgdc = function (a, b) {
-	return b ? pgdc(b, a % b) : a;
-};
-var plContent = $(".playerMenu .content");
-var test = pgdc(plContent.height(), plContent.width());
-if ((window.innerWidth / window.innerHeight) < 0.8){
-	$('body').addClass('mobile');
-}

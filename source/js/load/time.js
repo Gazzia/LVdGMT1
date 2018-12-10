@@ -1,58 +1,56 @@
 var time = {
-	_IRLsectoIGmin: 1.5,
-	get IRLsectoIGmin(){
+	_IRLsectoIGmin: 2.2,
+	get IRLsectoIGmin() {
 		return time._IRLsectoIGmin;
 	},
-	set IRLsectoIGmin(nb){
+	set IRLsectoIGmin(nb) {
 		time._IRLsectoIGmin = nb;
 		clearInterval(time.timeloop);
 		time.timeloop = setInterval(function () {
-			time.set({
-				"minutes": ++time.minutes
-			});
+			++time.minutes;
 			time.refreshClocks();
 		}, time._IRLsectoIGmin * 1000);
 	},
-	hours: 13,
-	minutes: 0,
-	period: "journée",
-	daysPlayed: 0,
-	set: function (param) {
-		if (param["minutes"] !== undefined) {
-			this.minutes = param["minutes"];
-			if (this.minutes > 59) {
-				this.set({
-					"hours": ++this.hours,
-					"minutes": 0
-				});
-			}
-		}
-		if (param["hours"] !== undefined) {
-			this.hours = param["hours"];
-			time.refreshPeriod();
-			game.refreshPage();
-			time.refreshClocks();
+	_hours: 13,
+	_minutes: 0,
+	get hours() {
+		return this._hours;
+	},
+	set hours(nb) {
+		this._hours = nb;
+		time.refreshPeriod();
+		game.refreshPage();
+		time.refreshClocks();
+	},
+	get minutes() {
+		return this._minutes;
+	},
+	set minutes(nb) {
+		this._minutes = nb;
+		while (this.minutes > 59) {
+			++time.hours;
+			time.minutes -= 60;
 		}
 	},
-	start: function () {
+	period: "journée",
+	daysPlayed: 0,
+	start() {
 		time.changePeriod('journée');
 		time.refreshClocks();
 		time.timeloop = setInterval(function () {
-			time.set({
-				"minutes": ++time.minutes
-			});
+			++time.minutes;
 			time.refreshClocks();
 		}, time._IRLsectoIGmin * 1000);
 	},
-	formatDate: function () {
+	formatDate() {
 		let hours = this.hours < 10 ? "0" + this.hours : this.hours;
 		let minutes = this.minutes < 10 ? "0" + this.minutes : this.minutes;
 		return (hours + ":" + minutes);
 	},
-	refreshClocks: function () {
+	refreshClocks() {
 		$('.playerMenu .clock').html(time.formatDate());
 	},
-	refreshPeriod: function () {
+	refreshPeriod() {
 		if ((
 				(24 >= this.hours && this.hours >= 21) ||
 				(4 >= this.hours && this.hours >= 0)
@@ -76,13 +74,11 @@ var time = {
 		}
 
 		if (this.hours > 23) {
-			this.set({
-				"hours": 0
-			});
+			this.hours = 0;
 			this.daysPlayed++;
 		}
 	},
-	changePeriod: function (per) {
+	changePeriod(per) {
 		if (per == "journée") {
 			time.period = "journée";
 			$('.background').css('background-image', 'linear-gradient(to top, rgb(213, 232, 253) 75%, rgb(192, 210, 255))');
@@ -165,4 +161,27 @@ var time = {
 		}
 		console.info(`TIME : période ${time.period}`);
 	},
+	ellipse(min, totalspeed) {
+		var minAfterAdd = time.minutes + min;
+		var hoursAfterAdd = time.hours;
+		while (minAfterAdd > 59) {
+			minAfterAdd -= 60;
+			++hoursAfterAdd;
+			if (hoursAfterAdd > 23) {
+				hoursAfterAdd = 0;
+			}
+		}
+		var speed;
+		totalspeed ? speed = (totalspeed*1000) / min : speed = 0.01 * 1000;
+		console.log(speed);
+		
+		clearInterval(time.timeloop);
+		time.timeloop = setInterval(() => {
+			++time.minutes;
+			time.refreshClocks();
+			if ((time.minutes == minAfterAdd) && (time.hours == hoursAfterAdd)) {
+				time.IRLsectoIGmin = time._IRLsectoIGmin;
+			}
+		}, speed);
+	}
 };

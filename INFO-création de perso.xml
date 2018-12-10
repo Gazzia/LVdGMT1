@@ -1,0 +1,92 @@
+<Processus> :
+   - Choix du sexe
+   - Choix du prénom
+   - Choix entre 3 races aléatoires
+      > remplacement de Golem par autre chose ? Parce que c'est sur de leur construire une identité
+      > La race choisie modifies les stats
+   - Identité aléatoire donnée (dans le choix aléatoire, une seule est unique à la race, les autres sont générales)
+      > L'âge de l'identité modifies les stats
+      > Chaque identité possède une compétence unique
+      > Page avec lore du perso et modificateurs
+   - Fondu du son et du background sombre sur le début du jeu
+      > La(||les) première page est différente selon l'identité
+      > Ex avec l'orphelin : on est sur la page du lore du perso, et quand on appuie sur "Commencer":
+         -les blocs de texte disparaissent, laissant uniquement le background bleu nuit,
+         -Fade-in d'un son de feu de camp qui crépite (+ musique lente style harpe?)
+         -le background bleu nuit fond pour laisser voir une scène de nuit, un feu de camp et le vieil homme qui dort (genre vue POV)
+         - après 1.5s le block de jeu apparaît sur la droite, avec l'histoire et les actions, le jeu est commencé
+
+<AGES>
+   | Bambin (Non-jouable)
+   6
+   | Enfant (--Con | +3 Dex, +1 Cha | -2 Int/Sag/For)
+   15
+   | Adolescent (+Con | +2 Dex | -2 Int/Sag, -1 Cha)
+   19
+   | Jeune adulte (++Con | +1 For/Dex | -1 Int/Sag/Cha)
+   35
+   | Âge mûr (-Con |+1 Int/Sag/Cha | –1 For/Dex)
+   50
+   | Grand âge (--Con | +2 Int/Sag/Cha | –2 For/Dex)
+   70
+   | Âge vénérable (---Con | +1 Int/Sag/Cha | –3 For/Dex)
+
+<!-- (Con = Constitution Max) -->
+
+<NOMS_ALEATOIRE>
+   Prénom choisi par le joueur + * :
+   (ex : "Joseph Boldo" ou "Joseph de la maison Rewyn")
+      <Bourgeois>
+         de la famille *:
+            -Riren -Ripath -Ribrandar -Rewyn -Mynch -Ward -Elyn -Born
+      <Commun>
+         -Gadriel -Alenan -Alfrert -Athas -Boldo -Philes -Foupin -Bomdil -Braverin -Marchecol -Isond -Finaciel -Serild -Etoison -Gameboc -Branvert -Bomille -Grodrim -Malcraie -Sardiez -Thildon -Mouracine -Marcheboc -Foupied -Sanglequet -Sacphin -Matifeux
+
+<IDENTITES>
+   (Idéalement : 6 neutres, 2 bons, 2 evil + 1 pour chaque race)
+   Doivent avoir une bonne raison d'aller vers Merryvale ou l'altiplan et de s'investir dans les quêtes
+
+   <CAMPEUR>
+      <famille>
+         Sans
+      <lore>
+         On est un baroudeur, sans origines et qui erre de village en village, échangeant parfois de petits services contre le gîte, et dans un village non loin d'ici un fermier accueillant nous a parlé de Merryvale, de son influence sur la région, et de son passage vers l'altiplan, donc on a décidé d'y aller faire un tour parce qu'on a jamais visité l'altiplan;
+      <spawn>
+         A quelques mètres de l'embranchement (page séparée, on a campé là, c'est l'aube);
+      <compétences>
+         -Camping (permet de camper n'importe où hors des villes tant qu'on a une tente en peau, ce qui regen un peu);
+      <stuff>
+         -Etinceleur (permet d'allumer un feu pour cuire de la bouffe si on a assez de brindilles) (il ne lui reste que 10 utilisations);
+         -2 brindilles;
+         -tente en peau;
+      <prestige>
+         Faible
+      <age>
+         Age mûr
+      <alignement>
+         Chaotique neutre
+         (liberté vis à vis de la société, et ne se sent pas obligé de faire le bien autour de lui)
+
+   <ORPHELIN>
+      <famille>
+         Sans
+      <lore>
+         On est un orphelin crasseux des rues d'une ville crasseuse de l'altiplan, qui a été capturé par un vieux monsieur pour être vendu à un marché d'esclave clandestin sur une île de l'extrème sud, et en route à travers la campagne peu après Merryvale, on s'enfuit pendant la nuit pour courir vers Merryvale et regagner l'altiplan;
+         On a le choix de piquer une potion au vieux avant de se barrer
+      <spawn>
+         A plusieurs kilomètres de l'embranchement, de nuit (page séparée et temps ralenti), et on arrive à l'embranchement à l'aube
+      <compétences>
+         -Oeil de Lynx (permet de trouver très souvent des objets en fouillant);
+      <stuff>
+         -De la vieille bouffe peu recommendable
+         -Une potion aléatoire si on a choisi de lui voler
+      <prestige>
+         Faible
+      <age>
+         Enfant
+      <alignement>
+         Chaotique neutre
+         (liberté vis à vis de la société, et ne se sent pas obligé de faire le bien autour de lui)
+      
+   <CUISINIER??>
+      

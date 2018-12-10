@@ -1,0 +1,68 @@
+<FACTEURS>
+   Lors de la création de perso :
+      Race
+      Âge
+   In Game :
+      Stuff avec propriétés magiques
+      Levelling
+      Actions avec récompenses
+
+<CHARACTERISTIQUES>
+   Base 10?
+      Force : Athélisme, Endurance, Force d'attaque
+      Dexterité : Acrobaties, Discrétion, Escamotage
+      Charisme : Intimidation, Persuasion, Représentation, Tromperie
+      Intelligence : Arcanes, Investigation, Histoire, Nature, Religion
+      Sagesse : Dressage, Médecine, Perception, Perspicacité, Survie
+      //Force Spirituelle --> Mettre ça dans l'Intelligence ?
+
+<ETAT>
+   Santé (base 100)
+   Défense (base 5, modifié par constitution) 
+
+<JAUGES>
+   Experience
+      > Gain lors d'actions utilisant les charactéristiques, ou grâce à des récompenses
+      > Le levelling permet de part-heal et de choisir entre améliorer une charac ou gagner un peu d'or
+
+   Moralité (bon/mauvais)
+      > Base posée par l'identité du player
+      > Modifié lors de certaines actions bonne sou mauvaises ou dans les choix de dialogues
+      > Peut changer les affinités avec certains PNJ et les dialogues disponibles
+
+   Relations avec chaque famille (base définie par race, prestige et moralité)
+      > Change avec les dialogues et les quêtes accomplies,
+         ou les trahisons faites (accepter quête d'une famille rivale, etc..)
+
+   Prestige
+      > Modifié par le nombre de créatures tuées, par les relations haut-placées, ou par les actions faites
+         pour améliorer ou démeliorer les vies d'un grand nombre
+      > N'as pas de lien avec le bien ou le mal, simplement on nous reconnaît plus facilement
+      > (Peut être influencé || Peut influencer) le charisme ??
+
+   Constitution ??
+      > Influencé par :
+         -Fatigue
+         -Santé (vie + buffs/debuffs)
+         -Faim
+         -Chaleur
+         -Environnement (pluie..)
+         -Force ?
+      >Influence sur :
+         -Efficacité de la défense
+
+   Perception ??
+      > Influencé par : 
+         -Sagesse
+         -Fatigue
+         -Environnement (Pluie, obscurité..)
+      > Influence sur :
+         -Précision des attaques
+
+<COMPETENCES>
+   Bonus ou capacités inédites, qui sont soit innées soit gagnées à travers un apprentissage
+   LISTE :
+      COMMUNES :
+         > Camping (permet de camper n'importe où hors des villes tant qu'on a une tente en peau, ce qui regen un peu)
+         > Oeil de Lynx (permet de trouver plus facilement des objets en fouillant)
+      RARES :

@@ -86,3 +86,13 @@
       // animation: spinStars 800s linear forwards infinite;
    }
 }
+@media screen and (orientation:portrait){
+   .background{
+      top:0;
+      height:50vh;
+      .sun{
+         height:4vh;
+         width:4vh;
+      }
+   }
+}

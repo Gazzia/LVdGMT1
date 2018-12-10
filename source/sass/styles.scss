@@ -80,11 +80,12 @@ body {
 // }
 
 nav.playerMenu {
+  $plMenuHeight: 93vh;
   position: absolute;
-  height: 93vh;
+  height: $plMenuHeight;
   width: 36vw;
   background-color: rgb(44, 44, 44);
-  bottom: -85vh;
+  bottom: calc(-#{$plMenuHeight} + 8vh);
   right: 4vw;
   color: white;
   line-height: 8vh;
@@ -177,6 +178,16 @@ nav.playerMenu {
       padding: 0 1vh;
 
     }
+  }
+}
+
+@media screen and (orientation:portrait) {
+  nav.playerMenu {
+    width: 100vw;
+    left: 0;
+    $plMenuHeight: 58vh;
+    height: $plMenuHeight;
+    bottom: calc(-#{$plMenuHeight} + 8vh);
   }
 }
 

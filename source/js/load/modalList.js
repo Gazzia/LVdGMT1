@@ -98,6 +98,7 @@ var modalList = {
 						script() {
 							if (player.inv.add('Branche') == true) {
 								// Events.tookbaton = true;
+								//TODO: uncomment
 								game.page.refBackground();
 								modal.close();
 							} else {
@@ -139,6 +140,7 @@ var modalList = {
 						game.ui.hide();
 						Events.HaltsAtRivière++;
 						delay(function () {
+							time.ellipse(20);
 							modalList.Soufflant_Riviere_HalteFinie();
 						}, 20000);
 					}
@@ -171,6 +173,7 @@ var modalList = {
 							});
 						}
 						delay(function () {
+							time.ellipse(20);
 							modalList.Soufflant_Riviere_HalteFinie();
 						}, 14000);
 					}
@@ -204,21 +207,27 @@ var modalList = {
 										from: "current",
 										remove: 20
 									});
+									time.ellipse(20);
 								}
 							},
 							Ec: {
 								txt: "Vous traversez le bras d'eau sans encombre, mais en arrivant sur l'autre rive trempé{f:e} jusqu'aux os, vous découvrez la bourse complêtement vide.",
+								script: function () {
+									time.ellipse(15);
+								}
 							},
 							Ré: {
 								txt: "Vous traversez le bras d'eau sans encombre, et en arrivant sur l'autre rive tout{f:e} trempé{f:e}, vous êtes récompensé{f:e} en trouvant dans la bourse quelques lunes d'argent et de cuivre.",
 								script: function () {
 									player.money.add(515);
+									time.ellipse(10);
 								}
 							},
 							RéCr: {
 								txt: "Vous traversez le bras d'eau aisément, et trouvez dans la bourse, sur l'autre rive, une jolie somme en lunes d'argent et de cuivre !",
 								script: function () {
 									player.money.add(1504);
+									time.ellipse(7);
 								}
 							},
 						}
